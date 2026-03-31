@@ -33,7 +33,7 @@ struct SplashView: View {
                     Image(uiImage: uiImage)
                         .resizable()
                         .aspectRatio(contentMode: .fit)
-                        .frame(width: 400, height: 400)
+                        .frame(width: 500, height: 500)
                         .opacity(opacity)
                         .scaleEffect(scale)
                 } else {

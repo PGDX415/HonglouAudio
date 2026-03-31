@@ -127,6 +127,7 @@ struct ChapterDetailView: View {
                 .ignoresSafeArea()
         )
         .navigationTitle(groupedChapter.displayTitle)
+        .navigationBarTitleDisplayMode(.inline)
     }
     
     private func extractPartSuffix(from title: String) -> String {
