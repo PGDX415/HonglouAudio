@@ -41,6 +41,11 @@ struct CharactersView: View {
             imageName: "jia_zheng"
         ),
         Character(
+            name: "贾元春",
+            description: "贾政与王夫人的长女，贾宝玉的姐姐。她被选入宫中，封为贤德妃（后晋升为贵妃）。大观园就是为她省亲而建，她的命运与贾府的兴衰密切相关。",
+            imageName: "jia_yuanchun"
+        ),
+        Character(
             name: "袭人",
             description: "贾宝玉的贴身丫鬟，温柔体贴，对宝玉忠心耿耿，后成为宝玉的妾室。",
             imageName: "xi_ren"
@@ -352,6 +357,11 @@ struct CharacterDetailView: View {
                 + Text("\n• 重视礼教")
                 + Text("\n• 望子成龙")
                 + Text("\n• 传统家长")
+        case "贾元春":
+            return Text("• 贵为皇妃")
+                + Text("\n• 才德兼备")
+                + Text("\n• 忧国忧家")
+                + Text("\n• 命运悲凉")
         case "袭人":
             return Text("• 温柔体贴")
                 + Text("\n• 忠心耿耿")
@@ -433,6 +443,8 @@ struct CharacterDetailView: View {
             return "咱们这样人家的姑娘，倒不要这些才华的名誉。"
         case "贾政":
             return "畜生！畜生！该死的畜生！"
+        case "贾元春":
+            return "田舍之家，虽齑盐布帛，终能聚天伦之乐；今虽富贵已极，骨肉各方，然终无意趣！"
         case "袭人":
             return "二爷何苦这样？总要想个法儿才是。"
         case "晴雯":
