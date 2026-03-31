@@ -57,14 +57,8 @@ struct SplashView: View {
             }
         }
         .fullScreenCover(isPresented: $isActive) {
-            MainContentView()
+            MainTabView()
         }
-    }
-}
-
-struct MainContentView: View {
-    var body: some View {
-        ContentView()
     }
 }
 
