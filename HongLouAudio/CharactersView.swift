@@ -89,6 +89,16 @@ struct CharactersView: View {
             name: "平儿",
             description: "王熙凤的贴身丫鬟和心腹，贾琏的通房丫头。她为人善良公正，聪明能干，在王熙凤和贾琏之间起到缓冲作用，多次帮助其他丫鬟，展现了高尚的品格。",
             imageName: "ping_er"
+        ),
+        Character(
+            name: "贾琏",
+            description: "王熙凤的丈夫，贾赦的儿子。他好色贪财，经常在外拈花惹草，但在家中惧怕妻子王熙凤。他是贾府中的纨绔子弟代表。",
+            imageName: "jia_lian"
+        ),
+        Character(
+            name: "刘姥姥",
+            description: "王狗儿的岳母，一个来自乡下的穷苦老妇人。她朴实善良，幽默风趣，两次进入贾府求助，见证了贾府的兴衰。她的出现为《红楼梦》增添了浓厚的生活气息和喜剧色彩。",
+            imageName: "liu_laolao"
         )
     ]
     
@@ -180,13 +190,42 @@ struct EnlargedImageView: View {
                 .fill(Color.black.opacity(0.8))
                 .ignoresSafeArea()
             
-            // Enlarged image
+            // Enlarged image with 3:4 aspect ratio, rounded corners and border
             if let uiImage = UIImage(named: imageName) {
-                Image(uiImage: uiImage)
-                    .resizable()
-                    .aspectRatio(contentMode: .fit)
-                    .frame(maxWidth: .infinity, maxHeight: .infinity)
-                    .padding(40)
+                ZStack {
+                    // Background with rounded rectangle and border
+                    RoundedRectangle(cornerRadius: 25)
+                        .fill(Color.white)
+                        .frame(width: 300, height: 400) // 3:4 ratio (300:400) - increased size
+                        .overlay(
+                            RoundedRectangle(cornerRadius: 25)
+                                .stroke(Color(red: 0.6, green: 0.2, blue: 0.2), lineWidth: 3)
+                        )
+                    
+                    // Actual image with 3:4 aspect ratio and rounded corners
+                    Image(uiImage: uiImage)
+                        .resizable()
+                        .aspectRatio(CGSize(width: 3, height: 4), contentMode: .fill)
+                        .frame(width: 294, height: 394) // Slightly smaller to fit inside border
+                        .clipShape(RoundedRectangle(cornerRadius: 22)) // Slightly less corner radius to fit inside
+                }
+                .padding(.bottom, 100) // Increased padding to accommodate larger image and name text
+            } else {
+                // Fallback for when image doesn't exist - show rounded rectangle placeholder with border
+                ZStack {
+                    RoundedRectangle(cornerRadius: 25)
+                        .fill(Color(red: 0.96, green: 0.94, blue: 0.90))
+                        .frame(width: 300, height: 400) // 3:4 ratio - increased size
+                        .overlay(
+                            RoundedRectangle(cornerRadius: 25)
+                                .stroke(Color(red: 0.6, green: 0.2, blue: 0.2), lineWidth: 3)
+                        )
+                    
+                    Text(String(characterName.first ?? " "))
+                        .font(.system(size: 70, weight: .bold)) // Increased font size for larger placeholder
+                        .foregroundColor(Color(red: 0.6, green: 0.2, blue: 0.2))
+                }
+                .padding(.bottom, 100)
             }
             
             // Character name overlay
@@ -363,6 +402,16 @@ struct CharacterDetailView: View {
                 + Text("\n• 聪明能干")
                 + Text("\n• 处事圆滑")
                 + Text("\n• 忠心护主")
+        case "贾琏":
+            return Text("• 好色贪财")
+                + Text("\n• 畏惧妻子")
+                + Text("\n• 纨绔子弟")
+                + Text("\n• 缺乏担当")
+        case "刘姥姥":
+            return Text("• 朴实善良")
+                + Text("\n• 幽默风趣")
+                + Text("\n• 见多识广")
+                + Text("\n• 知恩图报")
         default:
             return Text("• 主要人物")
                 + Text("\n• 性格鲜明")
@@ -404,6 +453,10 @@ struct CharacterDetailView: View {
             return "月难逢，彩云易散。心比天高，身为下贱。"
         case "平儿":
             return "奶奶别生气，凡事都要慢慢来，急不得的。"
+        case "贾琏":
+            return "我不过是个混账东西罢了，哪里配得上你这样的贤妻！"
+        case "刘姥姥":
+            return "老刘，老刘，食量大如牛，吃个老母猪不抬头！"
         default:
             return nil
         }
