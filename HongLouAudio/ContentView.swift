@@ -38,7 +38,7 @@ struct ContentView: View {
                 }
                 .listRowBackground(Color(red: 0.96, green: 0.94, blue: 0.90)) // Antique paper color
             }
-            .navigationTitle("红楼听梦")
+            .navigationTitle("红楼聆梦")
             .onAppear {
                 chapters = ChapterLoader.loadChapters()
             }

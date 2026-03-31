@@ -21,7 +21,7 @@ struct SplashView: View {
             
             VStack(spacing: 30) {
                 // Animated logo/title
-                Text("红楼听梦")
+                Text("红楼聆梦")
                     .font(.system(size: 48, weight: .bold, design: .rounded))
                     .foregroundColor(.white)
                     .shadow(color: Color.white.opacity(0.3), radius: 10, x: 0, y: 5)
