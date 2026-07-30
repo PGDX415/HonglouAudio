@@ -9,6 +9,11 @@ import SwiftUI
 
 @main
 struct HongLouAudioApp: App {
+    init() {
+        // Pre-warm audio session at launch
+        _ = AudioManager.shared
+    }
+
     var body: some Scene {
         WindowGroup {
             SplashView()
@@ -22,34 +27,34 @@ struct MainTabView: View {
     var body: some View {
         TabView {
             // Home Tab
-            NavigationView {
+            NavigationStack {
                 ContentView()
             }
             .tabItem {
                 Image(systemName: "house")
                 Text("主页")
             }
-            
+
             // Favorites Tab
-            NavigationView {
+            NavigationStack {
                 FavoritesView()
             }
             .tabItem {
                 Image(systemName: "heart.fill")
                 Text("收藏")
             }
-            
+
             // Characters Tab
-            NavigationView {
+            NavigationStack {
                 CharactersView()
             }
             .tabItem {
                 Image(systemName: "person.2.fill")
                 Text("人物")
             }
-            
+
             // My Account Tab (now includes settings)
-            NavigationView {
+            NavigationStack {
                 MyAccountView()
             }
             .tabItem {

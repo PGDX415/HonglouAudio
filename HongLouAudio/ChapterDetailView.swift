@@ -36,72 +36,116 @@ struct ChapterDetailView: View {
     
     @State private var randomCharacterImageName: String = ""
     @State private var randomCharacterName: String = ""
-    
+    @State private var isImageZoomed = false
+
     var body: some View {
-        VStack {
-            List(groupedChapter.parts) { part in
-                NavigationLink(destination: AudioPlayerView(chapter: part)) {
-                    VStack(alignment: .leading, spacing: 8) {
-                        HStack {
-                            // Display the chapter number (回号) instead of individual part number
-                            Text("\(groupedChapter.chapterNumber)")
-                                .font(.system(size: 16, weight: .bold))
-                                .foregroundColor(.white)
-                                .padding(8)
-                                .background(Color(red: 0.6, green: 0.2, blue: 0.2)) // Classical red
-                                .clipShape(Circle())
-                            
-                            // Extract the part suffix (上, 中, 下) from the title
-                            Text(extractPartSuffix(from: part.title))
-                                .font(.headline)
-                                .fontWeight(.medium)
-                                .foregroundColor(Color(red: 0.2, green: 0.1, blue: 0.1)) // Deep brown
-                            
-                            Spacer()
+        ZStack {
+            VStack {
+                List(groupedChapter.parts) { part in
+                    HStack(spacing: 0) {
+                        // Main area: navigate to audio player (with 边听边看)
+                        NavigationLink(destination: AudioPlayerView(chapter: part)) {
+                            VStack(alignment: .leading, spacing: 8) {
+                                HStack {
+                                    Text("\(groupedChapter.chapterNumber)")
+                                        .font(.system(size: 16, weight: .bold))
+                                        .foregroundColor(.white)
+                                        .padding(8)
+                                        .background(Color(red: 0.6, green: 0.2, blue: 0.2))
+                                        .clipShape(Circle())
+
+                                    Text(extractPartSuffix(from: part.title))
+                                        .font(.headline)
+                                        .fontWeight(.medium)
+                                        .foregroundColor(Color(red: 0.2, green: 0.1, blue: 0.1))
+
+                                    // Show book icon if text is available
+                                    if !part.chapterText.isEmpty {
+                                        Image(systemName: "book.pages.fill")
+                                            .font(.caption)
+                                            .foregroundColor(Color(red: 0.5, green: 0.3, blue: 0.2))
+                                    }
+
+                                    Spacer()
+                                }
+
+                                Text(part.summary)
+                                    .font(.caption)
+                                    .foregroundColor(Color(red: 0.4, green: 0.3, blue: 0.2))
+                                    .lineLimit(2)
+                            }
+                            .padding(.vertical, 4)
                         }
-                        
-                        Text(part.summary)
-                            .font(.caption)
-                            .foregroundColor(Color(red: 0.4, green: 0.3, blue: 0.2)) // Warm brown
-                            .lineLimit(2)
                     }
-                    .padding(.vertical, 4)
+                    .listRowBackground(Color(red: 0.96, green: 0.94, blue: 0.90))
                 }
-                .listRowBackground(Color(red: 0.96, green: 0.94, blue: 0.90)) // Antique paper color
+                .listStyle(PlainListStyle())
+
+                // Random character image section with actual character name
+                if !randomCharacterImageName.isEmpty && !randomCharacterName.isEmpty {
+                    VStack(spacing: 8) {
+                        Text(randomCharacterName)
+                            .font(.subheadline)
+                            .fontWeight(.semibold)
+                            .foregroundColor(Color(red: 0.2, green: 0.1, blue: 0.1))
+
+                        if let uiImage = UIImage(named: randomCharacterImageName) {
+                            Image(uiImage: uiImage)
+                                .resizable()
+                                .aspectRatio(contentMode: .fill)
+                                .frame(width: 160, height: 160)
+                                .clipShape(RoundedRectangle(cornerRadius: 16))
+                                .overlay(
+                                    RoundedRectangle(cornerRadius: 16)
+                                        .stroke(Color(red: 0.6, green: 0.2, blue: 0.2), lineWidth: 1)
+                                )
+                                .onTapGesture {
+                                    withAnimation(.easeInOut(duration: 0.25)) {
+                                        isImageZoomed = true
+                                    }
+                                }
+                        } else {
+                            // Fallback placeholder if image not found
+                            RoundedRectangle(cornerRadius: 16)
+                                .fill(Color(red: 0.96, green: 0.94, blue: 0.90))
+                                .frame(width: 160, height: 160)
+                                .overlay(
+                                    RoundedRectangle(cornerRadius: 16)
+                                        .stroke(Color(red: 0.6, green: 0.2, blue: 0.2), lineWidth: 2)
+                                )
+                        }
+                    }
+                    .padding(.vertical, 20)
+                    .padding(.horizontal, 16)
+                }
             }
-            .listStyle(PlainListStyle())
-            
-            // Random character image section with actual character name
-            if !randomCharacterImageName.isEmpty && !randomCharacterName.isEmpty {
-                VStack(spacing: 8) {
-                    Text(randomCharacterName)
-                        .font(.subheadline)
-                        .fontWeight(.semibold)
-                        .foregroundColor(Color(red: 0.2, green: 0.1, blue: 0.1))
-                    
+
+            // Full-screen zoomed image overlay
+            if isImageZoomed {
+                Color.black.opacity(0.85)
+                    .ignoresSafeArea()
+                    .onTapGesture {
+                        withAnimation(.easeInOut(duration: 0.25)) {
+                            isImageZoomed = false
+                        }
+                    }
+
+                VStack {
                     if let uiImage = UIImage(named: randomCharacterImageName) {
                         Image(uiImage: uiImage)
                             .resizable()
-                            .aspectRatio(contentMode: .fill)
-                            .frame(width: 160, height: 160)
-                            .clipShape(RoundedRectangle(cornerRadius: 16))
-                            .overlay(
-                                RoundedRectangle(cornerRadius: 16)
-                                    .stroke(Color(red: 0.6, green: 0.2, blue: 0.2), lineWidth: 1)
-                            )
-                    } else {
-                        // Fallback placeholder if image not found
-                        RoundedRectangle(cornerRadius: 16)
-                            .fill(Color(red: 0.96, green: 0.94, blue: 0.90))
-                            .frame(width: 160, height: 160)
-                            .overlay(
-                                RoundedRectangle(cornerRadius: 16)
-                                    .stroke(Color(red: 0.6, green: 0.2, blue: 0.2), lineWidth: 2)
-                            )
+                            .aspectRatio(contentMode: .fit)
+                            .clipShape(RoundedRectangle(cornerRadius: 12))
+                            .padding(.horizontal, 20)
+                            .shadow(color: .black.opacity(0.5), radius: 20, x: 0, y: 10)
                     }
+
+                    Text(randomCharacterName)
+                        .font(.title3)
+                        .fontWeight(.bold)
+                        .foregroundColor(.white)
+                        .padding(.top, 16)
                 }
-                .padding(.vertical, 20)
-                .padding(.horizontal, 16)
             }
         }
         .onAppear {
@@ -145,8 +189,8 @@ struct ChapterDetailView: View {
 #Preview {
     // Create sample data for preview
     let sampleParts = [
-        Chapter(number: 5, title: "第三回 贾夫人仙逝扬州城 冷子兴演说荣国府 上", audioFileName: "5.mp3", summary: "Sample summary for part 1"),
-        Chapter(number: 6, title: "第三回 贾夫人仙逝扬州城 冷子兴演说荣国府 下", audioFileName: "6.mp3", summary: "Sample summary for part 2")
+        Chapter(number: 5, title: "第三回 贾夫人仙逝扬州城 冷子兴演说荣国府 上", audioFileName: "5.mp3", summary: "Sample summary for part 1", textFileName: nil),
+        Chapter(number: 6, title: "第三回 贾夫人仙逝扬州城 冷子兴演说荣国府 下", audioFileName: "6.mp3", summary: "Sample summary for part 2", textFileName: nil)
     ]
     let sampleGrouped = GroupedChapter(chapterNumber: 3, titlePrefix: "第三回 贾夫人仙逝扬州城 冷子兴演说荣国府", parts: sampleParts)
     return ChapterDetailView(groupedChapter: sampleGrouped, favoritesManager: FavoritesManager())

@@ -13,12 +13,22 @@ struct Chapter: Codable, Identifiable {
     let title: String
     let audioFileName: String
     let summary: String
-    
+    let textFileName: String?
+
+    var chapterText: String {
+        guard let fileName = textFileName else { return "" }
+        guard let url = Bundle.main.url(forResource: fileName, withExtension: nil) else {
+            return ""
+        }
+        return (try? String(contentsOf: url, encoding: .utf8)) ?? ""
+    }
+
     enum CodingKeys: String, CodingKey {
         case number = "number"
         case title = "title"
         case audioFileName = "audioFileName"
         case summary = "summary"
+        case textFileName = "textFileName"
     }
 }
 

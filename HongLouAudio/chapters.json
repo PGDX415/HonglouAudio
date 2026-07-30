@@ -3,734 +3,856 @@
     {
       "number": 1,
       "title": "第一回 甄士隐梦幻识通灵 贾雨村风尘怀闺秀 上",
-      "audioFileName": "1.mp3",
-      "summary": "开篇讲述女娲补天剩下的一块顽石，被一僧一道携入红尘。姑苏城中甄士隐梦见一僧一道谈论神瑛侍者和绛珠仙草的故事。"
+      "audioFileName": "第01回_上.mp3",
+      "summary": "开篇讲述女娲补天剩下的一块顽石，被一僧一道携入红尘。姑苏城中甄士隐梦见一僧一道谈论神瑛侍者和绛珠仙草的故事。",
+      "textFileName": "chapter_01_shang.txt"
     },
     {
       "number": 2,
       "title": "第一回 甄士隐梦幻识通灵 贾雨村风尘怀闺秀 下",
-      "audioFileName": "2.mp3",
-      "summary": "甄家遭遇变故，女儿英莲失踪，家宅被烧，最终看破红尘随道士而去。"
+      "audioFileName": "第01回_下.mp3",
+      "summary": "甄家遭遇变故，女儿英莲失踪，家宅被烧，最终看破红尘随道士而去。",
+      "textFileName": "chapter_01_xia.txt"
     },
     {
       "number": 3,
       "title": "第二回 贾夫人仙逝扬州城 冷子兴演说荣国府 上",
-      "audioFileName": "3.mp3",
-      "summary": "林黛玉母亲去世，父亲林如海决定送她到外祖母家。"
+      "audioFileName": "第02回_上.mp3",
+      "summary": "林黛玉母亲去世，父亲林如海决定送她到外祖母家。",
+      "textFileName": "chapter_02_shang.txt"
     },
     {
       "number": 4,
       "title": "第二回 贾夫人仙逝扬州城 冷子兴演说荣国府 下",
-      "audioFileName": "4.mp3",
-      "summary": "贾雨村得到林如海推荐，复职前往京城。途中遇到冷子兴，听其详细讲述贾府的家族关系和现状。"
+      "audioFileName": "第02回_下.mp3",
+      "summary": "贾雨村得到林如海推荐，复职前往京城。途中遇到冷子兴，听其详细讲述贾府的家族关系和现状。",
+      "textFileName": "chapter_02_xia.txt"
     },
     {
       "number": 5,
       "title": "第三回 贾雨村夤缘复旧职 林黛玉抛父进京都 上",
-      "audioFileName": "5.mp3",
-      "summary": "林黛玉初入贾府，见到外祖母贾母及众亲戚。"
+      "audioFileName": "第03回_上.mp3",
+      "summary": "林黛玉初入贾府，见到外祖母贾母及众亲戚。",
+      "textFileName": "chapter_03_shang.txt"
     },
     {
       "number": 6,
       "title": "第三回 贾雨村夤缘复旧职 林黛玉抛父进京都 下",
-      "audioFileName": "6.mp3",
-      "summary": "宝玉初见黛玉，因她没有玉而摔玉，引起众人惊慌。黛玉开始在贾府的生活。"
+      "audioFileName": "第03回_下.mp3",
+      "summary": "宝玉初见黛玉，因她没有玉而摔玉，引起众人惊慌。黛玉开始在贾府的生活。",
+      "textFileName": "chapter_03_xia.txt"
     },
     {
       "number": 7,
       "title": "第四回 薄命女偏逢薄命郎 葫芦僧乱判葫芦案 上",
-      "audioFileName": "7.mp3",
-      "summary": "贾雨村审理薛蟠打死冯渊一案，在门子的提醒下准备徇私枉法。"
+      "audioFileName": "第04回_上.mp3",
+      "summary": "贾雨村审理薛蟠打死冯渊一案，在门子的提醒下准备徇私枉法。",
+      "textFileName": "chapter_04_shang.txt"
     },
     {
       "number": 8,
       "title": "第四回 薄命女偏逢薄命郎 葫芦僧乱判葫芦案 下",
-      "audioFileName": "8.mp3",
-      "summary": "贾雨村为讨好贾、王、薛三家而徇私枉法。薛蟠带母亲和妹妹宝钗进京，暂住贾府。"
+      "audioFileName": "第04回_下.mp3",
+      "summary": "贾雨村为讨好贾、王、薛三家而徇私枉法。薛蟠带母亲和妹妹宝钗进京，暂住贾府。",
+      "textFileName": "chapter_04_xia.txt"
     },
     {
       "number": 9,
       "title": "第五回 游幻境指迷十二钗 饮仙醪曲演红楼梦 上",
-      "audioFileName": "9.mp3",
-      "summary": "宝玉在秦可卿房中准备梦游太虚幻境，预示主要人物的命运。"
+      "audioFileName": "第05回_上.mp3",
+      "summary": "宝玉在秦可卿房中准备梦游太虚幻境，预示主要人物的命运。",
+      "textFileName": "chapter_05_shang.txt"
     },
     {
       "number": 10,
       "title": "第五回 游幻境指迷十二钗 饮仙醪曲演红楼梦 中",
-      "audioFileName": "10.mp3",
-      "summary": "宝玉梦游太虚幻境，见到金陵十二钗的判词，了解各人物命运。"
+      "audioFileName": "第05回_中.mp3",
+      "summary": "暂无简介",
+      "textFileName": "chapter_05_zhong.txt"
     },
     {
       "number": 11,
       "title": "第五回 游幻境指迷十二钗 饮仙醪曲演红楼梦 下",
-      "audioFileName": "11.mp3",
-      "summary": "宝玉醒来后与袭人初试云雨情，红楼梦曲预示了悲剧结局。"
+      "audioFileName": "第05回_下.mp3",
+      "summary": "宝玉醒来后与袭人初试云雨情，红楼梦曲预示了悲剧结局。",
+      "textFileName": "chapter_05_xia.txt"
     },
     {
       "number": 12,
       "title": "第六回 贾宝玉初试云雨情 刘姥姥一进荣国府 上",
-      "audioFileName": "12.mp3",
-      "summary": "刘姥姥因家境困难，带着外孙板儿到贾府求助。"
+      "audioFileName": "第06回_上.mp3",
+      "summary": "刘姥姥因家境困难，带着外孙板儿到贾府求助。",
+      "textFileName": "chapter_06_shang.txt"
     },
     {
       "number": 13,
       "title": "第六回 贾宝玉初试云雨情 刘姥姥一进荣国府 下",
-      "audioFileName": "13.mp3",
-      "summary": "刘姥姥见到凤姐，得到二十两银子的资助，满意而归。"
+      "audioFileName": "第06回_下.mp3",
+      "summary": "刘姥姥见到凤姐，得到二十两银子的资助，满意而归。",
+      "textFileName": "chapter_06_xia.txt"
     },
     {
       "number": 14,
       "title": "第七回 送宫花贾琏戏熙凤 宴宁府宝玉会秦钟 上",
-      "audioFileName": "14.mp3",
-      "summary": "周瑞家的送宫花给各位小姐，宝玉在宁府结识秦钟。"
+      "audioFileName": "第07回_上.mp3",
+      "summary": "周瑞家的送宫花给各位小姐，宝玉在宁府结识秦钟。",
+      "textFileName": "chapter_07_shang.txt"
     },
     {
       "number": 15,
       "title": "第七回 送宫花贾琏戏熙凤 宴宁府宝玉会秦钟 下",
-      "audioFileName": "15.mp3",
-      "summary": "宝玉与秦钟相见恨晚，约定一同上学读书。"
+      "audioFileName": "第07回_下.mp3",
+      "summary": "宝玉与秦钟相见恨晚，约定一同上学读书。",
+      "textFileName": "chapter_07_xia.txt"
     },
     {
       "number": 16,
       "title": "第八回 比通灵金莺微露意 探宝钗黛玉半含酸 上",
-      "audioFileName": "16.mp3",
-      "summary": "宝玉探望生病的宝钗，看到金锁上的字与自己通灵宝玉相配。"
+      "audioFileName": "第08回_上.mp3",
+      "summary": "宝玉探望生病的宝钗，看到金锁上的字与自己通灵宝玉相配。",
+      "textFileName": "chapter_08_shang.txt"
     },
     {
       "number": 17,
       "title": "第八回 比通灵金莺微露意 探宝钗黛玉半含酸 下",
-      "audioFileName": "17.mp3",
-      "summary": "黛玉来访时看到宝玉和宝钗在一起，心生醋意，言语间流露出不满。"
+      "audioFileName": "第08回_下.mp3",
+      "summary": "黛玉来访时看到宝玉和宝钗在一起，心生醋意，言语间流露出不满。",
+      "textFileName": "chapter_08_xia.txt"
     },
     {
       "number": 18,
       "title": "第九回 恋风流情友入家塾 起嫌疑顽童闹学堂 上",
-      "audioFileName": "18.mp3",
-      "summary": "宝玉和秦钟入家塾读书，学堂里发生各种风流韵事。"
+      "audioFileName": "第09回_上.mp3",
+      "summary": "宝玉和秦钟入家塾读书，学堂里发生各种风流韵事。",
+      "textFileName": "chapter_09_shang.txt"
     },
     {
       "number": 19,
       "title": "第九回 恋风流情友入家塾 起嫌疑顽童闹学堂 下",
-      "audioFileName": "19.mp3",
-      "summary": "学堂内顽童争风吃醋，大闹学堂，引发混乱。"
+      "audioFileName": "第09回_下.mp3",
+      "summary": "学堂内顽童争风吃醋，大闹学堂，引发混乱。",
+      "textFileName": "chapter_09_xia.txt"
     },
     {
       "number": 20,
       "title": "第十回 金寡妇贪利权受辱 张太医论病细穷源 上",
-      "audioFileName": "20.mp3",
-      "summary": "金寡妇因贪图利益而受辱，秦可卿病情加重。"
+      "audioFileName": "第10回_上.mp3",
+      "summary": "金寡妇因贪图利益而受辱，秦可卿病情加重。",
+      "textFileName": "chapter_10_shang.txt"
     },
     {
       "number": 21,
       "title": "第十回 金寡妇贪利权受辱 张太医论病细穷源 下",
-      "audioFileName": "21.mp3",
-      "summary": "张太医为秦可卿诊病，详细分析病因，但病情仍不见好转。"
+      "audioFileName": "第10回_下.mp3",
+      "summary": "张太医为秦可卿诊病，详细分析病因，但病情仍不见好转。",
+      "textFileName": "chapter_10_xia.txt"
     },
     {
       "number": 22,
       "title": "第十一回 庆寿辰宁府排家宴 见熙凤贾瑞起淫心 上",
-      "audioFileName": "22.mp3",
-      "summary": "宁府为贾敬庆寿辰，凤姐前往祝贺，贾瑞对其产生非分之想。"
+      "audioFileName": "第11回_上.mp3",
+      "summary": "宁府为贾敬庆寿辰，凤姐前往祝贺，贾瑞对其产生非分之想。",
+      "textFileName": "chapter_11_shang.txt"
     },
     {
       "number": 23,
       "title": "第十一回 庆寿辰宁府排家宴 见熙凤贾瑞起淫心 下",
-      "audioFileName": "23.mp3",
-      "summary": "贾瑞对凤姐纠缠不休，凤姐设计整治贾瑞。"
+      "audioFileName": "第11回_下.mp3",
+      "summary": "贾瑞对凤姐纠缠不休，凤姐设计整治贾瑞。",
+      "textFileName": "chapter_11_xia.txt"
     },
     {
       "number": 24,
       "title": "第十二回 王熙凤毒设相思局 贾天祥正照风月鉴 上",
-      "audioFileName": "24.mp3",
-      "summary": "凤姐设下相思局整治贾瑞，贾瑞屡次上当受骗。"
+      "audioFileName": "第12回_上.mp3",
+      "summary": "凤姐设下相思局整治贾瑞，贾瑞屡次上当受骗。",
+      "textFileName": "chapter_12_shang.txt"
     },
     {
       "number": 25,
       "title": "第十二回 王熙凤毒设相思局 贾天祥正照风月鉴 下",
-      "audioFileName": "25.mp3",
-      "summary": "贾瑞病重，得到风月宝鉴，但不听劝告，最终命丧黄泉。"
+      "audioFileName": "第12回_下.mp3",
+      "summary": "贾瑞病重，得到风月宝鉴，但不听劝告，最终命丧黄泉。",
+      "textFileName": "chapter_12_xia.txt"
     },
     {
       "number": 26,
       "title": "第十三回 秦可卿死封龙禁尉 王熙凤协理宁国府 上",
-      "audioFileName": "26.mp3",
-      "summary": "秦可卿病逝，托梦给凤姐，预言贾府衰败。贾珍为葬礼大操大办。"
+      "audioFileName": "第13回_上.mp3",
+      "summary": "秦可卿病逝，托梦给凤姐，预言贾府衰败。贾珍为葬礼大操大办。",
+      "textFileName": "chapter_13_shang.txt"
     },
     {
       "number": 27,
       "title": "第十三回 秦可卿死封龙禁尉 王熙凤协理宁国府 下",
-      "audioFileName": "27.mp3",
-      "summary": "贾珍请凤姐协理宁国府事务，凤姐展现管理才能。"
+      "audioFileName": "第13回_下.mp3",
+      "summary": "贾珍请凤姐协理宁国府事务，凤姐展现管理才能。",
+      "textFileName": "chapter_13_xia.txt"
     },
     {
       "number": 28,
       "title": "第十四回 林如海捐馆扬州城 贾宝玉路谒北静王 上",
-      "audioFileName": "28.mp3",
-      "summary": "林如海去世，贾琏带黛玉回扬州奔丧。"
+      "audioFileName": "第14回_上.mp3",
+      "summary": "林如海去世，贾琏带黛玉回扬州奔丧。",
+      "textFileName": "chapter_14_shang.txt"
     },
     {
       "number": 29,
       "title": "第十四回 林如海捐馆扬州城 贾宝玉路谒北静王 下",
-      "audioFileName": "29.mp3",
-      "summary": "贾宝玉路遇北静王，两人相见甚欢，北静王赠予宝玉念珠。"
+      "audioFileName": "第14回_下.mp3",
+      "summary": "贾宝玉路遇北静王，两人相见甚欢，北静王赠予宝玉念珠。",
+      "textFileName": "chapter_14_xia.txt"
     },
     {
       "number": 30,
       "title": "第十五回 王凤姐弄权铁槛寺 秦鲸卿得趣馒头庵 上",
-      "audioFileName": "30.mp3",
-      "summary": "秦可卿出殡路上，凤姐在铁槛寺弄权，干预他人婚姻。"
+      "audioFileName": "第15回_上.mp3",
+      "summary": "秦可卿出殡路上，凤姐在铁槛寺弄权，干预他人婚姻。",
+      "textFileName": "chapter_15_shang.txt"
     },
     {
       "number": 31,
       "title": "第十五回 王凤姐弄权铁槛寺 秦鲸卿得趣馒头庵 下",
-      "audioFileName": "31.mp3",
-      "summary": "秦钟在馒头庵与小尼姑智能儿私会，被宝玉撞见。"
+      "audioFileName": "第15回_下.mp3",
+      "summary": "秦钟在馒头庵与小尼姑智能儿私会，被宝玉撞见。",
+      "textFileName": "chapter_15_xia.txt"
     },
     {
       "number": 32,
       "title": "第十六回 贾元春才选凤藻宫 秦鲸卿夭逝黄泉路 上",
-      "audioFileName": "32.mp3",
-      "summary": "贾元春被选入宫，封为凤藻宫尚书。秦钟病重。"
+      "audioFileName": "第16回_上.mp3",
+      "summary": "贾元春被选入宫，封为凤藻宫尚书。秦钟病重。",
+      "textFileName": "chapter_16_shang.txt"
     },
     {
       "number": 33,
       "title": "第十六回 贾元春才选凤藻宫 秦鲸卿夭逝黄泉路 下",
-      "audioFileName": "33.mp3",
-      "summary": "秦钟病逝，宝玉悲痛不已。贾府开始修建大观园迎接元妃省亲。"
+      "audioFileName": "第16回_下.mp3",
+      "summary": "秦钟病逝，宝玉悲痛不已。贾府开始修建大观园迎接元妃省亲。",
+      "textFileName": "chapter_16_xia.txt"
     },
     {
       "number": 34,
       "title": "第十七回 大观园试才题对额 荣国府归省庆元宵 上",
-      "audioFileName": "34.mp3",
-      "summary": "大观园建成，贾政带宝玉等人游园，测试宝玉题对额的才能。"
+      "audioFileName": "第17回_上.mp3",
+      "summary": "大观园建成，贾政带宝玉等人游园，测试宝玉题对额的才能。",
+      "textFileName": "chapter_17_shang.txt"
     },
     {
       "number": 35,
       "title": "第十七回 大观园试才题对额 荣国府归省庆元宵 下",
-      "audioFileName": "35.mp3",
-      "summary": "宝玉展现才华，为各处景点题写匾额对联，获得众人赞赏。"
+      "audioFileName": "第17回_下.mp3",
+      "summary": "宝玉展现才华，为各处景点题写匾额对联，获得众人赞赏。",
+      "textFileName": "chapter_17_xia.txt"
     },
     {
       "number": 36,
       "title": "第十八回 皇恩重元妃省父母 天伦乐宝玉呈才藻 上",
-      "audioFileName": "36.mp3",
-      "summary": "元妃省亲，贾府上下隆重迎接，极尽奢华。"
+      "audioFileName": "第18回_上.mp3",
+      "summary": "元妃省亲，贾府上下隆重迎接，极尽奢华。",
+      "textFileName": "chapter_18_shang.txt"
     },
     {
       "number": 37,
       "title": "第十八回 皇恩重元妃省父母 天伦乐宝玉呈才藻 下",
-      "audioFileName": "37.mp3",
-      "summary": "元妃与家人团聚，观看戏曲，命宝玉和众姐妹作诗，宝玉得到称赞。"
+      "audioFileName": "第18回_下.mp3",
+      "summary": "元妃与家人团聚，观看戏曲，命宝玉和众姐妹作诗，宝玉得到称赞。",
+      "textFileName": "chapter_18_xia.txt"
     },
     {
       "number": 38,
       "title": "第十九回 情切切良宵花解语 意绵绵静日玉生香 上",
-      "audioFileName": "38.mp3",
-      "summary": "宝玉到黛玉房中，两人情意绵绵，互诉衷肠。"
+      "audioFileName": "第19回_上.mp3",
+      "summary": "宝玉到黛玉房中，两人情意绵绵，互诉衷肠。",
+      "textFileName": "chapter_19_shang.txt"
     },
     {
       "number": 39,
       "title": "第十九回 情切切良宵花解语 意绵绵静日玉生香 下",
-      "audioFileName": "39.mp3",
-      "summary": "宝玉编造故事逗黛玉开心，两人感情更加深厚。"
+      "audioFileName": "第19回_下.mp3",
+      "summary": "宝玉编造故事逗黛玉开心，两人感情更加深厚。",
+      "textFileName": "chapter_19_xia.txt"
     },
     {
       "number": 40,
       "title": "第二十回 王熙凤正言弹妒意 林黛玉俏语谑娇音 上",
-      "audioFileName": "40.mp3",
-      "summary": "凤姐调解宝玉和湘云之间的误会，展现其机智。"
+      "audioFileName": "第20回_上.mp3",
+      "summary": "凤姐调解宝玉和湘云之间的误会，展现其机智。",
+      "textFileName": "chapter_20_shang.txt"
     },
     {
       "number": 41,
       "title": "第二十回 王熙凤正言弹妒意 林黛玉俏语谑娇音 下",
-      "audioFileName": "41.mp3",
-      "summary": "黛玉用俏皮话调侃宝玉，展现其聪慧和对宝玉的深情。"
+      "audioFileName": "第20回_下.mp3",
+      "summary": "黛玉用俏皮话调侃宝玉，展现其聪慧和对宝玉的深情。",
+      "textFileName": "chapter_20_xia.txt"
     },
     {
       "number": 42,
       "title": "第二十一回 贤袭人娇嗔箴宝玉 俏平儿软语救贾琏 上",
-      "audioFileName": "42.mp3",
-      "summary": "袭人因宝玉不务正业而生气，用娇嗔的方式规劝宝玉。"
+      "audioFileName": "第21回_上.mp3",
+      "summary": "袭人因宝玉不务正业而生气，用娇嗔的方式规劝宝玉。",
+      "textFileName": null
     },
     {
       "number": 43,
       "title": "第二十一回 贤袭人娇嗔箴宝玉 俏平儿软语救贾琏 下",
-      "audioFileName": "43.mp3",
-      "summary": "平儿巧妙处理贾琏的风流事，保护凤姐不受伤害。"
+      "audioFileName": "第21回_下.mp3",
+      "summary": "平儿巧妙处理贾琏的风流事，保护凤姐不受伤害。",
+      "textFileName": null
     },
     {
       "number": 44,
       "title": "第二十二回 听曲文宝玉悟禅机 制灯迷贾政悲谶语 上",
-      "audioFileName": "44.mp3",
-      "summary": "元宵节制灯谜，贾政从谜语中感受到不祥之兆。"
+      "audioFileName": "第22回_上.mp3",
+      "summary": "元宵节制灯谜，贾政从谜语中感受到不祥之兆。",
+      "textFileName": null
     },
     {
       "number": 45,
       "title": "第二十二回 听曲文宝玉悟禅机 制灯迷贾政悲谶语 下",
-      "audioFileName": "45.mp3",
-      "summary": "宝玉听曲文有所感悟，写下禅偈，但被黛玉点破。"
+      "audioFileName": "第22回_下.mp3",
+      "summary": "宝玉听曲文有所感悟，写下禅偈，但被黛玉点破。",
+      "textFileName": null
     },
     {
       "number": 46,
       "title": "第二十三回 西厢记妙词通戏语 牡丹亭艳曲警芳心 上",
-      "audioFileName": "46.mp3",
-      "summary": "宝玉和黛玉共读西厢记，两人情感更加亲密。"
+      "audioFileName": "第23回_上.mp3",
+      "summary": "宝玉和黛玉共读西厢记，两人情感更加亲密。",
+      "textFileName": null
     },
     {
       "number": 47,
       "title": "第二十三回 西厢记妙词通戏语 牡丹亭艳曲警芳心 下",
-      "audioFileName": "47.mp3",
-      "summary": "黛玉听到牡丹亭曲文，触动心弦，感伤自己的身世和命运。"
+      "audioFileName": "第23回_下.mp3",
+      "summary": "黛玉听到牡丹亭曲文，触动心弦，感伤自己的身世和命运。",
+      "textFileName": null
     },
     {
       "number": 48,
       "title": "第二十四回 醉金刚轻财尚义侠 痴女儿遗帕惹相思 上",
-      "audioFileName": "48.mp3",
-      "summary": "醉金刚倪二仗义疏财，帮助贾芸。小红对贾芸产生情愫。"
+      "audioFileName": "第24回_上.mp3",
+      "summary": "醉金刚倪二仗义疏财，帮助贾芸。小红对贾芸产生情愫。",
+      "textFileName": null
     },
     {
       "number": 49,
       "title": "第二十四回 醉金刚轻财尚义侠 痴女儿遗帕惹相思 下",
-      "audioFileName": "49.mp3",
-      "summary": "小红遗失手帕，贾芸拾到，两人通过手帕传情。"
+      "audioFileName": "第24回_下.mp3",
+      "summary": "小红遗失手帕，贾芸拾到，两人通过手帕传情。",
+      "textFileName": null
     },
     {
       "number": 50,
       "title": "第二十五回 魇魔法姊弟逢五鬼 红楼梦通灵遇双真 上",
-      "audioFileName": "50.mp3",
-      "summary": "赵姨娘请马道婆施魇魔法，宝玉和凤姐中邪病危。"
+      "audioFileName": "第25回_上.mp3",
+      "summary": "赵姨娘请马道婆施魇魔法，宝玉和凤姐中邪病危。",
+      "textFileName": null
     },
     {
       "number": 51,
       "title": "第二十五回 魇魔法姊弟逢五鬼 红楼梦通灵遇双真 下",
-      "audioFileName": "51.mp3",
-      "summary": "一僧一道出现，用通灵宝玉救醒宝玉和凤姐，化解危机。"
+      "audioFileName": "第25回_下.mp3",
+      "summary": "一僧一道出现，用通灵宝玉救醒宝玉和凤姐，化解危机。",
+      "textFileName": null
     },
     {
       "number": 52,
       "title": "第二十六回 蜂腰桥设言传心事 潇湘馆春困发幽情 上",
-      "audioFileName": "52.mp3",
-      "summary": "小红在蜂腰桥向贾芸传递消息，表达心意。"
+      "audioFileName": "第26回_上.mp3",
+      "summary": "小红在蜂腰桥向贾芸传递消息，表达心意。",
+      "textFileName": null
     },
     {
       "number": 53,
       "title": "第二十六回 蜂腰桥设言传心事 潇湘馆春困发幽情 下",
-      "audioFileName": "53.mp3",
-      "summary": "黛玉在潇湘馆春困，听到宝玉和别人说话，心生疑虑。"
+      "audioFileName": "第26回_下.mp3",
+      "summary": "黛玉在潇湘馆春困，听到宝玉和别人说话，心生疑虑。",
+      "textFileName": null
     },
     {
       "number": 54,
-      "title": "第二十七回 滴翠亭杨妃戏彩蝶 埋香冢飞燕泣残红 上",
-      "audioFileName": "54.mp3",
-      "summary": "宝钗在滴翠亭扑蝶，无意中听到小红和坠儿的私密谈话。"
+      "title": "第二十七回 第二十七回 滴翠亭杨妃戏彩蝶 埋香冢飞燕泣残红 上",
+      "audioFileName": "第27回_上.mp3",
+      "summary": "宝钗在滴翠亭扑蝶，无意中听到小红和坠儿的私密谈话。",
+      "textFileName": null
     },
     {
       "number": 55,
-      "title": "第二十七回 滴翠亭杨妃戏彩蝶 埋香冢飞燕泣残红 下",
-      "audioFileName": "55.mp3",
-      "summary": "黛玉在埋香冢葬花，吟诵葬花词，表达对命运的感伤。"
+      "title": "第二十七回 第二十七回 滴翠亭杨妃戏彩蝶 埋香冢飞燕泣残红 下",
+      "audioFileName": "第27回_下.mp3",
+      "summary": "黛玉在埋香冢葬花，吟诵葬花词，表达对命运的感伤。",
+      "textFileName": null
     },
     {
       "number": 56,
       "title": "第二十八回 蒋玉菡情赠茜香罗 薛宝钗羞笼红麝串 上",
-      "audioFileName": "56.mp3",
-      "summary": "宝玉在冯紫英家结识蒋玉菡，两人互赠信物。"
+      "audioFileName": "第28回_上.mp3",
+      "summary": "宝玉在冯紫英家结识蒋玉菡，两人互赠信物。",
+      "textFileName": null
     },
     {
       "number": 57,
       "title": "第二十八回 蒋玉菡情赠茜香罗 薛宝钗羞笼红麝串 下",
-      "audioFileName": "57.mp3",
-      "summary": "元妃赐端午节礼，宝玉和宝钗的礼物相同，黛玉感到失落。"
+      "audioFileName": "第28回_下.mp3",
+      "summary": "元妃赐端午节礼，宝玉和宝钗的礼物相同，黛玉感到失落。",
+      "textFileName": null
     },
     {
       "number": 58,
       "title": "第二十九回 享福人福深还祷福 痴情女情重愈斟情 上",
-      "audioFileName": "58.mp3",
-      "summary": "贾母带众人到清虚观打醮，张道士为宝玉提亲。"
+      "audioFileName": "第29回_上.mp3",
+      "summary": "贾母带众人到清虚观打醮，张道士为宝玉提亲。",
+      "textFileName": null
     },
     {
       "number": 59,
       "title": "第二十九回 享福人福深还祷福 痴情女情重愈斟情 下",
-      "audioFileName": "59.mp3",
-      "summary": "黛玉因提亲一事与宝玉争吵，两人情感经历考验。"
+      "audioFileName": "第29回_下.mp3",
+      "summary": "黛玉因提亲一事与宝玉争吵，两人情感经历考验。",
+      "textFileName": null
     },
     {
       "number": 60,
       "title": "第三十回 宝钗借扇机带双敲 龄官划蔷痴及局外 上",
-      "audioFileName": "60.mp3",
-      "summary": "宝钗借扇子巧妙讽刺宝玉和黛玉。龄官在地上划蔷字，表达对贾蔷的痴情。"
+      "audioFileName": "第30回_上.mp3",
+      "summary": "宝钗借扇子巧妙讽刺宝玉和黛玉。龄官在地上划蔷字，表达对贾蔷的痴情。",
+      "textFileName": null
     },
     {
       "number": 61,
       "title": "第三十回 宝钗借扇机带双敲 龄官划蔷痴及局外 下",
-      "audioFileName": "61.mp3",
-      "summary": "宝玉淋雨回怡红院，被丫鬟拒之门外，踢伤袭人。"
+      "audioFileName": "第30回_下.mp3",
+      "summary": "宝玉淋雨回怡红院，被丫鬟拒之门外，踢伤袭人。",
+      "textFileName": null
     },
     {
       "number": 62,
       "title": "第三十一回 撕扇子作千金一笑 因麒麟伏白首双星 上",
-      "audioFileName": "62.mp3",
-      "summary": "晴雯撕扇子博得宝玉一笑，展现其率真性格。"
+      "audioFileName": "第31回_上.mp3",
+      "summary": "晴雯撕扇子博得宝玉一笑，展现其率真性格。",
+      "textFileName": null
     },
     {
       "number": 63,
       "title": "第三十一回 撕扇子作千金一笑 因麒麟伏白首双星 下",
-      "audioFileName": "63.mp3",
-      "summary": "湘云捡到金麒麟，暗示她与卫若兰的姻缘。"
+      "audioFileName": "第31回_下.mp3",
+      "summary": "湘云捡到金麒麟，暗示她与卫若兰的姻缘。",
+      "textFileName": null
     },
     {
       "number": 64,
       "title": "第三十二回 诉肺腑心迷活宝玉 含耻辱情烈死金钏 上",
-      "audioFileName": "64.mp3",
-      "summary": "宝玉向黛玉表白真心，说出'你放心'三字。"
+      "audioFileName": "第32回_上.mp3",
+      "summary": "宝玉向黛玉表白真心，说出'你放心'三字。",
+      "textFileName": null
     },
     {
       "number": 65,
       "title": "第三十二回 诉肺腑心迷活宝玉 含耻辱情烈死金钏 下",
-      "audioFileName": "65.mp3",
-      "summary": "金钏因被王夫人责骂而投井自尽，宝玉深感愧疚。"
+      "audioFileName": "第32回_下.mp3",
+      "summary": "金钏因被王夫人责骂而投井自尽，宝玉深感愧疚。",
+      "textFileName": null
     },
     {
       "number": 66,
       "title": "第三十三回 手足耽耽小动唇舌 不肖种种大承笞挞 上",
-      "audioFileName": "66.mp3",
-      "summary": "贾环诬告宝玉强奸金钏，导致宝玉被贾政痛打。"
+      "audioFileName": "第33回_上.mp3",
+      "summary": "贾环诬告宝玉强奸金钏，导致宝玉被贾政痛打。",
+      "textFileName": null
     },
     {
       "number": 67,
       "title": "第三十三回 手足耽耽小动唇舌 不肖种种大承笞挞 下",
-      "audioFileName": "67.mp3",
-      "summary": "贾政痛打宝玉，众人求情，最终贾母出面制止。"
+      "audioFileName": "第33回_下.mp3",
+      "summary": "贾政痛打宝玉，众人求情，最终贾母出面制止。",
+      "textFileName": null
     },
     {
       "number": 68,
       "title": "第三十四回 情中情因情感妹妹 错里错以错劝哥哥 上",
-      "audioFileName": "68.mp3",
-      "summary": "宝玉挨打后，黛玉前来探望，两人互诉衷肠。"
+      "audioFileName": "第34回_上.mp3",
+      "summary": "宝玉挨打后，黛玉前来探望，两人互诉衷肠。",
+      "textFileName": null
     },
     {
       "number": 69,
-      "title": "第三十四回 情中日晚间因情感妹妹 错里错以错劝哥哥 下",
-      "audioFileName": "69.mp3",
-      "summary": "袭人向王夫人建议让宝玉搬出大观园，王夫人深以为然。"
+      "title": "第三十四回 情中情因情感妹妹 错里错以错劝哥哥 下",
+      "audioFileName": "第34回_下.mp3",
+      "summary": "袭人向王夫人建议让宝玉搬出大观园，王夫人深以为然。",
+      "textFileName": null
     },
     {
       "number": 70,
       "title": "第三十五回 白玉钏亲尝莲叶羹 黄金莺巧结梅花络 上",
-      "audioFileName": "70.mp3",
-      "summary": "玉钏为宝玉送莲叶羹，宝玉体贴关心。"
+      "audioFileName": "第35回_上.mp3",
+      "summary": "玉钏为宝玉送莲叶羹，宝玉体贴关心。",
+      "textFileName": null
     },
     {
       "number": 71,
       "title": "第三十五回 白玉钏亲尝莲叶羹 黄金莺巧结梅花络 下",
-      "audioFileName": "71.mp3",
-      "summary": "莺儿为宝玉打络子，讨论颜色搭配，暗含金玉良缘之意。"
+      "audioFileName": "第35回_下.mp3",
+      "summary": "莺儿为宝玉打络子，讨论颜色搭配，暗含金玉良缘之意。",
+      "textFileName": null
     },
     {
       "number": 72,
       "title": "第三十六回 绣鸳鸯梦兆绛芸轩 识分定情悟梨香院 上",
-      "audioFileName": "72.mp3",
-      "summary": "宝玉在梦中喊出'和尚道士的话如何信得？什么是金玉姻缘，我偏说是木石前盟！'"
+      "audioFileName": "第36回_上.mp3",
+      "summary": "宝玉在梦中喊出'和尚道士的话如何信得？什么是金玉姻缘，我偏说是木石前盟！'",
+      "textFileName": null
     },
     {
       "number": 73,
       "title": "第三十六回 绣鸳鸯梦兆绛芸轩 识分定情悟梨香院 下",
-      "audioFileName": "73.mp3",
-      "summary": "宝玉到梨香院看龄官，发现龄官只爱贾蔷，领悟到人生情缘各有分定。"
+      "audioFileName": "第36回_下.mp3",
+      "summary": "宝玉到梨香院看龄官，发现龄官只爱贾蔷，领悟到人生情缘各有分定。",
+      "textFileName": null
     },
     {
       "number": 74,
       "title": "第三十七回 秋爽斋偶结海棠社 蘅芜苑夜拟菊花题 上",
-      "audioFileName": "74.mp3",
-      "summary": "探春发起成立海棠诗社，众姐妹齐聚秋爽斋。"
+      "audioFileName": "第37回_上.mp3",
+      "summary": "探春发起成立海棠诗社，众姐妹齐聚秋爽斋。",
+      "textFileName": null
     },
     {
       "number": 75,
       "title": "第三十七回 秋爽斋偶结海棠社 蘅芜苑夜拟菊花题 下",
-      "audioFileName": "75.mp3",
-      "summary": "众人作海棠诗，李纨评判，宝钗夺魁。宝钗和湘云夜拟菊花题。"
+      "audioFileName": "第37回_下.mp3",
+      "summary": "众人作海棠诗，李纨评判，宝钗夺魁。宝钗和湘云夜拟菊花题。",
+      "textFileName": null
     },
     {
       "number": 76,
       "title": "第三十八回 林潇湘魁夺菊花诗 薛蘅芜讽和螃蟹咏 上",
-      "audioFileName": "76.mp3",
-      "summary": "众人作菊花诗，黛玉的三首诗被评为最佳。"
+      "audioFileName": "第38回_上.mp3",
+      "summary": "众人作菊花诗，黛玉的三首诗被评为最佳。",
+      "textFileName": null
     },
     {
       "number": 77,
       "title": "第三十八回 林潇湘魁夺菊花诗 薛蘅芜讽和螃蟹咏 下",
-      "audioFileName": "77.mp3",
-      "summary": "众人吃螃蟹，作螃蟹咏，宝钗的诗讽刺世人，获得好评。"
+      "audioFileName": "第38回_下.mp3",
+      "summary": "众人吃螃蟹，作螃蟹咏，宝钗的诗讽刺世人，获得好评。",
+      "textFileName": null
     },
     {
       "number": 78,
       "title": "第三十九回 村姥姥是信口开合 情哥哥偏寻根究底 上",
-      "audioFileName": "78.mp3",
-      "summary": "刘姥姥二进荣国府，讲述乡村故事，逗得众人开心。"
+      "audioFileName": "第39回_上.mp3",
+      "summary": "刘姥姥二进荣国府，讲述乡村故事，逗得众人开心。",
+      "textFileName": null
     },
     {
       "number": 79,
       "title": "第三十九回 村姥姥是信口开合 情哥哥偏寻根究底 下",
-      "audioFileName": "79.mp3",
-      "summary": "宝玉对刘姥姥讲的茗玉小姐故事信以为真，派人寻找。"
+      "audioFileName": "第39回_下.mp3",
+      "summary": "宝玉对刘姥姥讲的茗玉小姐故事信以为真，派人寻找。",
+      "textFileName": null
     },
     {
       "number": 80,
       "title": "第四十回 史太君两宴大观园 金鸳鸯三宣牙牌令 上",
-      "audioFileName": "80.mp3",
-      "summary": "贾母设宴招待刘姥姥，游览大观园各处景点。"
+      "audioFileName": "第40回_上.mp3",
+      "summary": "贾母设宴招待刘姥姥，游览大观园各处景点。",
+      "textFileName": null
     },
     {
       "number": 81,
       "title": "第四十回 史太君两宴大观园 金鸳鸯三宣牙牌令 下",
-      "audioFileName": "81.mp3",
-      "summary": "行酒令游戏中，刘姥姥的朴实话语引得众人捧腹大笑。"
+      "audioFileName": "第40回_下.mp3",
+      "summary": "行酒令游戏中，刘姥姥的朴实话语引得众人捧腹大笑。",
+      "textFileName": null
     },
     {
       "number": 82,
       "title": "第四十一回 栊翠庵茶品梅花雪 怡红院劫遇母蝗虫 上",
-      "audioFileName": "82.mp3",
-      "summary": "刘姥姥在栊翠庵品茶，妙玉嫌弃她用过的杯子。"
+      "audioFileName": "第41回_上.mp3",
+      "summary": "刘姥姥在栊翠庵品茶，妙玉嫌弃她用过的杯子。",
+      "textFileName": null
     },
     {
       "number": 83,
       "title": "第四十一回 栊翠庵茶品梅花雪 怡红院劫遇母蝗虫 下",
-      "audioFileName": "83.mp3",
-      "summary": "刘姥姥醉卧怡红院，误入宝玉卧室，闹出笑话。"
+      "audioFileName": "第41回_下.mp3",
+      "summary": "刘姥姥醉卧怡红院，误入宝玉卧室，闹出笑话。",
+      "textFileName": null
     },
     {
       "number": 84,
       "title": "第四十二回 蘅芜君兰言解疑癖 潇湘子雅谑补余香 上",
-      "audioFileName": "84.mp3",
-      "summary": "宝钗劝黛玉不要看杂书，黛玉感激宝钗的关心。"
+      "audioFileName": "第42回_上.mp3",
+      "summary": "宝钗劝黛玉不要看杂书，黛玉感激宝钗的关心。",
+      "textFileName": null
     },
     {
       "number": 85,
       "title": "第四十二回 蘅芜君兰言解疑癖 潇湘子雅谑补余香 下",
-      "audioFileName": "85.mp3",
-      "summary": "众人商议为惜春画大观园图，讨论所需物品和方法。"
+      "audioFileName": "第42回_下.mp3",
+      "summary": "众人商议为惜春画大观园图，讨论所需物品和方法。",
+      "textFileName": null
     },
     {
       "number": 86,
       "title": "第四十三回 闲取乐偶攒金庆寿 不了情暂撮土为香 上",
-      "audioFileName": "86.mp3",
-      "summary": "众人凑份子为凤姐庆寿，宝玉却偷偷外出祭奠金钏。"
+      "audioFileName": "第43回_上.mp3",
+      "summary": "众人凑份子为凤姐庆寿，宝玉却偷偷外出祭奠金钏。",
+      "textFileName": null
     },
     {
       "number": 87,
       "title": "第四十三回 闲取乐偶攒金庆寿 不了情暂撮土为香 下",
-      "audioFileName": "87.mp3",
-      "summary": "宝玉在水仙庵祭奠金钏，表达内心的愧疚和哀思。"
+      "audioFileName": "第43回_下.mp3",
+      "summary": "宝玉在水仙庵祭奠金钏，表达内心的愧疚和哀思。",
+      "textFileName": null
     },
     {
       "number": 88,
       "title": "第四十四回 变生不测凤姐泼醋 喜出望外平儿理妆 上",
-      "audioFileName": "88.mp3",
-      "summary": "凤姐生日当天发现贾琏偷情，大闹一场。"
+      "audioFileName": "第44回_上.mp3",
+      "summary": "凤姐生日当天发现贾琏偷情，大闹一场。",
+      "textFileName": null
     },
     {
       "number": 89,
       "title": "第四十四回 变生不测凤姐泼醋 喜出望外平儿理妆 下",
-      "audioFileName": "89.mp3",
-      "summary": "平儿被打后，宝玉帮她理妆，安慰她。"
+      "audioFileName": "第44回_下.mp3",
+      "summary": "平儿被打后，宝玉帮她理妆，安慰她。",
+      "textFileName": null
     },
     {
       "number": 90,
       "title": "第四十五回 金兰契互剖金兰语 风雨夕闷制风雨词 上",
-      "audioFileName": "90.mp3",
-      "summary": "宝钗和黛玉互诉衷肠，成为知心朋友。"
+      "audioFileName": "第45回_上.mp3",
+      "summary": "宝钗和黛玉互诉衷肠，成为知心朋友。",
+      "textFileName": null
     },
     {
       "number": 91,
       "title": "第四十五回 金兰契互剖金兰语 风雨夕闷制风雨词 下",
-      "audioFileName": "91.mp3",
-      "summary": "风雨之夜，黛玉写下《秋窗风雨夕》，表达孤独和感伤。"
+      "audioFileName": "第45回_下.mp3",
+      "summary": "风雨之夜，黛玉写下《秋窗风雨夕》，表达孤独和感伤。",
+      "textFileName": null
     },
     {
       "number": 92,
       "title": "第四十六回 尴尬人难免尴尬事 鸳鸯女誓绝鸳鸯偶 上",
-      "audioFileName": "92.mp3",
-      "summary": "贾赦要纳鸳鸯为妾，鸳鸯坚决不从。"
+      "audioFileName": "第46回_上.mp3",
+      "summary": "贾赦要纳鸳鸯为妾，鸳鸯坚决不从。",
+      "textFileName": null
     },
     {
       "number": 93,
       "title": "第四十六回 尴尬人难免尴尬事 鸳鸯女誓绝鸳鸯偶 下",
-      "audioFileName": "93.mp3",
-      "summary": "鸳鸯在贾母面前剪发明志，誓死不嫁，贾母保护了她。"
+      "audioFileName": "第46回_下.mp3",
+      "summary": "鸳鸯在贾母面前剪发明志，誓死不嫁，贾母保护了她。",
+      "textFileName": null
     },
     {
       "number": 94,
       "title": "第四十七回 呆霸王调情遭苦打 冷郎君惧祸走他乡 上",
-      "audioFileName": "94.mp3",
-      "summary": "薛蟠调戏柳湘莲，被柳湘莲痛打一顿。"
+      "audioFileName": "第47回_上.mp3",
+      "summary": "薛蟠调戏柳湘莲，被柳湘莲痛打一顿。",
+      "textFileName": null
     },
     {
       "number": 95,
       "title": "第四十七回 呆霸王调情遭苦打 冷郎君惧祸走他乡 下",
-      "audioFileName": "95.mp3",
-      "summary": "柳湘莲担心报复，远走他乡，尤三姐因此绝望。"
+      "audioFileName": "第47回_下.mp3",
+      "summary": "柳湘莲担心报复，远走他乡，尤三姐因此绝望。",
+      "textFileName": null
     },
     {
       "number": 96,
       "title": "第四十八回 滥情人情误思游艺 慕雅女雅集苦吟诗 上",
-      "audioFileName": "96.mp3",
-      "summary": "薛蟠外出游艺，香菱搬到大观园向黛玉学诗。"
+      "audioFileName": "第48回_上.mp3",
+      "summary": "薛蟠外出游艺，香菱搬到大观园向黛玉学诗。",
+      "textFileName": null
     },
     {
       "number": 97,
       "title": "第四十八回 滥情人情误思游艺 慕雅女雅集苦吟诗 下",
-      "audioFileName": "97.mp3",
-      "summary": "香菱刻苦学诗，终于写出好诗，展现其才华。"
+      "audioFileName": "第48回_下.mp3",
+      "summary": "香菱刻苦学诗，终于写出好诗，展现其才华。",
+      "textFileName": null
     },
     {
       "number": 98,
       "title": "第四十九回 琉璃世界白雪红梅 脂粉香娃割腥啖膻 上",
-      "audioFileName": "98.mp3",
-      "summary": "大观园迎来多位新客人，包括薛宝琴、邢岫烟等。"
+      "audioFileName": "第49回_上.mp3",
+      "summary": "大观园迎来多位新客人，包括薛宝琴、邢岫烟等。",
+      "textFileName": null
     },
     {
       "number": 99,
       "title": "第四十九回 琉璃世界白雪红梅 脂粉香娃割腥啖膻 下",
-      "audioFileName": "99.mp3",
-      "summary": "雪天赏梅，众人烤鹿肉，展现青春活力。"
+      "audioFileName": "第49回_下.mp3",
+      "summary": "雪天赏梅，众人烤鹿肉，展现青春活力。",
+      "textFileName": null
     },
     {
       "number": 100,
       "title": "第五十回 芦雪庵争联即景诗 暖香坞雅制春灯谜 上",
-      "audioFileName": "100.mp3",
-      "summary": "芦雪庵即景联诗，众人争相展示才华。"
+      "audioFileName": "第50回_上.mp3",
+      "summary": "芦雪庵即景联诗，众人争相展示才华。",
+      "textFileName": null
     },
     {
       "number": 101,
       "title": "第五十回 芦雪庵争联即景诗 暖香坞雅制春灯谜 下",
-      "audioFileName": "101.mp3",
-      "summary": "暖香坞制作春灯谜，贾母参与其中，其乐融融。"
+      "audioFileName": "第50回_下.mp3",
+      "summary": "暖香坞制作春灯谜，贾母参与其中，其乐融融。",
+      "textFileName": null
     },
     {
       "number": 102,
       "title": "第五十一回 薛小妹新编怀古诗 胡庸医乱用虎狼药 上",
-      "audioFileName": "102.mp3",
-      "summary": "薛宝琴作十首怀古诗，暗含深意。晴雯生病，请来胡庸医诊治。"
+      "audioFileName": "第51回_上.mp3",
+      "summary": "薛宝琴作十首怀古诗，暗含深意。晴雯生病，请来胡庸医诊治。",
+      "textFileName": null
     },
     {
       "number": 103,
       "title": "第五十一回 薛小妹新编怀古诗 胡庸医乱用虎狼药 下",
-      "audioFileName": "103.mp3",
-      "summary": "宝玉担心胡庸医的虎狼药伤害晴雯，另请医生重新开方。"
+      "audioFileName": "第51回_下.mp3",
+      "summary": "宝玉担心胡庸医的虎狼药伤害晴雯，另请医生重新开方。",
+      "textFileName": null
     },
     {
       "number": 104,
       "title": "第五十二回 俏平儿情掩虾须镯 勇晴雯病补雀金裘 上",
-      "audioFileName": "104.mp3",
-      "summary": "平儿发现坠儿偷窃虾须镯，但顾及宝玉颜面，私下处理。"
+      "audioFileName": "第52回_上.mp3",
+      "summary": "平儿发现坠儿偷窃虾须镯，但顾及宝玉颜面，私下处理。",
+      "textFileName": null
     },
     {
       "number": 105,
       "title": "第五十二回 俏平儿情掩虾须镯 勇晴雯病补雀金裘 下",
-      "audioFileName": "105.mp3",
-      "summary": "晴雯病中为宝玉补缀雀金裘，展现其忠诚和勇敢。"
+      "audioFileName": "第52回_下.mp3",
+      "summary": "晴雯病中为宝玉补缀雀金裘，展现其忠诚和勇敢。",
+      "textFileName": null
     },
     {
       "number": 106,
       "title": "第五十三回 宁国府除夕祭宗祠 荣国府元宵开夜宴 上",
-      "audioFileName": "106.mp3",
-      "summary": "宁国府举行隆重的除夕祭祖仪式，展现家族传统。"
+      "audioFileName": "第53回_上.mp3",
+      "summary": "宁国府举行隆重的除夕祭祖仪式，展现家族传统。",
+      "textFileName": null
     },
     {
       "number": 107,
       "title": "第五十三回 宁国府除夕祭宗祠 荣国府元宵开夜宴 下",
-      "audioFileName": "107.mp3",
-      "summary": "荣国府元宵节开夜宴，热闹非凡，但已显衰败之象。"
+      "audioFileName": "第53回_下.mp3",
+      "summary": "荣国府元宵节开夜宴，热闹非凡，但已显衰败之象。",
+      "textFileName": null
     },
     {
       "number": 108,
       "title": "第五十四回 史太君破陈腐旧套 王熙凤效戏彩斑衣 上",
-      "audioFileName": "108.mp3",
-      "summary": "贾母批评才子佳人小说的陈腐套路，展现其见识。"
+      "audioFileName": "第54回_上.mp3",
+      "summary": "贾母批评才子佳人小说的陈腐套路，展现其见识。",
+      "textFileName": null
     },
     {
       "number": 109,
       "title": "第五十四回 史太君破陈腐旧套 王熙凤效戏彩斑衣 下",
-      "audioFileName": "109.mp3",
-      "summary": "凤姐效仿古代孝子彩衣娱亲，逗贾母开心。"
+      "audioFileName": "第54回_下.mp3",
+      "summary": "凤姐效仿古代孝子彩衣娱亲，逗贾母开心。",
+      "textFileName": null
     },
     {
       "number": 110,
       "title": "第五十五回 辱亲女愚妾争闲气 欺幼主刁奴蓄险心 上",
-      "audioFileName": "110.mp3",
-      "summary": "凤姐小产，探春、李纨、宝钗协理家务。赵姨娘因兄弟丧事闹事。"
+      "audioFileName": "第55回_上.mp3",
+      "summary": "凤姐小产，探春、李纨、宝钗协理家务。赵姨娘因兄弟丧事闹事。",
+      "textFileName": null
     },
     {
       "number": 111,
       "title": "第五十五回 辱亲女愚妾争闲气 欺幼主刁奴蓄险心 下",
-      "audioFileName": "111.mp3",
-      "summary": "探春展现管理才能，改革弊端，树立威信。"
+      "audioFileName": "第55回_下.mp3",
+      "summary": "探春展现管理才能，改革弊端，树立威信。",
+      "textFileName": null
     },
     {
       "number": 112,
       "title": "第五十六回 敏探春兴利除宿弊 时宝钗小惠全大体 上",
-      "audioFileName": "112.mp3",
-      "summary": "探春推行承包制，兴利除弊，提高大观园经济效益。"
+      "audioFileName": "第56回_上.mp3",
+      "summary": "探春推行承包制，兴利除弊，提高大观园经济效益。",
+      "textFileName": null
     },
     {
       "number": 113,
       "title": "第五十六回 敏探春兴利除宿弊 时宝钗小惠全大体 下",
-      "audioFileName": "113.mp3",
-      "summary": "宝钗建议将收益分给众人，体现其周全考虑。"
+      "audioFileName": "第56回_下.mp3",
+      "summary": "宝钗建议将收益分给众人，体现其周全考虑。",
+      "textFileName": null
     },
     {
       "number": 114,
       "title": "第五十七回 慧紫鹃情辞试忙玉 慈姨妈爱语慰痴颦 上",
-      "audioFileName": "114.mp3",
-      "summary": "紫鹃试探宝玉对黛玉的感情，谎称黛玉要回苏州。"
+      "audioFileName": "第57回_上.mp3",
+      "summary": "紫鹃试探宝玉对黛玉的感情，谎称黛玉要回苏州。",
+      "textFileName": null
     },
     {
       "number": 115,
       "title": "第五十七回 慧紫鹃情辞试忙玉 慈姨妈爱语慰痴颦 中",
-      "audioFileName": "115.mp3",
-      "summary": "宝玉信以为真，急得发疯，众人慌乱。"
+      "audioFileName": "第57回_中.mp3",
+      "summary": "紫鹃试探宝玉对黛玉的感情，谎称黛玉要回苏州。",
+      "textFileName": null
     },
     {
       "number": 116,
       "title": "第五十七回 慧紫鹃情辞试忙玉 慈姨妈爱语慰痴颦 下",
-      "audioFileName": "116.mp3",
-      "summary": "真相大白后，薛姨妈安慰黛玉，提及金玉良缘，黛玉心中不安。"
+      "audioFileName": "第57回_下.mp3",
+      "summary": "真相大白后，薛姨妈安慰黛玉，提及金玉良缘，黛玉心中不安。",
+      "textFileName": null
     },
     {
       "number": 117,
       "title": "第五十八回 杏子阴假凤泣虚凰 茜纱窗真情揆痴理 上",
-      "audioFileName": "117.mp3",
-      "summary": "藕官烧纸祭奠菂官，被夏婆子发现，引发冲突。"
+      "audioFileName": "第58回_上.mp3",
+      "summary": "藕官烧纸祭奠菂官，被夏婆子发现，引发冲突。",
+      "textFileName": null
     },
     {
       "number": 118,
       "title": "第五十八回 杏子阴假凤泣虚凰 茜纱窗真情揆痴理 下",
-      "audioFileName": "118.mp3",
-      "summary": "宝玉理解藕官的真情，保护她免受惩罚。"
+      "audioFileName": "第58回_下.mp3",
+      "summary": "宝玉理解藕官的真情，保护她免受惩罚。",
+      "textFileName": null
     },
     {
       "number": 119,
       "title": "第五十九回 柳叶渚边嗔莺咤燕 绛云轩里召将飞符 上",
-      "audioFileName": "119.mp3",
-      "summary": "春燕的母亲和姑妈因花草问题争吵，春燕求助宝玉。"
+      "audioFileName": "第59回_上.mp3",
+      "summary": "春燕的母亲和姑妈因花草问题争吵，春燕求助宝玉。",
+      "textFileName": null
     },
     {
       "number": 120,
       "title": "第五十九回 柳叶渚边嗔莺咤燕 绛云轩里召将飞符 下",
-      "audioFileName": "120.mp3",
-      "summary": "宝玉帮助春燕解决家庭纠纷，展现其善良本性。"
+      "audioFileName": "第59回_下.mp3",
+      "summary": "宝玉帮助春燕解决家庭纠纷，展现其善良本性。",
+      "textFileName": null
     },
     {
       "number": 121,
       "title": "第六十回 茉莉粉替去蔷薇硝 玫瑰露引来茯苓霜 上",
-      "audioFileName": "121.mp3",
-      "summary": "芳官用茉莉粉代替蔷薇硝给贾环，引发赵姨娘不满。"
+      "audioFileName": "第60回_上.mp3",
+      "summary": "芳官用茉莉粉代替蔷薇硝给贾环，引发赵姨娘不满。",
+      "textFileName": null
     },
     {
       "number": 122,
       "title": "第六十回 茉莉粉替去蔷薇硝 玫瑰露引来茯苓霜 下",
-      "audioFileName": "122.mp3",
-      "summary": "玫瑰露和茯苓霜失窃事件，牵连多人，最终查明真相。"
+      "audioFileName": "第60回_下.mp3",
+      "summary": "玫瑰露和茯苓霜失窃事件，牵连多人，最终查明真相。",
+      "textFileName": null
     }
   ]
 }
