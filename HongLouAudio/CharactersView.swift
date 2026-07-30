@@ -190,62 +190,30 @@ struct EnlargedImageView: View {
     
     var body: some View {
         ZStack {
-            // Semi-transparent background
-            Rectangle()
-                .fill(Color.black.opacity(0.8))
+            // Full-screen dark overlay
+            Color.black.opacity(0.85)
                 .ignoresSafeArea()
-            
-            // Enlarged image with 3:4 aspect ratio, rounded corners and border
-            if let uiImage = UIImage(named: imageName) {
-                ZStack {
-                    // Background with rounded rectangle and border
-                    RoundedRectangle(cornerRadius: 25)
-                        .fill(Color.white)
-                        .frame(width: 300, height: 400) // 3:4 ratio (300:400) - increased size
-                        .overlay(
-                            RoundedRectangle(cornerRadius: 25)
-                                .stroke(Color(red: 0.6, green: 0.2, blue: 0.2), lineWidth: 3)
-                        )
-                    
-                    // Actual image with 3:4 aspect ratio and rounded corners
+                .onTapGesture {
+                    dismiss()
+                }
+
+            VStack {
+                if let uiImage = UIImage(named: imageName) {
                     Image(uiImage: uiImage)
                         .resizable()
-                        .aspectRatio(CGSize(width: 3, height: 4), contentMode: .fill)
-                        .frame(width: 294, height: 394) // Slightly smaller to fit inside border
-                        .clipShape(RoundedRectangle(cornerRadius: 22)) // Slightly less corner radius to fit inside
+                        .aspectRatio(contentMode: .fit)
+                        .clipShape(RoundedRectangle(cornerRadius: 12))
+                        .padding(.horizontal, 20)
+                        .shadow(color: .black.opacity(0.5), radius: 20, x: 0, y: 10)
                 }
-                .padding(.bottom, 100) // Increased padding to accommodate larger image and name text
-            } else {
-                // Fallback for when image doesn't exist - show rounded rectangle placeholder with border
-                ZStack {
-                    RoundedRectangle(cornerRadius: 25)
-                        .fill(Color(red: 0.96, green: 0.94, blue: 0.90))
-                        .frame(width: 300, height: 400) // 3:4 ratio - increased size
-                        .overlay(
-                            RoundedRectangle(cornerRadius: 25)
-                                .stroke(Color(red: 0.6, green: 0.2, blue: 0.2), lineWidth: 3)
-                        )
-                    
-                    Text(String(characterName.first ?? " "))
-                        .font(.system(size: 70, weight: .bold)) // Increased font size for larger placeholder
-                        .foregroundColor(Color(red: 0.6, green: 0.2, blue: 0.2))
-                }
-                .padding(.bottom, 100)
-            }
-            
-            // Character name overlay
-            VStack {
-                Spacer()
+
                 Text(characterName)
-                    .font(.headline)
+                    .font(.title3)
+                    .fontWeight(.bold)
                     .foregroundColor(.white)
-                    .padding(.bottom, 40)
+                    .padding(.top, 16)
             }
         }
-        .onTapGesture {
-            dismiss()
-        }
-        .ignoresSafeArea()
     }
 }
 

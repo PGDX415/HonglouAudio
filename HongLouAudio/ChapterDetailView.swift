@@ -54,7 +54,7 @@ struct ChapterDetailView: View {
                                         .background(Color(red: 0.6, green: 0.2, blue: 0.2))
                                         .clipShape(Circle())
 
-                                    Text(extractPartSuffix(from: part.title))
+                                    Text(partLabel(from: part.title))
                                         .font(.headline)
                                         .fontWeight(.medium)
                                         .foregroundColor(Color(red: 0.2, green: 0.1, blue: 0.1))
@@ -156,6 +156,33 @@ struct ChapterDetailView: View {
             randomCharacterName = characterNameMap[randomCharacterImageName] ?? "未知人物"
         }
         .toolbar {
+            ToolbarItem(placement: .principal) {
+                VStack(spacing: 0) {
+                    if groupedChapter.titleLines.count >= 3 {
+                        HStack(alignment: .center, spacing: 4) {
+                            Text(groupedChapter.titleLines[0])
+                                .font(.system(size: 11))
+                                .foregroundColor(Color(red: 0.5, green: 0.3, blue: 0.2))
+                                .fixedSize()
+                            VStack(alignment: .leading, spacing: 0) {
+                                Text(groupedChapter.titleLines[1])
+                                    .font(.system(size: 13, weight: .semibold))
+                                    .foregroundColor(Color(red: 0.2, green: 0.1, blue: 0.1))
+                                Text(groupedChapter.titleLines[2])
+                                    .font(.system(size: 13, weight: .semibold))
+                                    .foregroundColor(Color(red: 0.2, green: 0.1, blue: 0.1))
+                            }
+                        }
+                    } else {
+                        Text(groupedChapter.displayTitle)
+                            .font(.system(size: 15, weight: .semibold))
+                            .foregroundColor(Color(red: 0.2, green: 0.1, blue: 0.1))
+                            .multilineTextAlignment(.center)
+                            .lineLimit(2)
+                            .minimumScaleFactor(0.8)
+                    }
+                }
+            }
             ToolbarItem(placement: .navigationBarTrailing) {
                 Button(action: {
                     favoritesManager.toggleFavorite(groupedChapter.chapterNumber)
@@ -170,19 +197,28 @@ struct ChapterDetailView: View {
             Color(red: 0.98, green: 0.96, blue: 0.92) // Soft antique paper background
                 .ignoresSafeArea()
         )
-        .navigationTitle(groupedChapter.displayTitle)
         .navigationBarTitleDisplayMode(.inline)
     }
     
-    private func extractPartSuffix(from title: String) -> String {
-        if title.hasSuffix(" 上") {
-            return "上"
-        } else if title.hasSuffix(" 中") {
-            return "中"
-        } else if title.hasSuffix(" 下") {
-            return "下"
+    /// Parse the chapter title and return the corresponding clause:
+    /// 上 → first clause, 下 → second clause, 中 → full title without suffix
+    private func partLabel(from title: String) -> String {
+        let parts = title.components(separatedBy: " ")
+        guard let last = parts.last, ["上", "中", "下"].contains(last) else { return "" }
+
+        // Drop "第X回" prefix and "上/中/下" suffix, leaving the two clauses
+        let titleParts = Array(parts.dropFirst().dropLast())
+
+        if titleParts.count >= 2 {
+            switch last {
+            case "上": return titleParts[0]
+            case "下": return titleParts[1]
+            case "中": return titleParts.joined(separator: " ")
+            default: return ""
+            }
         }
-        return ""
+
+        return last
     }
 }
 

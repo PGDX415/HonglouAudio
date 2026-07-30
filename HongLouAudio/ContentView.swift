@@ -16,21 +16,53 @@ struct ContentView: View {
         List(filteredChapters) { groupedChapter in
             NavigationLink(destination: ChapterDetailView(groupedChapter: groupedChapter, favoritesManager: favoritesManager)) {
                 VStack(alignment: .leading, spacing: 8) {
-                    HStack {
+                    HStack(alignment: .top, spacing: 10) {
                         Text("\(groupedChapter.chapterNumber)")
                             .font(.system(size: 16, weight: .bold))
                             .foregroundColor(.white)
                             .padding(8)
                             .background(Color(red: 0.6, green: 0.2, blue: 0.2)) // Classical red
                             .clipShape(Circle())
-                        
-                        Text(groupedChapter.displayTitle)
-                            .font(.headline)
-                            .fontWeight(.medium)
-                            .foregroundColor(Color(red: 0.2, green: 0.1, blue: 0.1)) // Deep brown
-                        
-                        Spacer()
-                        
+
+                        VStack(alignment: .leading, spacing: 4) {
+                            VStack(alignment: .leading, spacing: 0) {
+                                if groupedChapter.titleLines.count >= 3 {
+                                    HStack(alignment: .center, spacing: 6) {
+                                        Text(groupedChapter.titleLines[0])
+                                            .font(.caption)
+                                            .fontWeight(.medium)
+                                            .foregroundColor(Color(red: 0.5, green: 0.3, blue: 0.2))
+                                            .fixedSize()
+                                        VStack(alignment: .leading, spacing: 0) {
+                                            Text(groupedChapter.titleLines[1])
+                                                .font(.subheadline)
+                                                .fontWeight(.medium)
+                                                .foregroundColor(Color(red: 0.2, green: 0.1, blue: 0.1))
+                                            Text(groupedChapter.titleLines[2])
+                                                .font(.subheadline)
+                                                .fontWeight(.medium)
+                                                .foregroundColor(Color(red: 0.2, green: 0.1, blue: 0.1))
+                                        }
+                                    }
+                                } else {
+                                    Text(groupedChapter.displayTitle)
+                                        .font(.subheadline)
+                                        .fontWeight(.medium)
+                                        .foregroundColor(Color(red: 0.2, green: 0.1, blue: 0.1))
+                                }
+                            }
+                            .fixedSize(horizontal: false, vertical: true)
+
+                            // Show summary of first part as representative summary
+                            if let firstPartSummary = groupedChapter.parts.first?.summary {
+                                Text(firstPartSummary)
+                                    .font(.caption)
+                                    .foregroundColor(Color(red: 0.4, green: 0.3, blue: 0.2)) // Warm brown
+                                    .lineLimit(2)
+                            }
+                        }
+                        .frame(maxWidth: .infinity, alignment: .leading)
+
                         // Favorite button
                         Button(action: {
                             favoritesManager.toggleFavorite(groupedChapter.chapterNumber)
@@ -40,14 +72,6 @@ struct ContentView: View {
                                 .font(.title3)
                         }
                         .buttonStyle(PlainButtonStyle())
-                    }
-                    
-                    // Show summary of first part as representative summary
-                    if let firstPartSummary = groupedChapter.parts.first?.summary {
-                        Text(firstPartSummary)
-                            .font(.caption)
-                            .foregroundColor(Color(red: 0.4, green: 0.3, blue: 0.2)) // Warm brown
-                            .lineLimit(2)
                     }
                 }
                 .padding(.vertical, 4)

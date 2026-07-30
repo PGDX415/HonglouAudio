@@ -45,6 +45,13 @@ struct GroupedChapter: Identifiable {
     var displayTitle: String {
         return titlePrefix
     }
+
+    /// Returns the three parts of the title: [chapterLabel, firstClause, secondClause]
+    /// e.g., ["第一回", "甄士隐梦幻识通灵", "贾雨村风尘怀闺秀"]
+    var titleLines: [String] {
+        let parts = titlePrefix.components(separatedBy: " ")
+        return parts
+    }
 }
 
 extension Array where Element == Chapter {
