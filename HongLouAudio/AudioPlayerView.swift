@@ -10,6 +10,25 @@ struct AudioPlayerView: View {
     @State private var showSleepTimer = false
     let chapter: Chapter
 
+    /// Parse the title to extract [chapterLabel, clause1, clause2, part]
+    private var titleParts: [String] {
+        let parts = chapter.title.components(separatedBy: " ")
+        return parts  // ["第一回", "甄士隐梦幻识通灵", "贾雨村风尘怀闺秀", "上"]
+    }
+
+    private var chapterLabel: String {
+        titleParts.first ?? ""
+    }
+
+    private var partSuffix: String {
+        titleParts.last ?? ""
+    }
+
+    private var titleClauses: [String] {
+        guard titleParts.count >= 4 else { return [] }
+        return Array(titleParts[1..<3])  // [clause1, clause2]
+    }
+
     var body: some View {
         ZStack {
             Color(red: 0.98, green: 0.96, blue: 0.92)
@@ -17,15 +36,38 @@ struct AudioPlayerView: View {
 
             VStack(spacing: 0) {
                 // Chapter title
-                Text(chapter.title)
-                    .font(showText ? .caption : .title3)
-                    .fontWeight(showText ? .medium : .bold)
-                    .foregroundColor(Color(red: 0.2, green: 0.1, blue: 0.1))
-                    .multilineTextAlignment(.center)
-                    .lineLimit(showText ? 1 : nil)
-                    .padding(.horizontal)
-                    .padding(.top, showText ? 6 : 12)
-                    .padding(.bottom, showText ? 2 : 4)
+                VStack(spacing: 2) {
+                    if titleClauses.count >= 2 {
+                        // Chapter label + part (e.g., "第一回 · 上")
+                        HStack(spacing: 2) {
+                            Text(chapterLabel)
+                            Text("·")
+                            Text(partSuffix)
+                        }
+                        .font(showText ? .caption2 : .caption)
+                        .foregroundColor(Color(red: 0.5, green: 0.3, blue: 0.2))
+
+                        // Two clauses on separate lines
+                        Text(titleClauses[0])
+                            .font(showText ? .callout : .title3)
+                            .fontWeight(.bold)
+                            .foregroundColor(Color(red: 0.2, green: 0.1, blue: 0.1))
+                        Text(titleClauses[1])
+                            .font(showText ? .callout : .title3)
+                            .fontWeight(.bold)
+                            .foregroundColor(Color(red: 0.2, green: 0.1, blue: 0.1))
+                    } else {
+                        Text(chapter.title)
+                            .font(showText ? .caption : .title3)
+                            .fontWeight(showText ? .medium : .bold)
+                            .foregroundColor(Color(red: 0.2, green: 0.1, blue: 0.1))
+                            .multilineTextAlignment(.center)
+                    }
+                }
+                .multilineTextAlignment(.center)
+                .padding(.horizontal)
+                .padding(.top, showText ? 6 : 12)
+                .padding(.bottom, showText ? 2 : 4)
 
                 // Play mode & sleep timer controls
                 HStack(spacing: 16) {
