@@ -92,7 +92,28 @@
       "audioFileName": "第02回_上.mp3",
       "summary": "林黛玉母亲去世，父亲林如海决定送她到外祖母家。",
       "textFileName": "chapter_02_shang.txt",
-      "paragraphTimestamps": null
+      "paragraphTimestamps": [
+        17.9,
+        17.9,
+        17.9,
+        20.4,
+        29.7,
+        39.1,
+        89.7,
+        153.6,
+        203.5,
+        236.7,
+        244.0,
+        330.0,
+        442.9,
+        490.4,
+        530.7,
+        559.7,
+        611.0,
+        659.0,
+        704.8,
+        772.7
+      ]
     },
     {
       "number": 4,
