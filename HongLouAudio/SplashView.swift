@@ -31,12 +31,12 @@ struct SplashView: View {
                         .opacity(opacity)
                         .scaleEffect(scale)
 
-                    // Animated logo using start image - enlarged to 200x200
+                    // Animated logo using start image — full width, no side borders
                     if let uiImage = UIImage(named: "start") {
                         Image(uiImage: uiImage)
                             .resizable()
-                            .aspectRatio(contentMode: .fit)
-                            .frame(width: 500, height: 500)
+                            .scaledToFit()
+                            .frame(maxWidth: .infinity)
                             .opacity(opacity)
                             .scaleEffect(scale)
                     } else {
