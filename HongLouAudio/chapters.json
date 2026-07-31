@@ -121,7 +121,16 @@
       "audioFileName": "第02回_下.mp3",
       "summary": "贾雨村得到林如海推荐，复职前往京城。途中遇到冷子兴，听其详细讲述贾府的家族关系和现状。",
       "textFileName": "chapter_02_xia.txt",
-      "paragraphTimestamps": null
+      "paragraphTimestamps": [
+        20.3,
+        186.4,
+        291.7,
+        515.1,
+        568.6,
+        736.8,
+        885.4,
+        966.3
+      ]
     },
     {
       "number": 5,
