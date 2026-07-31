@@ -10,7 +10,15 @@ import SwiftUI
 struct MyAccountView: View {
     @State private var playbackSpeed: Float = 1.0
     @State private var volume: Float = 0.8
-    
+    @AppStorage("textFontSize") private var textFontSize: Double = 18.0
+
+    private let fontSizes: [(Double, String)] = [
+        (15, "小"),
+        (18, "中"),
+        (21, "大"),
+        (24, "超大")
+    ]
+
     var body: some View {
         NavigationView {
             List {
@@ -65,6 +73,16 @@ struct MyAccountView: View {
                     .padding(.vertical, 4)
                 }
                 
+                Section("正文设置") {
+                    Picker("字体大小", selection: $textFontSize) {
+                        ForEach(fontSizes, id: \.0) { size, label in
+                            Text(label).tag(size)
+                        }
+                    }
+                    .pickerStyle(SegmentedPickerStyle())
+                    .padding(.vertical, 4)
+                }
+
                 Section("法律与隐私") {
                     NavigationLink(destination: LegalContentView(title: "隐私政策", content: privacyPolicyContent)) {
                         HStack {

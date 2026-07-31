@@ -7,6 +7,7 @@ import Combine
 struct AudioPlayerView: View {
     @ObservedObject private var audioManager = AudioManager.shared
     @State private var showText = false
+    @AppStorage("textFontSize") private var textFontSize: Double = 18.0
     @State private var showSleepTimer = false
     let chapter: Chapter
 
@@ -179,7 +180,7 @@ struct AudioPlayerView: View {
                             VStack(alignment: .leading, spacing: 0) {
                                 ForEach(Array(paragraphs.enumerated()), id: \.offset) { index, paragraph in
                                     Text(paragraph)
-                                        .font(.system(size: 17, weight: index == currentParagraphIndex ? .semibold : .regular))
+                                        .font(.system(size: textFontSize, weight: index == currentParagraphIndex ? .semibold : .regular))
                                         .foregroundColor(
                                             index == currentParagraphIndex
                                                 ? Color(red: 0.6, green: 0.2, blue: 0.2)
