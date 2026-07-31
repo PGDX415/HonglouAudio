@@ -147,6 +147,15 @@ struct CharactersView: View {
                 Color(red: 0.98, green: 0.96, blue: 0.92)
                     .ignoresSafeArea()
             )
+            .toolbar {
+                ToolbarItem(placement: .navigationBarTrailing) {
+                    NavigationLink(destination: CharacterRelationshipView()) {
+                        Image(systemName: "flowchart.fill")
+                            .foregroundColor(Color(red: 0.6, green: 0.2, blue: 0.2))
+                            .font(.title3)
+                    }
+                }
+            }
         }
         .accentColor(Color(red: 0.6, green: 0.2, blue: 0.2))
     }
