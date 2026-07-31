@@ -14,6 +14,7 @@ struct Chapter: Codable, Identifiable {
     let audioFileName: String
     let summary: String
     let textFileName: String?
+    let paragraphTimestamps: [Double]?
 
     var chapterText: String {
         guard let fileName = textFileName else { return "" }
@@ -29,6 +30,7 @@ struct Chapter: Codable, Identifiable {
         case audioFileName = "audioFileName"
         case summary = "summary"
         case textFileName = "textFileName"
+        case paragraphTimestamps = "paragraphTimestamps"
     }
 }
 

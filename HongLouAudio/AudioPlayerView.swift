@@ -29,14 +29,43 @@ struct AudioPlayerView: View {
         return Array(titleParts[1..<3])  // [clause1, clause2]
     }
 
+    /// Split the chapter text into paragraphs for auto-scroll
+    private var paragraphs: [String] {
+        chapter.chapterText
+            .components(separatedBy: "\n")
+            .filter { !$0.trimmingCharacters(in: .whitespaces).isEmpty }
+    }
+
+    /// Current paragraph index based on timestamps (if available) or playback progress
+    private var currentParagraphIndex: Int {
+        guard !paragraphs.isEmpty else { return 0 }
+
+        // Use exact timestamps if available
+        if let timestamps = chapter.paragraphTimestamps, !timestamps.isEmpty {
+            let currentTime = audioManager.currentTime
+            // Find the last timestamp that is <= current time
+            if let index = timestamps.lastIndex(where: { $0 <= currentTime }) {
+                return min(index, paragraphs.count - 1)
+            }
+            return 0
+        }
+
+        // Fallback: proportional estimation
+        guard audioManager.duration > 0 else { return 0 }
+        let progress = audioManager.currentTime / audioManager.duration
+        let adjustedProgress = min(progress * 0.85, 1.0)
+        return min(Int(adjustedProgress * Double(paragraphs.count)), paragraphs.count - 1)
+    }
+
     var body: some View {
         ZStack {
             Color(red: 0.98, green: 0.96, blue: 0.92)
                 .ignoresSafeArea()
 
             VStack(spacing: 0) {
-                // Chapter title
-                VStack(spacing: 2) {
+                // Chapter title — hidden when viewing text (shown in nav bar instead)
+                if !showText {
+                    VStack(spacing: 2) {
                     if titleClauses.count >= 2 {
                         // Chapter label + part (e.g., "第一回 · 上")
                         HStack(spacing: 2) {
@@ -67,10 +96,12 @@ struct AudioPlayerView: View {
                 .multilineTextAlignment(.center)
                 .padding(.horizontal)
                 .padding(.top, showText ? 6 : 12)
-                .padding(.bottom, showText ? 2 : 4)
+                .padding(.bottom, 4)
+                }  // end if !showText
 
-                // Play mode & sleep timer controls
-                HStack(spacing: 16) {
+                // Play mode & sleep timer controls — hidden when viewing text
+                if !showText {
+                    HStack(spacing: 16) {
                     // Play mode toggle
                     Button(action: { audioManager.togglePlayMode() }) {
                         HStack(spacing: 4) {
@@ -110,6 +141,7 @@ struct AudioPlayerView: View {
                     }
                 }
                 .padding(.bottom, showText ? 4 : 8)
+                }  // end if !showText
 
                 // Summary (compact)
                 if !showText {
@@ -124,32 +156,47 @@ struct AudioPlayerView: View {
 
                 // "边听边看" toggle + chapter text
                 if !chapter.chapterText.isEmpty {
-                    Button(action: { showText.toggle() }) {
-                        HStack(spacing: 6) {
-                            Image(systemName: showText ? "book.closed.fill" : "book.fill")
-                            Text(showText ? "收起正文" : "边听边看")
+                    if !showText {
+                        Button(action: { showText.toggle() }) {
+                            HStack(spacing: 6) {
+                                Image(systemName: "book.fill")
+                                Text("边听边看")
+                            }
+                            .font(.subheadline)
+                            .foregroundColor(Color(red: 0.5, green: 0.3, blue: 0.2))
+                            .padding(.horizontal, 16)
+                            .padding(.vertical, 6)
+                            .background(
+                                RoundedRectangle(cornerRadius: 16)
+                                    .fill(Color(red: 0.92, green: 0.88, blue: 0.80))
+                            )
                         }
-                        .font(.subheadline)
-                        .foregroundColor(Color(red: 0.5, green: 0.3, blue: 0.2))
-                        .padding(.horizontal, 16)
-                        .padding(.vertical, 6)
-                        .background(
-                            RoundedRectangle(cornerRadius: 16)
-                                .fill(Color(red: 0.92, green: 0.88, blue: 0.80))
-                        )
+                        .padding(.bottom, 0)
                     }
-                    .padding(.bottom, showText ? 8 : 0)
 
                     if showText {
                         ScrollView {
-                            Text(chapter.chapterText)
-                                .font(.system(size: 17))
-                                .foregroundColor(Color(red: 0.15, green: 0.08, blue: 0.05))
-                                .lineSpacing(7)
-                                .multilineTextAlignment(.leading)
-                                .padding(.horizontal, 16)
-                                .padding(.vertical, 20)
-                                .frame(maxWidth: .infinity, alignment: .leading)
+                            VStack(alignment: .leading, spacing: 0) {
+                                ForEach(Array(paragraphs.enumerated()), id: \.offset) { index, paragraph in
+                                    Text(paragraph)
+                                        .font(.system(size: 17, weight: index == currentParagraphIndex ? .semibold : .regular))
+                                        .foregroundColor(
+                                            index == currentParagraphIndex
+                                                ? Color(red: 0.6, green: 0.2, blue: 0.2)
+                                                : Color(red: 0.15, green: 0.08, blue: 0.05)
+                                        )
+                                        .lineSpacing(7)
+                                        .padding(.horizontal, 16)
+                                        .padding(.vertical, 6)
+                                        .frame(maxWidth: .infinity, alignment: .leading)
+                                        .background(
+                                            index == currentParagraphIndex
+                                                ? Color(red: 0.6, green: 0.2, blue: 0.2).opacity(0.1)
+                                                : Color.clear
+                                        )
+                                }
+                            }
+                            .padding(.vertical, 20)
                         }
                         .background(
                             RoundedRectangle(cornerRadius: 12)
@@ -229,6 +276,34 @@ struct AudioPlayerView: View {
         .sheet(isPresented: $showSleepTimer) {
             sleepTimerSheet
         }
+        .toolbar {
+            if showText, titleClauses.count >= 2 {
+                ToolbarItem(placement: .principal) {
+                    HStack(alignment: .center, spacing: 4) {
+                        Text("\(chapterLabel) · \(partSuffix)")
+                            .font(.system(size: 11))
+                            .foregroundColor(Color(red: 0.5, green: 0.3, blue: 0.2))
+                            .fixedSize()
+                        VStack(alignment: .leading, spacing: 0) {
+                            Text(titleClauses[0])
+                                .font(.system(size: 13, weight: .semibold))
+                                .foregroundColor(Color(red: 0.2, green: 0.1, blue: 0.1))
+                            Text(titleClauses[1])
+                                .font(.system(size: 13, weight: .semibold))
+                                .foregroundColor(Color(red: 0.2, green: 0.1, blue: 0.1))
+                        }
+                    }
+                }
+                ToolbarItem(placement: .navigationBarTrailing) {
+                    Button(action: { showText.toggle() }) {
+                        Image(systemName: "xmark.circle.fill")
+                            .font(.title3)
+                            .foregroundColor(Color(red: 0.5, green: 0.3, blue: 0.2).opacity(0.7))
+                    }
+                }
+            }
+        }
+        .navigationBarTitleDisplayMode(.inline)
     }
 
     private var sleepTimerSheet: some View {
