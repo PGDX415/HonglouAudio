@@ -200,24 +200,10 @@ struct ChapterDetailView: View {
         .navigationBarTitleDisplayMode(.inline)
     }
     
-    /// Parse the chapter title and return the corresponding clause:
-    /// 上 → first clause, 下 → second clause, 中 → full title without suffix
+    /// Return just "上", "中", or "下" from the title
     private func partLabel(from title: String) -> String {
         let parts = title.components(separatedBy: " ")
         guard let last = parts.last, ["上", "中", "下"].contains(last) else { return "" }
-
-        // Drop "第X回" prefix and "上/中/下" suffix, leaving the two clauses
-        let titleParts = Array(parts.dropFirst().dropLast())
-
-        if titleParts.count >= 2 {
-            switch last {
-            case "上": return titleParts[0]
-            case "下": return titleParts[1]
-            case "中": return titleParts.joined(separator: " ")
-            default: return ""
-            }
-        }
-
         return last
     }
 }
