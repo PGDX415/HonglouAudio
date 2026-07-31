@@ -200,11 +200,21 @@ struct ChapterDetailView: View {
         .navigationBarTitleDisplayMode(.inline)
     }
     
-    /// Return just "上", "中", or "下" from the title
+    /// Return "clause 上", "clause 下", or "中"
+    /// e.g. "甄士隐梦幻识通灵 上", "贾雨村风尘怀闺秀 下"
     private func partLabel(from title: String) -> String {
         let parts = title.components(separatedBy: " ")
         guard let last = parts.last, ["上", "中", "下"].contains(last) else { return "" }
-        return last
+
+        // Drop "第X回" prefix and "上/中/下" suffix → remaining clauses
+        let clauses = Array(parts.dropFirst().dropLast())
+
+        switch last {
+        case "上": return clauses.count >= 1 ? "\(clauses[0]) 上" : "上"
+        case "下": return clauses.count >= 2 ? "\(clauses[1]) 下" : "下"
+        case "中": return "中"
+        default: return last
+        }
     }
 }
 
