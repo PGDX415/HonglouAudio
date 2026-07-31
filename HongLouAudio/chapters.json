@@ -989,7 +989,7 @@
       "title": "第六十回 茉莉粉替去蔷薇硝 玫瑰露引来茯苓霜 上",
       "audioFileName": "第60回_上.mp3",
       "summary": "芳官用茉莉粉代替蔷薇硝给贾环，引发赵姨娘不满。",
-      "textFileName": null,
+      "textFileName": "chapter_60_shang.txt",
       "paragraphTimestamps": null
     },
     {
@@ -997,7 +997,7 @@
       "title": "第六十回 茉莉粉替去蔷薇硝 玫瑰露引来茯苓霜 下",
       "audioFileName": "第60回_下.mp3",
       "summary": "玫瑰露和茯苓霜失窃事件，牵连多人，最终查明真相。",
-      "textFileName": null,
+      "textFileName": "chapter_60_xia.txt",
       "paragraphTimestamps": null
     }
   ]
