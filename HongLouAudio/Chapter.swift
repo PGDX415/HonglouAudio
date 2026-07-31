@@ -18,7 +18,9 @@ struct Chapter: Codable, Identifiable {
 
     var chapterText: String {
         guard let fileName = textFileName else { return "" }
-        guard let url = Bundle.main.url(forResource: fileName, withExtension: nil) else {
+        let baseName = (fileName as NSString).deletingPathExtension
+        let ext = (fileName as NSString).pathExtension
+        guard let url = Bundle.main.url(forResource: baseName, withExtension: ext, subdirectory: "Text") else {
             return ""
         }
         return (try? String(contentsOf: url, encoding: .utf8)) ?? ""

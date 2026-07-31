@@ -470,7 +470,9 @@ class AudioManager: NSObject, ObservableObject {
     }
 
     func loadAudio(for fileName: String, title: String = "") {
-        guard let url = Bundle.main.url(forResource: fileName, withExtension: nil) else {
+        let baseName = (fileName as NSString).deletingPathExtension
+        let ext = (fileName as NSString).pathExtension
+        guard let url = Bundle.main.url(forResource: baseName, withExtension: ext, subdirectory: "Audio") else {
             print("Audio file not found: \(fileName)")
             return
         }
