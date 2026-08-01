@@ -425,7 +425,7 @@ class AudioManager: NSObject, ObservableObject {
     private func configureAudioSession() {
         do {
             let session = AVAudioSession.sharedInstance()
-            try session.setCategory(.playback, mode: .default, options: [])
+            try session.setCategory(.playback, mode: .spokenAudio, options: [.allowBluetooth])
             try session.setActive(true)
         } catch {
             print("Failed to configure audio session: \(error)")
@@ -434,11 +434,35 @@ class AudioManager: NSObject, ObservableObject {
         UIApplication.shared.beginReceivingRemoteControlEvents()
     }
 
+    func ensureAudioSessionActive() {
+        guard !AVAudioSession.sharedInstance().isOtherAudioPlaying else { return }
+        do {
+            try AVAudioSession.sharedInstance().setActive(true)
+        } catch {
+            print("Failed to reactivate audio session: \(error)")
+        }
+    }
+
     private func setupInterruptionNotification() {
         NotificationCenter.default.addObserver(
             self,
             selector: #selector(handleAudioSessionInterruption),
             name: AVAudioSession.interruptionNotification,
+            object: nil
+        )
+
+        // Ensure audio session stays active when app enters background
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(handleAppDidEnterBackground),
+            name: UIApplication.didEnterBackgroundNotification,
+            object: nil
+        )
+
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(handleAppWillEnterForeground),
+            name: UIApplication.willEnterForegroundNotification,
             object: nil
         )
     }
@@ -467,6 +491,17 @@ class AudioManager: NSObject, ObservableObject {
         @unknown default:
             break
         }
+    }
+
+    @objc private func handleAppDidEnterBackground() {
+        // Re-activate audio session when entering background to ensure uninterrupted playback
+        if isPlaying {
+            ensureAudioSessionActive()
+        }
+    }
+
+    @objc private func handleAppWillEnterForeground() {
+        ensureAudioSessionActive()
     }
 
     func loadAudio(for fileName: String, title: String = "") {
