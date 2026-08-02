@@ -118,8 +118,7 @@ struct CharactersView: View {
                             .onTapGesture {
                                 // Only show enlarged image if actual image exists (not placeholder)
                                 if UIImage(named: character.imageName) != nil {
-                                    EnlargedImageView(imageName: character.imageName, characterName: character.name)
-                                        .transition(.opacity)
+                                    _ = EnlargedImageView(imageName: character.imageName, characterName: character.name)
                                 }
                             }
                         
@@ -302,108 +301,30 @@ struct CharacterDetailView: View {
         }
     }
     
+    private let characterTraits: [String: String] = [
+        "贾宝玉": "• 叛逆不羁\n• 厌恶科举\n• 重情重义\n• 才华横溢",
+        "林黛玉": "• 才情出众\n• 敏感多疑\n• 体弱多病\n• 情深意重",
+        "薛宝钗": "• 端庄贤淑\n• 处事圆滑\n• 温柔体贴\n• 知书达理",
+        "王熙凤": "• 精明能干\n• 手段狠辣\n• 掌管贾府\n• 心机深沉",
+        "贾母": "• 慈祥威严\n• 贾府权威\n• 疼爱宝玉\n• 家族核心",
+        "贾政": "• 严肃古板\n• 重视礼教\n• 望子成龙\n• 传统家长",
+        "贾元春": "• 贵为皇妃\n• 才德兼备\n• 忧国忧家\n• 命运悲凉",
+        "袭人": "• 温柔体贴\n• 忠心耿耿\n• 细心周到\n• 善解人意",
+        "晴雯": "• 性格刚烈\n• 容貌出众\n• 心直口快\n• 命运悲惨",
+        "妙玉": "• 孤傲清高\n• 才华横溢\n• 洁身自好\n• 命运坎坷",
+        "史湘云": "• 豪爽直率\n• 才思敏捷\n• 乐观开朗\n• 身世可怜",
+        "贾探春": "• 精明能干\n• 有远见卓识\n• 志向高远\n• 刚强自立",
+        "贾迎春": "• 性格懦弱\n• 逆来顺受\n• 善良温和\n• 命运悲惨",
+        "贾惜春": "• 性格孤僻\n• 喜好绘画\n• 看破红尘\n• 最终出家",
+        "鸳鸯": "• 聪明能干\n• 忠心耿耿\n• 坚强不屈\n• 誓死守节",
+        "秦可卿": "• 美貌绝伦\n• 温柔贤淑\n• 身份神秘\n• 命运离奇",
+        "平儿": "• 善良公正\n• 聪明能干\n• 处事圆滑\n• 忠心护主",
+        "贾琏": "• 好色贪财\n• 畏惧妻子\n• 纨绔子弟\n• 缺乏担当",
+        "刘姥姥": "• 朴实善良\n• 幽默风趣\n• 见多识广\n• 知恩图报"
+    ]
+
     private func createCharacterTraitsText(for characterName: String) -> Text {
-        switch characterName {
-        case "贾宝玉":
-            return Text("• 叛逆不羁")
-                + Text("\n• 厌恶科举")
-                + Text("\n• 重情重义")
-                + Text("\n• 才华横溢")
-        case "林黛玉":
-            return Text("• 才情出众")
-                + Text("\n• 敏感多疑")
-                + Text("\n• 体弱多病")
-                + Text("\n• 情深意重")
-        case "薛宝钗":
-            return Text("• 端庄贤淑")
-                + Text("\n• 处事圆滑")
-                + Text("\n• 温柔体贴")
-                + Text("\n• 知书达理")
-        case "王熙凤":
-            return Text("• 精明能干")
-                + Text("\n• 手段狠辣")
-                + Text("\n• 掌管贾府")
-                + Text("\n• 心机深沉")
-        case "贾母":
-            return Text("• 慈祥威严")
-                + Text("\n• 贾府权威")
-                + Text("\n• 疼爱宝玉")
-                + Text("\n• 家族核心")
-        case "贾政":
-            return Text("• 严肃古板")
-                + Text("\n• 重视礼教")
-                + Text("\n• 望子成龙")
-                + Text("\n• 传统家长")
-        case "贾元春":
-            return Text("• 贵为皇妃")
-                + Text("\n• 才德兼备")
-                + Text("\n• 忧国忧家")
-                + Text("\n• 命运悲凉")
-        case "袭人":
-            return Text("• 温柔体贴")
-                + Text("\n• 忠心耿耿")
-                + Text("\n• 细心周到")
-                + Text("\n• 善解人意")
-        case "晴雯":
-            return Text("• 性格刚烈")
-                + Text("\n• 容貌出众")
-                + Text("\n• 心直口快")
-                + Text("\n• 命运悲惨")
-        case "妙玉":
-            return Text("• 孤傲清高")
-                + Text("\n• 才华横溢")
-                + Text("\n• 洁身自好")
-                + Text("\n• 命运坎坷")
-        case "史湘云":
-            return Text("• 豪爽直率")
-                + Text("\n• 才思敏捷")
-                + Text("\n• 乐观开朗")
-                + Text("\n• 身世可怜")
-        case "贾探春":
-            return Text("• 精明能干")
-                + Text("\n• 有远见卓识")
-                + Text("\n• 志向高远")
-                + Text("\n• 刚强自立")
-        case "贾迎春":
-            return Text("• 性格懦弱")
-                + Text("\n• 逆来顺受")
-                + Text("\n• 善良温和")
-                + Text("\n• 命运悲惨")
-        case "贾惜春":
-            return Text("• 性格孤僻")
-                + Text("\n• 喜好绘画")
-                + Text("\n• 看破红尘")
-                + Text("\n• 最终出家")
-        case "鸳鸯":
-            return Text("• 聪明能干")
-                + Text("\n• 忠心耿耿")
-                + Text("\n• 坚强不屈")
-                + Text("\n• 誓死守节")
-        case "秦可卿":
-            return Text("• 美貌绝伦")
-                + Text("\n• 温柔贤淑")
-                + Text("\n• 身份神秘")
-                + Text("\n• 命运离奇")
-        case "平儿":
-            return Text("• 善良公正")
-                + Text("\n• 聪明能干")
-                + Text("\n• 处事圆滑")
-                + Text("\n• 忠心护主")
-        case "贾琏":
-            return Text("• 好色贪财")
-                + Text("\n• 畏惧妻子")
-                + Text("\n• 纨绔子弟")
-                + Text("\n• 缺乏担当")
-        case "刘姥姥":
-            return Text("• 朴实善良")
-                + Text("\n• 幽默风趣")
-                + Text("\n• 见多识广")
-                + Text("\n• 知恩图报")
-        default:
-            return Text("• 主要人物")
-                + Text("\n• 性格鲜明")
-                + Text("\n• 命运多舛")
-        }
+        Text(characterTraits[characterName] ?? "• 主要人物\n• 性格鲜明\n• 命运多舛")
     }
     
     private func getFamousQuote(for characterName: String) -> String? {

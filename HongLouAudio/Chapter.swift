@@ -71,9 +71,6 @@ extension Array where Element == Chapter {
                 prefix = String(prefix.dropLast(2))
             }
             
-            // Extract the chapter number from the prefix (e.g., "第一回" -> 1)
-            let chapterNumber = extractChapterNumber(from: prefix)
-            
             // Use the full prefix as the key to group chapters
             if groups[prefix] == nil {
                 groups[prefix] = []
@@ -100,7 +97,6 @@ extension Array where Element == Chapter {
     
     private func extractChapterNumber(from title: String) -> Int {
         // Extract number from format like "第一回", "第二回", etc.
-        let numberWords = ["零", "一", "二", "三", "四", "五", "六", "七", "八", "九", "十"]
         
         // Handle special cases for numbers 1-60
         if title.hasPrefix("第一回") { return 1 }

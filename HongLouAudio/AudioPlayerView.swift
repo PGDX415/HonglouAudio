@@ -425,7 +425,7 @@ class AudioManager: NSObject, ObservableObject {
     private func configureAudioSession() {
         do {
             let session = AVAudioSession.sharedInstance()
-            try session.setCategory(.playback, mode: .spokenAudio, options: [.allowBluetooth])
+            try session.setCategory(.playback, mode: .spokenAudio, options: [.allowBluetoothA2DP])
             try session.setActive(true)
         } catch {
             print("Failed to configure audio session: \(error)")
@@ -529,15 +529,20 @@ class AudioManager: NSObject, ObservableObject {
         playerItem = AVPlayerItem(asset: asset)
         player.replaceCurrentItem(with: playerItem)
 
-        // Observe duration
-        playerItem?.asset.loadValuesAsynchronously(forKeys: ["duration"]) { [weak self] in
-            DispatchQueue.main.async {
-                guard let self = self, let item = self.playerItem else { return }
-                let seconds = CMTimeGetSeconds(item.asset.duration)
+        // Observe duration (iOS 16+ async API)
+        Task { [weak self] in
+            guard let self = self, let item = self.playerItem else { return }
+            do {
+                let duration = try await item.asset.load(.duration)
+                let seconds = CMTimeGetSeconds(duration)
                 if seconds.isFinite && seconds > 0 {
-                    self.duration = seconds
-                    self.updateNowPlayingInfo()
+                    await MainActor.run {
+                        self.duration = seconds
+                        self.updateNowPlayingInfo()
+                    }
                 }
+            } catch {
+                print("Failed to load duration: \(error)")
             }
         }
 
