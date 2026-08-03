@@ -40,10 +40,73 @@ struct ChapterDetailView: View {
     @State private var isImageZoomed = false
     @State private var readerChapter: Chapter? = nil
     @State private var selectedPart: Chapter? = nil
+    @State private var showGuide = false
+
+    private var chapterGuide: ChapterGuide? {
+        ChapterGuideStore.guideFor(chapterNumber: groupedChapter.chapterNumber)
+    }
 
     var body: some View {
         ZStack {
             VStack {
+                // Chapter guide card
+                if let guide = chapterGuide {
+                    VStack(alignment: .leading, spacing: 0) {
+                        Button(action: { withAnimation(.easeInOut(duration: 0.2)) { showGuide.toggle() } }) {
+                            HStack {
+                                Image(systemName: "lightbulb.fill")
+                                    .font(.caption)
+                                    .foregroundColor(Color(red: 0.8, green: 0.6, blue: 0.1))
+                                Text("本回导读")
+                                    .font(.system(size: 13, weight: .semibold, design: .serif))
+                                    .foregroundColor(theme.primaryText)
+                                Spacer()
+                                Image(systemName: showGuide ? "chevron.up" : "chevron.down")
+                                    .font(.caption2)
+                                    .foregroundColor(theme.tertiaryText)
+                            }
+                            .padding(.horizontal, 16)
+                            .padding(.vertical, 10)
+                        }
+                        .buttonStyle(PlainButtonStyle())
+
+                        if showGuide {
+                            VStack(alignment: .leading, spacing: 8) {
+                                Text(guide.summary)
+                                    .font(.system(size: 13, design: .serif))
+                                    .foregroundColor(theme.secondaryText)
+                                    .lineSpacing(5)
+
+                                HStack(spacing: 4) {
+                                    Image(systemName: "person.2.fill")
+                                        .font(.caption2)
+                                        .foregroundColor(theme.accentRed.opacity(0.6))
+                                    Text(guide.keyCharacters.joined(separator: " · "))
+                                        .font(.system(size: 11, design: .serif))
+                                        .foregroundColor(theme.accentRed.opacity(0.8))
+                                }
+                                .padding(.top, 2)
+
+                                HStack(spacing: 4) {
+                                    Image(systemName: "sparkles")
+                                        .font(.caption2)
+                                        .foregroundColor(Color(red: 0.8, green: 0.6, blue: 0.1))
+                                    Text(guide.highlight)
+                                        .font(.system(size: 11, design: .serif))
+                                        .foregroundColor(Color(red: 0.7, green: 0.5, blue: 0.1))
+                                }
+                            }
+                            .padding(.horizontal, 16)
+                            .padding(.bottom, 12)
+                        }
+                    }
+                    .background(theme.cardBackground)
+                    .cornerRadius(10)
+                    .padding(.horizontal, 16)
+                    .padding(.top, 12)
+                    .padding(.bottom, 4)
+                }
+
                 List(groupedChapter.parts) { part in
                     VStack(spacing: 0) {
                         // Main area: navigate to audio player (with 边听边看)
