@@ -95,16 +95,6 @@ struct ChapterReaderView: View {
             theme.readingBackground
                 .ignoresSafeArea()
         )
-        .environment(\.openURL, OpenURLAction { url in
-            if url.scheme == "glossary" {
-                let uuidString = url.host ?? ""
-                if let item = GlossaryStore.items.first(where: { $0.id.uuidString == uuidString }) {
-                    selectedItem = item
-                }
-                return .handled
-            }
-            return .systemAction
-        })
         .navigationTitle(chapter.title)
         .navigationBarTitleDisplayMode(.inline)
         .toolbar {
@@ -134,9 +124,29 @@ struct ChapterReaderView: View {
                 .foregroundColor(theme.primaryText)
                 .lineSpacing(8)
         } else {
-            Text(buildAttributedString(from: text, matches: matches))
-                .font(.system(size: 18))
-                .lineSpacing(8)
+            VStack(alignment: .leading, spacing: 8) {
+                segmentedHighlightedText(text, matches: matches)
+                    .font(.system(size: 18))
+                    .lineSpacing(8)
+
+                // Tappable glossary terms found in this paragraph
+                ScrollView(.horizontal, showsIndicators: false) {
+                    HStack(spacing: 6) {
+                        ForEach(Array(matches.enumerated()), id: \.offset) { _, pair in
+                            let (item, _) = pair
+                            Button(action: { selectedItem = item }) {
+                                Text(item.term)
+                                    .font(.caption2)
+                                    .foregroundColor(theme.accentRed)
+                                    .padding(.horizontal, 8)
+                                    .padding(.vertical, 3)
+                                    .background(theme.accentRed.opacity(0.08))
+                                    .cornerRadius(6)
+                            }
+                        }
+                    }
+                }
+            }
         }
     }
 
@@ -144,21 +154,25 @@ struct ChapterReaderView: View {
         GlossaryStore.findMatches(in: text).sorted { $0.1.lowerBound < $1.1.lowerBound }
     }
 
-    private func buildAttributedString(from text: String, matches: [(GlossaryItem, Range<String.Index>)]) -> AttributedString {
-        var attrString = AttributedString(text)
-        attrString.foregroundColor = theme.primaryText
+    private func segmentedHighlightedText(_ text: String, matches: [(GlossaryItem, Range<String.Index>)]) -> Text {
+        var lastEnd = text.startIndex
+        var accumulator = Text("")
 
         for (item, range) in matches {
-            if let lower = AttributedString.Index(range.lowerBound, within: attrString),
-               let upper = AttributedString.Index(range.upperBound, within: attrString) {
-                let attrRange = lower..<upper
-                attrString[attrRange].foregroundColor = theme.accentRed
-                attrString[attrRange].underlineStyle = .single
-                attrString[attrRange].link = URL(string: "glossary://\(item.id.uuidString)")
+            if lastEnd < range.lowerBound {
+                accumulator = accumulator + Text(String(text[lastEnd..<range.lowerBound]))
+                    .foregroundColor(theme.primaryText)
             }
+            accumulator = accumulator + Text(String(text[range]))
+                .foregroundColor(theme.accentRed)
+                .underline()
+            lastEnd = range.upperBound
         }
-
-        return attrString
+        if lastEnd < text.endIndex {
+            accumulator = accumulator + Text(String(text[lastEnd...]))
+                .foregroundColor(theme.primaryText)
+        }
+        return accumulator
     }
 
     // MARK: - Glossary Detail Sheet
