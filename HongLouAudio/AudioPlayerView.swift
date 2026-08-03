@@ -422,6 +422,9 @@ struct AudioPlayerView: View {
         .presentationDetents([.medium])
     }
 
+    @State private var editingBookmark: Bookmark? = nil
+    @State private var editLabel: String = ""
+
     private var bookmarkListSheet: some View {
         VStack(spacing: 0) {
             Text("书签")
@@ -438,18 +441,31 @@ struct AudioPlayerView: View {
             } else {
                 List {
                     ForEach(audioManager.bookmarks) { bookmark in
-                        Button(action: {
-                            audioManager.seekToBookmark(bookmark)
-                            showBookmarks = false
-                        }) {
-                            HStack {
-                                Image(systemName: "bookmark.fill")
-                                    .foregroundColor(theme.accentRed)
-                                Text(bookmark.label)
-                                    .font(.body)
-                                    .foregroundColor(theme.primaryText)
-                                Spacer()
+                        HStack {
+                            Button(action: {
+                                audioManager.seekToBookmark(bookmark)
+                                showBookmarks = false
+                            }) {
+                                HStack {
+                                    Image(systemName: "bookmark.fill")
+                                        .foregroundColor(theme.accentRed)
+                                    Text(bookmark.label)
+                                        .font(.body)
+                                        .foregroundColor(theme.primaryText)
+                                    Spacer()
+                                }
                             }
+
+                            Button(action: {
+                                editingBookmark = bookmark
+                                editLabel = bookmark.label
+                            }) {
+                                Image(systemName: "pencil")
+                                    .font(.caption)
+                                    .foregroundColor(theme.secondaryText)
+                                    .padding(8)
+                            }
+                            .buttonStyle(PlainButtonStyle())
                         }
                         .swipeActions(edge: .trailing) {
                             Button(role: .destructive) {
@@ -465,6 +481,21 @@ struct AudioPlayerView: View {
         }
         .background(theme.pageBackground.ignoresSafeArea())
         .presentationDetents([.medium, .large])
+        .alert("编辑书签名", isPresented: Binding(
+            get: { editingBookmark != nil },
+            set: { if !$0 { editingBookmark = nil } }
+        )) {
+            TextField("书签名", text: $editLabel)
+            Button("取消", role: .cancel) { editingBookmark = nil }
+            Button("保存") {
+                if let bm = editingBookmark {
+                    audioManager.renameBookmark(bm, to: editLabel)
+                }
+                editingBookmark = nil
+            }
+        } message: {
+            Text("为书签输入一个便于记忆的名称")
+        }
     }
 
     private func formatTime(_ time: TimeInterval) -> String {
@@ -479,7 +510,7 @@ struct AudioPlayerView: View {
 struct Bookmark: Codable, Identifiable, Equatable {
     let id: UUID
     let time: TimeInterval
-    let label: String
+    var label: String
     let createdAt: Date
 
     init(time: TimeInterval) {
@@ -575,6 +606,13 @@ class AudioManager: NSObject, ObservableObject {
         if bookmarks.contains(where: { abs($0.time - bookmark.time) < 3 }) { return }
         bookmarks.append(bookmark)
         bookmarks.sort { $0.time < $1.time }
+        saveBookmarks()
+    }
+
+    func renameBookmark(_ bookmark: Bookmark, to newLabel: String) {
+        guard let index = bookmarks.firstIndex(where: { $0.id == bookmark.id }),
+              !newLabel.trimmingCharacters(in: .whitespaces).isEmpty else { return }
+        bookmarks[index].label = newLabel.trimmingCharacters(in: .whitespaces)
         saveBookmarks()
     }
 
