@@ -10,6 +10,7 @@ import SwiftUI
 struct MyAccountView: View {
     @State private var playbackSpeed: Float = 1.0
     @ObservedObject private var theme = ThemeManager.shared
+    @ObservedObject private var statsManager = ListeningStatsManager.shared
     @State private var volume: Float = 0.8
     @AppStorage("textFontSize") private var textFontSize: Double = 18.0
 
@@ -22,6 +23,18 @@ struct MyAccountView: View {
 
     var body: some View {
         List {
+                // Reading stats card
+                Section {
+                    HStack(spacing: 0) {
+                        statItem(value: statsManager.formattedTotalTime, label: "收听时长")
+                        Divider().frame(height: 36)
+                        statItem(value: "\(statsManager.completedChapterCount)", label: "已听完回")
+                        Divider().frame(height: 36)
+                        statItem(value: "\(statsManager.currentStreak)", label: "连续天数")
+                    }
+                    .padding(.vertical, 4)
+                }
+
                 Section("账户信息") {
                     VStack(alignment: .leading, spacing: 8) {
                         HStack {
@@ -190,6 +203,22 @@ struct MyAccountView: View {
         """
     }
     
+    // MARK: - Helpers
+
+    private func statItem(value: String, label: String) -> some View {
+        VStack(spacing: 4) {
+            Text(value)
+                .font(.system(size: 16, weight: .bold))
+                .foregroundColor(theme.accentRed)
+                .lineLimit(1)
+                .minimumScaleFactor(0.7)
+            Text(label)
+                .font(.system(size: 11))
+                .foregroundColor(theme.tertiaryText)
+        }
+        .frame(maxWidth: .infinity)
+    }
+
     private var aboutContent: String {
         return """
         关于我们

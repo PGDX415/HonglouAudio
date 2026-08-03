@@ -846,12 +846,24 @@ class AudioManager: NSObject, ObservableObject {
         progressSaveTimer?.invalidate()
         progressSaveTimer = Timer.scheduledTimer(withTimeInterval: 5, repeats: true) { [weak self] _ in
             self?.saveProgress(position: self?.currentTime ?? 0)
+            self?.onProgressTick()
         }
+        // Stats: record every 30s (every 6th tick)
+        statsTickCounter = 0
     }
 
+    private var statsTickCounter: Int = 0
     private func stopProgressSaving() {
         progressSaveTimer?.invalidate()
         progressSaveTimer = nil
+    }
+
+    /// Called every 5 seconds during playback, records stats every 30s
+    func onProgressTick() {
+        statsTickCounter += 1
+        if statsTickCounter % 6 == 0 {
+            ListeningStatsManager.shared.recordTick()
+        }
     }
 
     // MARK: - Audio Loading

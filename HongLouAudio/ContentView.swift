@@ -372,6 +372,7 @@ struct ContentView: View {
     private func refreshProgress() {
         let defaults = UserDefaults.standard
         var data: [Int: Double] = [:]
+        var completedCount = 0
         for gc in groupedChapters {
             let parts = gc.parts
             var validParts = 0
@@ -382,10 +383,13 @@ struct ContentView: View {
                 return $0 + val
             }
             if validParts > 0 {
-                data[gc.chapterNumber] = total / Double(validParts)
+                let avg = total / Double(validParts)
+                data[gc.chapterNumber] = avg
+                if avg >= 0.95 { completedCount += 1 }
             }
         }
         progressData = data
+        ListeningStatsManager.shared.updateCompletedCount(completedCount)
     }
 
     private func chapterProgress(for groupedChapter: GroupedChapter) -> Double {
