@@ -195,7 +195,7 @@ struct AudioPlayerView: View {
                                         .foregroundColor(
                                             index == currentParagraphIndex
                                                 ? theme.accentRed
-                                                : Color(red: 0.15, green: 0.08, blue: 0.05)
+                                                : theme.primaryText
                                         )
                                         .lineSpacing(7)
                                         .padding(.horizontal, 16)
