@@ -376,12 +376,10 @@ struct PoemDetailView: View {
         .toolbar {
             ToolbarItem(placement: .navigationBarTrailing) {
                 Button(action: {
-                    // Share poem
-                    let shareText = "《\(poem.title)》——\(poem.author)\n\n\(poem.content)"
-                    let av = UIActivityViewController(activityItems: [shareText], applicationActivities: nil)
-                    if let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene,
-                       let rootVC = windowScene.windows.first?.rootViewController {
-                        rootVC.present(av, animated: true)
+                    let card = PoemShareCard(poem: poem)
+                    let cardSize = CGSize(width: 390, height: 600)
+                    if let image = ShareCardRenderer.render(card, size: cardSize) {
+                        ShareCardRenderer.share(image: image)
                     }
                 }) {
                     Image(systemName: "square.and.arrow.up")
