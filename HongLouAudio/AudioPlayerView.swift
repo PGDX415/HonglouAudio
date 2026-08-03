@@ -435,7 +435,6 @@ class AudioManager: NSObject, ObservableObject {
     }
 
     func ensureAudioSessionActive() {
-        guard !AVAudioSession.sharedInstance().isOtherAudioPlaying else { return }
         do {
             try AVAudioSession.sharedInstance().setActive(true)
         } catch {
@@ -494,9 +493,15 @@ class AudioManager: NSObject, ObservableObject {
     }
 
     @objc private func handleAppDidEnterBackground() {
-        // Re-activate audio session when entering background to ensure uninterrupted playback
-        if isPlaying {
-            ensureAudioSessionActive()
+        guard isPlaying else { return }
+        // Aggressively keep audio alive: reactivate session + resume player
+        ensureAudioSessionActive()
+        // Delay to ensure activation survives the background transition
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) { [weak self] in
+            guard let self = self, self.isPlaying else { return }
+            self.ensureAudioSessionActive()
+            self.player.play()
+            self.updateNowPlayingInfo()
         }
     }
 
