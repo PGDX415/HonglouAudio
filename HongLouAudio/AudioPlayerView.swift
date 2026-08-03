@@ -37,9 +37,11 @@ struct AudioPlayerView: View {
             .filter { !$0.trimmingCharacters(in: .whitespaces).isEmpty }
     }
 
-    /// Current paragraph index based on timestamps (if available) or playback progress
+    /// Current paragraph index based on timestamps (if available) or playback progress.
+    /// Returns -1 when audio is not playing (no highlight).
     private var currentParagraphIndex: Int {
-        guard !paragraphs.isEmpty else { return 0 }
+        guard !paragraphs.isEmpty else { return -1 }
+        guard audioManager.isPlaying else { return -1 }
 
         // Use exact timestamps if available
         if let timestamps = chapter.paragraphTimestamps, !timestamps.isEmpty {
@@ -48,11 +50,11 @@ struct AudioPlayerView: View {
             if let index = timestamps.lastIndex(where: { $0 <= currentTime }) {
                 return min(index, paragraphs.count - 1)
             }
-            return 0
+            return -1
         }
 
         // Fallback: proportional estimation
-        guard audioManager.duration > 0 else { return 0 }
+        guard audioManager.duration > 0 else { return -1 }
         let progress = audioManager.currentTime / audioManager.duration
         let adjustedProgress = min(progress * 0.85, 1.0)
         return min(Int(adjustedProgress * Double(paragraphs.count)), paragraphs.count - 1)
