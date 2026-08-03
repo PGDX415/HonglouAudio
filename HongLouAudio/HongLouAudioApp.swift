@@ -28,7 +28,7 @@ struct MainTabView: View {
     var body: some View {
         TabView {
             // Home Tab
-            ContentView()
+            ContentView(favoritesManager: favoritesManager)
             .tabItem {
                 Image(systemName: "house")
                 Text("主页")
@@ -36,7 +36,7 @@ struct MainTabView: View {
 
             // Favorites Tab
             NavigationStack {
-                FavoritesView()
+                FavoritesView(favoritesManager: favoritesManager)
             }
             .tabItem {
                 Image(systemName: "heart.fill")

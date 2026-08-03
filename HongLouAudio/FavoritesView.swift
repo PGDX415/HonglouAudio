@@ -8,9 +8,9 @@
 import SwiftUI
 
 struct FavoritesView: View {
+    @ObservedObject var favoritesManager: FavoritesManager
     @State private var groupedChapters: [GroupedChapter] = []
     @ObservedObject private var theme = ThemeManager.shared
-    @StateObject private var favoritesManager = FavoritesManager()
     @State private var selectedGC: GroupedChapter? = nil
 
     var body: some View {
@@ -84,5 +84,7 @@ struct FavoritesView: View {
 }
 
 #Preview {
-    FavoritesView()
+    NavigationStack {
+        FavoritesView(favoritesManager: FavoritesManager())
+    }
 }

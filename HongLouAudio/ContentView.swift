@@ -8,9 +8,9 @@
 import SwiftUI
 
 struct ContentView: View {
+    @ObservedObject var favoritesManager: FavoritesManager
     @State private var groupedChapters: [GroupedChapter] = []
     @ObservedObject private var theme = ThemeManager.shared
-    @StateObject private var favoritesManager = FavoritesManager()
     @State private var searchText = ""
     @State private var showPlayAll = false
     @State private var playAllStartChapter: Chapter?
@@ -404,5 +404,5 @@ struct TextSearchResult: Identifiable {
 }
 
 #Preview {
-    ContentView()
+    ContentView(favoritesManager: FavoritesManager())
 }
