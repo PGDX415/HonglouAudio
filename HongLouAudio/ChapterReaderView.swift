@@ -110,7 +110,7 @@ struct ChapterReaderView: View {
         .toolbar {
             ToolbarItem(placement: .navigationBarTrailing) {
                 Button(action: { showAnnotations.toggle() }) {
-                    Image(systemName: showAnnotations ? "text.magnifyingglass.fill" : "text.magnifyingglass")
+                    Image(systemName: "text.magnifyingglass")
                         .foregroundColor(showAnnotations ? theme.accentRed : theme.secondaryText)
                 }
             }
