@@ -135,19 +135,17 @@ struct MyAccountView: View {
                         }
                     }
                     
-                    Button(action: {
-                        // Clear cache functionality would go here
-                        // For now, just show an alert or perform the action
-                    }) {
+                    NavigationLink(destination: CacheManagementView()) {
                         HStack {
-                            Image(systemName: "trash")
+                            Image(systemName: "externaldrive")
                                 .foregroundColor(theme.accentRed)
-                            Text("清除缓存")
+                            Text("缓存管理")
                                 .foregroundColor(theme.primaryText)
                             Spacer()
+                            Image(systemName: "chevron.right")
+                                .foregroundColor(theme.secondaryText)
                         }
                     }
-                    .buttonStyle(PlainButtonStyle())
                     
                     Button(action: {
                         // Feedback functionality would go here
