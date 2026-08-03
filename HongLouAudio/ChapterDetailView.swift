@@ -10,7 +10,7 @@ import SwiftUI
 struct ChapterDetailView: View {
     let groupedChapter: GroupedChapter
     @ObservedObject private var theme = ThemeManager.shared
-    let favoritesManager: FavoritesManager
+    @ObservedObject var favoritesManager: FavoritesManager
     
     // Character image name to character name mapping
     private let characterNameMap: [String: String] = [
