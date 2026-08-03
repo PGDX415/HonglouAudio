@@ -16,6 +16,7 @@ struct ContentView: View {
     @State private var playAllStartChapter: Chapter?
     @State private var progressData: [Int: Double] = [:] // chapterNumber -> progress proportion
     @State private var navPath = NavigationPath()
+    @State private var showGardenMap = false
 
     /// Flatten all parts into a single sequential list for "全部播放"
     private var allChaptersFlat: [Chapter] {
@@ -62,6 +63,14 @@ struct ContentView: View {
             AudioPlayerView(chapter: chapter)
         }
         .toolbar {
+            ToolbarItem(placement: .navigationBarLeading) {
+                Button {
+                    showGardenMap = true
+                } label: {
+                    Image(systemName: "map.fill")
+                        .foregroundColor(theme.accentRed)
+                }
+            }
             ToolbarItem(placement: .navigationBarTrailing) {
                 Menu {
                     Button(action: {
@@ -98,6 +107,9 @@ struct ContentView: View {
             if let chapter = playAllStartChapter {
                 AudioPlayerView(chapter: chapter)
             }
+        }
+        .navigationDestination(isPresented: $showGardenMap) {
+            GardenMapView()
         }
         }
     }
