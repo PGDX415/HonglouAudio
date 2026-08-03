@@ -141,6 +141,16 @@ struct MyAccountView: View {
                         }
                     }
                     
+                    NavigationLink(destination: GlossaryBrowseView()) {
+                        HStack {
+                            Image(systemName: "character.book.closed.fill")
+                                .foregroundColor(theme.accentRed)
+                            Text("成语典故")
+                                .foregroundColor(theme.primaryText)
+                            Spacer()
+                        }
+                    }
+
                     NavigationLink(destination: CacheManagementView()) {
                         HStack {
                             Image(systemName: "externaldrive")
