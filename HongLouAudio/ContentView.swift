@@ -9,6 +9,7 @@ import SwiftUI
 
 struct ContentView: View {
     @State private var groupedChapters: [GroupedChapter] = []
+    @ObservedObject private var theme = ThemeManager.shared
     @StateObject private var favoritesManager = FavoritesManager()
     @State private var searchText = ""
     @State private var showPlayAll = false
@@ -28,7 +29,7 @@ struct ContentView: View {
                             .font(.system(size: 16, weight: .bold))
                             .foregroundColor(.white)
                             .padding(8)
-                            .background(Color(red: 0.6, green: 0.2, blue: 0.2)) // Classical red
+                            .background(theme.accentRed) // Classical red
                             .clipShape(Circle())
 
                         VStack(alignment: .leading, spacing: 4) {
@@ -38,24 +39,24 @@ struct ContentView: View {
                                         Text(groupedChapter.titleLines[0])
                                             .font(.caption)
                                             .fontWeight(.medium)
-                                            .foregroundColor(Color(red: 0.5, green: 0.3, blue: 0.2))
+                                            .foregroundColor(theme.tertiaryText)
                                             .fixedSize()
                                         VStack(alignment: .leading, spacing: 0) {
                                             Text(groupedChapter.titleLines[1])
                                                 .font(.subheadline)
                                                 .fontWeight(.medium)
-                                                .foregroundColor(Color(red: 0.2, green: 0.1, blue: 0.1))
+                                                .foregroundColor(theme.primaryText)
                                             Text(groupedChapter.titleLines[2])
                                                 .font(.subheadline)
                                                 .fontWeight(.medium)
-                                                .foregroundColor(Color(red: 0.2, green: 0.1, blue: 0.1))
+                                                .foregroundColor(theme.primaryText)
                                         }
                                     }
                                 } else {
                                     Text(groupedChapter.displayTitle)
                                         .font(.subheadline)
                                         .fontWeight(.medium)
-                                        .foregroundColor(Color(red: 0.2, green: 0.1, blue: 0.1))
+                                        .foregroundColor(theme.primaryText)
                                 }
                             }
                             .fixedSize(horizontal: false, vertical: true)
@@ -64,7 +65,7 @@ struct ContentView: View {
                             if let firstPartSummary = groupedChapter.parts.first?.summary {
                                 Text(firstPartSummary)
                                     .font(.caption)
-                                    .foregroundColor(Color(red: 0.4, green: 0.3, blue: 0.2)) // Warm brown
+                                    .foregroundColor(theme.secondaryText) // Warm brown
                                     .lineLimit(2)
                             }
                         }
@@ -83,7 +84,7 @@ struct ContentView: View {
                 }
                 .padding(.vertical, 4)
             }
-            .listRowBackground(Color(red: 0.96, green: 0.94, blue: 0.90)) // Antique paper color
+            .listRowBackground(theme.cardBackground) // Antique paper color
         }
         .searchable(text: $searchText, prompt: "搜索章回号或标题...")
         .onAppear {
@@ -92,7 +93,7 @@ struct ContentView: View {
         }
         .listStyle(PlainListStyle())
         .background(
-            Color(red: 0.98, green: 0.96, blue: 0.92) // Soft antique paper background
+            theme.pageBackground // Soft antique paper background
                 .ignoresSafeArea()
         )
         .navigationTitle("红楼聆梦")
@@ -125,7 +126,7 @@ struct ContentView: View {
                     }
                 } label: {
                     Image(systemName: "list.bullet")
-                        .foregroundColor(Color(red: 0.6, green: 0.2, blue: 0.2))
+                        .foregroundColor(theme.accentRed)
                 }
             }
         }

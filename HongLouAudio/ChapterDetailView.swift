@@ -9,6 +9,7 @@ import SwiftUI
 
 struct ChapterDetailView: View {
     let groupedChapter: GroupedChapter
+    @ObservedObject private var theme = ThemeManager.shared
     let favoritesManager: FavoritesManager
     
     // Character image name to character name mapping
@@ -51,19 +52,19 @@ struct ChapterDetailView: View {
                                         .font(.system(size: 16, weight: .bold))
                                         .foregroundColor(.white)
                                         .padding(8)
-                                        .background(Color(red: 0.6, green: 0.2, blue: 0.2))
+                                        .background(theme.accentRed)
                                         .clipShape(Circle())
 
                                     Text(partLabel(from: part.title))
                                         .font(.headline)
                                         .fontWeight(.medium)
-                                        .foregroundColor(Color(red: 0.2, green: 0.1, blue: 0.1))
+                                        .foregroundColor(theme.primaryText)
 
                                     // Show book icon if text is available
                                     if !part.chapterText.isEmpty {
                                         Image(systemName: "book.pages.fill")
                                             .font(.caption)
-                                            .foregroundColor(Color(red: 0.5, green: 0.3, blue: 0.2))
+                                            .foregroundColor(theme.tertiaryText)
                                     }
 
                                     Spacer()
@@ -71,13 +72,13 @@ struct ChapterDetailView: View {
 
                                 Text(part.summary)
                                     .font(.caption)
-                                    .foregroundColor(Color(red: 0.4, green: 0.3, blue: 0.2))
+                                    .foregroundColor(theme.secondaryText)
                                     .lineLimit(2)
                             }
                             .padding(.vertical, 4)
                         }
                     }
-                    .listRowBackground(Color(red: 0.96, green: 0.94, blue: 0.90))
+                    .listRowBackground(theme.cardBackground)
                 }
                 .listStyle(PlainListStyle())
 
@@ -87,7 +88,7 @@ struct ChapterDetailView: View {
                         Text(randomCharacterName)
                             .font(.subheadline)
                             .fontWeight(.semibold)
-                            .foregroundColor(Color(red: 0.2, green: 0.1, blue: 0.1))
+                            .foregroundColor(theme.primaryText)
 
                         if let uiImage = UIImage(named: randomCharacterImageName) {
                             Image(uiImage: uiImage)
@@ -97,7 +98,7 @@ struct ChapterDetailView: View {
                                 .clipShape(RoundedRectangle(cornerRadius: 16))
                                 .overlay(
                                     RoundedRectangle(cornerRadius: 16)
-                                        .stroke(Color(red: 0.6, green: 0.2, blue: 0.2), lineWidth: 1)
+                                        .stroke(theme.accentRed, lineWidth: 1)
                                 )
                                 .onTapGesture {
                                     withAnimation(.easeInOut(duration: 0.25)) {
@@ -107,11 +108,11 @@ struct ChapterDetailView: View {
                         } else {
                             // Fallback placeholder if image not found
                             RoundedRectangle(cornerRadius: 16)
-                                .fill(Color(red: 0.96, green: 0.94, blue: 0.90))
+                                .fill(theme.cardBackground)
                                 .frame(width: 160, height: 160)
                                 .overlay(
                                     RoundedRectangle(cornerRadius: 16)
-                                        .stroke(Color(red: 0.6, green: 0.2, blue: 0.2), lineWidth: 2)
+                                        .stroke(theme.accentRed, lineWidth: 2)
                                 )
                         }
                     }
@@ -162,21 +163,21 @@ struct ChapterDetailView: View {
                         HStack(alignment: .center, spacing: 4) {
                             Text(groupedChapter.titleLines[0])
                                 .font(.system(size: 11))
-                                .foregroundColor(Color(red: 0.5, green: 0.3, blue: 0.2))
+                                .foregroundColor(theme.tertiaryText)
                                 .fixedSize()
                             VStack(alignment: .leading, spacing: 0) {
                                 Text(groupedChapter.titleLines[1])
                                     .font(.system(size: 13, weight: .semibold))
-                                    .foregroundColor(Color(red: 0.2, green: 0.1, blue: 0.1))
+                                    .foregroundColor(theme.primaryText)
                                 Text(groupedChapter.titleLines[2])
                                     .font(.system(size: 13, weight: .semibold))
-                                    .foregroundColor(Color(red: 0.2, green: 0.1, blue: 0.1))
+                                    .foregroundColor(theme.primaryText)
                             }
                         }
                     } else {
                         Text(groupedChapter.displayTitle)
                             .font(.system(size: 15, weight: .semibold))
-                            .foregroundColor(Color(red: 0.2, green: 0.1, blue: 0.1))
+                            .foregroundColor(theme.primaryText)
                             .multilineTextAlignment(.center)
                             .lineLimit(2)
                             .minimumScaleFactor(0.8)
@@ -194,7 +195,7 @@ struct ChapterDetailView: View {
             }
         }
         .background(
-            Color(red: 0.98, green: 0.96, blue: 0.92) // Soft antique paper background
+            theme.pageBackground // Soft antique paper background
                 .ignoresSafeArea()
         )
         .navigationBarTitleDisplayMode(.inline)

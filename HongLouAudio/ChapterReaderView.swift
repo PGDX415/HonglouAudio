@@ -7,6 +7,7 @@ import SwiftUI
 
 struct ChapterReaderView: View {
     let chapter: Chapter
+    @ObservedObject private var theme = ThemeManager.shared
 
     var body: some View {
         ScrollView {
@@ -22,7 +23,7 @@ struct ChapterReaderView: View {
             }
         }
         .background(
-            Color(red: 0.99, green: 0.97, blue: 0.93)
+            theme.readingBackground
                 .ignoresSafeArea()
         )
         .navigationTitle(chapter.title)

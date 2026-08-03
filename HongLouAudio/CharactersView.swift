@@ -9,6 +9,7 @@ import SwiftUI
 
 struct CharactersView: View {
     // Main characters data
+    @ObservedObject private var theme = ThemeManager.shared
     private let mainCharacters = [
         Character(
             name: "贾宝玉",
@@ -126,11 +127,11 @@ struct CharactersView: View {
                             Text(character.name)
                                 .font(.headline)
                                 .fontWeight(.medium)
-                                .foregroundColor(Color(red: 0.2, green: 0.1, blue: 0.1))
+                                .foregroundColor(theme.primaryText)
                             
                             Text(character.description)
                                 .font(.caption)
-                                .foregroundColor(Color(red: 0.4, green: 0.3, blue: 0.2))
+                                .foregroundColor(theme.secondaryText)
                                 .lineLimit(2)
                         }
                         
@@ -138,25 +139,25 @@ struct CharactersView: View {
                     }
                     .padding(.vertical, 8)
                 }
-                .listRowBackground(Color(red: 0.96, green: 0.94, blue: 0.90))
+                .listRowBackground(theme.cardBackground)
             }
             .navigationTitle("人物")
             .listStyle(PlainListStyle())
             .background(
-                Color(red: 0.98, green: 0.96, blue: 0.92)
+                theme.pageBackground
                     .ignoresSafeArea()
             )
             .toolbar {
                 ToolbarItem(placement: .navigationBarTrailing) {
                     NavigationLink(destination: CharacterRelationshipView()) {
                         Image(systemName: "flowchart.fill")
-                            .foregroundColor(Color(red: 0.6, green: 0.2, blue: 0.2))
+                            .foregroundColor(theme.accentRed)
                             .font(.title3)
                     }
                 }
             }
         }
-        .accentColor(Color(red: 0.6, green: 0.2, blue: 0.2))
+        .accentColor(theme.accentRed)
     }
 }
 
@@ -168,13 +169,14 @@ struct Character: Identifiable {
 }
 
 struct CharacterImageView: View {
+    @ObservedObject private var theme = ThemeManager.shared
     let imageName: String
     let name: String
-    
+
     var body: some View {
         ZStack {
             Circle()
-                .fill(Color(red: 0.96, green: 0.94, blue: 0.90))
+                .fill(theme.cardBackground)
             
             if let uiImage = UIImage(named: imageName) {
                 Image(uiImage: uiImage)
@@ -185,13 +187,14 @@ struct CharacterImageView: View {
                 // Fallback to text placeholder if image not found
                 Text(String(name.first ?? " "))
                     .font(.system(size: 24, weight: .bold))
-                    .foregroundColor(Color(red: 0.6, green: 0.2, blue: 0.2))
+                    .foregroundColor(theme.accentRed)
             }
         }
     }
 }
 
 struct EnlargedImageView: View {
+    @ObservedObject private var theme = ThemeManager.shared
     let imageName: String
     let characterName: String
     @Environment(\.dismiss) private var dismiss
@@ -226,13 +229,14 @@ struct EnlargedImageView: View {
 }
 
 struct CharacterDetailView: View {
+    @ObservedObject private var theme = ThemeManager.shared
     let character: Character
     @State private var showingEnlargedImage = false
-    
+
     var body: some View {
         ZStack {
             // Consistent background for entire view
-            Color(red: 0.98, green: 0.96, blue: 0.92)
+            theme.pageBackground
                 .ignoresSafeArea()
             
             ScrollView {
@@ -251,11 +255,11 @@ struct CharacterDetailView: View {
                     Text(character.name)
                         .font(.title)
                         .fontWeight(.bold)
-                        .foregroundColor(Color(red: 0.2, green: 0.1, blue: 0.1))
+                        .foregroundColor(theme.primaryText)
                     
                     Text(character.description)
                         .font(.body)
-                        .foregroundColor(Color(red: 0.2, green: 0.1, blue: 0.1))
+                        .foregroundColor(theme.primaryText)
                         .multilineTextAlignment(.center)
                         .padding(.horizontal, 24)
                     
@@ -264,11 +268,11 @@ struct CharacterDetailView: View {
                         Text("人物特点")
                             .font(.headline)
                             .fontWeight(.semibold)
-                            .foregroundColor(Color(red: 0.2, green: 0.1, blue: 0.1))
+                            .foregroundColor(theme.primaryText)
                         
                         createCharacterTraitsText(for: character.name)
                             .font(.body)
-                            .foregroundColor(Color(red: 0.2, green: 0.1, blue: 0.1))
+                            .foregroundColor(theme.primaryText)
                     }
                     .padding(.top, 16)
                     .padding(.horizontal, 24)
@@ -279,12 +283,12 @@ struct CharacterDetailView: View {
                             Text("经典语录")
                                 .font(.headline)
                                 .fontWeight(.semibold)
-                                .foregroundColor(Color(red: 0.2, green: 0.1, blue: 0.1))
+                                .foregroundColor(theme.primaryText)
                             
                             Text("「\(quote)」")
                                 .font(.body)
                                 .italic()
-                                .foregroundColor(Color(red: 0.2, green: 0.1, blue: 0.1))
+                                .foregroundColor(theme.primaryText)
                                 .padding(.horizontal, 8)
                         }
                         .padding(.horizontal, 24)

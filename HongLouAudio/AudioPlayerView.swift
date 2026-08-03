@@ -6,6 +6,7 @@ import Combine
 
 struct AudioPlayerView: View {
     @ObservedObject private var audioManager = AudioManager.shared
+    @ObservedObject private var theme = ThemeManager.shared
     @State private var showText = false
     @AppStorage("textFontSize") private var textFontSize: Double = 18.0
     @State private var showSleepTimer = false
@@ -68,7 +69,7 @@ struct AudioPlayerView: View {
 
     var body: some View {
         ZStack {
-            Color(red: 0.98, green: 0.96, blue: 0.92)
+            theme.pageBackground
                 .ignoresSafeArea()
 
             VStack(spacing: 0) {
@@ -83,22 +84,22 @@ struct AudioPlayerView: View {
                             Text(partSuffix)
                         }
                         .font(showText ? .caption2 : .caption)
-                        .foregroundColor(Color(red: 0.5, green: 0.3, blue: 0.2))
+                        .foregroundColor(theme.tertiaryText)
 
                         // Two clauses on separate lines
                         Text(titleClauses[0])
                             .font(showText ? .callout : .title3)
                             .fontWeight(.bold)
-                            .foregroundColor(Color(red: 0.2, green: 0.1, blue: 0.1))
+                            .foregroundColor(theme.primaryText)
                         Text(titleClauses[1])
                             .font(showText ? .callout : .title3)
                             .fontWeight(.bold)
-                            .foregroundColor(Color(red: 0.2, green: 0.1, blue: 0.1))
+                            .foregroundColor(theme.primaryText)
                     } else {
                         Text(chapter.title)
                             .font(showText ? .caption : .title3)
                             .fontWeight(showText ? .medium : .bold)
-                            .foregroundColor(Color(red: 0.2, green: 0.1, blue: 0.1))
+                            .foregroundColor(theme.primaryText)
                             .multilineTextAlignment(.center)
                     }
                 }
@@ -118,12 +119,12 @@ struct AudioPlayerView: View {
                             Text(audioManager.playMode.label)
                         }
                         .font(showText ? .caption2 : .caption)
-                        .foregroundColor(Color(red: 0.5, green: 0.3, blue: 0.2))
+                        .foregroundColor(theme.tertiaryText)
                         .padding(.horizontal, 10)
                         .padding(.vertical, 4)
                         .background(
                             RoundedRectangle(cornerRadius: 12)
-                                .fill(Color(red: 0.92, green: 0.88, blue: 0.80))
+                                .fill(theme.buttonBackground)
                         )
                     }
 
@@ -139,13 +140,13 @@ struct AudioPlayerView: View {
                         }
                         .font(showText ? .caption2 : .caption)
                         .foregroundColor(audioManager.sleepTimerActive
-                            ? Color(red: 0.6, green: 0.2, blue: 0.2)
-                            : Color(red: 0.5, green: 0.3, blue: 0.2))
+                            ? theme.accentRed
+                            : theme.tertiaryText)
                         .padding(.horizontal, 10)
                         .padding(.vertical, 4)
                         .background(
                             RoundedRectangle(cornerRadius: 12)
-                                .fill(Color(red: 0.92, green: 0.88, blue: 0.80))
+                                .fill(theme.buttonBackground)
                         )
                     }
                 }
@@ -156,7 +157,7 @@ struct AudioPlayerView: View {
                 if !showText {
                     Text(chapter.summary)
                         .font(.subheadline)
-                        .foregroundColor(Color(red: 0.4, green: 0.3, blue: 0.2))
+                        .foregroundColor(theme.secondaryText)
                         .multilineTextAlignment(.leading)
                         .lineLimit(3)
                         .padding(.horizontal)
@@ -172,12 +173,12 @@ struct AudioPlayerView: View {
                                 Text("边听边看")
                             }
                             .font(.subheadline)
-                            .foregroundColor(Color(red: 0.5, green: 0.3, blue: 0.2))
+                            .foregroundColor(theme.tertiaryText)
                             .padding(.horizontal, 16)
                             .padding(.vertical, 6)
                             .background(
                                 RoundedRectangle(cornerRadius: 16)
-                                    .fill(Color(red: 0.92, green: 0.88, blue: 0.80))
+                                    .fill(theme.buttonBackground)
                             )
                         }
                         .padding(.bottom, 0)
@@ -191,7 +192,7 @@ struct AudioPlayerView: View {
                                         .font(.system(size: textFontSize, weight: index == currentParagraphIndex ? .semibold : .regular))
                                         .foregroundColor(
                                             index == currentParagraphIndex
-                                                ? Color(red: 0.6, green: 0.2, blue: 0.2)
+                                                ? theme.accentRed
                                                 : Color(red: 0.15, green: 0.08, blue: 0.05)
                                         )
                                         .lineSpacing(7)
@@ -200,7 +201,7 @@ struct AudioPlayerView: View {
                                         .frame(maxWidth: .infinity, alignment: .leading)
                                         .background(
                                             index == currentParagraphIndex
-                                                ? Color(red: 0.6, green: 0.2, blue: 0.2).opacity(0.1)
+                                                ? theme.accentRed.opacity(0.1)
                                                 : Color.clear
                                         )
                                 }
@@ -209,8 +210,8 @@ struct AudioPlayerView: View {
                         }
                         .background(
                             RoundedRectangle(cornerRadius: 12)
-                                .fill(Color(red: 0.99, green: 0.97, blue: 0.93))
-                                .shadow(color: Color.black.opacity(0.04), radius: 3, x: 0, y: 1)
+                                .fill(theme.readingBackground)
+                                .shadow(color: theme.shadowColor, radius: 3, x: 0, y: 1)
                         )
                         .padding(.horizontal, 10)
                         .frame(maxHeight: .infinity)
@@ -223,11 +224,11 @@ struct AudioPlayerView: View {
                 HStack {
                     Text(formatTime(audioManager.currentTime))
                         .font(showText ? .caption2 : .caption)
-                        .foregroundColor(Color(red: 0.4, green: 0.3, blue: 0.2))
+                        .foregroundColor(theme.secondaryText)
                     Spacer()
                     Text(formatTime(audioManager.duration))
                         .font(showText ? .caption2 : .caption)
-                        .foregroundColor(Color(red: 0.4, green: 0.3, blue: 0.2))
+                        .foregroundColor(theme.secondaryText)
                 }
                 .padding(.horizontal, showText ? 16 : 24)
 
@@ -241,7 +242,7 @@ struct AudioPlayerView: View {
                         }
                     }
                 )
-                .tint(Color(red: 0.6, green: 0.2, blue: 0.2))
+                .tint(theme.accentRed)
                 .padding(.horizontal, showText ? 12 : 20)
 
                 // Control buttons
@@ -249,9 +250,9 @@ struct AudioPlayerView: View {
                     Button(action: { audioManager.rewind(seconds: 10) }) {
                         Image(systemName: "gobackward.10")
                             .font(showText ? .body : .title2)
-                            .foregroundColor(Color(red: 0.2, green: 0.1, blue: 0.1))
+                            .foregroundColor(theme.primaryText)
                             .padding(showText ? 10 : 15)
-                            .background(Color(red: 0.92, green: 0.88, blue: 0.80))
+                            .background(theme.buttonBackground)
                             .clipShape(Circle())
                     }
 
@@ -262,17 +263,17 @@ struct AudioPlayerView: View {
                             .padding(showText ? 14 : 20)
                             .background(
                                 Circle()
-                                    .fill(audioManager.isPlaying ? Color(red: 0.7, green: 0.3, blue: 0.3) : Color(red: 0.6, green: 0.2, blue: 0.2))
-                                    .shadow(color: Color(red: 0.2, green: 0.1, blue: 0.1).opacity(0.3), radius: 5, x: 0, y: 3)
+                                    .fill(audioManager.isPlaying ? Color(red: 0.7, green: 0.3, blue: 0.3) : theme.accentRed)
+                                    .shadow(color: theme.primaryText.opacity(0.3), radius: 5, x: 0, y: 3)
                             )
                     }
 
                     Button(action: { audioManager.forward(seconds: 10) }) {
                         Image(systemName: "goforward.10")
                             .font(showText ? .body : .title2)
-                            .foregroundColor(Color(red: 0.2, green: 0.1, blue: 0.1))
+                            .foregroundColor(theme.primaryText)
                             .padding(showText ? 10 : 15)
-                            .background(Color(red: 0.92, green: 0.88, blue: 0.80))
+                            .background(theme.buttonBackground)
                             .clipShape(Circle())
                     }
                 }
@@ -297,15 +298,15 @@ struct AudioPlayerView: View {
                     HStack(alignment: .center, spacing: 4) {
                         Text("\(chapterLabel) · \(partSuffix)")
                             .font(.system(size: 11))
-                            .foregroundColor(Color(red: 0.5, green: 0.3, blue: 0.2))
+                            .foregroundColor(theme.tertiaryText)
                             .fixedSize()
                         VStack(alignment: .leading, spacing: 0) {
                             Text(titleClauses[0])
                                 .font(.system(size: 13, weight: .semibold))
-                                .foregroundColor(Color(red: 0.2, green: 0.1, blue: 0.1))
+                                .foregroundColor(theme.primaryText)
                             Text(titleClauses[1])
                                 .font(.system(size: 13, weight: .semibold))
-                                .foregroundColor(Color(red: 0.2, green: 0.1, blue: 0.1))
+                                .foregroundColor(theme.primaryText)
                         }
                     }
                 }
@@ -313,7 +314,7 @@ struct AudioPlayerView: View {
                     Button(action: { showText.toggle() }) {
                         Image(systemName: "xmark.circle.fill")
                             .font(.title3)
-                            .foregroundColor(Color(red: 0.5, green: 0.3, blue: 0.2).opacity(0.7))
+                            .foregroundColor(theme.tertiaryText.opacity(0.7))
                     }
                 }
             }
@@ -326,7 +327,7 @@ struct AudioPlayerView: View {
             // Title
             Text("睡眠定时")
                 .font(.headline)
-                .foregroundColor(Color(red: 0.2, green: 0.1, blue: 0.1))
+                .foregroundColor(theme.primaryText)
                 .padding(.top, 24)
                 .padding(.bottom, 20)
 
@@ -351,12 +352,12 @@ struct AudioPlayerView: View {
                     HStack {
                         Text(option.1)
                             .font(.body)
-                            .foregroundColor(Color(red: 0.2, green: 0.1, blue: 0.1))
+                            .foregroundColor(theme.primaryText)
                         Spacer()
                         if (option.0 == 0 && !audioManager.sleepTimerActive)
                             || (audioManager.sleepTimerActive && Int(audioManager.sleepTimerTotal) / 60 == option.0) {
                             Image(systemName: "checkmark")
-                                .foregroundColor(Color(red: 0.6, green: 0.2, blue: 0.2))
+                                .foregroundColor(theme.accentRed)
                         }
                     }
                     .padding(.horizontal, 24)
@@ -366,7 +367,7 @@ struct AudioPlayerView: View {
             }
         }
         .background(
-            Color(red: 0.98, green: 0.96, blue: 0.92).ignoresSafeArea()
+            theme.pageBackground.ignoresSafeArea()
         )
         .presentationDetents([.medium])
     }

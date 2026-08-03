@@ -28,6 +28,7 @@ struct PersonNode {
 // MARK: - Relationship View
 
 struct CharacterRelationshipView: View {
+    @ObservedObject private var theme = ThemeManager.shared
     private let vermillion = Color(red: 0.55, green: 0.08, blue: 0.08)
     private let deepRed = Color(red: 0.35, green: 0.02, blue: 0.02)
     private let antiqueGold = Color(red: 0.78, green: 0.65, blue: 0.35)
@@ -113,7 +114,7 @@ struct CharacterRelationshipView: View {
             .padding(.horizontal, 12)
         }
         .background(
-            Color(red: 0.98, green: 0.96, blue: 0.92)
+            theme.pageBackground
                 .ignoresSafeArea()
         )
         .navigationTitle("人物关系图")

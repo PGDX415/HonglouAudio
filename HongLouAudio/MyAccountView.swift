@@ -9,6 +9,7 @@ import SwiftUI
 
 struct MyAccountView: View {
     @State private var playbackSpeed: Float = 1.0
+    @ObservedObject private var theme = ThemeManager.shared
     @State private var volume: Float = 0.8
     @AppStorage("textFontSize") private var textFontSize: Double = 18.0
 
@@ -27,16 +28,16 @@ struct MyAccountView: View {
                         HStack {
                             Image(systemName: "person.circle")
                                 .font(.title)
-                                .foregroundColor(Color(red: 0.6, green: 0.2, blue: 0.2)) // Classical red
+                                .foregroundColor(theme.accentRed) // Classical red
                             
                             VStack(alignment: .leading, spacing: 4) {
                                 Text("红楼聆梦用户")
                                     .font(.headline)
-                                    .foregroundColor(Color(red: 0.2, green: 0.1, blue: 0.1))
+                                    .foregroundColor(theme.primaryText)
                                 
                                 Text("guest@example.com")
                                     .font(.caption)
-                                    .foregroundColor(Color(red: 0.4, green: 0.3, blue: 0.2))
+                                    .foregroundColor(theme.secondaryText)
                             }
                             .padding(.leading, 8)
                             
@@ -50,25 +51,25 @@ struct MyAccountView: View {
                     VStack(alignment: .leading, spacing: 12) {
                         HStack {
                             Text("播放速度")
-                                .foregroundColor(Color(red: 0.2, green: 0.1, blue: 0.1))
+                                .foregroundColor(theme.primaryText)
                             Spacer()
                             Text("\(playbackSpeed, specifier: "%.1fx")")
-                                .foregroundColor(Color(red: 0.4, green: 0.3, blue: 0.2))
+                                .foregroundColor(theme.secondaryText)
                         }
                         
                         Slider(value: $playbackSpeed, in: 0.5...2.0, step: 0.1)
-                            .accentColor(Color(red: 0.6, green: 0.2, blue: 0.2))
+                            .accentColor(theme.accentRed)
                         
                         HStack {
                             Text("音量控制")
-                                .foregroundColor(Color(red: 0.2, green: 0.1, blue: 0.1))
+                                .foregroundColor(theme.primaryText)
                             Spacer()
                             Text("\(Int(volume * 100))%")
-                                .foregroundColor(Color(red: 0.4, green: 0.3, blue: 0.2))
+                                .foregroundColor(theme.secondaryText)
                         }
                         
                         Slider(value: $volume, in: 0.0...1.0, step: 0.05)
-                            .accentColor(Color(red: 0.6, green: 0.2, blue: 0.2))
+                            .accentColor(theme.accentRed)
                     }
                     .padding(.vertical, 4)
                 }
@@ -83,28 +84,40 @@ struct MyAccountView: View {
                     .padding(.vertical, 4)
                 }
 
+                Section("显示设置") {
+                    Toggle(isOn: $theme.isDarkMode) {
+                        HStack {
+                            Image(systemName: theme.isDarkMode ? "moon.fill" : "moon")
+                                .foregroundColor(theme.accentRed)
+                            Text("夜间模式")
+                                .foregroundColor(theme.primaryText)
+                        }
+                    }
+                    .tint(theme.accentRed)
+                }
+
                 Section("法律与隐私") {
                     NavigationLink(destination: LegalContentView(title: "隐私政策", content: privacyPolicyContent)) {
                         HStack {
                             Image(systemName: "lock.shield")
-                                .foregroundColor(Color(red: 0.6, green: 0.2, blue: 0.2))
+                                .foregroundColor(theme.accentRed)
                             Text("隐私政策")
-                                .foregroundColor(Color(red: 0.2, green: 0.1, blue: 0.1))
+                                .foregroundColor(theme.primaryText)
                             Spacer()
                             Image(systemName: "chevron.right")
-                                .foregroundColor(Color(red: 0.4, green: 0.3, blue: 0.2))
+                                .foregroundColor(theme.secondaryText)
                         }
                     }
                     
                     NavigationLink(destination: LegalContentView(title: "使用协议", content: termsOfServiceContent)) {
                         HStack {
                             Image(systemName: "doc.text")
-                                .foregroundColor(Color(red: 0.6, green: 0.2, blue: 0.2))
+                                .foregroundColor(theme.accentRed)
                             Text("使用协议")
-                                .foregroundColor(Color(red: 0.2, green: 0.1, blue: 0.1))
+                                .foregroundColor(theme.primaryText)
                             Spacer()
                             Image(systemName: "chevron.right")
-                                .foregroundColor(Color(red: 0.4, green: 0.3, blue: 0.2))
+                                .foregroundColor(theme.secondaryText)
                         }
                     }
                 }
@@ -113,12 +126,12 @@ struct MyAccountView: View {
                     NavigationLink(destination: LegalContentView(title: "关于我们", content: aboutContent)) {
                         HStack {
                             Image(systemName: "info.circle")
-                                .foregroundColor(Color(red: 0.6, green: 0.2, blue: 0.2))
+                                .foregroundColor(theme.accentRed)
                             Text("关于我们")
-                                .foregroundColor(Color(red: 0.2, green: 0.1, blue: 0.1))
+                                .foregroundColor(theme.primaryText)
                             Spacer()
                             Image(systemName: "chevron.right")
-                                .foregroundColor(Color(red: 0.4, green: 0.3, blue: 0.2))
+                                .foregroundColor(theme.secondaryText)
                         }
                     }
                     
@@ -128,9 +141,9 @@ struct MyAccountView: View {
                     }) {
                         HStack {
                             Image(systemName: "trash")
-                                .foregroundColor(Color(red: 0.6, green: 0.2, blue: 0.2))
+                                .foregroundColor(theme.accentRed)
                             Text("清除缓存")
-                                .foregroundColor(Color(red: 0.2, green: 0.1, blue: 0.1))
+                                .foregroundColor(theme.primaryText)
                             Spacer()
                         }
                     }
@@ -141,9 +154,9 @@ struct MyAccountView: View {
                     }) {
                         HStack {
                             Image(systemName: "envelope")
-                                .foregroundColor(Color(red: 0.6, green: 0.2, blue: 0.2))
+                                .foregroundColor(theme.accentRed)
                             Text("反馈建议")
-                                .foregroundColor(Color(red: 0.2, green: 0.1, blue: 0.1))
+                                .foregroundColor(theme.primaryText)
                             Spacer()
                         }
                     }
@@ -153,11 +166,11 @@ struct MyAccountView: View {
             .navigationTitle("我的")
             .listStyle(GroupedListStyle())
             .background(
-                Color(red: 0.98, green: 0.96, blue: 0.92) // Soft antique paper background
+                theme.pageBackground // Soft antique paper background
                     .ignoresSafeArea()
             )
         }
-        .accentColor(Color(red: 0.6, green: 0.2, blue: 0.2)) // Classical red accent
+        .accentColor(theme.accentRed) // Classical red accent
     }
     
     private var privacyPolicyContent: String {
@@ -208,6 +221,7 @@ struct MyAccountView: View {
 }
 
 struct LegalContentView: View {
+    @ObservedObject private var theme = ThemeManager.shared
     let title: String
     let content: String
     
@@ -216,11 +230,11 @@ struct LegalContentView: View {
             VStack(alignment: .leading, spacing: 16) {
                 Text(content)
                     .font(.body)
-                    .foregroundColor(Color(red: 0.2, green: 0.1, blue: 0.1))
+                    .foregroundColor(theme.primaryText)
                     .padding()
             }
             .background(
-                Color(red: 0.98, green: 0.96, blue: 0.92)
+                theme.pageBackground
                     .ignoresSafeArea()
             )
         }

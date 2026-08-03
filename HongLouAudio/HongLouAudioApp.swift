@@ -23,7 +23,8 @@ struct HongLouAudioApp: App {
 
 struct MainTabView: View {
     @StateObject private var favoritesManager = FavoritesManager()
-    
+    @ObservedObject private var theme = ThemeManager.shared
+
     var body: some View {
         TabView {
             // Home Tab
@@ -62,6 +63,7 @@ struct MainTabView: View {
                 Text("我的")
             }
         }
-        .accentColor(Color(red: 0.6, green: 0.2, blue: 0.2)) // Classical red accent
+        .accentColor(theme.accentRed)
+        .preferredColorScheme(theme.isDarkMode ? .dark : nil)
     }
 }

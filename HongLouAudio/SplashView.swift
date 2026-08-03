@@ -7,7 +7,7 @@ struct SplashView: View {
     @State private var subtitleOpacity = 0.0
     @State private var loaderOpacity = 0.0
 
-    // Classical Chinese color palette
+    // Classical Chinese color palette — fixed for brand identity
     private let vermillionRed = Color(red: 0.55, green: 0.08, blue: 0.08)
     private let deepRed = Color(red: 0.35, green: 0.02, blue: 0.02)
     private let antiqueGold = Color(red: 0.78, green: 0.65, blue: 0.35)
