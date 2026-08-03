@@ -17,6 +17,7 @@ struct ContentView: View {
     @State private var progressData: [Int: Double] = [:] // chapterNumber -> progress proportion
     @State private var navPath = NavigationPath()
     @State private var showGardenMap = false
+    @State private var showTimeline = false
 
     /// Flatten all parts into a single sequential list for "全部播放"
     private var allChaptersFlat: [Chapter] {
@@ -64,11 +65,19 @@ struct ContentView: View {
         }
         .toolbar {
             ToolbarItem(placement: .navigationBarLeading) {
-                Button {
-                    showGardenMap = true
-                } label: {
-                    Image(systemName: "map.fill")
-                        .foregroundColor(theme.accentRed)
+                HStack(spacing: 16) {
+                    Button {
+                        showTimeline = true
+                    } label: {
+                        Image(systemName: "clock.arrow.2.circlepath")
+                            .foregroundColor(theme.accentRed)
+                    }
+                    Button {
+                        showGardenMap = true
+                    } label: {
+                        Image(systemName: "map.fill")
+                            .foregroundColor(theme.accentRed)
+                    }
                 }
             }
             ToolbarItem(placement: .navigationBarTrailing) {
@@ -110,6 +119,9 @@ struct ContentView: View {
         }
         .navigationDestination(isPresented: $showGardenMap) {
             GardenMapView()
+        }
+        .navigationDestination(isPresented: $showTimeline) {
+            TimelineView()
         }
         }
     }
