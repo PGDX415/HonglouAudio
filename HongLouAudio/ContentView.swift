@@ -337,8 +337,15 @@ struct ContentView: View {
         let defaults = UserDefaults.standard
         let parts = groupedChapter.parts
         guard !parts.isEmpty else { return 0 }
-        let total = parts.reduce(0.0) { $0 + defaults.double(forKey: "progress_\($1.audioFileName)") }
-        return total / Double(parts.count)
+        var validParts = 0
+        let total = parts.reduce(0.0) {
+            let val = defaults.double(forKey: "progress_\($1.audioFileName)")
+            // Ignore old-style values stored as absolute seconds (> 1.0)
+            guard val > 0, val <= 1.0 else { return $0 }
+            validParts += 1
+            return $0 + val
+        }
+        return validParts > 0 ? total / Double(validParts) : 0
     }
 }
 

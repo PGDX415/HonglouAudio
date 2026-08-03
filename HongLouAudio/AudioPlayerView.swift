@@ -788,10 +788,11 @@ class AudioManager: NSObject, ObservableObject {
     }
 
     private func saveProgress(position: TimeInterval) {
-        guard !currentFileName.isEmpty else { return }
+        guard !currentFileName.isEmpty, duration > 0 else { return }
         let key = progressKey(for: currentFileName)
+        let proportion = position / duration
         if position > 5 {
-            UserDefaults.standard.set(position, forKey: key)
+            UserDefaults.standard.set(proportion, forKey: key)
         } else {
             UserDefaults.standard.removeObject(forKey: key)
         }
@@ -883,12 +884,13 @@ class AudioManager: NSObject, ObservableObject {
             }
         }
 
-        // Restore saved progress
-        if let saved = savedProgress(for: fileName), saved < duration, saved > 5 {
-            let seekTime = CMTime(seconds: saved, preferredTimescale: CMTimeScale(NSEC_PER_SEC))
+        // Restore saved progress (stored as proportion 0.0-1.0)
+        if let proportion = savedProgress(for: fileName), proportion > 0, proportion < 1 {
+            let seekSeconds = proportion * duration
+            let seekTime = CMTime(seconds: seekSeconds, preferredTimescale: CMTimeScale(NSEC_PER_SEC))
             player.seek(to: seekTime)
-            currentTime = saved
-            progress = duration > 0 ? Float(saved / duration) : 0
+            currentTime = seekSeconds
+            progress = Float(proportion)
         }
 
         updateNowPlayingInfo()
@@ -896,8 +898,8 @@ class AudioManager: NSObject, ObservableObject {
 
     @objc private func playerDidFinishPlaying() {
         DispatchQueue.main.async {
-            // Save progress as finished
-            self.saveProgress(position: 0)
+            // Save progress as 100% completed
+            self.saveProgress(position: self.duration)
             self.stopProgressSaving()
 
             switch self.playMode {
