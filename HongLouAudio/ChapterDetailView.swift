@@ -38,6 +38,7 @@ struct ChapterDetailView: View {
     @State private var randomCharacterImageName: String = ""
     @State private var randomCharacterName: String = ""
     @State private var isImageZoomed = false
+    @State private var readerChapter: Chapter? = nil
 
     var body: some View {
         ZStack {
@@ -75,15 +76,13 @@ struct ChapterDetailView: View {
 
                         // Separate "阅读正文" button when text is available
                         if !part.chapterText.isEmpty {
-                            NavigationLink(destination: ChapterReaderView(chapter: part)) {
+                            Button(action: { readerChapter = part }) {
                                 HStack(spacing: 6) {
                                     Image(systemName: "book.pages.fill")
                                         .font(.caption)
                                     Text("阅读正文（含注释与批注）")
                                         .font(.caption)
                                     Spacer()
-                                    Image(systemName: "chevron.right")
-                                        .font(.caption2)
                                 }
                                 .foregroundColor(theme.accentRed)
                                 .padding(.horizontal, 12)
@@ -217,6 +216,11 @@ struct ChapterDetailView: View {
                 .ignoresSafeArea()
         )
         .navigationBarTitleDisplayMode(.inline)
+        .sheet(item: $readerChapter) { chapter in
+            NavigationStack {
+                ChapterReaderView(chapter: chapter)
+            }
+        }
     }
     
     /// Return "clause 上", "clause 下", or "中"
