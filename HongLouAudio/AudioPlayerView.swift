@@ -151,45 +151,6 @@ struct AudioPlayerView: View {
                         )
                     }
 
-                    // Bookmark button
-                    Button(action: {
-                        if audioManager.bookmarks.contains(where: { abs($0.time - audioManager.currentTime) < 3 }) {
-                            if let bm = audioManager.bookmarks.first(where: { abs($0.time - audioManager.currentTime) < 3 }) {
-                                audioManager.removeBookmark(bm)
-                            }
-                        } else {
-                            audioManager.addBookmark()
-                        }
-                    }) {
-                        HStack(spacing: 4) {
-                            Image(systemName: audioManager.bookmarks.contains(where: { abs($0.time - audioManager.currentTime) < 3 })
-                                ? "bookmark.fill" : "bookmark")
-                            Text("\(audioManager.bookmarks.count)")
-                        }
-                        .font(showText ? .caption2 : .caption)
-                        .foregroundColor(theme.tertiaryText)
-                        .padding(.horizontal, 10)
-                        .padding(.vertical, 4)
-                        .background(
-                            RoundedRectangle(cornerRadius: 12)
-                                .fill(theme.buttonBackground)
-                        )
-                    }
-
-                    // Bookmarks list button
-                    if !audioManager.bookmarks.isEmpty {
-                        Button(action: { showBookmarks = true }) {
-                            Image(systemName: "list.bullet.rectangle")
-                                .font(showText ? .caption2 : .caption)
-                                .foregroundColor(theme.tertiaryText)
-                                .padding(.horizontal, 10)
-                                .padding(.vertical, 4)
-                                .background(
-                                    RoundedRectangle(cornerRadius: 12)
-                                        .fill(theme.buttonBackground)
-                                )
-                        }
-                    }
                 }
                 .padding(.bottom, showText ? 4 : 8)
                 }  // end if !showText
@@ -285,6 +246,51 @@ struct AudioPlayerView: View {
                 )
                 .tint(theme.accentRed)
                 .padding(.horizontal, showText ? 12 : 20)
+
+                // Bookmark controls — below progress bar
+                HStack(spacing: 8) {
+                    Button(action: {
+                        if audioManager.bookmarks.contains(where: { abs($0.time - audioManager.currentTime) < 3 }) {
+                            if let bm = audioManager.bookmarks.first(where: { abs($0.time - audioManager.currentTime) < 3 }) {
+                                audioManager.removeBookmark(bm)
+                            }
+                        } else {
+                            audioManager.addBookmark()
+                        }
+                    }) {
+                        HStack(spacing: 4) {
+                            Image(systemName: audioManager.bookmarks.contains(where: { abs($0.time - audioManager.currentTime) < 3 })
+                                ? "bookmark.fill" : "bookmark")
+                            Text("书签")
+                        }
+                        .font(showText ? .caption2 : .caption)
+                        .foregroundColor(theme.tertiaryText)
+                        .padding(.horizontal, 10)
+                        .padding(.vertical, 4)
+                        .background(
+                            RoundedRectangle(cornerRadius: 12)
+                                .fill(theme.buttonBackground)
+                        )
+                    }
+
+                    if !audioManager.bookmarks.isEmpty {
+                        Button(action: { showBookmarks = true }) {
+                            HStack(spacing: 4) {
+                                Image(systemName: "list.bullet.rectangle")
+                                Text("\(audioManager.bookmarks.count)")
+                            }
+                            .font(showText ? .caption2 : .caption)
+                            .foregroundColor(theme.tertiaryText)
+                            .padding(.horizontal, 10)
+                            .padding(.vertical, 4)
+                            .background(
+                                RoundedRectangle(cornerRadius: 12)
+                                    .fill(theme.buttonBackground)
+                            )
+                        }
+                    }
+                }
+                .padding(.bottom, showText ? 4 : 8)
 
                 // Control buttons
                 HStack(spacing: showText ? 28 : 40) {
