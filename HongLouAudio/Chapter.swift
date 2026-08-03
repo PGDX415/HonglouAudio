@@ -7,7 +7,10 @@
 
 import Foundation
 
-struct Chapter: Codable, Identifiable {
+struct Chapter: Codable, Identifiable, Equatable {
+    static func == (lhs: Chapter, rhs: Chapter) -> Bool {
+        lhs.number == rhs.number && lhs.audioFileName == rhs.audioFileName
+    }
     let id = UUID()
     let number: Int
     let title: String

@@ -11,6 +11,13 @@ struct ContentView: View {
     @State private var groupedChapters: [GroupedChapter] = []
     @StateObject private var favoritesManager = FavoritesManager()
     @State private var searchText = ""
+    @State private var showPlayAll = false
+    @State private var playAllStartChapter: Chapter?
+
+    /// Flatten all parts into a single sequential list for "全部播放"
+    private var allChaptersFlat: [Chapter] {
+        groupedChapters.flatMap { $0.parts.sorted { $0.number < $1.number } }
+    }
     
     var body: some View {
         List(filteredChapters) { groupedChapter in
@@ -89,8 +96,51 @@ struct ContentView: View {
                 .ignoresSafeArea()
         )
         .navigationTitle("红楼聆梦")
+        .toolbar {
+            ToolbarItem(placement: .navigationBarTrailing) {
+                Menu {
+                    Button(action: {
+                        let allChapters = allChaptersFlat
+                        guard let first = allChapters.first else { return }
+                        AudioManager.shared.configurePlaylist(allChapters, startIndex: 0)
+                        AudioManager.shared.playMode = .sequential
+                        playAllStartChapter = first
+                        showPlayAll = true
+                    }) {
+                        Label("全部播放", systemImage: "play.fill")
+                    }
+
+                    ForEach(groupedChapters.filter { !$0.parts.isEmpty }) { gc in
+                        Button(action: {
+                            let allChapters = allChaptersFlat
+                            guard let firstPart = gc.parts.first,
+                                  let startIdx = allChapters.firstIndex(where: { $0.number == firstPart.number }) else { return }
+                            AudioManager.shared.configurePlaylist(allChapters, startIndex: startIdx)
+                            AudioManager.shared.playMode = .sequential
+                            playAllStartChapter = firstPart
+                            showPlayAll = true
+                        }) {
+                            Label("从第\(gc.chapterNumber)回开始", systemImage: "forward.fill")
+                        }
+                    }
+                } label: {
+                    Image(systemName: "list.bullet")
+                        .foregroundColor(Color(red: 0.6, green: 0.2, blue: 0.2))
+                }
+            }
+        }
+        .background(
+            NavigationLink(
+                destination: Group {
+                    if let chapter = playAllStartChapter {
+                        AudioPlayerView(chapter: chapter)
+                    }
+                },
+                isActive: $showPlayAll
+            ) { EmptyView() }
+        )
     }
-    
+
     private var filteredChapters: [GroupedChapter] {
         if searchText.isEmpty {
             return groupedChapters

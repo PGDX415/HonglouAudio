@@ -9,7 +9,13 @@ struct AudioPlayerView: View {
     @State private var showText = false
     @AppStorage("textFontSize") private var textFontSize: Double = 18.0
     @State private var showSleepTimer = false
-    let chapter: Chapter
+    @State private var chapter: Chapter
+    @State private var hasResumedProgress = false
+
+    init(chapter: Chapter, autoPlay: Bool = false) {
+        self._chapter = State(initialValue: chapter)
+        self._hasResumedProgress = State(initialValue: false)
+    }
 
     /// Parse the title to extract [chapterLabel, clause1, clause2, part]
     private var titleParts: [String] {
@@ -276,6 +282,12 @@ struct AudioPlayerView: View {
         .onAppear {
             audioManager.loadAudio(for: chapter.audioFileName, title: chapter.title)
         }
+        .onChange(of: audioManager.currentPlayingChapter) { newChapter in
+            if let newChapter = newChapter, newChapter.number != chapter.number || newChapter.audioFileName != chapter.audioFileName {
+                chapter = newChapter
+                showText = false
+            }
+        }
         .sheet(isPresented: $showSleepTimer) {
             sleepTimerSheet
         }
@@ -369,11 +381,13 @@ struct AudioPlayerView: View {
 enum PlayMode: CaseIterable {
     case single
     case loop
+    case sequential
 
     var label: String {
         switch self {
         case .single: return "单回"
         case .loop: return "循环"
+        case .sequential: return "连播"
         }
     }
 
@@ -381,6 +395,7 @@ enum PlayMode: CaseIterable {
         switch self {
         case .single: return "arrow.right.to.line"
         case .loop: return "repeat.1"
+        case .sequential: return "forward.end.fill"
         }
     }
 
@@ -398,7 +413,9 @@ class AudioManager: NSObject, ObservableObject {
     private var playerItem: AVPlayerItem?
     private var timeObserver: Any?
     private var sleepTimer: Timer?
+    private var progressSaveTimer: Timer?
     private var currentTitle: String = ""
+    private var currentFileName: String = ""
 
     @Published var isPlaying = false
     @Published var currentTime: TimeInterval = 0
@@ -408,6 +425,11 @@ class AudioManager: NSObject, ObservableObject {
     @Published var sleepTimerRemaining: TimeInterval = 0
     @Published var sleepTimerActive: Bool = false
     var sleepTimerTotal: TimeInterval = 0
+
+    // Playlist & sequential playback
+    var playlist: [Chapter] = []
+    var currentPlaylistIndex: Int = -1
+    @Published var currentPlayingChapter: Chapter?
 
     private override init() {
         player = AVPlayer()
@@ -419,6 +441,8 @@ class AudioManager: NSObject, ObservableObject {
     }
 
     deinit {
+        saveProgress(position: currentTime)
+        stopProgressSaving()
         removeTimeObserver()
         player.pause()
         sleepTimer?.invalidate()
@@ -511,11 +535,84 @@ class AudioManager: NSObject, ObservableObject {
         ensureAudioSessionActive()
     }
 
+    // MARK: - Playlist Management
+
+    func configurePlaylist(_ chapters: [Chapter], startIndex: Int = 0) {
+        playlist = chapters
+        currentPlaylistIndex = startIndex
+        if startIndex < chapters.count {
+            currentPlayingChapter = chapters[startIndex]
+        }
+    }
+
+    var hasNextChapter: Bool {
+        guard playMode == .sequential, !playlist.isEmpty else { return false }
+        return currentPlaylistIndex + 1 < playlist.count
+    }
+
+    func advanceToNextChapter() {
+        guard hasNextChapter else {
+            // End of playlist
+            player.seek(to: .zero)
+            isPlaying = false
+            currentTime = 0
+            progress = 0
+            updateNowPlayingInfo()
+            return
+        }
+        currentPlaylistIndex += 1
+        let next = playlist[currentPlaylistIndex]
+        currentPlayingChapter = next
+        saveProgress(position: 0)
+        loadAudio(for: next.audioFileName, title: next.title)
+        play()
+    }
+
+    // MARK: - Progress Persistence
+
+    private func progressKey(for fileName: String) -> String {
+        "playbackProgress_\(fileName)"
+    }
+
+    func savedProgress(for fileName: String) -> TimeInterval? {
+        let key = progressKey(for: fileName)
+        let value = UserDefaults.standard.double(forKey: key)
+        return value > 0 ? value : nil
+    }
+
+    private func saveProgress(position: TimeInterval) {
+        guard !currentFileName.isEmpty else { return }
+        let key = progressKey(for: currentFileName)
+        if position > 5 {
+            UserDefaults.standard.set(position, forKey: key)
+        } else {
+            UserDefaults.standard.removeObject(forKey: key)
+        }
+    }
+
+    private func startProgressSaving() {
+        progressSaveTimer?.invalidate()
+        progressSaveTimer = Timer.scheduledTimer(withTimeInterval: 5, repeats: true) { [weak self] _ in
+            self?.saveProgress(position: self?.currentTime ?? 0)
+        }
+    }
+
+    private func stopProgressSaving() {
+        progressSaveTimer?.invalidate()
+        progressSaveTimer = nil
+    }
+
+    // MARK: - Audio Loading
+
     func loadAudio(for fileName: String, title: String = "") {
         guard let url = Bundle.main.url(forResource: fileName, withExtension: nil) else {
             print("Audio file not found: \(fileName)")
             return
         }
+
+        // Save progress of current chapter before switching
+        saveProgress(position: currentTime)
+        stopProgressSaving()
 
         // Stop current playback
         player.pause()
@@ -527,6 +624,7 @@ class AudioManager: NSObject, ObservableObject {
         )
 
         currentTitle = title
+        currentFileName = fileName
         currentTime = 0
         duration = 0
         progress = 0
@@ -573,19 +671,37 @@ class AudioManager: NSObject, ObservableObject {
             }
         }
 
+        // Restore saved progress
+        if let saved = savedProgress(for: fileName), saved < duration, saved > 5 {
+            let seekTime = CMTime(seconds: saved, preferredTimescale: CMTimeScale(NSEC_PER_SEC))
+            player.seek(to: seekTime)
+            currentTime = saved
+            progress = duration > 0 ? Float(saved / duration) : 0
+        }
+
         updateNowPlayingInfo()
     }
 
     @objc private func playerDidFinishPlaying() {
         DispatchQueue.main.async {
-            if self.playMode == .loop {
+            // Save progress as finished
+            self.saveProgress(position: 0)
+            self.stopProgressSaving()
+
+            switch self.playMode {
+            case .loop:
                 self.player.seek(to: .zero)
                 self.currentTime = 0
                 self.progress = 0
                 self.player.play()
                 self.isPlaying = true
+                self.startProgressSaving()
                 self.updateNowPlayingInfo()
-            } else {
+
+            case .sequential:
+                self.advanceToNextChapter()
+
+            case .single:
                 self.player.seek(to: .zero)
                 self.isPlaying = false
                 self.currentTime = 0
@@ -672,12 +788,15 @@ class AudioManager: NSObject, ObservableObject {
         }
         player.play()
         isPlaying = true
+        startProgressSaving()
         updateNowPlayingInfo()
     }
 
     func pause() {
         player.pause()
         isPlaying = false
+        saveProgress(position: currentTime)
+        stopProgressSaving()
         updateNowPlayingInfo()
     }
 
