@@ -14,6 +14,7 @@ struct ContentView: View {
     @State private var searchText = ""
     @State private var showPlayAll = false
     @State private var playAllStartChapter: Chapter?
+    @State private var progressRefresh: Bool = false
 
     /// Flatten all parts into a single sequential list for "全部播放"
     private var allChaptersFlat: [Chapter] {
@@ -23,7 +24,12 @@ struct ContentView: View {
     var body: some View {
         Group {
             if searchText.isEmpty {
-                chapterList
+                List {
+                    ForEach(groupedChapters, id: \.id) { groupedChapter in
+                        chapterRow(groupedChapter)
+                    }
+                }
+                .listStyle(PlainListStyle())
             } else {
                 searchResultsList
             }
@@ -32,6 +38,9 @@ struct ContentView: View {
         .onAppear {
             let allChapters = ChapterLoader.loadChapters()
             groupedChapters = allChapters.groupByHui()
+        }
+        .onReceive(NotificationCenter.default.publisher(for: UserDefaults.didChangeNotification)) { _ in
+            progressRefresh.toggle()
         }
         .background(
             theme.pageBackground
@@ -78,10 +87,10 @@ struct ContentView: View {
         }
     }
 
-    // MARK: - Chapter List (no search)
+    // MARK: - Chapter Row
 
-    private var chapterList: some View {
-        List(filteredChapters) { groupedChapter in
+    @ViewBuilder
+    private func chapterRow(_ groupedChapter: GroupedChapter) -> some View {
             NavigationLink(destination: ChapterDetailView(groupedChapter: groupedChapter, favoritesManager: favoritesManager)) {
                 VStack(alignment: .leading, spacing: 8) {
                     HStack(alignment: .top, spacing: 10) {
@@ -129,6 +138,7 @@ struct ContentView: View {
                             }
 
                             // Reading progress indicator
+                            let _ = progressRefresh // trigger refresh on UserDefaults change
                             let progress = chapterProgress(for: groupedChapter)
                             if progress > 0 {
                                 HStack(spacing: 6) {
@@ -166,8 +176,6 @@ struct ContentView: View {
                 .padding(.vertical, 4)
             }
             .listRowBackground(theme.cardBackground)
-        }
-        .listStyle(PlainListStyle())
     }
 
     // MARK: - Search Results List

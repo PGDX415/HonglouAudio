@@ -43,39 +43,57 @@ struct ChapterDetailView: View {
         ZStack {
             VStack {
                 List(groupedChapter.parts) { part in
-                    HStack(spacing: 0) {
-                        // Main area: navigate to audio player (with 边听边看)
-                        NavigationLink(destination: AudioPlayerView(chapter: part)) {
-                            VStack(alignment: .leading, spacing: 8) {
-                                HStack {
-                                    Text("\(groupedChapter.chapterNumber)")
-                                        .font(.system(size: 16, weight: .bold))
-                                        .foregroundColor(.white)
-                                        .padding(8)
-                                        .background(theme.accentRed)
-                                        .clipShape(Circle())
+                    VStack(spacing: 0) {
+                        HStack(spacing: 0) {
+                            // Main area: navigate to audio player (with 边听边看)
+                            NavigationLink(destination: AudioPlayerView(chapter: part)) {
+                                VStack(alignment: .leading, spacing: 8) {
+                                    HStack {
+                                        Text("\(groupedChapter.chapterNumber)")
+                                            .font(.system(size: 16, weight: .bold))
+                                            .foregroundColor(.white)
+                                            .padding(8)
+                                            .background(theme.accentRed)
+                                            .clipShape(Circle())
 
-                                    Text(partLabel(from: part.title))
-                                        .font(.headline)
-                                        .fontWeight(.medium)
-                                        .foregroundColor(theme.primaryText)
+                                        Text(partLabel(from: part.title))
+                                            .font(.headline)
+                                            .fontWeight(.medium)
+                                            .foregroundColor(theme.primaryText)
 
-                                    // Show book icon if text is available
-                                    if !part.chapterText.isEmpty {
-                                        Image(systemName: "book.pages.fill")
-                                            .font(.caption)
-                                            .foregroundColor(theme.tertiaryText)
+                                        Spacer()
                                     }
 
-                                    Spacer()
+                                    Text(part.summary)
+                                        .font(.caption)
+                                        .foregroundColor(theme.secondaryText)
+                                        .lineLimit(2)
                                 }
-
-                                Text(part.summary)
-                                    .font(.caption)
-                                    .foregroundColor(theme.secondaryText)
-                                    .lineLimit(2)
+                                .padding(.vertical, 4)
                             }
-                            .padding(.vertical, 4)
+                        }
+
+                        // Separate "阅读正文" button when text is available
+                        if !part.chapterText.isEmpty {
+                            NavigationLink(destination: ChapterReaderView(chapter: part)) {
+                                HStack(spacing: 6) {
+                                    Image(systemName: "book.pages.fill")
+                                        .font(.caption)
+                                    Text("阅读正文（含注释与批注）")
+                                        .font(.caption)
+                                    Spacer()
+                                    Image(systemName: "chevron.right")
+                                        .font(.caption2)
+                                }
+                                .foregroundColor(theme.accentRed)
+                                .padding(.horizontal, 12)
+                                .padding(.vertical, 8)
+                                .background(theme.accentRed.opacity(0.06))
+                                .cornerRadius(8)
+                            }
+                            .buttonStyle(PlainButtonStyle())
+                            .padding(.top, 4)
+                            .padding(.bottom, 8)
                         }
                     }
                     .listRowBackground(theme.cardBackground)

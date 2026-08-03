@@ -8,7 +8,7 @@ import SwiftUI
 struct ChapterReaderView: View {
     let chapter: Chapter
     @ObservedObject private var theme = ThemeManager.shared
-    @StateObject private var notesManager = NotesManager.shared
+    @ObservedObject private var notesManager = NotesManager.shared
     @State private var showAnnotations = false
     @State private var selectedItem: GlossaryItem? = nil
     @State private var editingNoteIndex: Int? = nil
@@ -149,9 +149,9 @@ struct ChapterReaderView: View {
         attrString.foregroundColor = theme.primaryText
 
         for (item, range) in matches {
-            if let attrRange = AttributedString.Index(range.lowerBound, within: attrString).map({
-                $0..<(AttributedString.Index(range.upperBound, within: attrString) ?? $0)
-            }) {
+            if let lower = AttributedString.Index(range.lowerBound, within: attrString),
+               let upper = AttributedString.Index(range.upperBound, within: attrString) {
+                let attrRange = lower..<upper
                 attrString[attrRange].foregroundColor = theme.accentRed
                 attrString[attrRange].underlineStyle = .single
                 attrString[attrRange].link = URL(string: "glossary://\(item.id.uuidString)")
