@@ -293,21 +293,66 @@ struct CharacterDetailView: View {
                     .padding(.horizontal, 24)
                     
                     // Famous quotes section
-                    if let quote = getFamousQuote(for: character.name) {
-                        VStack(alignment: .leading, spacing: 8) {
+                    let quotes = CharacterQuoteStore.quotesFor(character.name)
+                    if !quotes.isEmpty {
+                        VStack(alignment: .leading, spacing: 12) {
                             Text("经典语录")
-                                .font(.headline)
-                                .fontWeight(.semibold)
+                                .font(.system(size: 18, weight: .bold, design: .serif))
                                 .foregroundColor(theme.primaryText)
-                            
-                            Text("「\(quote)」")
-                                .font(.body)
-                                .italic()
-                                .foregroundColor(theme.primaryText)
-                                .padding(.horizontal, 8)
+                                .padding(.horizontal, 24)
+                                .padding(.top, 16)
+
+                            ForEach(quotes) { quote in
+                                VStack(alignment: .leading, spacing: 8) {
+                                    HStack(alignment: .top) {
+                                        Rectangle()
+                                            .fill(theme.accentRed.opacity(0.4))
+                                            .frame(width: 3)
+                                            .cornerRadius(1.5)
+
+                                        VStack(alignment: .leading, spacing: 6) {
+                                            Text("「\(quote.text)」")
+                                                .font(.system(size: 15, design: .serif))
+                                                .foregroundColor(theme.primaryText)
+                                                .lineSpacing(5)
+
+                                            HStack {
+                                                Text(quote.context)
+                                                    .font(.system(size: 11, design: .serif))
+                                                    .foregroundColor(theme.tertiaryText)
+                                                    .lineLimit(2)
+
+                                                Spacer()
+
+                                                Button(action: {
+                                                    let card = QuoteShareCard(
+                                                        quote: quote.text,
+                                                        character: character.name,
+                                                        chapterInfo: "第\(quote.chapterNumber)回"
+                                                    )
+                                                    let cardSize = CGSize(width: 390, height: 550)
+                                                    if let image = ShareCardRenderer.render(card, size: cardSize) {
+                                                        ShareCardRenderer.share(image: image)
+                                                    }
+                                                }) {
+                                                    Image(systemName: "square.and.arrow.up")
+                                                        .font(.caption2)
+                                                        .foregroundColor(theme.accentRed.opacity(0.6))
+                                                }
+                                            }
+
+                                            Text("—— 第\(quote.chapterNumber)回")
+                                                .font(.system(size: 10, design: .serif))
+                                                .foregroundColor(theme.tertiaryText.opacity(0.7))
+                                        }
+                                    }
+                                }
+                                .padding(12)
+                                .background(theme.cardBackground)
+                                .cornerRadius(10)
+                                .padding(.horizontal, 24)
+                            }
                         }
-                        .padding(.horizontal, 24)
-                        .padding(.top, 8)
                     }
                 }
                 .padding(.top, 32)
@@ -344,51 +389,6 @@ struct CharacterDetailView: View {
 
     private func createCharacterTraitsText(for characterName: String) -> Text {
         Text(characterTraits[characterName] ?? "• 主要人物\n• 性格鲜明\n• 命运多舛")
-    }
-    
-    private func getFamousQuote(for characterName: String) -> String? {
-        switch characterName {
-        case "贾宝玉":
-            return "女儿是水做的骨肉，男人是泥做的骨肉。我见了女儿便觉清爽，见了男子便觉浊臭逼人。"
-        case "林黛玉":
-            return "花谢花飞花满天，红消香断有谁怜？"
-        case "薛宝钗":
-            return "好风凭借力，送我上青云。"
-        case "王熙凤":
-            return "我是从来不信什么阴司地狱报应的，凭是什么事，我说要行就行。"
-        case "贾母":
-            return "咱们这样人家的姑娘，倒不要这些才华的名誉。"
-        case "贾政":
-            return "畜生！畜生！该死的畜生！"
-        case "贾元春":
-            return "田舍之家，虽齑盐布帛，终能聚天伦之乐；今虽富贵已极，骨肉各方，然终无意趣！"
-        case "袭人":
-            return "二爷何苦这样？总要想个法儿才是。"
-        case "晴雯":
-            return "只是一件，我死也不甘心的：我虽生得比别人略好些，并没有私情密意勾引你怎样。"
-        case "妙玉":
-            return "纵有千年铁门槛，终须一个土馒头。"
-        case "史湘云":
-            return "且住为佳耳，何必较真？"
-        case "贾探春":
-            return "我但凡是个男人，可以出得去，我必早走了，立一番事业。"
-        case "贾迎春":
-            return "我不信我的命就这么不好！"
-        case "贾惜春":
-            return "我这里正画着大观园，还没画完呢。"
-        case "鸳鸯":
-            return "别说大老爷要我做小老婆，就是太太这会子死了，大老爷要收我做房里人，我也不愿意！"
-        case "秦可卿":
-            return "月难逢，彩云易散。心比天高，身为下贱。"
-        case "平儿":
-            return "奶奶别生气，凡事都要慢慢来，急不得的。"
-        case "贾琏":
-            return "我不过是个混账东西罢了，哪里配得上你这样的贤妻！"
-        case "刘姥姥":
-            return "老刘，老刘，食量大如牛，吃个老母猪不抬头！"
-        default:
-            return nil
-        }
     }
 }
 
