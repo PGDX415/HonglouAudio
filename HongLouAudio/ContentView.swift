@@ -30,6 +30,7 @@ struct ContentView: View {
                     }
                 }
                 .listStyle(PlainListStyle())
+                .id(progressRefresh) // force re-render when progress changes
             } else {
                 searchResultsList
             }
