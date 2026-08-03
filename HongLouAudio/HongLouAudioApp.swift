@@ -28,9 +28,7 @@ struct MainTabView: View {
     var body: some View {
         TabView {
             // Home Tab
-            NavigationStack {
-                ContentView()
-            }
+            ContentView()
             .tabItem {
                 Image(systemName: "house")
                 Text("主页")

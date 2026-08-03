@@ -197,7 +197,7 @@ struct CacheManagementView: View {
         let dict = defaults.dictionaryRepresentation()
         var total: Int64 = 0
         for (key, value) in dict where key.hasPrefix("bookmarks_") {
-            if let data = try? JSONSerialization.data(withJSONObject: value) {
+            if let data = value as? Data {
                 total += Int64(data.count)
             }
         }
@@ -208,10 +208,8 @@ struct CacheManagementView: View {
         let defaults = UserDefaults.standard
         let dict = defaults.dictionaryRepresentation()
         var total: Int64 = 0
-        for (key, value) in dict where key.hasPrefix("progress_") {
-            if let data = try? JSONSerialization.data(withJSONObject: value) {
-                total += Int64(data.count)
-            }
+        for (key, _) in dict where key.hasPrefix("progress_") {
+            total += 8
         }
         return total
     }

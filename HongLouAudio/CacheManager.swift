@@ -35,10 +35,14 @@ final class CacheManager: ObservableObject {
         let dict = defaults.dictionaryRepresentation()
 
         for (key, value) in dict {
-            if key.hasPrefix("bookmarks_") || key.hasPrefix("progress_") {
-                if let data = try? JSONSerialization.data(withJSONObject: value) {
+            if key.hasPrefix("bookmarks_") {
+                // Bookmarks are stored as Data
+                if let data = value as? Data {
                     total += Int64(data.count)
                 }
+            } else if key.hasPrefix("progress_") {
+                // Progress values are stored as Double
+                total += 8
             }
         }
 

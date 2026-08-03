@@ -108,11 +108,12 @@ struct CharactersView: View {
         )
     ]
     
+    @State private var selectedCharacter: Character? = nil
+
     var body: some View {
-        NavigationView {
+        ZStack {
             List(mainCharacters, id: \.name) { character in
-                NavigationLink(destination: CharacterDetailView(character: character)) {
-                    HStack(spacing: 16) {
+                HStack(spacing: 16) {
                         // Character image with tap gesture for enlargement
                         CharacterImageView(imageName: character.imageName, name: character.name)
                             .frame(width: 60, height: 60)
@@ -138,6 +139,9 @@ struct CharactersView: View {
                         Spacer()
                     }
                     .padding(.vertical, 8)
+                .contentShape(Rectangle())
+                .onTapGesture {
+                    selectedCharacter = character
                 }
                 .listRowBackground(theme.cardBackground)
             }
@@ -156,8 +160,19 @@ struct CharactersView: View {
                     }
                 }
             }
+
+            // Hidden NavigationLink outside List
+            if let character = selectedCharacter {
+                NavigationLink(
+                    destination: CharacterDetailView(character: character),
+                    isActive: Binding(
+                        get: { selectedCharacter != nil },
+                        set: { if !$0 { selectedCharacter = nil } }
+                    )
+                ) { EmptyView() }
+                .hidden()
+            }
         }
-        .accentColor(theme.accentRed)
     }
 }
 

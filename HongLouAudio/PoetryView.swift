@@ -215,11 +215,6 @@ struct PoetryView: View {
             }
 
             Spacer()
-
-            Image(systemName: "chevron.right")
-                .font(.caption)
-                .foregroundColor(theme.tertiaryText)
-                .padding(.top, 10)
         }
         .padding(.horizontal, 16)
         .padding(.vertical, 12)

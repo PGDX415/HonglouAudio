@@ -7,11 +7,14 @@
 
 import Foundation
 
-struct Chapter: Codable, Identifiable, Equatable {
+struct Chapter: Codable, Identifiable, Equatable, Hashable {
     static func == (lhs: Chapter, rhs: Chapter) -> Bool {
         lhs.number == rhs.number && lhs.audioFileName == rhs.audioFileName
     }
     let id = UUID()
+    func hash(into hasher: inout Hasher) {
+        hasher.combine(id)
+    }
     let number: Int
     let title: String
     let audioFileName: String
@@ -41,11 +44,19 @@ struct ChaptersData: Codable {
     let chapters: [Chapter]
 }
 
-struct GroupedChapter: Identifiable {
+struct GroupedChapter: Identifiable, Hashable {
     let id = UUID()
     let chapterNumber: Int // The actual 回 number (1-60)
     let titlePrefix: String // e.g., "第一回 甄士隐梦幻识通灵 贾雨村风尘怀闺秀"
     let parts: [Chapter] // The individual parts (上, 中, 下)
+
+    func hash(into hasher: inout Hasher) {
+        hasher.combine(id)
+    }
+
+    static func == (lhs: GroupedChapter, rhs: GroupedChapter) -> Bool {
+        lhs.id == rhs.id
+    }
     
     var displayTitle: String {
         return titlePrefix

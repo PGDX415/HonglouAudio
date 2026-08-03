@@ -21,8 +21,7 @@ struct MyAccountView: View {
     ]
 
     var body: some View {
-        NavigationView {
-            List {
+        List {
                 Section("账户信息") {
                     VStack(alignment: .leading, spacing: 8) {
                         HStack {
@@ -104,8 +103,6 @@ struct MyAccountView: View {
                             Text("隐私政策")
                                 .foregroundColor(theme.primaryText)
                             Spacer()
-                            Image(systemName: "chevron.right")
-                                .foregroundColor(theme.secondaryText)
                         }
                     }
                     
@@ -116,8 +113,6 @@ struct MyAccountView: View {
                             Text("使用协议")
                                 .foregroundColor(theme.primaryText)
                             Spacer()
-                            Image(systemName: "chevron.right")
-                                .foregroundColor(theme.secondaryText)
                         }
                     }
                 }
@@ -130,8 +125,6 @@ struct MyAccountView: View {
                             Text("关于我们")
                                 .foregroundColor(theme.primaryText)
                             Spacer()
-                            Image(systemName: "chevron.right")
-                                .foregroundColor(theme.secondaryText)
                         }
                     }
                     
@@ -142,8 +135,6 @@ struct MyAccountView: View {
                             Text("缓存管理")
                                 .foregroundColor(theme.primaryText)
                             Spacer()
-                            Image(systemName: "chevron.right")
-                                .foregroundColor(theme.secondaryText)
                         }
                     }
                     
@@ -167,8 +158,6 @@ struct MyAccountView: View {
                 theme.pageBackground // Soft antique paper background
                     .ignoresSafeArea()
             )
-        }
-        .accentColor(theme.accentRed) // Classical red accent
     }
     
     private var privacyPolicyContent: String {

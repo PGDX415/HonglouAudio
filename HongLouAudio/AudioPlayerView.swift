@@ -778,7 +778,7 @@ class AudioManager: NSObject, ObservableObject {
     // MARK: - Progress Persistence
 
     private func progressKey(for fileName: String) -> String {
-        "playbackProgress_\(fileName)"
+        "progress_\(fileName)"
     }
 
     func savedProgress(for fileName: String) -> TimeInterval? {
@@ -790,11 +790,16 @@ class AudioManager: NSObject, ObservableObject {
     private func saveProgress(position: TimeInterval) {
         guard !currentFileName.isEmpty, duration > 0 else { return }
         let key = progressKey(for: currentFileName)
-        let proportion = position / duration
+        let proportion = min(position / duration, 1.0)
         if position > 5 {
             UserDefaults.standard.set(proportion, forKey: key)
+            UserDefaults.standard.synchronize()
         } else {
             UserDefaults.standard.removeObject(forKey: key)
+        }
+        // Notify ContentView to refresh progress display
+        DispatchQueue.main.async {
+            NotificationCenter.default.post(name: .progressUpdated, object: nil)
         }
     }
 
@@ -1078,4 +1083,8 @@ class AudioManager: NSObject, ObservableObject {
         sleepTimerRemaining = 0
         sleepTimerTotal = 0
     }
+}
+
+extension Notification.Name {
+    static let progressUpdated = Notification.Name("progressUpdated")
 }

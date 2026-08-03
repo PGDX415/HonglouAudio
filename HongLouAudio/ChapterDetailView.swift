@@ -39,39 +39,40 @@ struct ChapterDetailView: View {
     @State private var randomCharacterName: String = ""
     @State private var isImageZoomed = false
     @State private var readerChapter: Chapter? = nil
+    @State private var selectedPart: Chapter? = nil
 
     var body: some View {
         ZStack {
             VStack {
                 List(groupedChapter.parts) { part in
                     VStack(spacing: 0) {
-                        HStack(spacing: 0) {
-                            // Main area: navigate to audio player (with 边听边看)
-                            NavigationLink(destination: AudioPlayerView(chapter: part)) {
-                                VStack(alignment: .leading, spacing: 8) {
-                                    HStack {
-                                        Text("\(groupedChapter.chapterNumber)")
-                                            .font(.system(size: 16, weight: .bold))
-                                            .foregroundColor(.white)
-                                            .padding(8)
-                                            .background(theme.accentRed)
-                                            .clipShape(Circle())
+                        // Main area: navigate to audio player (with 边听边看)
+                        VStack(alignment: .leading, spacing: 8) {
+                            HStack {
+                                Text("\(groupedChapter.chapterNumber)")
+                                    .font(.system(size: 16, weight: .bold))
+                                    .foregroundColor(.white)
+                                    .padding(8)
+                                    .background(theme.accentRed)
+                                    .clipShape(Circle())
 
-                                        Text(partLabel(from: part.title))
-                                            .font(.headline)
-                                            .fontWeight(.medium)
-                                            .foregroundColor(theme.primaryText)
+                                Text(partLabel(from: part.title))
+                                    .font(.headline)
+                                    .fontWeight(.medium)
+                                    .foregroundColor(theme.primaryText)
 
-                                        Spacer()
-                                    }
-
-                                    Text(part.summary)
-                                        .font(.caption)
-                                        .foregroundColor(theme.secondaryText)
-                                        .lineLimit(2)
-                                }
-                                .padding(.vertical, 4)
+                                Spacer()
                             }
+
+                            Text(part.summary)
+                                .font(.caption)
+                                .foregroundColor(theme.secondaryText)
+                                .lineLimit(2)
+                        }
+                        .padding(.vertical, 4)
+                        .contentShape(Rectangle())
+                        .onTapGesture {
+                            selectedPart = part
                         }
 
                         // Separate "阅读正文" button when text is available
@@ -136,6 +137,18 @@ struct ChapterDetailView: View {
                     .padding(.vertical, 20)
                     .padding(.horizontal, 16)
                 }
+            }
+
+            // Hidden NavigationLink outside the List (no chevron)
+            if let part = selectedPart {
+                NavigationLink(
+                    destination: AudioPlayerView(chapter: part),
+                    isActive: Binding(
+                        get: { selectedPart != nil },
+                        set: { if !$0 { selectedPart = nil } }
+                    )
+                ) { EmptyView() }
+                .hidden()
             }
 
             // Full-screen zoomed image overlay

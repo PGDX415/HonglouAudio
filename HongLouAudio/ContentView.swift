@@ -15,6 +15,7 @@ struct ContentView: View {
     @State private var showPlayAll = false
     @State private var playAllStartChapter: Chapter?
     @State private var progressData: [Int: Double] = [:] // chapterNumber -> progress proportion
+    @State private var navPath = NavigationPath()
 
     /// Flatten all parts into a single sequential list for "全部播放"
     private var allChaptersFlat: [Chapter] {
@@ -22,14 +23,20 @@ struct ContentView: View {
     }
     
     var body: some View {
+        NavigationStack(path: $navPath) {
         Group {
             if searchText.isEmpty {
                 List {
                     ForEach(groupedChapters, id: \.id) { groupedChapter in
-                        chapterRow(groupedChapter)
+                        Button {
+                            navPath.append(groupedChapter)
+                        } label: {
+                            chapterRowContent(groupedChapter)
+                        }
+                        .buttonStyle(.plain)
                     }
                 }
-                .listStyle(PlainListStyle())
+                .listStyle(.plain)
             } else {
                 searchResultsList
             }
@@ -40,11 +47,20 @@ struct ContentView: View {
             groupedChapters = allChapters.groupByHui()
             refreshProgress()
         }
+        .onReceive(NotificationCenter.default.publisher(for: .progressUpdated)) { _ in
+            refreshProgress()
+        }
         .background(
             theme.pageBackground
                 .ignoresSafeArea()
         )
         .navigationTitle("红楼聆梦")
+        .navigationDestination(for: GroupedChapter.self) { gc in
+            ChapterDetailView(groupedChapter: gc, favoritesManager: favoritesManager)
+        }
+        .navigationDestination(for: Chapter.self) { chapter in
+            AudioPlayerView(chapter: chapter)
+        }
         .toolbar {
             ToolbarItem(placement: .navigationBarTrailing) {
                 Menu {
@@ -83,96 +99,92 @@ struct ContentView: View {
                 AudioPlayerView(chapter: chapter)
             }
         }
+        }
     }
 
-    // MARK: - Chapter Row
+    // MARK: - Chapter Row Content
 
     @ViewBuilder
-    private func chapterRow(_ groupedChapter: GroupedChapter) -> some View {
-            NavigationLink(destination: ChapterDetailView(groupedChapter: groupedChapter, favoritesManager: favoritesManager)) {
-                VStack(alignment: .leading, spacing: 8) {
-                    HStack(alignment: .top, spacing: 10) {
-                        Text("\(groupedChapter.chapterNumber)")
-                            .font(.system(size: 16, weight: .bold))
-                            .foregroundColor(.white)
-                            .padding(8)
-                            .background(theme.accentRed)
-                            .clipShape(Circle())
+    private func chapterRowContent(_ groupedChapter: GroupedChapter) -> some View {
+        HStack(alignment: .top, spacing: 10) {
+            Text("\(groupedChapter.chapterNumber)")
+                .font(.system(size: 16, weight: .bold))
+                .foregroundColor(.white)
+                .padding(8)
+                .background(theme.accentRed)
+                .clipShape(Circle())
 
-                        VStack(alignment: .leading, spacing: 4) {
+            VStack(alignment: .leading, spacing: 4) {
+                VStack(alignment: .leading, spacing: 0) {
+                    if groupedChapter.titleLines.count >= 3 {
+                        HStack(alignment: .center, spacing: 6) {
+                            Text(groupedChapter.titleLines[0])
+                                .font(.caption)
+                                .fontWeight(.medium)
+                                .foregroundColor(theme.tertiaryText)
+                                .fixedSize()
                             VStack(alignment: .leading, spacing: 0) {
-                                if groupedChapter.titleLines.count >= 3 {
-                                    HStack(alignment: .center, spacing: 6) {
-                                        Text(groupedChapter.titleLines[0])
-                                            .font(.caption)
-                                            .fontWeight(.medium)
-                                            .foregroundColor(theme.tertiaryText)
-                                            .fixedSize()
-                                        VStack(alignment: .leading, spacing: 0) {
-                                            Text(groupedChapter.titleLines[1])
-                                                .font(.subheadline)
-                                                .fontWeight(.medium)
-                                                .foregroundColor(theme.primaryText)
-                                            Text(groupedChapter.titleLines[2])
-                                                .font(.subheadline)
-                                                .fontWeight(.medium)
-                                                .foregroundColor(theme.primaryText)
-                                        }
-                                    }
-                                } else {
-                                    Text(groupedChapter.displayTitle)
-                                        .font(.subheadline)
-                                        .fontWeight(.medium)
-                                        .foregroundColor(theme.primaryText)
-                                }
-                            }
-                            .fixedSize(horizontal: false, vertical: true)
-
-                            if let firstPartSummary = groupedChapter.parts.first?.summary {
-                                Text(firstPartSummary)
-                                    .font(.caption)
-                                    .foregroundColor(theme.secondaryText)
-                                    .lineLimit(2)
-                            }
-
-                            // Reading progress indicator
-                            let progress = chapterProgress(for: groupedChapter)
-                            if progress > 0 {
-                                HStack(spacing: 6) {
-                                    GeometryReader { geo in
-                                        ZStack(alignment: .leading) {
-                                            Capsule()
-                                                .fill(theme.divider)
-                                                .frame(height: 3)
-                                            Capsule()
-                                                .fill(progress >= 0.95 ? Color.green.opacity(0.7) : theme.accentRed)
-                                                .frame(width: geo.size.width * CGFloat(progress), height: 3)
-                                        }
-                                    }
-                                    .frame(height: 3)
-
-                                    Text(progress >= 0.95 ? "已听完" : "\(Int(progress * 100))%")
-                                        .font(.system(size: 10))
-                                        .foregroundColor(progress >= 0.95 ? .green.opacity(0.7) : theme.accentRed)
-                                }
-                                .padding(.top, 2)
+                                Text(groupedChapter.titleLines[1])
+                                    .font(.subheadline)
+                                    .fontWeight(.medium)
+                                    .foregroundColor(theme.primaryText)
+                                Text(groupedChapter.titleLines[2])
+                                    .font(.subheadline)
+                                    .fontWeight(.medium)
+                                    .foregroundColor(theme.primaryText)
                             }
                         }
-                        .frame(maxWidth: .infinity, alignment: .leading)
-
-                        Button(action: {
-                            favoritesManager.toggleFavorite(groupedChapter.chapterNumber)
-                        }) {
-                            Image(systemName: favoritesManager.isFavorite(groupedChapter.chapterNumber) ? "heart.fill" : "heart")
-                                .foregroundColor(favoritesManager.isFavorite(groupedChapter.chapterNumber) ? .red : .gray)
-                                .font(.title3)
-                        }
-                        .buttonStyle(PlainButtonStyle())
+                    } else {
+                        Text(groupedChapter.displayTitle)
+                            .font(.subheadline)
+                            .fontWeight(.medium)
+                            .foregroundColor(theme.primaryText)
                     }
                 }
-                .padding(.vertical, 4)
+                .fixedSize(horizontal: false, vertical: true)
+
+                if let firstPartSummary = groupedChapter.parts.first?.summary {
+                    Text(firstPartSummary)
+                        .font(.caption)
+                        .foregroundColor(theme.secondaryText)
+                        .lineLimit(2)
+                }
+
+                // Reading progress indicator
+                let progress = chapterProgress(for: groupedChapter)
+                if progress > 0 {
+                    HStack(spacing: 6) {
+                        GeometryReader { geo in
+                            ZStack(alignment: .leading) {
+                                Capsule()
+                                    .fill(theme.divider)
+                                    .frame(height: 3)
+                                Capsule()
+                                    .fill(progress >= 0.95 ? Color.green.opacity(0.7) : theme.accentRed)
+                                    .frame(width: geo.size.width * CGFloat(progress), height: 3)
+                            }
+                        }
+                        .frame(height: 3)
+
+                        Text(progress >= 0.95 ? "已听完" : "\(Int(progress * 100))%")
+                            .font(.system(size: 10))
+                            .foregroundColor(progress >= 0.95 ? .green.opacity(0.7) : theme.accentRed)
+                    }
+                    .padding(.top, 2)
+                }
             }
-            .listRowBackground(theme.cardBackground)
+            .frame(maxWidth: .infinity, alignment: .leading)
+
+            Button(action: {
+                favoritesManager.toggleFavorite(groupedChapter.chapterNumber)
+            }) {
+                Image(systemName: favoritesManager.isFavorite(groupedChapter.chapterNumber) ? "heart.fill" : "heart")
+                    .foregroundColor(favoritesManager.isFavorite(groupedChapter.chapterNumber) ? .red : .gray)
+                    .font(.title3)
+            }
+            .buttonStyle(PlainButtonStyle())
+        }
+        .padding(.vertical, 4)
     }
 
     // MARK: - Search Results List
@@ -193,7 +205,9 @@ struct ContentView: View {
                 .listRowBackground(theme.pageBackground)
             } else {
                 ForEach(fullTextSearchResults) { result in
-                    NavigationLink(destination: AudioPlayerView(chapter: result.chapter)) {
+                    Button {
+                        navPath.append(result.chapter)
+                    } label: {
                         VStack(alignment: .leading, spacing: 6) {
                             // Chapter badge + title
                             HStack(spacing: 8) {
@@ -220,6 +234,7 @@ struct ContentView: View {
                         }
                         .padding(.vertical, 6)
                     }
+                    .buttonStyle(.plain)
                     .listRowBackground(theme.cardBackground)
                 }
             }
