@@ -127,6 +127,29 @@ struct ContentView: View {
                                     .foregroundColor(theme.secondaryText)
                                     .lineLimit(2)
                             }
+
+                            // Reading progress indicator
+                            let progress = chapterProgress(for: groupedChapter)
+                            if progress > 0 {
+                                HStack(spacing: 6) {
+                                    GeometryReader { geo in
+                                        ZStack(alignment: .leading) {
+                                            Capsule()
+                                                .fill(theme.divider)
+                                                .frame(height: 3)
+                                            Capsule()
+                                                .fill(progress >= 0.95 ? Color.green.opacity(0.7) : theme.accentRed)
+                                                .frame(width: geo.size.width * CGFloat(progress), height: 3)
+                                        }
+                                    }
+                                    .frame(height: 3)
+
+                                    Text(progress >= 0.95 ? "已听完" : "\(Int(progress * 100))%")
+                                        .font(.system(size: 10))
+                                        .foregroundColor(progress >= 0.95 ? .green.opacity(0.7) : theme.accentRed)
+                                }
+                                .padding(.top, 2)
+                            }
                         }
                         .frame(maxWidth: .infinity, alignment: .leading)
 
@@ -298,6 +321,16 @@ struct ContentView: View {
         }
 
         return results
+    }
+
+    // MARK: - Reading Progress
+
+    private func chapterProgress(for groupedChapter: GroupedChapter) -> Double {
+        let defaults = UserDefaults.standard
+        let parts = groupedChapter.parts
+        guard !parts.isEmpty else { return 0 }
+        let total = parts.reduce(0.0) { $0 + defaults.double(forKey: "progress_\($1.audioFileName)") }
+        return total / Double(parts.count)
     }
 }
 
