@@ -561,6 +561,8 @@ class AudioManager: NSObject, ObservableObject {
     private var timeObserver: Any?
     private var sleepTimer: Timer?
     private var progressSaveTimer: Timer?
+    private var backgroundTask: UIBackgroundTaskIdentifier = .invalid
+    private var wasPlayingBeforeInterruption = false
     private var currentTitle: String = ""
     private var currentFileName: String = ""
 
@@ -683,6 +685,14 @@ class AudioManager: NSObject, ObservableObject {
             object: nil
         )
 
+        // Proactively begin background task before app resigns active (screen lock starts)
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(handleAppWillResignActive),
+            name: UIApplication.willResignActiveNotification,
+            object: nil
+        )
+
         // Ensure audio session stays active when app enters background
         NotificationCenter.default.addObserver(
             self,
@@ -699,6 +709,17 @@ class AudioManager: NSObject, ObservableObject {
         )
     }
 
+    @objc private func handleAppWillResignActive() {
+        guard isPlaying, player.currentItem != nil else { return }
+        // Begin background task early, before the screen lock transition
+        if backgroundTask == .invalid {
+            backgroundTask = UIApplication.shared.beginBackgroundTask { [weak self] in
+                self?.endBackgroundTask()
+            }
+        }
+        ensureAudioSessionActive()
+    }
+
     @objc private func handleAudioSessionInterruption(_ notification: Notification) {
         guard let userInfo = notification.userInfo,
               let typeValue = userInfo[AVAudioSessionInterruptionTypeKey] as? UInt,
@@ -708,11 +729,12 @@ class AudioManager: NSObject, ObservableObject {
 
         switch type {
         case .began:
+            wasPlayingBeforeInterruption = isPlaying
             pause()
         case .ended:
             guard let optionsValue = userInfo[AVAudioSessionInterruptionOptionKey] as? UInt else { return }
             let options = AVAudioSession.InterruptionOptions(rawValue: optionsValue)
-            if options.contains(.shouldResume) {
+            if options.contains(.shouldResume) && wasPlayingBeforeInterruption {
                 do {
                     try AVAudioSession.sharedInstance().setActive(true)
                     play()
@@ -720,25 +742,42 @@ class AudioManager: NSObject, ObservableObject {
                     print("Failed to reactivate audio session: \(error)")
                 }
             }
+            wasPlayingBeforeInterruption = false
         @unknown default:
             break
         }
     }
 
     @objc private func handleAppDidEnterBackground() {
-        guard isPlaying else { return }
-        // Aggressively keep audio alive: reactivate session + resume player
+        let shouldResume = isPlaying || wasPlayingBeforeInterruption || player.timeControlStatus == .playing
+        guard shouldResume, player.currentItem != nil else { return }
+        // Begin background task if not already started from willResignActive
+        if backgroundTask == .invalid {
+            backgroundTask = UIApplication.shared.beginBackgroundTask { [weak self] in
+                self?.endBackgroundTask()
+            }
+        }
         ensureAudioSessionActive()
-        // Delay to ensure activation survives the background transition
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) { [weak self] in
-            guard let self = self, self.isPlaying else { return }
-            self.ensureAudioSessionActive()
-            self.player.play()
-            self.updateNowPlayingInfo()
+        // Force resume in case interruption paused us
+        player.play()
+        isPlaying = true
+        startProgressSaving()
+        updateNowPlayingInfo()
+        wasPlayingBeforeInterruption = false
+        // End background task after delay to ensure audio pipeline is running
+        DispatchQueue.main.asyncAfter(deadline: .now() + 3.0) { [weak self] in
+            self?.endBackgroundTask()
         }
     }
 
+    private func endBackgroundTask() {
+        guard backgroundTask != .invalid else { return }
+        UIApplication.shared.endBackgroundTask(backgroundTask)
+        backgroundTask = .invalid
+    }
+
     @objc private func handleAppWillEnterForeground() {
+        endBackgroundTask()
         ensureAudioSessionActive()
     }
 
@@ -1005,6 +1044,7 @@ class AudioManager: NSObject, ObservableObject {
         } catch {
             print("Failed to activate audio session: \(error)")
         }
+        wasPlayingBeforeInterruption = false
         player.play()
         isPlaying = true
         startProgressSaving()
@@ -1012,6 +1052,7 @@ class AudioManager: NSObject, ObservableObject {
     }
 
     func pause() {
+        wasPlayingBeforeInterruption = false
         player.pause()
         isPlaying = false
         saveProgress(position: currentTime)
