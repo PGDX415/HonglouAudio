@@ -54,6 +54,13 @@ struct MainTabView: View {
                 Text("人物")
             }
 
+            // Poetry Tab
+            PoetryView()
+                .tabItem {
+                    Image(systemName: "text.book.closed.fill")
+                    Text("诗词")
+                }
+
             // My Account Tab (now includes settings)
             NavigationStack {
                 MyAccountView()
