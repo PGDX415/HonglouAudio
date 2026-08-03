@@ -130,16 +130,11 @@ struct ContentView: View {
                 }
             }
         }
-        .background(
-            NavigationLink(
-                destination: Group {
-                    if let chapter = playAllStartChapter {
-                        AudioPlayerView(chapter: chapter)
-                    }
-                },
-                isActive: $showPlayAll
-            ) { EmptyView() }
-        )
+        .navigationDestination(isPresented: $showPlayAll) {
+            if let chapter = playAllStartChapter {
+                AudioPlayerView(chapter: chapter)
+            }
+        }
     }
 
     private var filteredChapters: [GroupedChapter] {

@@ -10,6 +10,7 @@ struct AudioPlayerView: View {
     @State private var showText = false
     @AppStorage("textFontSize") private var textFontSize: Double = 18.0
     @State private var showSleepTimer = false
+    @State private var showBookmarks = false
     @State private var chapter: Chapter
     @State private var hasResumedProgress = false
 
@@ -149,6 +150,46 @@ struct AudioPlayerView: View {
                                 .fill(theme.buttonBackground)
                         )
                     }
+
+                    // Bookmark button
+                    Button(action: {
+                        if audioManager.bookmarks.contains(where: { abs($0.time - audioManager.currentTime) < 3 }) {
+                            if let bm = audioManager.bookmarks.first(where: { abs($0.time - audioManager.currentTime) < 3 }) {
+                                audioManager.removeBookmark(bm)
+                            }
+                        } else {
+                            audioManager.addBookmark()
+                        }
+                    }) {
+                        HStack(spacing: 4) {
+                            Image(systemName: audioManager.bookmarks.contains(where: { abs($0.time - audioManager.currentTime) < 3 })
+                                ? "bookmark.fill" : "bookmark")
+                            Text("\(audioManager.bookmarks.count)")
+                        }
+                        .font(showText ? .caption2 : .caption)
+                        .foregroundColor(theme.tertiaryText)
+                        .padding(.horizontal, 10)
+                        .padding(.vertical, 4)
+                        .background(
+                            RoundedRectangle(cornerRadius: 12)
+                                .fill(theme.buttonBackground)
+                        )
+                    }
+
+                    // Bookmarks list button
+                    if !audioManager.bookmarks.isEmpty {
+                        Button(action: { showBookmarks = true }) {
+                            Image(systemName: "list.bullet.rectangle")
+                                .font(showText ? .caption2 : .caption)
+                                .foregroundColor(theme.tertiaryText)
+                                .padding(.horizontal, 10)
+                                .padding(.vertical, 4)
+                                .background(
+                                    RoundedRectangle(cornerRadius: 12)
+                                        .fill(theme.buttonBackground)
+                                )
+                        }
+                    }
                 }
                 .padding(.bottom, showText ? 4 : 8)
                 }  // end if !showText
@@ -281,16 +322,19 @@ struct AudioPlayerView: View {
             }
         }
         .onAppear {
-            audioManager.loadAudio(for: chapter.audioFileName, title: chapter.title)
+            audioManager.loadAudio(for: chapter.audioFileName, title: chapter.title, chapterNumber: chapter.number)
         }
-        .onChange(of: audioManager.currentPlayingChapter) { newChapter in
-            if let newChapter = newChapter, newChapter.number != chapter.number || newChapter.audioFileName != chapter.audioFileName {
+        .onChange(of: audioManager.currentPlayingChapter) { oldChapter, newChapter in
+            if let newChapter = newChapter, (oldChapter == nil || oldChapter!.number != newChapter.number || oldChapter!.audioFileName != newChapter.audioFileName) {
                 chapter = newChapter
                 showText = false
             }
         }
         .sheet(isPresented: $showSleepTimer) {
             sleepTimerSheet
+        }
+        .sheet(isPresented: $showBookmarks) {
+            bookmarkListSheet
         }
         .toolbar {
             if showText, titleClauses.count >= 2 {
@@ -371,13 +415,78 @@ struct AudioPlayerView: View {
         )
         .presentationDetents([.medium])
     }
-    
+
+    private var bookmarkListSheet: some View {
+        VStack(spacing: 0) {
+            Text("书签")
+                .font(.headline)
+                .foregroundColor(theme.primaryText)
+                .padding(.top, 24)
+                .padding(.bottom, 16)
+
+            if audioManager.bookmarks.isEmpty {
+                Spacer()
+                Text("暂无书签")
+                    .foregroundColor(theme.secondaryText)
+                Spacer()
+            } else {
+                List {
+                    ForEach(audioManager.bookmarks) { bookmark in
+                        Button(action: {
+                            audioManager.seekToBookmark(bookmark)
+                            showBookmarks = false
+                        }) {
+                            HStack {
+                                Image(systemName: "bookmark.fill")
+                                    .foregroundColor(theme.accentRed)
+                                Text(bookmark.label)
+                                    .font(.body)
+                                    .foregroundColor(theme.primaryText)
+                                Spacer()
+                            }
+                        }
+                        .swipeActions(edge: .trailing) {
+                            Button(role: .destructive) {
+                                audioManager.removeBookmark(bookmark)
+                            } label: {
+                                Label("删除", systemImage: "trash")
+                            }
+                        }
+                    }
+                }
+                .listStyle(PlainListStyle())
+            }
+        }
+        .background(theme.pageBackground.ignoresSafeArea())
+        .presentationDetents([.medium, .large])
+    }
+
     private func formatTime(_ time: TimeInterval) -> String {
         let minutes = Int(time) / 60
         let seconds = Int(time) % 60
         return String(format: "%d:%02d", minutes, seconds)
     }
 }
+
+// MARK: - Bookmark Model
+
+struct Bookmark: Codable, Identifiable, Equatable {
+    let id: UUID
+    let time: TimeInterval
+    let label: String
+    let createdAt: Date
+
+    init(time: TimeInterval) {
+        self.id = UUID()
+        self.time = time
+        let minutes = Int(time) / 60
+        let seconds = Int(time) % 60
+        self.label = String(format: "%d:%02d", minutes, seconds)
+        self.createdAt = Date()
+    }
+}
+
+// MARK: - Play Mode
 
 enum PlayMode: CaseIterable {
     case single
@@ -431,6 +540,59 @@ class AudioManager: NSObject, ObservableObject {
     var playlist: [Chapter] = []
     var currentPlaylistIndex: Int = -1
     @Published var currentPlayingChapter: Chapter?
+
+    // Bookmarks
+    @Published var bookmarks: [Bookmark] = []
+    private var currentChapterNumber: Int = 0
+
+    // MARK: - Bookmark Management
+
+    private func bookmarksKey(for chapterNumber: Int) -> String {
+        "bookmarks_\(chapterNumber)"
+    }
+
+    func loadBookmarks(for chapterNumber: Int) {
+        currentChapterNumber = chapterNumber
+        let key = bookmarksKey(for: chapterNumber)
+        guard let data = UserDefaults.standard.data(forKey: key),
+              let decoded = try? JSONDecoder().decode([Bookmark].self, from: data) else {
+            bookmarks = []
+            return
+        }
+        bookmarks = decoded.sorted { $0.time < $1.time }
+    }
+
+    func addBookmark() {
+        guard currentTime > 1 else { return }
+        let bookmark = Bookmark(time: currentTime)
+        // Avoid duplicates within 3 seconds
+        if bookmarks.contains(where: { abs($0.time - bookmark.time) < 3 }) { return }
+        bookmarks.append(bookmark)
+        bookmarks.sort { $0.time < $1.time }
+        saveBookmarks()
+    }
+
+    func removeBookmark(_ bookmark: Bookmark) {
+        bookmarks.removeAll { $0.id == bookmark.id }
+        saveBookmarks()
+    }
+
+    func seekToBookmark(_ bookmark: Bookmark) {
+        let time = CMTime(seconds: bookmark.time, preferredTimescale: CMTimeScale(NSEC_PER_SEC))
+        player.seek(to: time)
+        currentTime = bookmark.time
+        progress = duration > 0 ? Float(bookmark.time / duration) : 0
+        updateNowPlayingInfo()
+    }
+
+    private func saveBookmarks() {
+        let key = bookmarksKey(for: currentChapterNumber)
+        if let data = try? JSONEncoder().encode(bookmarks) {
+            UserDefaults.standard.set(data, forKey: key)
+        }
+    }
+
+    // MARK: - Init
 
     private override init() {
         player = AVPlayer()
@@ -565,7 +727,7 @@ class AudioManager: NSObject, ObservableObject {
         let next = playlist[currentPlaylistIndex]
         currentPlayingChapter = next
         saveProgress(position: 0)
-        loadAudio(for: next.audioFileName, title: next.title)
+        loadAudio(for: next.audioFileName, title: next.title, chapterNumber: next.number)
         play()
     }
 
@@ -605,7 +767,7 @@ class AudioManager: NSObject, ObservableObject {
 
     // MARK: - Audio Loading
 
-    func loadAudio(for fileName: String, title: String = "") {
+    func loadAudio(for fileName: String, title: String = "", chapterNumber: Int = 0) {
         guard let url = Bundle.main.url(forResource: fileName, withExtension: nil) else {
             print("Audio file not found: \(fileName)")
             return
@@ -614,6 +776,11 @@ class AudioManager: NSObject, ObservableObject {
         // Save progress of current chapter before switching
         saveProgress(position: currentTime)
         stopProgressSaving()
+
+        // Load bookmarks for this chapter
+        if chapterNumber > 0 {
+            loadBookmarks(for: chapterNumber)
+        }
 
         // Stop current playback
         player.pause()
