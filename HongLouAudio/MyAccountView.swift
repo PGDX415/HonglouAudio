@@ -97,6 +97,19 @@ struct MyAccountView: View {
                 }
 
                 Section("红楼雅趣") {
+                    NavigationLink(destination: FlowerLotView().navigationBarHidden(true)) {
+                        HStack {
+                            Image(systemName: "camera.macro")
+                                .foregroundColor(Color(red: 0.8, green: 0.4, blue: 0.5))
+                            Text("花名签")
+                                .foregroundColor(theme.primaryText)
+                            Spacer()
+                            Text("寿怡红群芳开夜宴")
+                                .font(.caption)
+                                .foregroundColor(theme.tertiaryText)
+                        }
+                    }
+
                     NavigationLink(destination: FortuneView().navigationBarHidden(true)) {
                         HStack {
                             Image(systemName: "sparkles")
