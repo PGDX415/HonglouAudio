@@ -15,12 +15,14 @@ final class AmbientSoundManager: ObservableObject {
         case rain = "雨声"
         case wind = "风声"
         case stream = "溪流"
+        case qinyun = "琴韵"
 
         var icon: String {
             switch self {
             case .rain: return "cloud.rain.fill"
             case .wind: return "wind"
             case .stream: return "water.waves"
+            case .qinyun: return "music.quarternote.3"
             }
         }
 
@@ -29,10 +31,23 @@ final class AmbientSoundManager: ObservableObject {
             case .rain: return "blue"
             case .wind: return "teal"
             case .stream: return "cyan"
+            case .qinyun: return "purple"
             }
         }
 
-        var defaultVolume: Float { 0.25 }
+        var defaultVolume: Float {
+            switch self {
+            case .qinyun: return 0.20
+            default: return 0.25
+            }
+        }
+
+        var bufferSeconds: TimeInterval {
+            switch self {
+            case .qinyun: return 20.0
+            default: return 10.0
+            }
+        }
     }
 
     @Published var isAmbientEnabled = false
@@ -48,7 +63,8 @@ final class AmbientSoundManager: ObservableObject {
     private static let volumeKeys: [SoundType: String] = [
         .rain: "ambient_vol_rain",
         .wind: "ambient_vol_wind",
-        .stream: "ambient_vol_stream"
+        .stream: "ambient_vol_stream",
+        .qinyun: "ambient_vol_qinyun"
     ]
 
     private init() {
@@ -162,7 +178,8 @@ final class AmbientSoundManager: ObservableObject {
     // MARK: - Buffer Generation
 
     private func generateBuffer(for type: SoundType, format: AVAudioFormat) -> AVAudioPCMBuffer {
-        let frameCount = AVAudioFrameCount(bufferDuration * sampleRate)
+        let duration = type.bufferSeconds
+        let frameCount = AVAudioFrameCount(duration * sampleRate)
         guard let buffer = AVAudioPCMBuffer(pcmFormat: format, frameCapacity: frameCount) else {
             fatalError("Could not create PCM buffer")
         }
@@ -177,6 +194,8 @@ final class AmbientSoundManager: ObservableObject {
             generateWindNoise(into: channelData, count: Int(frameCount))
         case .stream:
             generateStreamNoise(into: channelData, count: Int(frameCount))
+        case .qinyun:
+            generateQinMelody(into: channelData, count: Int(frameCount))
         }
 
         return buffer
@@ -191,7 +210,7 @@ final class AmbientSoundManager: ObservableObject {
         let baseGain: Float = 0.2
         let burstChance: Float = 0.002
         var burstGain: Float = 1.0
-        var burstDecay: Float = 0.999
+        let burstDecay: Float = 0.999
 
         for i in 0..<count {
             let rawNoise = Float.random(in: -1...1)
@@ -265,6 +284,109 @@ final class AmbientSoundManager: ObservableObject {
             let hasSparkle = Float.random(in: 0...1) < 0.15
 
             data[i] = bandPass * baseGain + (hasSparkle ? sparkle * sparkleGain : 0)
+        }
+    }
+
+    // MARK: - Qin Melody Generator
+
+    /// Sparse pentatonic melody evoking guqin atmosphere.
+    /// Uses 宫商角徵羽 scale with gentle harmonics and long decays.
+    private func generateQinMelody(into data: UnsafeMutablePointer<Float>, count: Int) {
+        // Chinese pentatonic scale frequencies (low octave, meditative)
+        let scale: [Float] = [
+            130.81,  // C3 宫
+            146.83,  // D3 商
+            164.81,  // E3 角
+            196.00,  // G3 徵
+            220.00,  // A3 羽
+            261.63,  // C4 宫
+            293.66,  // D4 商
+            329.63,  // E4 角
+            392.00,  // G4 徵
+            440.00,  // A4 羽
+        ]
+
+        let baseGain: Float = 0.09
+
+        // Melody pattern: (scale index, duration in samples)
+        // A 20-second meditative sequence
+        let noteDuration: Float = 2.2  // seconds per note
+        let samplesPerNote = Int(noteDuration * Float(sampleRate))
+        let overlap: Int = Int(0.5 * Float(sampleRate))  // notes overlap by 0.5s
+
+        // Gentle pentatonic sequence in the style of guqin improvisation
+        let melody: [(Int, Float)] = [
+            (5, 1.0),   // C4
+            (7, 0.9),   // E4
+            (9, 0.85),  // A4
+            (7, 0.8),   // E4
+            (4, 0.9),   // A3
+            (0, 0.85),  // C3
+            (2, 0.9),   // E3
+            (4, 0.8),   // A3
+            (5, 1.0),   // C4
+        ]
+
+        // Track the envelope for smooth overlapping notes
+        var envelopeSum: Float = 0
+        let envelopeMax: Float = 1.5  // soft clip for overlap
+
+        for i in 0..<count {
+            var sample: Float = 0
+
+            for (noteIdx, (scaleIdx, ampMod)) in melody.enumerated() {
+                let noteStart = noteIdx * samplesPerNote - noteIdx * overlap / melody.count
+                let noteEnd = noteStart + samplesPerNote + overlap * 2
+                guard i >= noteStart, i < noteEnd else { continue }
+
+                let freq = scale[scaleIdx]
+
+                // Position within note (0 = start, 1 = end of sustain)
+                let posInNote = Float(i - noteStart) / Float(samplesPerNote)
+
+                // ADSR-like envelope for guqin pluck character
+                let attack: Float = 0.04   // quick attack (pluck)
+                let decay: Float = 0.15    // slight decay after pluck
+                let sustain: Float = 0.6   // long gentle sustain
+                var envelope: Float
+                if posInNote < attack {
+                    envelope = posInNote / attack
+                } else if posInNote < attack + decay {
+                    let t = (posInNote - attack) / decay
+                    envelope = 1.0 - t * 0.3  // decay to 0.7
+                } else if posInNote < sustain {
+                    envelope = 0.7
+                } else {
+                    // Long release tail
+                    let t = (posInNote - sustain) / (1.0 - sustain)
+                    envelope = 0.7 * (1.0 - t) * (1.0 - t)
+                }
+
+                // Phase accumulator for sine wave
+                let t = Float(i - noteStart) / Float(sampleRate)
+
+                // Fundamental + subtle harmonics (like guqin overtones)
+                let fundamental = sin(2 * .pi * freq * t)
+                let harmonic2 = 0.25 * sin(2 * .pi * freq * 2.0 * t + 0.3)
+                let harmonic3 = 0.12 * sin(2 * .pi * freq * 3.0 * t + 0.7)
+                let harmonic4 = 0.06 * sin(2 * .pi * freq * 4.0 * t + 1.1)
+
+                // Gentle vibrato on longer notes
+                let vibratoDepth: Float = posInNote > 0.1 ? 0.003 : 0
+                let vibrato = 1.0 + vibratoDepth * sin(2 * .pi * 4.5 * t)
+
+                let noteSample = (fundamental + harmonic2 + harmonic3 + harmonic4)
+                    * envelope * ampMod * vibrato
+
+                sample += noteSample
+            }
+
+            // Soft clip to prevent harsh peaks during note overlap
+            sample = sample * baseGain
+            if sample > envelopeMax { sample = envelopeMax }
+            if sample < -envelopeMax { sample = -envelopeMax }
+
+            data[i] = sample
         }
     }
 }
