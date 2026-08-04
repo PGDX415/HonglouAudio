@@ -38,6 +38,15 @@ struct YaQuView: View {
 
                 // 红楼雅趣
                 Section {
+                    NavigationLink(destination: LanternRiddleView().navigationBarHidden(true)) {
+                        yaQuRow(
+                            icon: "lightbulb.max.fill",
+                            color: Color(red: 0.85, green: 0.55, blue: 0.05),
+                            title: "灯谜会",
+                            subtitle: "制灯谜贾政悲谶语"
+                        )
+                    }
+
                     NavigationLink(destination: FlyingFlowerView().navigationBarHidden(true)) {
                         yaQuRow(
                             icon: "pencil.and.scribble",
