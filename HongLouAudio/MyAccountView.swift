@@ -97,6 +97,19 @@ struct MyAccountView: View {
                 }
 
                 Section("红楼雅趣") {
+                    NavigationLink(destination: PersonalityQuizView()) {
+                        HStack {
+                            Image(systemName: "theatermask.and.paintbrush.fill")
+                                .foregroundColor(Color(red: 0.55, green: 0.4, blue: 0.65))
+                            Text("我像红楼梦里的谁")
+                                .foregroundColor(theme.primaryText)
+                            Spacer()
+                            Text("人格测试")
+                                .font(.caption)
+                                .foregroundColor(theme.tertiaryText)
+                        }
+                    }
+
                     NavigationLink(destination: FlowerLotView().navigationBarHidden(true)) {
                         HStack {
                             Image(systemName: "camera.macro")
