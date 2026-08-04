@@ -31,10 +31,6 @@ struct YaQuView: View {
                                     .font(.caption)
                                     .foregroundColor(theme.secondaryText)
                             }
-                            Spacer()
-                            Image(systemName: "chevron.right")
-                                .font(.caption)
-                                .foregroundColor(theme.tertiaryText)
                         }
                         .padding(.vertical, 6)
                     }
