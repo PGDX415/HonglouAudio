@@ -96,6 +96,21 @@ struct MyAccountView: View {
                     .padding(.vertical, 4)
                 }
 
+                Section("红楼知多少") {
+                    NavigationLink(destination: QuizView()) {
+                        HStack {
+                            Image(systemName: "questionmark.circle.fill")
+                                .foregroundColor(theme.accentRed)
+                            Text("知识问答")
+                                .foregroundColor(theme.primaryText)
+                            Spacer()
+                            Text("历史最佳：\(UserDefaults.standard.integer(forKey: "quiz_best_score"))/10")
+                                .font(.caption)
+                                .foregroundColor(theme.tertiaryText)
+                        }
+                    }
+                }
+
                 Section("显示设置") {
                     Toggle(isOn: $theme.isDarkMode) {
                         HStack {
