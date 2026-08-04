@@ -14,6 +14,7 @@ struct FlowerLotView: View {
     @State private var showSlip = false
     @State private var slipOpacity: Double = 0
     @State private var floatingFlowers: [FloatingFlower] = []
+    @Environment(\.dismiss) private var dismiss
 
     private let cream = Color(red: 0.96, green: 0.93, blue: 0.86)
     private let gold = Color(red: 0.75, green: 0.55, blue: 0.35)
@@ -343,6 +344,8 @@ struct FlowerLotView: View {
             drawnSlip = nil
             showSlip = false
             slipOpacity = 0
+        } else {
+            dismiss()
         }
     }
 

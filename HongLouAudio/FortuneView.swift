@@ -14,6 +14,7 @@ struct FortuneView: View {
     @State private var slipOpacity: Double = 0
     @State private var shakeCount = 0
     @State private var particles: [FortuneParticle] = []
+    @Environment(\.dismiss) private var dismiss
 
     // Fixed colors for the mystic theme
     private let vermillion = Color(red: 0.55, green: 0.08, blue: 0.08)
@@ -328,8 +329,9 @@ struct FortuneView: View {
             drawnSlip = nil
             showSlip = false
             slipOpacity = 0
+        } else {
+            dismiss()
         }
-        // In a sheet context, dismiss is handled by the system
     }
 
     private func shareSlip(_ slip: FortuneSlip) {
