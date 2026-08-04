@@ -35,6 +35,21 @@ struct MyAccountView: View {
                     .padding(.vertical, 4)
                 }
 
+                Section {
+                    NavigationLink(destination: AchievementView()) {
+                        HStack {
+                            Image(systemName: "trophy.fill")
+                                .foregroundColor(Color(red: 0.8, green: 0.6, blue: 0.1))
+                            Text("红楼成就")
+                                .foregroundColor(theme.primaryText)
+                            Spacer()
+                            Text("\(AchievementStore.all.filter { $0.isUnlocked() }.count)/\(AchievementStore.all.count)")
+                                .font(.caption)
+                                .foregroundColor(theme.accentRed)
+                        }
+                    }
+                }
+
                 Section("账户信息") {
                     VStack(alignment: .leading, spacing: 8) {
                         HStack {

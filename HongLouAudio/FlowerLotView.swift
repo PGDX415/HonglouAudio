@@ -328,6 +328,18 @@ struct FlowerLotView: View {
                 drawnSlip = FlowerLotStore.drawSlip()
                 isDrawing = false
                 showSlip = true
+                // Track unique slips for achievement
+                if let slip = drawnSlip {
+                    var collected: Set<String> = []
+                    if let data = UserDefaults.standard.data(forKey: "flowerlot_collected"),
+                       let saved = try? JSONDecoder().decode(Set<String>.self, from: data) {
+                        collected = saved
+                    }
+                    collected.insert(String(slip.id))
+                    if let data = try? JSONEncoder().encode(collected) {
+                        UserDefaults.standard.set(data, forKey: "flowerlot_collected")
+                    }
+                }
                 slipOpacity = 0
             }
 

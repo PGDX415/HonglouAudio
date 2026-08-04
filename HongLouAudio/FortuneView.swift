@@ -313,6 +313,9 @@ struct FortuneView: View {
                 drawnSlip = FortuneStore.drawSlip()
                 isDrawing = false
                 showSlip = true
+                // Track draw count for achievement
+                let count = UserDefaults.standard.integer(forKey: "fortune_draw_count") + 1
+                UserDefaults.standard.set(count, forKey: "fortune_draw_count")
                 slipOpacity = 0
             }
 

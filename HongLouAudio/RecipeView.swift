@@ -55,6 +55,19 @@ struct RecipeView: View {
         .navigationBarHidden(true)
         .sheet(item: $selectedRecipe) { recipe in
             recipeDetailSheet(recipe)
+                .onAppear {
+                    // Track unique recipes viewed for achievement
+                    var viewed: Set<String> = []
+                    if let data = UserDefaults.standard.data(forKey: "recipe_viewed_ids"),
+                       let saved = try? JSONDecoder().decode(Set<String>.self, from: data) {
+                        viewed = saved
+                    }
+                    viewed.insert(String(recipe.id))
+                    UserDefaults.standard.set(viewed.count, forKey: "recipe_viewed_count")
+                    if let data = try? JSONEncoder().encode(viewed) {
+                        UserDefaults.standard.set(data, forKey: "recipe_viewed_ids")
+                    }
+                }
         }
     }
 
