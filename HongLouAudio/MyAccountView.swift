@@ -161,6 +161,19 @@ struct MyAccountView: View {
                                 .foregroundColor(theme.tertiaryText)
                         }
                     }
+
+                    NavigationLink(destination: FlyingFlowerView().navigationBarHidden(true)) {
+                        HStack {
+                            Image(systemName: "pencil.and.scribble")
+                                .foregroundColor(Color(red: 0.2, green: 0.6, blue: 0.5))
+                            Text("飞花令")
+                                .foregroundColor(theme.primaryText)
+                            Spacer()
+                            Text("诗词接龙")
+                                .font(.caption)
+                                .foregroundColor(theme.tertiaryText)
+                        }
+                    }
                 }
 
                 Section("显示设置") {
