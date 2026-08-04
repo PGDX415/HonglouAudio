@@ -383,8 +383,6 @@ final class AmbientSoundManager: ObservableObject {
             (5, 1.0),   // C4
         ]
 
-        // Track the envelope for smooth overlapping notes
-        var envelopeSum: Float = 0
         let envelopeMax: Float = 1.5  // soft clip for overlap
 
         for i in 0..<count {
