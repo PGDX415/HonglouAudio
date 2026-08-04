@@ -340,15 +340,17 @@ struct ContentView: View {
         let matchText = String(fullText[matchStartIdx..<matchEndIdx])
         let afterText = String(fullText[matchEndIdx..<endIdx])
 
-        var result = Text(contextBefore > 0 ? "…" : "")
-        result = result + Text(beforeText)
-        result = result + Text(matchText)
-            .foregroundColor(theme.accentRed)
-            .fontWeight(.bold)
-        result = result + Text(afterText)
-        result = result + Text(contextAfter < totalChars ? "…" : "")
+        let prefix = contextBefore > 0 ? "…" : ""
+        let suffix = contextAfter < totalChars ? "…" : ""
+        let full = prefix + beforeText + matchText + afterText + suffix
 
-        return result
+        var attributed = AttributedString(full)
+        if let range = attributed.range(of: matchText) {
+            attributed[range].foregroundColor = UIColor(theme.accentRed)
+            attributed[range].font = .systemFont(ofSize: 15, weight: .bold)
+        }
+
+        return Text(attributed)
     }
 
     private var filteredChapters: [GroupedChapter] {

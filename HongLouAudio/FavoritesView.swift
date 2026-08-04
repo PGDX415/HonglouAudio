@@ -64,17 +64,9 @@ struct FavoritesView: View {
                     .ignoresSafeArea()
             )
 
-            // Hidden NavigationLink outside List (no chevron)
-            if let gc = selectedGC {
-                NavigationLink(
-                    destination: ChapterDetailView(groupedChapter: gc, favoritesManager: favoritesManager),
-                    isActive: Binding(
-                        get: { selectedGC != nil },
-                        set: { if !$0 { selectedGC = nil } }
-                    )
-                ) { EmptyView() }
-                .hidden()
-            }
+        }
+        .navigationDestination(item: $selectedGC) { gc in
+            ChapterDetailView(groupedChapter: gc, favoritesManager: favoritesManager)
         }
     }
     

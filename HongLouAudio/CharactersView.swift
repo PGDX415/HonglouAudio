@@ -161,22 +161,14 @@ struct CharactersView: View {
                 }
             }
 
-            // Hidden NavigationLink outside List
-            if let character = selectedCharacter {
-                NavigationLink(
-                    destination: CharacterDetailView(character: character),
-                    isActive: Binding(
-                        get: { selectedCharacter != nil },
-                        set: { if !$0 { selectedCharacter = nil } }
-                    )
-                ) { EmptyView() }
-                .hidden()
-            }
+        }
+        .navigationDestination(item: $selectedCharacter) { character in
+            CharacterDetailView(character: character)
         }
     }
 }
 
-struct Character: Identifiable {
+struct Character: Identifiable, Hashable {
     let id = UUID()
     let name: String
     let description: String

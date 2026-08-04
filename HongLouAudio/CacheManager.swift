@@ -62,7 +62,7 @@ final class CacheManager: ObservableObject {
     // MARK: - Clear Actions
 
     func clearProgress(completion: @escaping () -> Void) {
-        DispatchQueue.global().async { [weak self] in
+        DispatchQueue.global().async {
             let defaults = UserDefaults.standard
             let dict = defaults.dictionaryRepresentation()
             for key in dict.keys where key.hasPrefix("progress_") {
@@ -74,7 +74,7 @@ final class CacheManager: ObservableObject {
     }
 
     func clearBookmarks(completion: @escaping () -> Void) {
-        DispatchQueue.global().async { [weak self] in
+        DispatchQueue.global().async {
             let defaults = UserDefaults.standard
             let dict = defaults.dictionaryRepresentation()
             for key in dict.keys where key.hasPrefix("bookmarks_") {
@@ -111,7 +111,7 @@ final class CacheManager: ObservableObject {
     }
 
     func resetAllData(completion: @escaping () -> Void) {
-        DispatchQueue.global().async { [weak self] in
+        DispatchQueue.global().async {
             let defaults = UserDefaults.standard
             let dict = defaults.dictionaryRepresentation()
 

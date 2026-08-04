@@ -155,24 +155,17 @@ struct ChapterReaderView: View {
     }
 
     private func segmentedHighlightedText(_ text: String, matches: [(GlossaryItem, Range<String.Index>)]) -> Text {
-        var lastEnd = text.startIndex
-        var accumulator = Text("")
+        var attributed = AttributedString(text)
+        attributed.foregroundColor = UIColor(theme.primaryText)
 
-        for (item, range) in matches {
-            if lastEnd < range.lowerBound {
-                accumulator = accumulator + Text(String(text[lastEnd..<range.lowerBound]))
-                    .foregroundColor(theme.primaryText)
-            }
-            accumulator = accumulator + Text(String(text[range]))
-                .foregroundColor(theme.accentRed)
-                .underline()
-            lastEnd = range.upperBound
+        for (_, range) in matches {
+            guard let start = AttributedString.Index(range.lowerBound, within: attributed),
+                  let end = AttributedString.Index(range.upperBound, within: attributed) else { continue }
+            attributed[start..<end].foregroundColor = UIColor(theme.accentRed)
+            attributed[start..<end].underlineStyle = .single
         }
-        if lastEnd < text.endIndex {
-            accumulator = accumulator + Text(String(text[lastEnd...]))
-                .foregroundColor(theme.primaryText)
-        }
-        return accumulator
+
+        return Text(attributed)
     }
 
     // MARK: - Glossary Detail Sheet

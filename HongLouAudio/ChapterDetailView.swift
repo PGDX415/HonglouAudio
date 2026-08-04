@@ -202,17 +202,7 @@ struct ChapterDetailView: View {
                 }
             }
 
-            // Hidden NavigationLink outside the List (no chevron)
-            if let part = selectedPart {
-                NavigationLink(
-                    destination: AudioPlayerView(chapter: part),
-                    isActive: Binding(
-                        get: { selectedPart != nil },
-                        set: { if !$0 { selectedPart = nil } }
-                    )
-                ) { EmptyView() }
-                .hidden()
-            }
+            // Navigation handled via .navigationDestination
 
             // Full-screen zoomed image overlay
             if isImageZoomed {
@@ -292,6 +282,9 @@ struct ChapterDetailView: View {
                 .ignoresSafeArea()
         )
         .navigationBarTitleDisplayMode(.inline)
+        .navigationDestination(item: $selectedPart) { part in
+            AudioPlayerView(chapter: part)
+        }
         .sheet(item: $readerChapter) { chapter in
             NavigationStack {
                 ChapterReaderView(chapter: chapter)

@@ -13,8 +13,9 @@ struct ShareCardRenderer {
     @MainActor
     static func render<V: View>(_ view: V, size: CGSize) -> UIImage? {
         let controller = UIHostingController(rootView: view)
-        let window = UIWindow(frame: CGRect(origin: .zero, size: size))
-        window.windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene
+        guard let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene else { return nil }
+        let window = UIWindow(windowScene: windowScene)
+        window.frame = CGRect(origin: .zero, size: size)
         window.rootViewController = controller
 
         controller.view.frame = CGRect(origin: .zero, size: size)
