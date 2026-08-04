@@ -96,86 +96,6 @@ struct MyAccountView: View {
                     .padding(.vertical, 4)
                 }
 
-                Section("红楼雅趣") {
-                    NavigationLink(destination: PersonalityQuizView()) {
-                        HStack {
-                            Image(systemName: "theatermask.and.paintbrush.fill")
-                                .foregroundColor(Color(red: 0.55, green: 0.4, blue: 0.65))
-                            Text("我像红楼梦里的谁")
-                                .foregroundColor(theme.primaryText)
-                            Spacer()
-                            Text("人格测试")
-                                .font(.caption)
-                                .foregroundColor(theme.tertiaryText)
-                        }
-                    }
-
-                    NavigationLink(destination: FlowerLotView().navigationBarHidden(true)) {
-                        HStack {
-                            Image(systemName: "camera.macro")
-                                .foregroundColor(Color(red: 0.8, green: 0.4, blue: 0.5))
-                            Text("花名签")
-                                .foregroundColor(theme.primaryText)
-                            Spacer()
-                            Text("寿怡红群芳开夜宴")
-                                .font(.caption)
-                                .foregroundColor(theme.tertiaryText)
-                        }
-                    }
-
-                    NavigationLink(destination: FortuneView().navigationBarHidden(true)) {
-                        HStack {
-                            Image(systemName: "sparkles")
-                                .foregroundColor(Color(red: 0.8, green: 0.6, blue: 0.2))
-                            Text("求签问卜")
-                                .foregroundColor(theme.primaryText)
-                            Spacer()
-                            Text("太虚幻境")
-                                .font(.caption)
-                                .foregroundColor(theme.tertiaryText)
-                        }
-                    }
-
-                    NavigationLink(destination: RecipeView()) {
-                        HStack {
-                            Image(systemName: "fork.knife")
-                                .foregroundColor(theme.accentRed)
-                            Text("红楼食谱")
-                                .foregroundColor(theme.primaryText)
-                            Spacer()
-                            Text("\(RecipeStore.recipes.count)道")
-                                .font(.caption)
-                                .foregroundColor(theme.tertiaryText)
-                        }
-                    }
-
-                    NavigationLink(destination: QuizView()) {
-                        HStack {
-                            Image(systemName: "questionmark.circle.fill")
-                                .foregroundColor(theme.accentRed)
-                            Text("知识问答")
-                                .foregroundColor(theme.primaryText)
-                            Spacer()
-                            Text("历史最佳：\(UserDefaults.standard.integer(forKey: "quiz_best_score"))/10")
-                                .font(.caption)
-                                .foregroundColor(theme.tertiaryText)
-                        }
-                    }
-
-                    NavigationLink(destination: FlyingFlowerView().navigationBarHidden(true)) {
-                        HStack {
-                            Image(systemName: "pencil.and.scribble")
-                                .foregroundColor(Color(red: 0.2, green: 0.6, blue: 0.5))
-                            Text("飞花令")
-                                .foregroundColor(theme.primaryText)
-                            Spacer()
-                            Text("诗词接龙")
-                                .font(.caption)
-                                .foregroundColor(theme.tertiaryText)
-                        }
-                    }
-                }
-
                 Section("显示设置") {
                     Toggle(isOn: $theme.isDarkMode) {
                         HStack {
@@ -216,16 +136,6 @@ struct MyAccountView: View {
                             Image(systemName: "info.circle")
                                 .foregroundColor(theme.accentRed)
                             Text("关于我们")
-                                .foregroundColor(theme.primaryText)
-                            Spacer()
-                        }
-                    }
-                    
-                    NavigationLink(destination: GlossaryBrowseView()) {
-                        HStack {
-                            Image(systemName: "character.book.closed.fill")
-                                .foregroundColor(theme.accentRed)
-                            Text("成语典故")
                                 .foregroundColor(theme.primaryText)
                             Spacer()
                         }

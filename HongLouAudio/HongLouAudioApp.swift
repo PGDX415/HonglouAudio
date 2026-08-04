@@ -52,11 +52,11 @@ struct MainTabView: View {
                 Text("人物")
             }
 
-            // Poetry Tab
-            PoetryView()
+            // YaQu Tab
+            YaQuView()
                 .tabItem {
                     Image(systemName: "text.book.closed.fill")
-                    Text("诗词")
+                    Text("雅趣")
                 }
 
             // My Account Tab (now includes settings)
