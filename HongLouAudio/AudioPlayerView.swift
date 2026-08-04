@@ -11,6 +11,8 @@ struct AudioPlayerView: View {
     @AppStorage("textFontSize") private var textFontSize: Double = 18.0
     @State private var showSleepTimer = false
     @State private var showBookmarks = false
+    @State private var showAmbientSounds = false
+    @StateObject private var ambientManager = AmbientSoundManager.shared
     @State private var chapter: Chapter
     @State private var hasResumedProgress = false
 
@@ -141,6 +143,26 @@ struct AudioPlayerView: View {
                         }
                         .font(showText ? .caption2 : .caption)
                         .foregroundColor(audioManager.sleepTimerActive
+                            ? theme.accentRed
+                            : theme.tertiaryText)
+                        .padding(.horizontal, 10)
+                        .padding(.vertical, 4)
+                        .background(
+                            RoundedRectangle(cornerRadius: 12)
+                                .fill(theme.buttonBackground)
+                        )
+                    }
+
+                    // Ambient sound button
+                    Button(action: { showAmbientSounds = true }) {
+                        HStack(spacing: 4) {
+                            Image(systemName: ambientManager.isAmbientEnabled
+                                ? "speaker.wave.2.fill"
+                                : "speaker.wave.1")
+                            Text("雅音")
+                        }
+                        .font(showText ? .caption2 : .caption)
+                        .foregroundColor(ambientManager.isAmbientEnabled
                             ? theme.accentRed
                             : theme.tertiaryText)
                         .padding(.horizontal, 10)
@@ -342,6 +364,9 @@ struct AudioPlayerView: View {
         .sheet(isPresented: $showBookmarks) {
             bookmarkListSheet
         }
+        .sheet(isPresented: $showAmbientSounds) {
+            ambientSoundSheet
+        }
         .toolbar {
             if showText, titleClauses.count >= 2 {
                 ToolbarItem(placement: .principal) {
@@ -496,6 +521,90 @@ struct AudioPlayerView: View {
         } message: {
             Text("为书签输入一个便于记忆的名称")
         }
+    }
+
+    private var ambientSoundSheet: some View {
+        NavigationStack {
+            List {
+                Section {
+                    Toggle(isOn: $ambientManager.isAmbientEnabled) {
+                        HStack(spacing: 10) {
+                            Image(systemName: "speaker.wave.2.fill")
+                                .foregroundColor(theme.accentRed)
+                            Text("背景雅音")
+                                .foregroundColor(theme.primaryText)
+                        }
+                    }
+                    .tint(theme.accentRed)
+                    .onChange(of: ambientManager.isAmbientEnabled) { _, enabled in
+                        if enabled {
+                            ambientManager.startEngine()
+                        } else {
+                            ambientManager.stopAll()
+                        }
+                    }
+
+                    if ambientManager.isAmbientEnabled {
+                        Text("轻声叠加雨声、风声、溪流，沉浸听书")
+                            .font(.caption)
+                            .foregroundColor(theme.tertiaryText)
+                    }
+                }
+
+                if ambientManager.isAmbientEnabled {
+                    Section("环境音") {
+                        ForEach(AmbientSoundManager.SoundType.allCases, id: \.self) { type in
+                            VStack(spacing: 8) {
+                                HStack {
+                                    Image(systemName: type.icon)
+                                        .foregroundColor(type == .rain ? .blue : type == .wind ? .teal : .cyan)
+                                        .frame(width: 24)
+                                    Text(type.rawValue)
+                                        .foregroundColor(theme.primaryText)
+                                    Spacer()
+                                    Toggle("", isOn: Binding(
+                                        get: { ambientManager.activeSounds.contains(type) },
+                                        set: { _ in ambientManager.toggleSound(type) }
+                                    ))
+                                    .tint(theme.accentRed)
+                                }
+
+                                if ambientManager.activeSounds.contains(type) {
+                                    HStack {
+                                        Image(systemName: "speaker.fill")
+                                            .font(.caption2)
+                                            .foregroundColor(theme.tertiaryText)
+                                        Slider(
+                                            value: Binding(
+                                                get: { ambientManager.volumes[type] ?? type.defaultVolume },
+                                                set: { ambientManager.setVolume($0, for: type) }
+                                            ),
+                                            in: 0.0...0.6
+                                        )
+                                        .tint(type == .rain ? .blue : type == .wind ? .teal : .cyan)
+                                        Image(systemName: "speaker.wave.3.fill")
+                                            .font(.caption2)
+                                            .foregroundColor(theme.tertiaryText)
+                                    }
+                                }
+                            }
+                            .padding(.vertical, 2)
+                        }
+                    }
+                }
+            }
+            .navigationTitle("背景雅音")
+            .navigationBarTitleDisplayMode(.inline)
+            .toolbar {
+                ToolbarItem(placement: .confirmationAction) {
+                    Button("完成") {
+                        showAmbientSounds = false
+                    }
+                    .foregroundColor(theme.accentRed)
+                }
+            }
+        }
+        .presentationDetents([.medium, .large])
     }
 
     private func formatTime(_ time: TimeInterval) -> String {
