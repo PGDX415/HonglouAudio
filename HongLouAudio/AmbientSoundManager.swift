@@ -177,7 +177,63 @@ final class AmbientSoundManager: ObservableObject {
 
     // MARK: - Buffer Generation
 
+    /// Try loading a bundled custom audio file (e.g. AI‑generated music).
+    /// Looks for `ambient_qinyun.mp3` in the main bundle.
+    /// Falls back to synthesis if the file is not found.
+    private func loadBundledMusic(named fileName: String) -> AVAudioPCMBuffer? {
+        guard let url = Bundle.main.url(forResource: fileName, withExtension: nil) else {
+            return nil
+        }
+        guard let file = try? AVAudioFile(forReading: url) else {
+            print("AmbientSoundManager: could not open \(fileName)")
+            return nil
+        }
+
+        let engineFormat = AVAudioFormat(standardFormatWithSampleRate: sampleRate, channels: 1)!
+        guard let converter = AVAudioConverter(from: file.processingFormat, to: engineFormat) else {
+            return nil
+        }
+
+        // Read the entire file
+        let fileFrames = AVAudioFrameCount(file.length)
+        guard let fileBuffer = AVAudioPCMBuffer(pcmFormat: file.processingFormat, frameCapacity: fileFrames) else {
+            return nil
+        }
+        do {
+            try file.read(into: fileBuffer)
+        } catch {
+            print("AmbientSoundManager: read error \(fileName): \(error)")
+            return nil
+        }
+
+        // Convert to engine format
+        let outFrames = AVAudioFrameCount(Double(fileFrames) * sampleRate / file.processingFormat.sampleRate)
+        guard let outBuffer = AVAudioPCMBuffer(pcmFormat: engineFormat, frameCapacity: outFrames) else {
+            return nil
+        }
+
+        var error: NSError?
+        let inputBlock: AVAudioConverterInputBlock = { _, outStatus in
+            outStatus.pointee = .haveData
+            return fileBuffer
+        }
+        converter.convert(to: outBuffer, error: &error, withInputFrom: inputBlock)
+
+        if let error = error {
+            print("AmbientSoundManager: convert error \(fileName): \(error)")
+            return nil
+        }
+
+        print("AmbientSoundManager: loaded custom music \(fileName)")
+        return outBuffer
+    }
+
     private func generateBuffer(for type: SoundType, format: AVAudioFormat) -> AVAudioPCMBuffer {
+        // For qinyun, try bundled audio file first
+        if type == .qinyun, let bundled = loadBundledMusic(named: "ambient_qinyun.mp3") {
+            return bundled
+        }
+
         let duration = type.bufferSeconds
         let frameCount = AVAudioFrameCount(duration * sampleRate)
         guard let buffer = AVAudioPCMBuffer(pcmFormat: format, frameCapacity: frameCount) else {
