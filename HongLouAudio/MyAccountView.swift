@@ -96,7 +96,20 @@ struct MyAccountView: View {
                     .padding(.vertical, 4)
                 }
 
-                Section("红楼知多少") {
+                Section("红楼雅趣") {
+                    NavigationLink(destination: RecipeView()) {
+                        HStack {
+                            Image(systemName: "fork.knife")
+                                .foregroundColor(theme.accentRed)
+                            Text("红楼食谱")
+                                .foregroundColor(theme.primaryText)
+                            Spacer()
+                            Text("\(RecipeStore.recipes.count)道")
+                                .font(.caption)
+                                .foregroundColor(theme.tertiaryText)
+                        }
+                    }
+
                     NavigationLink(destination: QuizView()) {
                         HStack {
                             Image(systemName: "questionmark.circle.fill")
