@@ -29,6 +29,13 @@ struct ContentView: View {
         Group {
             if searchText.isEmpty {
                 List {
+                    // Daily quote banner
+                    Section {
+                        dailyQuoteBanner
+                            .listRowInsets(EdgeInsets())
+                            .listRowBackground(Color.clear)
+                    }
+
                     ForEach(groupedChapters, id: \.id) { groupedChapter in
                         Button {
                             navPath.append(groupedChapter)
@@ -124,6 +131,46 @@ struct ContentView: View {
             TimelineView()
         }
         }
+    }
+
+    // MARK: - Daily Quote
+
+    private var dailyQuoteBanner: some View {
+        let quote = DailyQuoteStore.todayQuote()
+        return VStack(spacing: 0) {
+            HStack(alignment: .top, spacing: 10) {
+                VStack(alignment: .leading, spacing: 2) {
+                    Image(systemName: "quote.opening")
+                        .font(.system(size: 16))
+                        .foregroundColor(theme.accentRed.opacity(0.3))
+                }
+
+                VStack(alignment: .leading, spacing: 6) {
+                    Text(quote.text)
+                        .font(.system(size: 15, design: .serif))
+                        .foregroundColor(theme.primaryText)
+                        .lineSpacing(5)
+                        .fixedSize(horizontal: false, vertical: true)
+
+                    HStack(spacing: 4) {
+                        Rectangle()
+                            .fill(theme.accentRed.opacity(0.3))
+                            .frame(width: 16, height: 1)
+
+                        Text(quote.source)
+                            .font(.system(size: 11, design: .serif))
+                            .foregroundColor(theme.tertiaryText)
+                    }
+                }
+
+                Spacer()
+            }
+            .padding(14)
+
+            Divider()
+                .background(theme.divider)
+        }
+        .background(theme.cardBackground)
     }
 
     // MARK: - Chapter Row Content
