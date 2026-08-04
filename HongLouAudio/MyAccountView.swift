@@ -97,6 +97,19 @@ struct MyAccountView: View {
                 }
 
                 Section("红楼雅趣") {
+                    NavigationLink(destination: FortuneView().navigationBarHidden(true)) {
+                        HStack {
+                            Image(systemName: "sparkles")
+                                .foregroundColor(Color(red: 0.8, green: 0.6, blue: 0.2))
+                            Text("求签问卜")
+                                .foregroundColor(theme.primaryText)
+                            Spacer()
+                            Text("太虚幻境")
+                                .font(.caption)
+                                .foregroundColor(theme.tertiaryText)
+                        }
+                    }
+
                     NavigationLink(destination: RecipeView()) {
                         HStack {
                             Image(systemName: "fork.knife")
