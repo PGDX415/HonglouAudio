@@ -351,6 +351,10 @@ struct AudioPlayerView: View {
         }
         .onAppear {
             audioManager.loadAudio(for: chapter.audioFileName, title: chapter.title, chapterNumber: chapter.number)
+            ambientManager.activateAutoPlay()
+        }
+        .onDisappear {
+            ambientManager.deactivateAutoPlay()
         }
         .onChange(of: audioManager.currentPlayingChapter) { oldChapter, newChapter in
             if let newChapter = newChapter, (oldChapter == nil || oldChapter!.number != newChapter.number || oldChapter!.audioFileName != newChapter.audioFileName) {

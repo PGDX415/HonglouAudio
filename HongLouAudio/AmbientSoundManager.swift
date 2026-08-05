@@ -53,12 +53,15 @@ final class AmbientSoundManager: ObservableObject {
     @Published var isAmbientEnabled = false
     @Published var activeSounds: Set<SoundType> = []
     @Published var volumes: [SoundType: Float] = [:]
+    @Published var autoPlayEnabled: Bool = false
+    @Published var autoPlayDefaults: Set<SoundType> = [.qinyun]
 
     private let engine = AVAudioEngine()
     private var playerNodes: [SoundType: AVAudioPlayerNode] = [:]
     private var isEngineStarted = false
     private let sampleRate: Double = 44100
     private let bufferDuration: TimeInterval = 10.0
+    private var didAutoStart = false  // track whether current session was auto-started
 
     private static let volumeKeys: [SoundType: String] = [
         .rain: "ambient_vol_rain",
@@ -72,6 +75,11 @@ final class AmbientSoundManager: ObservableObject {
             let saved = UserDefaults.standard.float(forKey: Self.volumeKeys[type]!)
             volumes[type] = saved > 0 ? saved : type.defaultVolume
         }
+        // Load auto-play preferences
+        autoPlayEnabled = UserDefaults.standard.bool(forKey: "ambient_autoPlay")
+        let savedSounds = UserDefaults.standard.stringArray(forKey: "ambient_autoPlaySounds") ?? []
+        autoPlayDefaults = Set(savedSounds.compactMap { SoundType(rawValue: $0) })
+        if autoPlayDefaults.isEmpty { autoPlayDefaults = [.qinyun] }
         setupEngine()
     }
 
@@ -149,6 +157,41 @@ final class AmbientSoundManager: ObservableObject {
         if activeSounds.isEmpty && !isAmbientEnabled {
             stopEngine()
         }
+    }
+
+    // MARK: - Auto-Play
+
+    func setAutoPlay(enabled: Bool, sounds: Set<SoundType>) {
+        autoPlayEnabled = enabled
+        autoPlayDefaults = sounds
+        UserDefaults.standard.set(enabled, forKey: "ambient_autoPlay")
+        UserDefaults.standard.set(sounds.map(\.rawValue), forKey: "ambient_autoPlaySounds")
+    }
+
+    /// Called when audio playback begins — auto‑starts default ambient sounds.
+    func activateAutoPlay() {
+        guard autoPlayEnabled, !autoPlayDefaults.isEmpty else { return }
+        // Don't auto-start if user already manually manages ambient
+        if didAutoStart { return }
+
+        if !isAmbientEnabled {
+            isAmbientEnabled = true
+        }
+        startEngine()
+        for sound in autoPlayDefaults {
+            if !activeSounds.contains(sound) {
+                startSound(sound)
+            }
+        }
+        didAutoStart = true
+    }
+
+    /// Called when playback ends or view disappears.
+    func deactivateAutoPlay() {
+        guard didAutoStart else { return }
+        stopAll()
+        isAmbientEnabled = false
+        didAutoStart = false
     }
 
     func stopAll() {

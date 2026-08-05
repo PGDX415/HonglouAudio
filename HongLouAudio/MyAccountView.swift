@@ -11,6 +11,7 @@ struct MyAccountView: View {
     @State private var playbackSpeed: Float = 1.0
     @ObservedObject private var theme = ThemeManager.shared
     @ObservedObject private var statsManager = ListeningStatsManager.shared
+    @StateObject private var ambientManager = AmbientSoundManager.shared
     @State private var volume: Float = 0.8
     @AppStorage("textFontSize") private var textFontSize: Double = 18.0
 
@@ -99,6 +100,57 @@ struct MyAccountView: View {
                             .accentColor(theme.accentRed)
                     }
                     .padding(.vertical, 4)
+                }
+
+                Section("背景音设置") {
+                    Toggle(isOn: $ambientManager.autoPlayEnabled) {
+                        VStack(alignment: .leading, spacing: 4) {
+                            HStack(spacing: 6) {
+                                Image(systemName: "speaker.wave.2.fill")
+                                    .foregroundColor(theme.accentRed)
+                                Text("播放时自动开启背景音")
+                                    .foregroundColor(theme.primaryText)
+                            }
+                            if ambientManager.autoPlayEnabled {
+                                Text("每次开始播放，自动打开下方选中的环境音")
+                                    .font(.caption)
+                                    .foregroundColor(theme.tertiaryText)
+                            }
+                        }
+                    }
+                    .tint(theme.accentRed)
+                    .onChange(of: ambientManager.autoPlayEnabled) { _, enabled in
+                        ambientManager.setAutoPlay(enabled: enabled, sounds: ambientManager.autoPlayDefaults)
+                    }
+
+                    if ambientManager.autoPlayEnabled {
+                        ForEach(AmbientSoundManager.SoundType.allCases, id: \.self) { type in
+                            HStack {
+                                Image(systemName: type.icon)
+                                    .foregroundColor(type == .rain ? .blue : type == .wind ? .teal : type == .stream ? .cyan : .purple)
+                                    .frame(width: 24)
+                                Text(type.rawValue)
+                                    .foregroundColor(theme.primaryText)
+                                Spacer()
+                                Image(systemName: ambientManager.autoPlayDefaults.contains(type)
+                                    ? "checkmark.circle.fill"
+                                    : "circle")
+                                    .foregroundColor(ambientManager.autoPlayDefaults.contains(type)
+                                        ? theme.accentRed
+                                        : theme.tertiaryText)
+                            }
+                            .contentShape(Rectangle())
+                            .onTapGesture {
+                                var sounds = ambientManager.autoPlayDefaults
+                                if sounds.contains(type) {
+                                    sounds.remove(type)
+                                } else {
+                                    sounds.insert(type)
+                                }
+                                ambientManager.setAutoPlay(enabled: true, sounds: sounds)
+                            }
+                        }
+                    }
                 }
                 
                 Section("正文设置") {
