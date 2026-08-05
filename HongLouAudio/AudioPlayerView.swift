@@ -561,7 +561,7 @@ struct AudioPlayerView: View {
                             VStack(spacing: 8) {
                                 HStack {
                                     Image(systemName: type.icon)
-                                        .foregroundColor(type == .rain ? .blue : type == .wind ? .teal : type == .stream ? .cyan : .purple)
+                                        .foregroundColor(type == .rain ? .blue : type == .wind ? .teal : type == .stream ? .cyan : type == .qinyun2 ? .indigo : .purple)
                                         .frame(width: 24)
                                     Text(type.rawValue)
                                         .foregroundColor(theme.primaryText)
@@ -585,7 +585,7 @@ struct AudioPlayerView: View {
                                             ),
                                             in: 0.0...0.6
                                         )
-                                        .tint(type == .rain ? .blue : type == .wind ? .teal : type == .stream ? .cyan : .purple)
+                                        .tint(type == .rain ? .blue : type == .wind ? .teal : type == .stream ? .cyan : type == .qinyun2 ? .indigo : .purple)
                                         Image(systemName: "speaker.wave.3.fill")
                                             .font(.caption2)
                                             .foregroundColor(theme.tertiaryText)

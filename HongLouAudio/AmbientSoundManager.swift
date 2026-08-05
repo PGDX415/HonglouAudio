@@ -15,14 +15,16 @@ final class AmbientSoundManager: ObservableObject {
         case rain = "雨声"
         case wind = "风声"
         case stream = "溪流"
-        case qinyun = "琴韵"
+        case qinyun = "静水月华"
+        case qinyun2 = "平湖秋月"
 
         var icon: String {
             switch self {
             case .rain: return "cloud.rain.fill"
             case .wind: return "wind"
             case .stream: return "water.waves"
-            case .qinyun: return "music.quarternote.3"
+            case .qinyun: return "music.note"
+            case .qinyun2: return "music.note.list"
             }
         }
 
@@ -32,12 +34,14 @@ final class AmbientSoundManager: ObservableObject {
             case .wind: return "teal"
             case .stream: return "cyan"
             case .qinyun: return "purple"
+            case .qinyun2: return "indigo"
             }
         }
 
         var defaultVolume: Float {
             switch self {
             case .qinyun: return 0.20
+            case .qinyun2: return 0.20
             default: return 0.25
             }
         }
@@ -45,7 +49,17 @@ final class AmbientSoundManager: ObservableObject {
         var bufferSeconds: TimeInterval {
             switch self {
             case .qinyun: return 20.0
+            case .qinyun2: return 20.0
             default: return 10.0
+            }
+        }
+
+        /// Bundled audio file name for custom music types (nil = synthesize)
+        var bundledFileName: String? {
+            switch self {
+            case .qinyun: return "ambient_qinyun.mp3"
+            case .qinyun2: return "ambient_qinyun2.mp3"
+            default: return nil
             }
         }
     }
@@ -67,7 +81,8 @@ final class AmbientSoundManager: ObservableObject {
         .rain: "ambient_vol_rain",
         .wind: "ambient_vol_wind",
         .stream: "ambient_vol_stream",
-        .qinyun: "ambient_vol_qinyun"
+        .qinyun: "ambient_vol_qinyun",
+        .qinyun2: "ambient_vol_qinyun2"
     ]
 
     private init() {
@@ -272,8 +287,8 @@ final class AmbientSoundManager: ObservableObject {
     }
 
     private func generateBuffer(for type: SoundType, format: AVAudioFormat) -> AVAudioPCMBuffer {
-        // For qinyun, try bundled audio file first
-        if type == .qinyun, let bundled = loadBundledMusic(named: "ambient_qinyun.mp3") {
+        // For custom music types, try bundled audio file first
+        if let fileName = type.bundledFileName, let bundled = loadBundledMusic(named: fileName) {
             return bundled
         }
 
@@ -293,7 +308,7 @@ final class AmbientSoundManager: ObservableObject {
             generateWindNoise(into: channelData, count: Int(frameCount))
         case .stream:
             generateStreamNoise(into: channelData, count: Int(frameCount))
-        case .qinyun:
+        case .qinyun, .qinyun2:
             generateQinMelody(into: channelData, count: Int(frameCount))
         }
 
