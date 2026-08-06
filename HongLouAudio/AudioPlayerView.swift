@@ -968,7 +968,11 @@ class AudioManager: NSObject, ObservableObject {
     // MARK: - Audio Loading
 
     func loadAudio(for fileName: String, title: String = "", chapterNumber: Int = 0) {
-        guard let url = Bundle.main.url(forResource: fileName, withExtension: nil) else {
+        // Prefer downloaded cache, fall back to bundle
+        let url: URL
+        if let cached = AudioDownloadManager.shared.playableURL(for: fileName) {
+            url = cached
+        } else {
             print("Audio file not found: \(fileName)")
             return
         }

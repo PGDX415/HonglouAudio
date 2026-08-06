@@ -125,6 +125,9 @@ struct ChapterDetailView: View {
                                     .foregroundColor(theme.primaryText)
 
                                 Spacer()
+
+                                // Download status per audio file
+                                partDownloadIndicator(part)
                             }
 
                             Text(part.summary)
@@ -292,6 +295,43 @@ struct ChapterDetailView: View {
         }
     }
     
+    /// Download status indicator for a single audio part
+    @ViewBuilder
+    private func partDownloadIndicator(_ part: Chapter) -> some View {
+        let dm = AudioDownloadManager.shared
+        if dm.isDownloaded(part.audioFileName) {
+            Image(systemName: "checkmark.icloud.fill")
+                .font(.caption)
+                .foregroundColor(.green.opacity(0.7))
+        } else if dm.activeDownloads.contains(part.audioFileName) {
+            if let progress = dm.downloadProgress[part.audioFileName] {
+                ZStack {
+                    Circle()
+                        .stroke(Color.orange.opacity(0.3), lineWidth: 2)
+                        .frame(width: 20, height: 20)
+                    Circle()
+                        .trim(from: 0, to: CGFloat(progress))
+                        .stroke(Color.orange, lineWidth: 2)
+                        .frame(width: 20, height: 20)
+                        .rotationEffect(.degrees(-90))
+                    Text("\(Int(progress * 100))")
+                        .font(.system(size: 7, weight: .bold))
+                        .foregroundColor(.orange)
+                }
+            } else {
+                ProgressView()
+                    .scaleEffect(0.6)
+            }
+        } else if !dm.remoteBaseURL.isEmpty {
+            Button(action: { dm.download(fileName: part.audioFileName) }) {
+                Image(systemName: "icloud.and.arrow.down")
+                    .font(.caption)
+                    .foregroundColor(theme.accentRed.opacity(0.6))
+            }
+            .buttonStyle(.plain)
+        }
+    }
+
     /// Return "clause 上", "clause 下", or "中"
     /// e.g. "甄士隐梦幻识通灵 上", "贾雨村风尘怀闺秀 下"
     private func partLabel(from title: String) -> String {
@@ -313,8 +353,8 @@ struct ChapterDetailView: View {
 #Preview {
     // Create sample data for preview
     let sampleParts = [
-        Chapter(number: 5, title: "第三回 贾夫人仙逝扬州城 冷子兴演说荣国府 上", audioFileName: "5.mp3", summary: "Sample summary for part 1", textFileName: nil, paragraphTimestamps: nil),
-        Chapter(number: 6, title: "第三回 贾夫人仙逝扬州城 冷子兴演说荣国府 下", audioFileName: "6.mp3", summary: "Sample summary for part 2", textFileName: nil, paragraphTimestamps: nil)
+        Chapter(number: 5, title: "第三回 贾夫人仙逝扬州城 冷子兴演说荣国府 上", audioFileName: "5.mp3", summary: "Sample summary for part 1", textFileName: nil, paragraphTimestamps: nil, season: 1),
+        Chapter(number: 6, title: "第三回 贾夫人仙逝扬州城 冷子兴演说荣国府 下", audioFileName: "6.mp3", summary: "Sample summary for part 2", textFileName: nil, paragraphTimestamps: nil, season: 1)
     ]
     let sampleGrouped = GroupedChapter(chapterNumber: 3, titlePrefix: "第三回 贾夫人仙逝扬州城 冷子兴演说荣国府", parts: sampleParts)
     ChapterDetailView(groupedChapter: sampleGrouped, favoritesManager: FavoritesManager())

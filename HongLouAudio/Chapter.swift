@@ -21,6 +21,7 @@ struct Chapter: Codable, Identifiable, Equatable, Hashable {
     let summary: String
     let textFileName: String?
     let paragraphTimestamps: [Double]?
+    let season: Int
 
     var chapterText: String {
         guard let fileName = textFileName else { return "" }
@@ -37,6 +38,7 @@ struct Chapter: Codable, Identifiable, Equatable, Hashable {
         case summary = "summary"
         case textFileName = "textFileName"
         case paragraphTimestamps = "paragraphTimestamps"
+        case season = "season"
     }
 }
 
@@ -185,7 +187,81 @@ extension Array where Element == Chapter {
         
         // Handle 60
         if title.hasPrefix("第六十回") { return 60 }
-        
+
         return 0 // fallback
+    }
+}
+
+// MARK: - Season Model
+
+struct Season: Identifiable, Equatable {
+    let id: Int
+    let name: String                   // e.g., "第一季·入府初识"
+    let subtitle: String               // e.g., "🏯 繁华入梦"
+    let theme: String                  // e.g., "繁华入梦"
+    let chapterRange: ClosedRange<Int> // 回号范围
+    let description: String            // 一句话梗概
+    let introText: String              // 文学性简介段落
+    let keyEvents: [String]            // 关键事件标签
+    let coverEmoji: String             // 封面主视觉 emoji
+
+    var displayTitle: String {
+        "\(name)（第\(chapterRange.lowerBound)-\(chapterRange.upperBound)回）"
+    }
+
+    var shortTitle: String {
+        name
+    }
+
+    static let allSeasons: [Season] = [
+        Season(
+            id: 1,
+            name: "第一季·入府初识",
+            subtitle: "🏯 繁华入梦",
+            theme: "繁华入梦",
+            chapterRange: 1...15,
+            description: "黛玉进府、宝钗到来、秦可卿之死、凤姐理家",
+            introText: "繁华掩映下的贾府，一梦初醒。黛玉孤身入京，步步留心时时在意；宝钗携金锁而至，金玉良缘初现端倪。秦可卿香消玉殒，凤姐初展治家手腕。一切故事，从此开始。",
+            keyEvents: ["黛玉进府", "宝钗到来", "梦游太虚", "刘姥姥一进荣国府", "秦可卿之死", "凤姐协理宁国府"],
+            coverEmoji: "🏯"
+        ),
+        Season(
+            id: 2,
+            name: "第二季·大观园盛景",
+            subtitle: "🌸 园中春秋",
+            theme: "园中春秋",
+            chapterRange: 16...30,
+            description: "元妃省亲、宝黛读西厢、黛玉葬花",
+            introText: "元妃省亲，大观园中群芳毕集，极尽人间富贵。宝黛共读西厢，情愫暗生；黛玉葬花吟诗，字字泣血。青春的欢愉与哀愁在园中交织，奏出最美的乐章。",
+            keyEvents: ["元妃省亲", "宝黛读西厢", "黛玉葬花", "宝钗扑蝶", "蒋玉菡赠茜香罗", "清虚观打醮"],
+            coverEmoji: "🌸"
+        ),
+        Season(
+            id: 3,
+            name: "第三季·群芳争艳",
+            subtitle: "🎭 悲喜交加",
+            theme: "悲喜交加",
+            chapterRange: 31...45,
+            description: "宝玉挨打、海棠诗社、刘姥姥游园、凤姐泼醋",
+            introText: "宝玉挨打震动全府，海棠诗社雅集群芳。刘姥姥游园引得笑声满堂，凤姐泼醋大闹寿宴。宝钗兰言解疑癖，黛玉风雨制秋词。悲喜交错之间，人心悄然变化。",
+            keyEvents: ["宝玉挨打", "海棠诗社", "菊花诗会", "刘姥姥游大观园", "凤姐泼醋", "钗黛金兰契"],
+            coverEmoji: "🎭"
+        ),
+        Season(
+            id: 4,
+            name: "第四季·暗流涌动",
+            subtitle: "🌑 繁华将尽",
+            theme: "繁华将尽",
+            chapterRange: 46...60,
+            description: "鸳鸯抗婚、探春理家、紫鹃试玉、内部矛盾激化",
+            introText: "繁华之下暗流涌动。鸳鸯剪发明志，探春兴利除弊，紫鹃情辞试出宝玉真心。芦雪庵联诗尚有余温，玫瑰露风波已见裂痕。盛世的帷幕将落，无人知晓。",
+            keyEvents: ["鸳鸯抗婚", "香菱学诗", "芦雪庵联诗", "探春理家", "紫鹃试玉", "玫瑰露风波"],
+            coverEmoji: "🌑"
+        )
+    ]
+
+    /// Returns the season that contains a given 回 number, or nil
+    static func season(for chapterNumber: Int) -> Season? {
+        allSeasons.first { $0.chapterRange.contains(chapterNumber) }
     }
 }

@@ -316,7 +316,8 @@ struct ChapterReaderView: View {
             audioFileName: "",
             summary: "",
             textFileName: "chapter_01_shang.txt",
-            paragraphTimestamps: nil
+            paragraphTimestamps: nil,
+            season: 1
         ))
     }
 }

@@ -30,7 +30,8 @@
         1292.6,
         1371.7,
         1404.6
-      ]
+      ],
+      "season": 1
     },
     {
       "number": 2,
@@ -84,7 +85,8 @@
         1214.6,
         1237.6,
         1297.5
-      ]
+      ],
+      "season": 1
     },
     {
       "number": 3,
@@ -113,7 +115,8 @@
         659.0,
         704.8,
         772.7
-      ]
+      ],
+      "season": 1
     },
     {
       "number": 4,
@@ -130,7 +133,8 @@
         736.8,
         885.4,
         966.3
-      ]
+      ],
+      "season": 1
     },
     {
       "number": 5,
@@ -152,7 +156,8 @@
         819.7,
         1063.6,
         1126.8
-      ]
+      ],
+      "season": 1
     },
     {
       "number": 6,
@@ -160,7 +165,8 @@
       "audioFileName": "第03回_下.mp3",
       "summary": "宝玉初见黛玉，因她没有玉而摔玉，引起众人惊慌。黛玉开始在贾府的生活。",
       "textFileName": "chapter_03_xia.txt",
-      "paragraphTimestamps": null
+      "paragraphTimestamps": null,
+      "season": 1
     },
     {
       "number": 7,
@@ -168,7 +174,8 @@
       "audioFileName": "第04回_上.mp3",
       "summary": "贾雨村审理薛蟠打死冯渊一案，在门子的提醒下准备徇私枉法。",
       "textFileName": "chapter_04_shang.txt",
-      "paragraphTimestamps": null
+      "paragraphTimestamps": null,
+      "season": 1
     },
     {
       "number": 8,
@@ -176,7 +183,8 @@
       "audioFileName": "第04回_下.mp3",
       "summary": "贾雨村为讨好贾、王、薛三家而徇私枉法。薛蟠带母亲和妹妹宝钗进京，暂住贾府。",
       "textFileName": "chapter_04_xia.txt",
-      "paragraphTimestamps": null
+      "paragraphTimestamps": null,
+      "season": 1
     },
     {
       "number": 9,
@@ -184,7 +192,8 @@
       "audioFileName": "第05回_上.mp3",
       "summary": "宝玉在秦可卿房中准备梦游太虚幻境，预示主要人物的命运。",
       "textFileName": "chapter_05_shang.txt",
-      "paragraphTimestamps": null
+      "paragraphTimestamps": null,
+      "season": 1
     },
     {
       "number": 10,
@@ -192,7 +201,8 @@
       "audioFileName": "第05回_中.mp3",
       "summary": "暂无简介",
       "textFileName": "chapter_05_zhong.txt",
-      "paragraphTimestamps": null
+      "paragraphTimestamps": null,
+      "season": 1
     },
     {
       "number": 11,
@@ -200,7 +210,8 @@
       "audioFileName": "第05回_下.mp3",
       "summary": "宝玉醒来后与袭人初试云雨情，红楼梦曲预示了悲剧结局。",
       "textFileName": "chapter_05_xia.txt",
-      "paragraphTimestamps": null
+      "paragraphTimestamps": null,
+      "season": 1
     },
     {
       "number": 12,
@@ -208,7 +219,8 @@
       "audioFileName": "第06回_上.mp3",
       "summary": "刘姥姥因家境困难，带着外孙板儿到贾府求助。",
       "textFileName": "chapter_06_shang.txt",
-      "paragraphTimestamps": null
+      "paragraphTimestamps": null,
+      "season": 1
     },
     {
       "number": 13,
@@ -216,7 +228,8 @@
       "audioFileName": "第06回_下.mp3",
       "summary": "刘姥姥见到凤姐，得到二十两银子的资助，满意而归。",
       "textFileName": "chapter_06_xia.txt",
-      "paragraphTimestamps": null
+      "paragraphTimestamps": null,
+      "season": 1
     },
     {
       "number": 14,
@@ -224,7 +237,8 @@
       "audioFileName": "第07回_上.mp3",
       "summary": "周瑞家的送宫花给各位小姐，宝玉在宁府结识秦钟。",
       "textFileName": "chapter_07_shang.txt",
-      "paragraphTimestamps": null
+      "paragraphTimestamps": null,
+      "season": 1
     },
     {
       "number": 15,
@@ -232,7 +246,8 @@
       "audioFileName": "第07回_下.mp3",
       "summary": "宝玉与秦钟相见恨晚，约定一同上学读书。",
       "textFileName": "chapter_07_xia.txt",
-      "paragraphTimestamps": null
+      "paragraphTimestamps": null,
+      "season": 1
     },
     {
       "number": 16,
@@ -240,7 +255,8 @@
       "audioFileName": "第08回_上.mp3",
       "summary": "宝玉探望生病的宝钗，看到金锁上的字与自己通灵宝玉相配。",
       "textFileName": "chapter_08_shang.txt",
-      "paragraphTimestamps": null
+      "paragraphTimestamps": null,
+      "season": 1
     },
     {
       "number": 17,
@@ -248,7 +264,8 @@
       "audioFileName": "第08回_下.mp3",
       "summary": "黛玉来访时看到宝玉和宝钗在一起，心生醋意，言语间流露出不满。",
       "textFileName": "chapter_08_xia.txt",
-      "paragraphTimestamps": null
+      "paragraphTimestamps": null,
+      "season": 1
     },
     {
       "number": 18,
@@ -256,7 +273,8 @@
       "audioFileName": "第09回_上.mp3",
       "summary": "宝玉和秦钟入家塾读书，学堂里发生各种风流韵事。",
       "textFileName": "chapter_09_shang.txt",
-      "paragraphTimestamps": null
+      "paragraphTimestamps": null,
+      "season": 1
     },
     {
       "number": 19,
@@ -264,7 +282,8 @@
       "audioFileName": "第09回_下.mp3",
       "summary": "学堂内顽童争风吃醋，大闹学堂，引发混乱。",
       "textFileName": "chapter_09_xia.txt",
-      "paragraphTimestamps": null
+      "paragraphTimestamps": null,
+      "season": 1
     },
     {
       "number": 20,
@@ -272,7 +291,8 @@
       "audioFileName": "第10回_上.mp3",
       "summary": "金寡妇因贪图利益而受辱，秦可卿病情加重。",
       "textFileName": "chapter_10_shang.txt",
-      "paragraphTimestamps": null
+      "paragraphTimestamps": null,
+      "season": 1
     },
     {
       "number": 21,
@@ -280,7 +300,8 @@
       "audioFileName": "第10回_下.mp3",
       "summary": "张太医为秦可卿诊病，详细分析病因，但病情仍不见好转。",
       "textFileName": "chapter_10_xia.txt",
-      "paragraphTimestamps": null
+      "paragraphTimestamps": null,
+      "season": 1
     },
     {
       "number": 22,
@@ -288,7 +309,8 @@
       "audioFileName": "第11回_上.mp3",
       "summary": "宁府为贾敬庆寿辰，凤姐前往祝贺，贾瑞对其产生非分之想。",
       "textFileName": "chapter_11_shang.txt",
-      "paragraphTimestamps": null
+      "paragraphTimestamps": null,
+      "season": 1
     },
     {
       "number": 23,
@@ -296,7 +318,8 @@
       "audioFileName": "第11回_下.mp3",
       "summary": "贾瑞对凤姐纠缠不休，凤姐设计整治贾瑞。",
       "textFileName": "chapter_11_xia.txt",
-      "paragraphTimestamps": null
+      "paragraphTimestamps": null,
+      "season": 1
     },
     {
       "number": 24,
@@ -304,7 +327,8 @@
       "audioFileName": "第12回_上.mp3",
       "summary": "凤姐设下相思局整治贾瑞，贾瑞屡次上当受骗。",
       "textFileName": "chapter_12_shang.txt",
-      "paragraphTimestamps": null
+      "paragraphTimestamps": null,
+      "season": 1
     },
     {
       "number": 25,
@@ -312,7 +336,8 @@
       "audioFileName": "第12回_下.mp3",
       "summary": "贾瑞病重，得到风月宝鉴，但不听劝告，最终命丧黄泉。",
       "textFileName": "chapter_12_xia.txt",
-      "paragraphTimestamps": null
+      "paragraphTimestamps": null,
+      "season": 1
     },
     {
       "number": 26,
@@ -320,7 +345,8 @@
       "audioFileName": "第13回_上.mp3",
       "summary": "秦可卿病逝，托梦给凤姐，预言贾府衰败。贾珍为葬礼大操大办。",
       "textFileName": "chapter_13_shang.txt",
-      "paragraphTimestamps": null
+      "paragraphTimestamps": null,
+      "season": 1
     },
     {
       "number": 27,
@@ -328,7 +354,8 @@
       "audioFileName": "第13回_下.mp3",
       "summary": "贾珍请凤姐协理宁国府事务，凤姐展现管理才能。",
       "textFileName": "chapter_13_xia.txt",
-      "paragraphTimestamps": null
+      "paragraphTimestamps": null,
+      "season": 1
     },
     {
       "number": 28,
@@ -336,7 +363,8 @@
       "audioFileName": "第14回_上.mp3",
       "summary": "林如海去世，贾琏带黛玉回扬州奔丧。",
       "textFileName": "chapter_14_shang.txt",
-      "paragraphTimestamps": null
+      "paragraphTimestamps": null,
+      "season": 1
     },
     {
       "number": 29,
@@ -344,7 +372,8 @@
       "audioFileName": "第14回_下.mp3",
       "summary": "贾宝玉路遇北静王，两人相见甚欢，北静王赠予宝玉念珠。",
       "textFileName": "chapter_14_xia.txt",
-      "paragraphTimestamps": null
+      "paragraphTimestamps": null,
+      "season": 1
     },
     {
       "number": 30,
@@ -352,7 +381,8 @@
       "audioFileName": "第15回_上.mp3",
       "summary": "秦可卿出殡路上，凤姐在铁槛寺弄权，干预他人婚姻。",
       "textFileName": "chapter_15_shang.txt",
-      "paragraphTimestamps": null
+      "paragraphTimestamps": null,
+      "season": 1
     },
     {
       "number": 31,
@@ -360,7 +390,8 @@
       "audioFileName": "第15回_下.mp3",
       "summary": "秦钟在馒头庵与小尼姑智能儿私会，被宝玉撞见。",
       "textFileName": "chapter_15_xia.txt",
-      "paragraphTimestamps": null
+      "paragraphTimestamps": null,
+      "season": 1
     },
     {
       "number": 32,
@@ -368,7 +399,8 @@
       "audioFileName": "第16回_上.mp3",
       "summary": "贾元春被选入宫，封为凤藻宫尚书。秦钟病重。",
       "textFileName": "chapter_16_shang.txt",
-      "paragraphTimestamps": null
+      "paragraphTimestamps": null,
+      "season": 2
     },
     {
       "number": 33,
@@ -376,7 +408,8 @@
       "audioFileName": "第16回_下.mp3",
       "summary": "秦钟病逝，宝玉悲痛不已。贾府开始修建大观园迎接元妃省亲。",
       "textFileName": "chapter_16_xia.txt",
-      "paragraphTimestamps": null
+      "paragraphTimestamps": null,
+      "season": 2
     },
     {
       "number": 34,
@@ -384,7 +417,8 @@
       "audioFileName": "第17回_上.mp3",
       "summary": "大观园建成，贾政带宝玉等人游园，测试宝玉题对额的才能。",
       "textFileName": "chapter_17_shang.txt",
-      "paragraphTimestamps": null
+      "paragraphTimestamps": null,
+      "season": 2
     },
     {
       "number": 35,
@@ -392,7 +426,8 @@
       "audioFileName": "第17回_下.mp3",
       "summary": "宝玉展现才华，为各处景点题写匾额对联，获得众人赞赏。",
       "textFileName": "chapter_17_xia.txt",
-      "paragraphTimestamps": null
+      "paragraphTimestamps": null,
+      "season": 2
     },
     {
       "number": 36,
@@ -400,7 +435,8 @@
       "audioFileName": "第18回_上.mp3",
       "summary": "元妃省亲，贾府上下隆重迎接，极尽奢华。",
       "textFileName": "chapter_18_shang.txt",
-      "paragraphTimestamps": null
+      "paragraphTimestamps": null,
+      "season": 2
     },
     {
       "number": 37,
@@ -408,7 +444,8 @@
       "audioFileName": "第18回_下.mp3",
       "summary": "元妃与家人团聚，观看戏曲，命宝玉和众姐妹作诗，宝玉得到称赞。",
       "textFileName": "chapter_18_xia.txt",
-      "paragraphTimestamps": null
+      "paragraphTimestamps": null,
+      "season": 2
     },
     {
       "number": 38,
@@ -416,7 +453,8 @@
       "audioFileName": "第19回_上.mp3",
       "summary": "宝玉到黛玉房中，两人情意绵绵，互诉衷肠。",
       "textFileName": "chapter_19_shang.txt",
-      "paragraphTimestamps": null
+      "paragraphTimestamps": null,
+      "season": 2
     },
     {
       "number": 39,
@@ -424,7 +462,8 @@
       "audioFileName": "第19回_下.mp3",
       "summary": "宝玉编造故事逗黛玉开心，两人感情更加深厚。",
       "textFileName": "chapter_19_xia.txt",
-      "paragraphTimestamps": null
+      "paragraphTimestamps": null,
+      "season": 2
     },
     {
       "number": 40,
@@ -432,7 +471,8 @@
       "audioFileName": "第20回_上.mp3",
       "summary": "凤姐调解宝玉和湘云之间的误会，展现其机智。",
       "textFileName": "chapter_20_shang.txt",
-      "paragraphTimestamps": null
+      "paragraphTimestamps": null,
+      "season": 2
     },
     {
       "number": 41,
@@ -440,7 +480,8 @@
       "audioFileName": "第20回_下.mp3",
       "summary": "黛玉用俏皮话调侃宝玉，展现其聪慧和对宝玉的深情。",
       "textFileName": "chapter_20_xia.txt",
-      "paragraphTimestamps": null
+      "paragraphTimestamps": null,
+      "season": 2
     },
     {
       "number": 42,
@@ -448,7 +489,8 @@
       "audioFileName": "第21回_上.mp3",
       "summary": "袭人因宝玉不务正业而生气，用娇嗔的方式规劝宝玉。",
       "textFileName": "chapter_21_shang.txt",
-      "paragraphTimestamps": null
+      "paragraphTimestamps": null,
+      "season": 2
     },
     {
       "number": 43,
@@ -456,7 +498,8 @@
       "audioFileName": "第21回_下.mp3",
       "summary": "平儿巧妙处理贾琏的风流事，保护凤姐不受伤害。",
       "textFileName": "chapter_21_xia.txt",
-      "paragraphTimestamps": null
+      "paragraphTimestamps": null,
+      "season": 2
     },
     {
       "number": 44,
@@ -464,7 +507,8 @@
       "audioFileName": "第22回_上.mp3",
       "summary": "元宵节制灯谜，贾政从谜语中感受到不祥之兆。",
       "textFileName": "chapter_22_shang.txt",
-      "paragraphTimestamps": null
+      "paragraphTimestamps": null,
+      "season": 2
     },
     {
       "number": 45,
@@ -472,7 +516,8 @@
       "audioFileName": "第22回_下.mp3",
       "summary": "宝玉听曲文有所感悟，写下禅偈，但被黛玉点破。",
       "textFileName": "chapter_22_xia.txt",
-      "paragraphTimestamps": null
+      "paragraphTimestamps": null,
+      "season": 2
     },
     {
       "number": 46,
@@ -480,7 +525,8 @@
       "audioFileName": "第23回_上.mp3",
       "summary": "宝玉和黛玉共读西厢记，两人情感更加亲密。",
       "textFileName": "chapter_23_shang.txt",
-      "paragraphTimestamps": null
+      "paragraphTimestamps": null,
+      "season": 2
     },
     {
       "number": 47,
@@ -488,7 +534,8 @@
       "audioFileName": "第23回_下.mp3",
       "summary": "黛玉听到牡丹亭曲文，触动心弦，感伤自己的身世和命运。",
       "textFileName": "chapter_23_xia.txt",
-      "paragraphTimestamps": null
+      "paragraphTimestamps": null,
+      "season": 2
     },
     {
       "number": 48,
@@ -496,7 +543,8 @@
       "audioFileName": "第24回_上.mp3",
       "summary": "醉金刚倪二仗义疏财，帮助贾芸。小红对贾芸产生情愫。",
       "textFileName": "chapter_24_shang.txt",
-      "paragraphTimestamps": null
+      "paragraphTimestamps": null,
+      "season": 2
     },
     {
       "number": 49,
@@ -504,7 +552,8 @@
       "audioFileName": "第24回_下.mp3",
       "summary": "小红遗失手帕，贾芸拾到，两人通过手帕传情。",
       "textFileName": "chapter_24_xia.txt",
-      "paragraphTimestamps": null
+      "paragraphTimestamps": null,
+      "season": 2
     },
     {
       "number": 50,
@@ -512,7 +561,8 @@
       "audioFileName": "第25回_上.mp3",
       "summary": "赵姨娘请马道婆施魇魔法，宝玉和凤姐中邪病危。",
       "textFileName": "chapter_25_shang.txt",
-      "paragraphTimestamps": null
+      "paragraphTimestamps": null,
+      "season": 2
     },
     {
       "number": 51,
@@ -520,7 +570,8 @@
       "audioFileName": "第25回_下.mp3",
       "summary": "一僧一道出现，用通灵宝玉救醒宝玉和凤姐，化解危机。",
       "textFileName": "chapter_25_xia.txt",
-      "paragraphTimestamps": null
+      "paragraphTimestamps": null,
+      "season": 2
     },
     {
       "number": 52,
@@ -528,7 +579,8 @@
       "audioFileName": "第26回_上.mp3",
       "summary": "小红在蜂腰桥向贾芸传递消息，表达心意。",
       "textFileName": "chapter_26_shang.txt",
-      "paragraphTimestamps": null
+      "paragraphTimestamps": null,
+      "season": 2
     },
     {
       "number": 53,
@@ -536,7 +588,8 @@
       "audioFileName": "第26回_下.mp3",
       "summary": "黛玉在潇湘馆春困，听到宝玉和别人说话，心生疑虑。",
       "textFileName": "chapter_26_xia.txt",
-      "paragraphTimestamps": null
+      "paragraphTimestamps": null,
+      "season": 2
     },
     {
       "number": 54,
@@ -544,7 +597,8 @@
       "audioFileName": "第27回_上.mp3",
       "summary": "宝钗在滴翠亭扑蝶，无意中听到小红和坠儿的私密谈话。",
       "textFileName": "chapter_27_shang.txt",
-      "paragraphTimestamps": null
+      "paragraphTimestamps": null,
+      "season": 2
     },
     {
       "number": 55,
@@ -552,7 +606,8 @@
       "audioFileName": "第27回_下.mp3",
       "summary": "黛玉在埋香冢葬花，吟诵葬花词，表达对命运的感伤。",
       "textFileName": "chapter_27_xia.txt",
-      "paragraphTimestamps": null
+      "paragraphTimestamps": null,
+      "season": 2
     },
     {
       "number": 56,
@@ -560,7 +615,8 @@
       "audioFileName": "第28回_上.mp3",
       "summary": "宝玉在冯紫英家结识蒋玉菡，两人互赠信物。",
       "textFileName": "chapter_28_shang.txt",
-      "paragraphTimestamps": null
+      "paragraphTimestamps": null,
+      "season": 2
     },
     {
       "number": 57,
@@ -568,7 +624,8 @@
       "audioFileName": "第28回_下.mp3",
       "summary": "元妃赐端午节礼，宝玉和宝钗的礼物相同，黛玉感到失落。",
       "textFileName": "chapter_28_xia.txt",
-      "paragraphTimestamps": null
+      "paragraphTimestamps": null,
+      "season": 2
     },
     {
       "number": 58,
@@ -576,7 +633,8 @@
       "audioFileName": "第29回_上.mp3",
       "summary": "贾母带众人到清虚观打醮，张道士为宝玉提亲。",
       "textFileName": "chapter_29_shang.txt",
-      "paragraphTimestamps": null
+      "paragraphTimestamps": null,
+      "season": 2
     },
     {
       "number": 59,
@@ -584,7 +642,8 @@
       "audioFileName": "第29回_下.mp3",
       "summary": "黛玉因提亲一事与宝玉争吵，两人情感经历考验。",
       "textFileName": "chapter_29_xia.txt",
-      "paragraphTimestamps": null
+      "paragraphTimestamps": null,
+      "season": 2
     },
     {
       "number": 60,
@@ -592,7 +651,8 @@
       "audioFileName": "第30回_上.mp3",
       "summary": "宝钗借扇子巧妙讽刺宝玉和黛玉。龄官在地上划蔷字，表达对贾蔷的痴情。",
       "textFileName": "chapter_30_shang.txt",
-      "paragraphTimestamps": null
+      "paragraphTimestamps": null,
+      "season": 2
     },
     {
       "number": 61,
@@ -600,7 +660,8 @@
       "audioFileName": "第30回_下.mp3",
       "summary": "宝玉淋雨回怡红院，被丫鬟拒之门外，踢伤袭人。",
       "textFileName": "chapter_30_xia.txt",
-      "paragraphTimestamps": null
+      "paragraphTimestamps": null,
+      "season": 2
     },
     {
       "number": 62,
@@ -608,7 +669,8 @@
       "audioFileName": "第31回_上.mp3",
       "summary": "晴雯撕扇子博得宝玉一笑，展现其率真性格。",
       "textFileName": "chapter_31_shang.txt",
-      "paragraphTimestamps": null
+      "paragraphTimestamps": null,
+      "season": 3
     },
     {
       "number": 63,
@@ -616,7 +678,8 @@
       "audioFileName": "第31回_下.mp3",
       "summary": "湘云捡到金麒麟，暗示她与卫若兰的姻缘。",
       "textFileName": "chapter_31_xia.txt",
-      "paragraphTimestamps": null
+      "paragraphTimestamps": null,
+      "season": 3
     },
     {
       "number": 64,
@@ -624,7 +687,8 @@
       "audioFileName": "第32回_上.mp3",
       "summary": "宝玉向黛玉表白真心，说出'你放心'三字。",
       "textFileName": "chapter_32_shang.txt",
-      "paragraphTimestamps": null
+      "paragraphTimestamps": null,
+      "season": 3
     },
     {
       "number": 65,
@@ -632,7 +696,8 @@
       "audioFileName": "第32回_下.mp3",
       "summary": "金钏因被王夫人责骂而投井自尽，宝玉深感愧疚。",
       "textFileName": "chapter_32_xia.txt",
-      "paragraphTimestamps": null
+      "paragraphTimestamps": null,
+      "season": 3
     },
     {
       "number": 66,
@@ -640,7 +705,8 @@
       "audioFileName": "第33回_上.mp3",
       "summary": "贾环诬告宝玉强奸金钏，导致宝玉被贾政痛打。",
       "textFileName": "chapter_33_shang.txt",
-      "paragraphTimestamps": null
+      "paragraphTimestamps": null,
+      "season": 3
     },
     {
       "number": 67,
@@ -648,7 +714,8 @@
       "audioFileName": "第33回_下.mp3",
       "summary": "贾政痛打宝玉，众人求情，最终贾母出面制止。",
       "textFileName": "chapter_33_xia.txt",
-      "paragraphTimestamps": null
+      "paragraphTimestamps": null,
+      "season": 3
     },
     {
       "number": 68,
@@ -656,7 +723,8 @@
       "audioFileName": "第34回_上.mp3",
       "summary": "宝玉挨打后，黛玉前来探望，两人互诉衷肠。",
       "textFileName": "chapter_34_shang.txt",
-      "paragraphTimestamps": null
+      "paragraphTimestamps": null,
+      "season": 3
     },
     {
       "number": 69,
@@ -664,7 +732,8 @@
       "audioFileName": "第34回_下.mp3",
       "summary": "袭人向王夫人建议让宝玉搬出大观园，王夫人深以为然。",
       "textFileName": "chapter_34_xia.txt",
-      "paragraphTimestamps": null
+      "paragraphTimestamps": null,
+      "season": 3
     },
     {
       "number": 70,
@@ -672,7 +741,8 @@
       "audioFileName": "第35回_上.mp3",
       "summary": "玉钏为宝玉送莲叶羹，宝玉体贴关心。",
       "textFileName": "chapter_35_shang.txt",
-      "paragraphTimestamps": null
+      "paragraphTimestamps": null,
+      "season": 3
     },
     {
       "number": 71,
@@ -680,7 +750,8 @@
       "audioFileName": "第35回_下.mp3",
       "summary": "莺儿为宝玉打络子，讨论颜色搭配，暗含金玉良缘之意。",
       "textFileName": "chapter_35_xia.txt",
-      "paragraphTimestamps": null
+      "paragraphTimestamps": null,
+      "season": 3
     },
     {
       "number": 72,
@@ -688,7 +759,8 @@
       "audioFileName": "第36回_上.mp3",
       "summary": "宝玉在梦中喊出'和尚道士的话如何信得？什么是金玉姻缘，我偏说是木石前盟！'",
       "textFileName": "chapter_36_shang.txt",
-      "paragraphTimestamps": null
+      "paragraphTimestamps": null,
+      "season": 3
     },
     {
       "number": 73,
@@ -696,7 +768,8 @@
       "audioFileName": "第36回_下.mp3",
       "summary": "宝玉到梨香院看龄官，发现龄官只爱贾蔷，领悟到人生情缘各有分定。",
       "textFileName": "chapter_36_xia.txt",
-      "paragraphTimestamps": null
+      "paragraphTimestamps": null,
+      "season": 3
     },
     {
       "number": 74,
@@ -704,7 +777,8 @@
       "audioFileName": "第37回_上.mp3",
       "summary": "探春发起成立海棠诗社，众姐妹齐聚秋爽斋。",
       "textFileName": "chapter_37_shang.txt",
-      "paragraphTimestamps": null
+      "paragraphTimestamps": null,
+      "season": 3
     },
     {
       "number": 75,
@@ -712,7 +786,8 @@
       "audioFileName": "第37回_下.mp3",
       "summary": "众人作海棠诗，李纨评判，宝钗夺魁。宝钗和湘云夜拟菊花题。",
       "textFileName": "chapter_37_xia.txt",
-      "paragraphTimestamps": null
+      "paragraphTimestamps": null,
+      "season": 3
     },
     {
       "number": 76,
@@ -720,7 +795,8 @@
       "audioFileName": "第38回_上.mp3",
       "summary": "众人作菊花诗，黛玉的三首诗被评为最佳。",
       "textFileName": "chapter_38_shang.txt",
-      "paragraphTimestamps": null
+      "paragraphTimestamps": null,
+      "season": 3
     },
     {
       "number": 77,
@@ -728,7 +804,8 @@
       "audioFileName": "第38回_下.mp3",
       "summary": "众人吃螃蟹，作螃蟹咏，宝钗的诗讽刺世人，获得好评。",
       "textFileName": "chapter_38_xia.txt",
-      "paragraphTimestamps": null
+      "paragraphTimestamps": null,
+      "season": 3
     },
     {
       "number": 78,
@@ -736,7 +813,8 @@
       "audioFileName": "第39回_上.mp3",
       "summary": "刘姥姥二进荣国府，讲述乡村故事，逗得众人开心。",
       "textFileName": "chapter_39_shang.txt",
-      "paragraphTimestamps": null
+      "paragraphTimestamps": null,
+      "season": 3
     },
     {
       "number": 79,
@@ -744,7 +822,8 @@
       "audioFileName": "第39回_下.mp3",
       "summary": "宝玉对刘姥姥讲的茗玉小姐故事信以为真，派人寻找。",
       "textFileName": "chapter_39_xia.txt",
-      "paragraphTimestamps": null
+      "paragraphTimestamps": null,
+      "season": 3
     },
     {
       "number": 80,
@@ -752,7 +831,8 @@
       "audioFileName": "第40回_上.mp3",
       "summary": "贾母设宴招待刘姥姥，游览大观园各处景点。",
       "textFileName": "chapter_40_shang.txt",
-      "paragraphTimestamps": null
+      "paragraphTimestamps": null,
+      "season": 3
     },
     {
       "number": 81,
@@ -760,7 +840,8 @@
       "audioFileName": "第40回_下.mp3",
       "summary": "行酒令游戏中，刘姥姥的朴实话语引得众人捧腹大笑。",
       "textFileName": "chapter_40_xia.txt",
-      "paragraphTimestamps": null
+      "paragraphTimestamps": null,
+      "season": 3
     },
     {
       "number": 82,
@@ -768,7 +849,8 @@
       "audioFileName": "第41回_上.mp3",
       "summary": "刘姥姥在栊翠庵品茶，妙玉嫌弃她用过的杯子。",
       "textFileName": "chapter_41_shang.txt",
-      "paragraphTimestamps": null
+      "paragraphTimestamps": null,
+      "season": 3
     },
     {
       "number": 83,
@@ -776,7 +858,8 @@
       "audioFileName": "第41回_下.mp3",
       "summary": "刘姥姥醉卧怡红院，误入宝玉卧室，闹出笑话。",
       "textFileName": "chapter_41_xia.txt",
-      "paragraphTimestamps": null
+      "paragraphTimestamps": null,
+      "season": 3
     },
     {
       "number": 84,
@@ -784,7 +867,8 @@
       "audioFileName": "第42回_上.mp3",
       "summary": "宝钗劝黛玉不要看杂书，黛玉感激宝钗的关心。",
       "textFileName": "chapter_42_shang.txt",
-      "paragraphTimestamps": null
+      "paragraphTimestamps": null,
+      "season": 3
     },
     {
       "number": 85,
@@ -792,7 +876,8 @@
       "audioFileName": "第42回_下.mp3",
       "summary": "众人商议为惜春画大观园图，讨论所需物品和方法。",
       "textFileName": "chapter_42_xia.txt",
-      "paragraphTimestamps": null
+      "paragraphTimestamps": null,
+      "season": 3
     },
     {
       "number": 86,
@@ -800,7 +885,8 @@
       "audioFileName": "第43回_上.mp3",
       "summary": "众人凑份子为凤姐庆寿，宝玉却偷偷外出祭奠金钏。",
       "textFileName": "chapter_43_shang.txt",
-      "paragraphTimestamps": null
+      "paragraphTimestamps": null,
+      "season": 3
     },
     {
       "number": 87,
@@ -808,7 +894,8 @@
       "audioFileName": "第43回_下.mp3",
       "summary": "宝玉在水仙庵祭奠金钏，表达内心的愧疚和哀思。",
       "textFileName": "chapter_43_xia.txt",
-      "paragraphTimestamps": null
+      "paragraphTimestamps": null,
+      "season": 3
     },
     {
       "number": 88,
@@ -816,7 +903,8 @@
       "audioFileName": "第44回_上.mp3",
       "summary": "凤姐生日当天发现贾琏偷情，大闹一场。",
       "textFileName": "chapter_44_shang.txt",
-      "paragraphTimestamps": null
+      "paragraphTimestamps": null,
+      "season": 3
     },
     {
       "number": 89,
@@ -824,7 +912,8 @@
       "audioFileName": "第44回_下.mp3",
       "summary": "平儿被打后，宝玉帮她理妆，安慰她。",
       "textFileName": "chapter_44_xia.txt",
-      "paragraphTimestamps": null
+      "paragraphTimestamps": null,
+      "season": 3
     },
     {
       "number": 90,
@@ -832,7 +921,8 @@
       "audioFileName": "第45回_上.mp3",
       "summary": "宝钗和黛玉互诉衷肠，成为知心朋友。",
       "textFileName": "chapter_45_shang.txt",
-      "paragraphTimestamps": null
+      "paragraphTimestamps": null,
+      "season": 3
     },
     {
       "number": 91,
@@ -840,7 +930,8 @@
       "audioFileName": "第45回_下.mp3",
       "summary": "风雨之夜，黛玉写下《秋窗风雨夕》，表达孤独和感伤。",
       "textFileName": "chapter_45_xia.txt",
-      "paragraphTimestamps": null
+      "paragraphTimestamps": null,
+      "season": 3
     },
     {
       "number": 92,
@@ -848,7 +939,8 @@
       "audioFileName": "第46回_上.mp3",
       "summary": "贾赦要纳鸳鸯为妾，鸳鸯坚决不从。",
       "textFileName": "chapter_46_shang.txt",
-      "paragraphTimestamps": null
+      "paragraphTimestamps": null,
+      "season": 4
     },
     {
       "number": 93,
@@ -856,7 +948,8 @@
       "audioFileName": "第46回_下.mp3",
       "summary": "鸳鸯在贾母面前剪发明志，誓死不嫁，贾母保护了她。",
       "textFileName": "chapter_46_xia.txt",
-      "paragraphTimestamps": null
+      "paragraphTimestamps": null,
+      "season": 4
     },
     {
       "number": 94,
@@ -864,7 +957,8 @@
       "audioFileName": "第47回_上.mp3",
       "summary": "薛蟠调戏柳湘莲，被柳湘莲痛打一顿。",
       "textFileName": "chapter_47_shang.txt",
-      "paragraphTimestamps": null
+      "paragraphTimestamps": null,
+      "season": 4
     },
     {
       "number": 95,
@@ -872,7 +966,8 @@
       "audioFileName": "第47回_下.mp3",
       "summary": "柳湘莲担心报复，远走他乡，尤三姐因此绝望。",
       "textFileName": "chapter_47_xia.txt",
-      "paragraphTimestamps": null
+      "paragraphTimestamps": null,
+      "season": 4
     },
     {
       "number": 96,
@@ -880,7 +975,8 @@
       "audioFileName": "第48回_上.mp3",
       "summary": "薛蟠外出游艺，香菱搬到大观园向黛玉学诗。",
       "textFileName": "chapter_48_shang.txt",
-      "paragraphTimestamps": null
+      "paragraphTimestamps": null,
+      "season": 4
     },
     {
       "number": 97,
@@ -888,7 +984,8 @@
       "audioFileName": "第48回_下.mp3",
       "summary": "香菱刻苦学诗，终于写出好诗，展现其才华。",
       "textFileName": "chapter_48_xia.txt",
-      "paragraphTimestamps": null
+      "paragraphTimestamps": null,
+      "season": 4
     },
     {
       "number": 98,
@@ -896,7 +993,8 @@
       "audioFileName": "第49回_上.mp3",
       "summary": "大观园迎来多位新客人，包括薛宝琴、邢岫烟等。",
       "textFileName": "chapter_49_shang.txt",
-      "paragraphTimestamps": null
+      "paragraphTimestamps": null,
+      "season": 4
     },
     {
       "number": 99,
@@ -904,7 +1002,8 @@
       "audioFileName": "第49回_下.mp3",
       "summary": "雪天赏梅，众人烤鹿肉，展现青春活力。",
       "textFileName": "chapter_49_xia.txt",
-      "paragraphTimestamps": null
+      "paragraphTimestamps": null,
+      "season": 4
     },
     {
       "number": 100,
@@ -912,7 +1011,8 @@
       "audioFileName": "第50回_上.mp3",
       "summary": "芦雪庵即景联诗，众人争相展示才华。",
       "textFileName": "chapter_50_shang.txt",
-      "paragraphTimestamps": null
+      "paragraphTimestamps": null,
+      "season": 4
     },
     {
       "number": 101,
@@ -920,7 +1020,8 @@
       "audioFileName": "第50回_下.mp3",
       "summary": "暖香坞制作春灯谜，贾母参与其中，其乐融融。",
       "textFileName": "chapter_50_xia.txt",
-      "paragraphTimestamps": null
+      "paragraphTimestamps": null,
+      "season": 4
     },
     {
       "number": 102,
@@ -928,7 +1029,8 @@
       "audioFileName": "第51回_上.mp3",
       "summary": "薛宝琴作十首怀古诗，暗含深意。晴雯生病，请来胡庸医诊治。",
       "textFileName": "chapter_51_shang.txt",
-      "paragraphTimestamps": null
+      "paragraphTimestamps": null,
+      "season": 4
     },
     {
       "number": 103,
@@ -936,7 +1038,8 @@
       "audioFileName": "第51回_下.mp3",
       "summary": "宝玉担心胡庸医的虎狼药伤害晴雯，另请医生重新开方。",
       "textFileName": "chapter_51_xia.txt",
-      "paragraphTimestamps": null
+      "paragraphTimestamps": null,
+      "season": 4
     },
     {
       "number": 104,
@@ -944,7 +1047,8 @@
       "audioFileName": "第52回_上.mp3",
       "summary": "平儿发现坠儿偷窃虾须镯，但顾及宝玉颜面，私下处理。",
       "textFileName": "chapter_52_shang.txt",
-      "paragraphTimestamps": null
+      "paragraphTimestamps": null,
+      "season": 4
     },
     {
       "number": 105,
@@ -952,7 +1056,8 @@
       "audioFileName": "第52回_下.mp3",
       "summary": "晴雯病中为宝玉补缀雀金裘，展现其忠诚和勇敢。",
       "textFileName": "chapter_52_xia.txt",
-      "paragraphTimestamps": null
+      "paragraphTimestamps": null,
+      "season": 4
     },
     {
       "number": 106,
@@ -960,7 +1065,8 @@
       "audioFileName": "第53回_上.mp3",
       "summary": "宁国府举行隆重的除夕祭祖仪式，展现家族传统。",
       "textFileName": "chapter_53_shang.txt",
-      "paragraphTimestamps": null
+      "paragraphTimestamps": null,
+      "season": 4
     },
     {
       "number": 107,
@@ -968,7 +1074,8 @@
       "audioFileName": "第53回_下.mp3",
       "summary": "荣国府元宵节开夜宴，热闹非凡，但已显衰败之象。",
       "textFileName": "chapter_53_xia.txt",
-      "paragraphTimestamps": null
+      "paragraphTimestamps": null,
+      "season": 4
     },
     {
       "number": 108,
@@ -976,7 +1083,8 @@
       "audioFileName": "第54回_上.mp3",
       "summary": "贾母批评才子佳人小说的陈腐套路，展现其见识。",
       "textFileName": "chapter_54_shang.txt",
-      "paragraphTimestamps": null
+      "paragraphTimestamps": null,
+      "season": 4
     },
     {
       "number": 109,
@@ -984,7 +1092,8 @@
       "audioFileName": "第54回_下.mp3",
       "summary": "凤姐效仿古代孝子彩衣娱亲，逗贾母开心。",
       "textFileName": "chapter_54_xia.txt",
-      "paragraphTimestamps": null
+      "paragraphTimestamps": null,
+      "season": 4
     },
     {
       "number": 110,
@@ -992,7 +1101,8 @@
       "audioFileName": "第55回_上.mp3",
       "summary": "凤姐小产，探春、李纨、宝钗协理家务。赵姨娘因兄弟丧事闹事。",
       "textFileName": "chapter_55_shang.txt",
-      "paragraphTimestamps": null
+      "paragraphTimestamps": null,
+      "season": 4
     },
     {
       "number": 111,
@@ -1000,7 +1110,8 @@
       "audioFileName": "第55回_下.mp3",
       "summary": "探春展现管理才能，改革弊端，树立威信。",
       "textFileName": "chapter_55_xia.txt",
-      "paragraphTimestamps": null
+      "paragraphTimestamps": null,
+      "season": 4
     },
     {
       "number": 112,
@@ -1008,7 +1119,8 @@
       "audioFileName": "第56回_上.mp3",
       "summary": "探春推行承包制，兴利除弊，提高大观园经济效益。",
       "textFileName": "chapter_56_shang.txt",
-      "paragraphTimestamps": null
+      "paragraphTimestamps": null,
+      "season": 4
     },
     {
       "number": 113,
@@ -1016,7 +1128,8 @@
       "audioFileName": "第56回_下.mp3",
       "summary": "宝钗建议将收益分给众人，体现其周全考虑。",
       "textFileName": "chapter_56_xia.txt",
-      "paragraphTimestamps": null
+      "paragraphTimestamps": null,
+      "season": 4
     },
     {
       "number": 114,
@@ -1024,7 +1137,8 @@
       "audioFileName": "第57回_上.mp3",
       "summary": "紫鹃试探宝玉对黛玉的感情，谎称黛玉要回苏州。",
       "textFileName": "chapter_57_shang.txt",
-      "paragraphTimestamps": null
+      "paragraphTimestamps": null,
+      "season": 4
     },
     {
       "number": 115,
@@ -1032,7 +1146,8 @@
       "audioFileName": "第57回_中.mp3",
       "summary": "紫鹃试探宝玉对黛玉的感情，谎称黛玉要回苏州。",
       "textFileName": "chapter_57_zhong.txt",
-      "paragraphTimestamps": null
+      "paragraphTimestamps": null,
+      "season": 4
     },
     {
       "number": 116,
@@ -1040,7 +1155,8 @@
       "audioFileName": "第57回_下.mp3",
       "summary": "真相大白后，薛姨妈安慰黛玉，提及金玉良缘，黛玉心中不安。",
       "textFileName": "chapter_57_xia.txt",
-      "paragraphTimestamps": null
+      "paragraphTimestamps": null,
+      "season": 4
     },
     {
       "number": 117,
@@ -1048,7 +1164,8 @@
       "audioFileName": "第58回_上.mp3",
       "summary": "藕官烧纸祭奠菂官，被夏婆子发现，引发冲突。",
       "textFileName": "chapter_58_shang.txt",
-      "paragraphTimestamps": null
+      "paragraphTimestamps": null,
+      "season": 4
     },
     {
       "number": 118,
@@ -1056,7 +1173,8 @@
       "audioFileName": "第58回_下.mp3",
       "summary": "宝玉理解藕官的真情，保护她免受惩罚。",
       "textFileName": "chapter_58_xia.txt",
-      "paragraphTimestamps": null
+      "paragraphTimestamps": null,
+      "season": 4
     },
     {
       "number": 119,
@@ -1064,7 +1182,8 @@
       "audioFileName": "第59回_上.mp3",
       "summary": "春燕的母亲和姑妈因花草问题争吵，春燕求助宝玉。",
       "textFileName": "chapter_59_shang.txt",
-      "paragraphTimestamps": null
+      "paragraphTimestamps": null,
+      "season": 4
     },
     {
       "number": 120,
@@ -1072,7 +1191,8 @@
       "audioFileName": "第59回_下.mp3",
       "summary": "宝玉帮助春燕解决家庭纠纷，展现其善良本性。",
       "textFileName": "chapter_59_xia.txt",
-      "paragraphTimestamps": null
+      "paragraphTimestamps": null,
+      "season": 4
     },
     {
       "number": 121,
@@ -1080,7 +1200,8 @@
       "audioFileName": "第60回_上.mp3",
       "summary": "芳官用茉莉粉代替蔷薇硝给贾环，引发赵姨娘不满。",
       "textFileName": "chapter_60_shang.txt",
-      "paragraphTimestamps": null
+      "paragraphTimestamps": null,
+      "season": 4
     },
     {
       "number": 122,
@@ -1088,7 +1209,8 @@
       "audioFileName": "第60回_下.mp3",
       "summary": "玫瑰露和茯苓霜失窃事件，牵连多人，最终查明真相。",
       "textFileName": "chapter_60_xia.txt",
-      "paragraphTimestamps": null
+      "paragraphTimestamps": null,
+      "season": 4
     }
   ]
 }

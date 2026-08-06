@@ -12,8 +12,11 @@ struct MyAccountView: View {
     @ObservedObject private var theme = ThemeManager.shared
     @ObservedObject private var statsManager = ListeningStatsManager.shared
     @StateObject private var ambientManager = AmbientSoundManager.shared
+    @ObservedObject private var downloadManager = AudioDownloadManager.shared
     @State private var volume: Float = 0.8
     @AppStorage("textFontSize") private var textFontSize: Double = 18.0
+    @State private var remoteURLInput: String = ""
+    @State private var showURLSaved = false
 
     private let fontSizes: [(Double, String)] = [
         (15, "小"),
@@ -173,6 +176,92 @@ struct MyAccountView: View {
                         }
                     }
                     .tint(theme.accentRed)
+                }
+
+                // Remote download configuration
+                Section {
+                    VStack(alignment: .leading, spacing: 10) {
+                        HStack {
+                            Image(systemName: "cloud.fill")
+                                .foregroundColor(.blue)
+                            Text("远程音频下载")
+                                .font(.subheadline)
+                                .fontWeight(.medium)
+                                .foregroundColor(theme.primaryText)
+                        }
+
+                        Text("配置远程服务器地址后，可在线下载音频文件。留空则仅使用内置音频。")
+                            .font(.caption)
+                            .foregroundColor(theme.tertiaryText)
+                            .fixedSize(horizontal: false, vertical: true)
+
+                        HStack(spacing: 8) {
+                            TextField("https://your-cdn.com/honglou/", text: $remoteURLInput)
+                                .font(.system(size: 13, design: .monospaced))
+                                .textFieldStyle(.roundedBorder)
+                                .autocapitalization(.none)
+                                .disableAutocorrection(true)
+                                .onAppear {
+                                    remoteURLInput = downloadManager.remoteBaseURL
+                                }
+
+                            Button(action: {
+                                let trimmed = remoteURLInput.trimmingCharacters(in: .whitespaces)
+                                downloadManager.remoteBaseURL = trimmed
+                                withAnimation { showURLSaved = true }
+                                DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+                                    withAnimation { showURLSaved = false }
+                                }
+                            }) {
+                                Text("保存")
+                                    .font(.caption)
+                                    .fontWeight(.medium)
+                                    .foregroundColor(.white)
+                                    .padding(.horizontal, 14)
+                                    .padding(.vertical, 7)
+                                    .background(theme.accentRed)
+                                    .cornerRadius(6)
+                            }
+                        }
+
+                        if showURLSaved {
+                            Text("✅ 地址已保存")
+                                .font(.caption2)
+                                .foregroundColor(.green)
+                                .transition(.opacity)
+                        }
+                    }
+                    .padding(.vertical, 2)
+                } header: {
+                    Text("远程下载")
+                }
+
+                // Download status
+                if downloadManager.downloadedCount > 0 {
+                    Section {
+                        VStack(alignment: .leading, spacing: 8) {
+                            HStack {
+                                Image(systemName: "arrow.down.circle.fill")
+                                    .foregroundColor(.green)
+                                Text("离线音频")
+                                    .font(.subheadline)
+                                    .foregroundColor(theme.primaryText)
+                                Spacer()
+                                Text(downloadManager.downloadedSize.formattedSize)
+                                    .font(.caption)
+                                    .foregroundColor(theme.secondaryText)
+                            }
+
+                            HStack {
+                                Text("已下载 \(downloadManager.downloadedCount) 个文件")
+                                    .font(.caption)
+                                    .foregroundColor(theme.tertiaryText)
+                                Spacer()
+                            }
+                        }
+                    } header: {
+                        Text("下载状态")
+                    }
                 }
 
                 Section("法律与隐私") {

@@ -10,9 +10,11 @@ import SwiftUI
 struct CacheManagementView: View {
     @ObservedObject private var theme = ThemeManager.shared
     @StateObject private var cacheManager = CacheManager.shared
+    @ObservedObject private var downloadManager = AudioDownloadManager.shared
     @State private var showClearProgressAlert = false
     @State private var showClearBookmarksAlert = false
     @State private var showClearCachesAlert = false
+    @State private var showClearDownloadsAlert = false
     @State private var showResetAllAlert = false
     @State private var showClearedToast = false
     @State private var toastMessage = ""
@@ -20,6 +22,48 @@ struct CacheManagementView: View {
 
     var body: some View {
         List {
+            // Downloaded audio management
+            if downloadManager.downloadedCount > 0 {
+                Section("已下载音频（\(downloadManager.downloadedCount) 个文件）") {
+                    storageRow(
+                        icon: "arrow.down.circle.fill",
+                        color: .green,
+                        label: "离线音频",
+                        size: downloadManager.downloadedSize,
+                        clearable: true
+                    ) {
+                        showClearDownloadsAlert = true
+                    }
+
+                    // Active downloads
+                    if !downloadManager.activeDownloads.isEmpty {
+                        VStack(alignment: .leading, spacing: 8) {
+                            Text("正在下载...")
+                                .font(.caption)
+                                .foregroundColor(theme.secondaryText)
+
+                            ForEach(Array(downloadManager.activeDownloads), id: \.self) { fileName in
+                                HStack {
+                                    Text(fileName.replacingOccurrences(of: ".mp3", with: ""))
+                                        .font(.caption2)
+                                        .foregroundColor(theme.primaryText)
+                                        .lineLimit(1)
+
+                                    Spacer()
+
+                                    if let progress = downloadManager.downloadProgress[fileName] {
+                                        Text("\(Int(progress * 100))%")
+                                            .font(.caption2)
+                                            .foregroundColor(.orange)
+                                    }
+                                }
+                            }
+                        }
+                        .padding(.vertical, 4)
+                    }
+                }
+            }
+
             // Storage overview
             Section("存储概览") {
                 storageRow(
@@ -119,6 +163,17 @@ struct CacheManagementView: View {
             }
         } message: {
             Text("所有章节内的书签将被删除。")
+        }
+        .alert("清除已下载音频？", isPresented: $showClearDownloadsAlert) {
+            Button("取消", role: .cancel) {}
+            Button("清除", role: .destructive) {
+                for file in downloadManager.downloadedFiles {
+                    downloadManager.deleteFile(file)
+                }
+                toast("已下载音频已清除")
+            }
+        } message: {
+            Text("所有离线音频将被删除，需要重新下载。已下载量：\(downloadManager.downloadedSize.formattedSize)")
         }
         .alert("清除系统缓存？", isPresented: $showClearCachesAlert) {
             Button("取消", role: .cancel) {}
