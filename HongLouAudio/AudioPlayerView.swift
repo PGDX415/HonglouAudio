@@ -14,11 +14,9 @@ struct AudioPlayerView: View {
     @State private var showAmbientSounds = false
     @StateObject private var ambientManager = AmbientSoundManager.shared
     @State private var chapter: Chapter
-    @State private var hasResumedProgress = false
 
     init(chapter: Chapter, autoPlay: Bool = false) {
         self._chapter = State(initialValue: chapter)
-        self._hasResumedProgress = State(initialValue: false)
     }
 
     /// Parse the title to extract [chapterLabel, clause1, clause2, part]
@@ -1006,16 +1004,26 @@ class AudioManager: NSObject, ObservableObject {
         playerItem = AVPlayerItem(asset: asset)
         player.replaceCurrentItem(with: playerItem)
 
+        // Restore saved progress flag (stored as proportion 0.0-1.0)
+        let savedProportion = savedProgress(for: fileName)
+
         // Observe duration (iOS 16+ async API)
         Task { [weak self] in
             guard let self = self, let item = self.playerItem else { return }
             do {
                 let duration = try await item.asset.load(.duration)
                 let seconds = CMTimeGetSeconds(duration)
-                if seconds.isFinite && seconds > 0 {
-                    await MainActor.run {
-                        self.duration = seconds
-                        self.updateNowPlayingInfo()
+                guard seconds.isFinite && seconds > 0 else { return }
+                await MainActor.run {
+                    self.duration = seconds
+                    self.updateNowPlayingInfo()
+                    // Now that duration is known, restore saved progress
+                    if let proportion = savedProportion, proportion > 0, proportion < 1.0 {
+                        let seekSeconds = proportion * seconds
+                        let seekTime = CMTime(seconds: seekSeconds, preferredTimescale: CMTimeScale(NSEC_PER_SEC))
+                        self.player.seek(to: seekTime)
+                        self.currentTime = seekSeconds
+                        self.progress = Float(proportion)
                     }
                 }
             } catch {
@@ -1041,15 +1049,6 @@ class AudioManager: NSObject, ObservableObject {
                 self.progress = self.duration > 0 ? Float(seconds / self.duration) : 0
                 self.updateNowPlayingInfo()
             }
-        }
-
-        // Restore saved progress (stored as proportion 0.0-1.0)
-        if let proportion = savedProgress(for: fileName), proportion > 0, proportion < 1 {
-            let seekSeconds = proportion * duration
-            let seekTime = CMTime(seconds: seekSeconds, preferredTimescale: CMTimeScale(NSEC_PER_SEC))
-            player.seek(to: seekTime)
-            currentTime = seekSeconds
-            progress = Float(proportion)
         }
 
         updateNowPlayingInfo()

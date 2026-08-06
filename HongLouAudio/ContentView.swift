@@ -19,10 +19,21 @@ struct ContentView: View {
     @State private var showGardenMap = false
     @State private var showTimeline = false
     @State private var selectedSeasonID: Int? = nil // nil = 全部
+    @State private var selectedPartID: Int = 1      // 1 = 上部, 2 = 下部
 
     /// Flatten all parts into a single sequential list for "全部播放"
     private var allChaptersFlat: [Chapter] {
         groupedChapters.flatMap { $0.parts.sorted { $0.number < $1.number } }
+    }
+
+    /// Build playlist respecting current part + season selection
+    private func buildPlaylist() -> [Chapter] {
+        let partSeasonIDs = Set(currentPartSeasons.map { $0.id })
+        let base = allChaptersFlat.filter { partSeasonIDs.contains($0.season) }
+        if let sid = selectedSeasonID {
+            return base.filter { $0.season == sid }
+        }
+        return base
     }
 
     /// Chapters filtered by selected season
@@ -34,13 +45,20 @@ struct ContentView: View {
         return groupedChapters.filter { season.chapterRange.contains($0.chapterNumber) }
     }
 
-    /// Navigation title with seasonal indicator
+    /// Seasons for the currently selected part
+    private var currentPartSeasons: [Season] {
+        Season.seasons(for: selectedPartID)
+    }
+
+    /// Navigation title with part + seasonal indicator
     private var navigationTitle: String {
+        let currentPart = Part.allParts.first { $0.id == selectedPartID }
+        let partEmoji = currentPart?.emoji ?? ""
         if let seasonID = selectedSeasonID,
-           let season = Season.allSeasons.first(where: { $0.id == seasonID }) {
-            return "红楼聆梦 \(season.coverEmoji)"
+           let season = currentPartSeasons.first(where: { $0.id == seasonID }) {
+            return "红楼聆梦 \(partEmoji)\(season.coverEmoji)"
         }
-        return "红楼聆梦"
+        return "红楼聆梦 \(partEmoji)"
     }
     
     var body: some View {
@@ -116,9 +134,7 @@ struct ContentView: View {
             ToolbarItem(placement: .navigationBarTrailing) {
                 Menu {
                     Button(action: {
-                        let playlist = selectedSeasonID == nil
-                            ? allChaptersFlat
-                            : allChaptersFlat.filter { $0.season == selectedSeasonID }
+                        let playlist = buildPlaylist()
                         guard let first = playlist.first else { return }
                         AudioManager.shared.configurePlaylist(playlist, startIndex: 0)
                         AudioManager.shared.playMode = .sequential
@@ -131,9 +147,7 @@ struct ContentView: View {
 
                     ForEach(filteredGroupedChapters.filter { !$0.parts.isEmpty }) { gc in
                         Button(action: {
-                            let playlist = selectedSeasonID == nil
-                                ? allChaptersFlat
-                                : allChaptersFlat.filter { $0.season == selectedSeasonID }
+                            let playlist = buildPlaylist()
                             guard let firstPart = gc.parts.first,
                                   let startIdx = playlist.firstIndex(where: { $0.number == firstPart.number }) else { return }
                             AudioManager.shared.configurePlaylist(playlist, startIndex: startIdx)
@@ -168,12 +182,43 @@ struct ContentView: View {
 
     private var seasonPickerView: some View {
         VStack(alignment: .leading, spacing: 8) {
+            // Part toggle: 上部 / 下部
+            HStack(spacing: 0) {
+                ForEach(Part.allParts) { part in
+                    Button(action: {
+                        withAnimation(.easeInOut(duration: 0.2)) {
+                            selectedPartID = part.id
+                            selectedSeasonID = nil
+                        }
+                    }) {
+                        HStack(spacing: 4) {
+                            Text(part.emoji)
+                                .font(.system(size: 14))
+                            Text(part.shortName)
+                                .font(.system(size: 13, weight: selectedPartID == part.id ? .bold : .medium))
+                        }
+                        .foregroundColor(selectedPartID == part.id ? .white : theme.primaryText)
+                        .frame(maxWidth: .infinity)
+                        .padding(.vertical, 8)
+                        .background(
+                            selectedPartID == part.id
+                                ? theme.accentRed
+                                : Color(.systemGray6)
+                        )
+                    }
+                    .buttonStyle(.plain)
+                }
+            }
+            .clipShape(RoundedRectangle(cornerRadius: 8))
+
+            // Season chips for current part
             ScrollView(.horizontal, showsIndicators: false) {
                 HStack(spacing: 10) {
                     // "全部" button
+                    let allCount = currentPartSeasons.reduce(0) { $0 + $1.chapterRange.count }
                     SeasonChip(
                         label: "全部",
-                        subtitle: "60回",
+                        subtitle: "\(allCount)回",
                         isSelected: selectedSeasonID == nil,
                         accentColor: theme.accentRed
                     ) {
@@ -182,7 +227,7 @@ struct ContentView: View {
                         }
                     }
 
-                    ForEach(Season.allSeasons) { season in
+                    ForEach(currentPartSeasons) { season in
                         SeasonChip(
                             label: season.shortTitle,
                             subtitle: "第\(season.chapterRange.lowerBound)-\(season.chapterRange.upperBound)回",
@@ -200,7 +245,7 @@ struct ContentView: View {
 
             // Season banner when a season is selected
             if let seasonID = selectedSeasonID,
-               let season = Season.allSeasons.first(where: { $0.id == seasonID }) {
+               let season = currentPartSeasons.first(where: { $0.id == seasonID }) {
                 let chaptersForSeason = allChaptersFlat.filter { $0.season == seasonID }
                 let completedInSeason = seasonProgress(for: season)
                 SeasonBanner(
@@ -675,6 +720,26 @@ struct SeasonBanner: View {
             Color(red: 0.18, green: 0.14, blue: 0.38),
             Color(red: 0.22, green: 0.16, blue: 0.42),
             Color(red: 0.15, green: 0.10, blue: 0.35)
+        ]
+        case 5: return [
+            Color(red: 0.55, green: 0.35, blue: 0.12),
+            Color(red: 0.62, green: 0.38, blue: 0.15),
+            Color(red: 0.48, green: 0.28, blue: 0.08)
+        ]
+        case 6: return [
+            Color(red: 0.42, green: 0.18, blue: 0.22),
+            Color(red: 0.48, green: 0.22, blue: 0.26),
+            Color(red: 0.35, green: 0.12, blue: 0.18)
+        ]
+        case 7: return [
+            Color(red: 0.22, green: 0.15, blue: 0.18),
+            Color(red: 0.28, green: 0.18, blue: 0.22),
+            Color(red: 0.18, green: 0.10, blue: 0.15)
+        ]
+        case 8: return [
+            Color(red: 0.15, green: 0.18, blue: 0.28),
+            Color(red: 0.18, green: 0.22, blue: 0.32),
+            Color(red: 0.10, green: 0.14, blue: 0.25)
         ]
         default: return [theme.accentRed, theme.deepRed]
         }
