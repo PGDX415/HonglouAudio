@@ -36,13 +36,20 @@ struct ContentView: View {
         return base
     }
 
-    /// Chapters filtered by selected season
+    /// Chapters filtered by selected part + season
     private var filteredGroupedChapters: [GroupedChapter] {
-        guard let seasonID = selectedSeasonID,
-              let season = Season.allSeasons.first(where: { $0.id == seasonID }) else {
-            return groupedChapters
+        let partSeasonIDs = Set(currentPartSeasons.map { $0.id })
+        // Filter by current part first
+        var result = groupedChapters.filter { gc in
+            guard let chSeason = Season.season(for: gc.chapterNumber) else { return false }
+            return partSeasonIDs.contains(chSeason.id)
         }
-        return groupedChapters.filter { season.chapterRange.contains($0.chapterNumber) }
+        // Then filter by selected season if any
+        if let seasonID = selectedSeasonID,
+           let season = Season.allSeasons.first(where: { $0.id == seasonID }) {
+            result = result.filter { season.chapterRange.contains($0.chapterNumber) }
+        }
+        return result
     }
 
     /// Seasons for the currently selected part
@@ -141,7 +148,7 @@ struct ContentView: View {
                         playAllStartChapter = first
                         showPlayAll = true
                     }) {
-                        Label(selectedSeasonID == nil ? "全部播放" : "播放本季",
+                        Label(selectedSeasonID == nil ? "播放全部" : "播放本季",
                               systemImage: "play.fill")
                     }
 
@@ -214,19 +221,6 @@ struct ContentView: View {
             // Season chips for current part
             ScrollView(.horizontal, showsIndicators: false) {
                 HStack(spacing: 10) {
-                    // "全部" button
-                    let allCount = currentPartSeasons.reduce(0) { $0 + $1.chapterRange.count }
-                    SeasonChip(
-                        label: "全部",
-                        subtitle: "\(allCount)回",
-                        isSelected: selectedSeasonID == nil,
-                        accentColor: theme.accentRed
-                    ) {
-                        withAnimation(.easeInOut(duration: 0.2)) {
-                            selectedSeasonID = nil
-                        }
-                    }
-
                     ForEach(currentPartSeasons) { season in
                         SeasonChip(
                             label: season.shortTitle,
@@ -235,7 +229,8 @@ struct ContentView: View {
                             accentColor: theme.accentRed
                         ) {
                             withAnimation(.easeInOut(duration: 0.2)) {
-                                selectedSeasonID = season.id
+                                // Toggle: tap again to deselect (show all in this part)
+                                selectedSeasonID = (selectedSeasonID == season.id) ? nil : season.id
                             }
                         }
                     }
