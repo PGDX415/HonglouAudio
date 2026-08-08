@@ -38,11 +38,50 @@ struct ChapterDetailView: View {
         "xiang_ling": "香菱",
         "zi_juan": "紫鹃",
         "you_sanjie": "尤三姐",
-        "jia_she": "贾赦"
+        "jia_she": "贾赦",
+        "zhen_shiyin": "甄士隐",
+        "jia_yucun": "贾雨村",
+        "jia_yun": "贾芸",
+        "you_shi": "尤氏",
+        "xing_furen": "邢夫人"
+    ]
+
+    /// 每回的核心人物画像映射（基于情节确定最标志性的人物）
+    private static let chapterMainCharacter: [Int: String] = [
+        1: "zhen_shiyin", 2: "jia_yucun", 3: "lin_daiyu", 4: "jia_yucun",
+        5: "jia_baoyu", 6: "liu_laolao", 7: "jia_baoyu", 8: "xue_baochai",
+        9: "jia_baoyu", 10: "qin_keqing", 11: "wang_xifeng", 12: "lin_daiyu",
+        13: "wang_xifeng", 14: "jia_baoyu", 15: "wang_xifeng", 16: "jia_yuanchun",
+        17: "jia_baoyu", 18: "jia_yuanchun", 19: "xi_ren", 20: "wang_xifeng",
+        21: "shi_xiangyun", 22: "jia_baoyu", 23: "lin_daiyu", 24: "jia_yun",
+        25: "jia_baoyu", 26: "jia_baoyu", 27: "lin_daiyu", 28: "jia_baoyu",
+        29: "jia_mu", 30: "xue_baochai", 31: "xi_ren", 32: "jia_baoyu",
+        33: "jia_baoyu", 34: "xue_baochai", 35: "jia_baoyu", 36: "jia_tanchun",
+        37: "jia_tanchun", 38: "jia_tanchun", 39: "liu_laolao", 40: "liu_laolao",
+        41: "wang_xifeng", 42: "liu_laolao", 43: "jia_mu", 44: "wang_xifeng",
+        45: "lin_daiyu", 46: "yuan_yang", 47: "jia_she", 48: "xiang_ling",
+        49: "shi_xiangyun", 50: "jia_tanchun", 51: "xue_baochai", 52: "ping_er",
+        53: "jia_mu", 54: "jia_mu", 55: "jia_tanchun", 56: "jia_tanchun",
+        57: "zi_juan", 58: "xue_baochai", 59: "jia_baoyu", 60: "jia_baoyu",
+        61: "ping_er", 62: "shi_xiangyun", 63: "jia_baoyu", 64: "lin_daiyu",
+        65: "you_sanjie", 66: "you_sanjie", 67: "wang_xifeng", 68: "wang_xifeng",
+        69: "you_sanjie", 70: "lin_daiyu", 71: "jia_mu", 72: "yuan_yang",
+        73: "jia_yingchun", 74: "qing_wen", 75: "jia_tanchun", 76: "lin_daiyu",
+        77: "qing_wen", 78: "qing_wen", 79: "jia_yingchun", 80: "xiang_ling",
+        81: "jia_baoyu", 82: "lin_daiyu", 83: "jia_yuanchun", 84: "jia_baoyu",
+        85: "xue_baochai", 86: "jia_yuanchun", 87: "miao_yu", 88: "jia_mu",
+        89: "jia_baoyu", 90: "jia_baoyu", 91: "jia_baoyu", 92: "jia_zheng",
+        93: "jia_baoyu", 94: "jia_baoyu", 95: "jia_yuanchun", 96: "jia_baoyu",
+        97: "lin_daiyu", 98: "lin_daiyu", 99: "jia_zheng", 100: "jia_tanchun",
+        101: "wang_xifeng", 102: "you_shi", 103: "wang_xifeng", 104: "jia_yun",
+        105: "jia_zheng", 106: "jia_mu", 107: "jia_zheng", 108: "xue_baochai",
+        109: "jia_baoyu", 110: "jia_mu", 111: "yuan_yang", 112: "miao_yu",
+        113: "wang_xifeng", 114: "wang_xifeng", 115: "jia_xichun", 116: "jia_baoyu",
+        117: "jia_baoyu", 118: "jia_xichun", 119: "jia_baoyu", 120: "jia_baoyu",
     ]
     
-    @State private var randomCharacterImageName: String = ""
-    @State private var randomCharacterName: String = ""
+    @State private var displayCharacterImageName: String = ""
+    @State private var displayCharacterName: String = ""
     @State private var isImageZoomed = false
     @State private var readerChapter: Chapter? = nil
     @State private var selectedPart: Chapter? = nil
@@ -173,14 +212,14 @@ struct ChapterDetailView: View {
                 .listStyle(PlainListStyle())
 
                 // Random character image section with actual character name
-                if !randomCharacterImageName.isEmpty && !randomCharacterName.isEmpty {
+                if !displayCharacterImageName.isEmpty && !displayCharacterName.isEmpty {
                     VStack(spacing: 8) {
-                        Text(randomCharacterName)
+                        Text(displayCharacterName)
                             .font(.subheadline)
                             .fontWeight(.semibold)
                             .foregroundColor(theme.primaryText)
 
-                        if let uiImage = UIImage(named: randomCharacterImageName) {
+                        if let uiImage = UIImage(named: displayCharacterImageName) {
                             Image(uiImage: uiImage)
                                 .resizable()
                                 .aspectRatio(contentMode: .fill)
@@ -224,7 +263,7 @@ struct ChapterDetailView: View {
                     }
 
                 VStack {
-                    if let uiImage = UIImage(named: randomCharacterImageName) {
+                    if let uiImage = UIImage(named: displayCharacterImageName) {
                         Image(uiImage: uiImage)
                             .resizable()
                             .aspectRatio(contentMode: .fit)
@@ -233,7 +272,7 @@ struct ChapterDetailView: View {
                             .shadow(color: .black.opacity(0.5), radius: 20, x: 0, y: 10)
                     }
 
-                    Text(randomCharacterName)
+                    Text(displayCharacterName)
                         .font(.title3)
                         .fontWeight(.bold)
                         .foregroundColor(.white)
@@ -242,11 +281,19 @@ struct ChapterDetailView: View {
             }
         }
         .onAppear {
-            // Select a random character image and name each time the view appears
-            let characterImageNames = Array(characterNameMap.keys)
-            let randomIndex = Int.random(in: 0..<characterImageNames.count)
-            randomCharacterImageName = characterImageNames[randomIndex]
-            randomCharacterName = characterNameMap[randomCharacterImageName] ?? "未知人物"
+            // Select the most relevant character for this chapter
+            let chapterNum = groupedChapter.chapterNumber
+            if let imageName = Self.chapterMainCharacter[chapterNum],
+               let name = characterNameMap[imageName] {
+                displayCharacterImageName = imageName
+                displayCharacterName = name
+            } else {
+                // Fallback: random selection
+                let keys = Array(characterNameMap.keys)
+                let idx = Int.random(in: 0..<keys.count)
+                displayCharacterImageName = keys[idx]
+                displayCharacterName = characterNameMap[displayCharacterImageName] ?? "未知人物"
+            }
         }
         .toolbar {
             ToolbarItem(placement: .principal) {
