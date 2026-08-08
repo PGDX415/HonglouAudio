@@ -11,7 +11,7 @@ struct ContentView: View {
     @ObservedObject var favoritesManager: FavoritesManager
     @State private var groupedChapters: [GroupedChapter] = []
     @ObservedObject private var theme = ThemeManager.shared
-    @State private var searchText = ""
+    @State private var showSearch = false
     @State private var showPlayAll = false
     @State private var playAllStartChapter: Chapter?
     @State private var progressData: [Int: Double] = [:] // chapterNumber -> progress proportion
@@ -70,38 +70,38 @@ struct ContentView: View {
     
     var body: some View {
         NavigationStack(path: $navPath) {
-        Group {
-            if searchText.isEmpty {
-                List {
-                    // Season picker
-                    Section {
-                        seasonPickerView
-                            .listRowInsets(EdgeInsets())
-                            .listRowBackground(Color.clear)
-                    }
-
-                    // Daily quote banner
-                    Section {
-                        dailyQuoteBanner
-                            .listRowInsets(EdgeInsets())
-                            .listRowBackground(Color.clear)
-                    }
-
-                    ForEach(filteredGroupedChapters, id: \.id) { groupedChapter in
-                        Button {
-                            navPath.append(groupedChapter)
-                        } label: {
-                            chapterRowContent(groupedChapter)
-                        }
-                        .buttonStyle(.plain)
-                    }
+            List {
+                // Season picker
+                Section {
+                    seasonPickerView
+                        .listRowInsets(EdgeInsets())
+                        .listRowBackground(Color.clear)
                 }
-                .listStyle(.plain)
-            } else {
-                searchResultsList
+
+                // Quick actions
+                Section {
+                    quickActionsRow
+                        .listRowInsets(EdgeInsets())
+                        .listRowBackground(Color.clear)
+                }
+
+                // Daily quote banner
+                Section {
+                    dailyQuoteBanner
+                        .listRowInsets(EdgeInsets())
+                        .listRowBackground(Color.clear)
+                }
+
+                ForEach(filteredGroupedChapters, id: \.id) { groupedChapter in
+                    Button {
+                        navPath.append(groupedChapter)
+                    } label: {
+                        chapterRowContent(groupedChapter)
+                    }
+                    .buttonStyle(.plain)
+                }
             }
-        }
-        .searchable(text: $searchText, prompt: "搜索回目、标题或正文...")
+            .listStyle(.plain)
         .onAppear {
             let allChapters = ChapterLoader.loadChapters()
             groupedChapters = allChapters.groupByHui()
@@ -121,56 +121,6 @@ struct ContentView: View {
         .navigationDestination(for: Chapter.self) { chapter in
             AudioPlayerView(chapter: chapter)
         }
-        .toolbar {
-            ToolbarItem(placement: .navigationBarLeading) {
-                HStack(spacing: 16) {
-                    Button {
-                        showTimeline = true
-                    } label: {
-                        Image(systemName: "clock.arrow.2.circlepath")
-                            .foregroundColor(theme.accentRed)
-                    }
-                    Button {
-                        showGardenMap = true
-                    } label: {
-                        Image(systemName: "map.fill")
-                            .foregroundColor(theme.accentRed)
-                    }
-                }
-            }
-            ToolbarItem(placement: .navigationBarTrailing) {
-                Menu {
-                    Button(action: {
-                        let playlist = buildPlaylist()
-                        guard let first = playlist.first else { return }
-                        AudioManager.shared.configurePlaylist(playlist, startIndex: 0)
-                        AudioManager.shared.playMode = .sequential
-                        playAllStartChapter = first
-                        showPlayAll = true
-                    }) {
-                        Label(selectedSeasonID == nil ? "播放全部" : "播放本季",
-                              systemImage: "play.fill")
-                    }
-
-                    ForEach(filteredGroupedChapters.filter { !$0.parts.isEmpty }) { gc in
-                        Button(action: {
-                            let playlist = buildPlaylist()
-                            guard let firstPart = gc.parts.first,
-                                  let startIdx = playlist.firstIndex(where: { $0.number == firstPart.number }) else { return }
-                            AudioManager.shared.configurePlaylist(playlist, startIndex: startIdx)
-                            AudioManager.shared.playMode = .sequential
-                            playAllStartChapter = firstPart
-                            showPlayAll = true
-                        }) {
-                            Label("从第\(gc.chapterNumber)回开始", systemImage: "forward.fill")
-                        }
-                    }
-                } label: {
-                    Image(systemName: "list.bullet")
-                        .foregroundColor(theme.accentRed)
-                }
-            }
-        }
         .navigationDestination(isPresented: $showPlayAll) {
             if let chapter = playAllStartChapter {
                 AudioPlayerView(chapter: chapter)
@@ -181,6 +131,23 @@ struct ContentView: View {
         }
         .navigationDestination(isPresented: $showTimeline) {
             TimelineView()
+        }
+        .toolbar {
+            ToolbarItem(placement: .navigationBarTrailing) {
+                Button {
+                    showSearch = true
+                } label: {
+                    Image(systemName: "magnifyingglass")
+                        .foregroundColor(theme.accentRed)
+                        .font(.title3)
+                }
+            }
+        }
+        .sheet(isPresented: $showSearch) {
+            SearchSheetView(groupedChapters: filteredGroupedChapters) { chapter in
+                showSearch = false
+                navPath.append(chapter)
+            }
         }
         }
     }
@@ -252,6 +219,72 @@ struct ContentView: View {
                     .padding(.horizontal, 2)
             }
         }
+    }
+
+    // MARK: - Quick Actions
+
+    private var quickActionsRow: some View {
+        HStack(spacing: 10) {
+            // 连续播放 — prominent primary button
+            Button {
+                let playlist = buildPlaylist()
+                guard let first = playlist.first else { return }
+                AudioManager.shared.configurePlaylist(playlist, startIndex: 0)
+                AudioManager.shared.playMode = .sequential
+                playAllStartChapter = first
+                showPlayAll = true
+            } label: {
+                HStack(spacing: 4) {
+                    Image(systemName: "play.fill")
+                        .font(.system(size: 11, weight: .bold))
+                    Text("连续播放")
+                        .font(.system(size: 13, weight: .semibold))
+                }
+                .frame(maxWidth: .infinity)
+                .padding(.vertical, 11)
+                .background(theme.accentRed)
+                .foregroundColor(.white)
+                .cornerRadius(10)
+            }
+            .buttonStyle(.plain)
+
+            // 大事年表
+            Button {
+                showTimeline = true
+            } label: {
+                HStack(spacing: 4) {
+                    Image(systemName: "clock.arrow.2.circlepath")
+                        .font(.system(size: 11))
+                    Text("大事年表")
+                        .font(.system(size: 13, weight: .medium))
+                }
+                .frame(maxWidth: .infinity)
+                .padding(.vertical, 11)
+                .background(theme.cardBackground)
+                .foregroundColor(theme.primaryText)
+                .cornerRadius(10)
+            }
+            .buttonStyle(.plain)
+
+            // 大观园
+            Button {
+                showGardenMap = true
+            } label: {
+                HStack(spacing: 4) {
+                    Image(systemName: "map.fill")
+                        .font(.system(size: 11))
+                    Text("大观园")
+                        .font(.system(size: 13, weight: .medium))
+                }
+                .frame(maxWidth: .infinity)
+                .padding(.vertical, 11)
+                .background(theme.cardBackground)
+                .foregroundColor(theme.primaryText)
+                .cornerRadius(10)
+            }
+            .buttonStyle(.plain)
+        }
+        .padding(.horizontal, 16)
     }
 
     // MARK: - Daily Quote
@@ -386,164 +419,6 @@ struct ContentView: View {
         .padding(.vertical, 4)
     }
 
-    // MARK: - Search Results List
-
-    private var searchResultsList: some View {
-        List {
-            if fullTextSearchResults.isEmpty {
-                VStack(spacing: 12) {
-                    Image(systemName: "magnifyingglass")
-                        .font(.title)
-                        .foregroundColor(theme.secondaryText)
-                    Text("未找到匹配内容")
-                        .font(.body)
-                        .foregroundColor(theme.secondaryText)
-                }
-                .frame(maxWidth: .infinity)
-                .padding(.vertical, 40)
-                .listRowBackground(theme.pageBackground)
-            } else {
-                ForEach(fullTextSearchResults) { result in
-                    Button {
-                        navPath.append(result.chapter)
-                    } label: {
-                        VStack(alignment: .leading, spacing: 6) {
-                            // Chapter badge + title
-                            HStack(spacing: 8) {
-                                Text("第\(result.chapterNumber)回")
-                                    .font(.caption2)
-                                    .fontWeight(.bold)
-                                    .foregroundColor(.white)
-                                    .padding(.horizontal, 6)
-                                    .padding(.vertical, 2)
-                                    .background(theme.accentRed)
-                                    .cornerRadius(4)
-
-                                Text(result.chapter.title)
-                                    .font(.caption)
-                                    .fontWeight(.medium)
-                                    .foregroundColor(theme.primaryText)
-                                    .lineLimit(1)
-                            }
-
-                            // Highlighted snippet
-                            highlightedSnippet(fullText: result.matchText, keyword: searchText)
-                                .font(.subheadline)
-                                .lineLimit(3)
-                        }
-                        .padding(.vertical, 6)
-                    }
-                    .buttonStyle(.plain)
-                    .listRowBackground(theme.cardBackground)
-                }
-            }
-        }
-        .listStyle(PlainListStyle())
-    }
-
-    // MARK: - Snippet Highlighting
-
-    private func highlightedSnippet(fullText: String, keyword: String) -> Text {
-        let lowerFull = fullText.lowercased()
-        let lowerKey = keyword.lowercased()
-
-        guard let range = lowerFull.range(of: lowerKey) else {
-            return Text(fullText)
-        }
-
-        // Extract context: up to 30 chars before and after the match
-        let snippetStart = lowerFull.distance(from: lowerFull.startIndex, to: range.lowerBound)
-        let snippetEnd = lowerFull.distance(from: lowerFull.startIndex, to: range.upperBound)
-
-        let totalChars = fullText.count
-        let contextBefore = max(0, snippetStart - 12)
-        let contextAfter = min(totalChars, snippetEnd + 40)
-
-        let startIdx = fullText.index(fullText.startIndex, offsetBy: contextBefore)
-        let matchStartIdx = fullText.index(fullText.startIndex, offsetBy: snippetStart)
-        let matchEndIdx = fullText.index(fullText.startIndex, offsetBy: snippetEnd)
-        let endIdx = fullText.index(fullText.startIndex, offsetBy: contextAfter)
-
-        let beforeText = String(fullText[startIdx..<matchStartIdx])
-        let matchText = String(fullText[matchStartIdx..<matchEndIdx])
-        let afterText = String(fullText[matchEndIdx..<endIdx])
-
-        let prefix = contextBefore > 0 ? "…" : ""
-        let suffix = contextAfter < totalChars ? "…" : ""
-        let full = prefix + beforeText + matchText + afterText + suffix
-
-        var attributed = AttributedString(full)
-        if let range = attributed.range(of: matchText) {
-            attributed[range].foregroundColor = UIColor(theme.accentRed)
-            attributed[range].font = .systemFont(ofSize: 15, weight: .bold)
-        }
-
-        return Text(attributed)
-    }
-
-    private var filteredChapters: [GroupedChapter] {
-        let base = filteredGroupedChapters
-        if searchText.isEmpty {
-            return base
-        } else {
-            let lowercasedSearchText = searchText.lowercased()
-            return base.filter { chapter in
-                String(chapter.chapterNumber).contains(lowercasedSearchText) ||
-                chapter.displayTitle.lowercased().contains(lowercasedSearchText)
-            }
-        }
-    }
-
-    // MARK: - Full-text Search
-
-    private var fullTextSearchResults: [TextSearchResult] {
-        guard searchText.count >= 1 else { return [] }
-        let keyword = searchText.lowercased()
-        var results: [TextSearchResult] = []
-        var seenChapterNumbers = Set<Int>()
-
-        // Search titles first (faster, shown at top)
-        for group in filteredGroupedChapters {
-            if group.displayTitle.lowercased().contains(keyword) {
-                for chapter in group.parts {
-                    results.append(TextSearchResult(
-                        chapter: chapter,
-                        chapterNumber: group.chapterNumber,
-                        matchText: chapter.summary,
-                        keyword: searchText
-                    ))
-                }
-                seenChapterNumbers.insert(group.chapterNumber)
-            }
-        }
-
-        // Search chapter text
-        for group in filteredGroupedChapters {
-            if seenChapterNumbers.contains(group.chapterNumber) { continue }
-            for chapter in group.parts {
-                guard !chapter.chapterText.isEmpty else { continue }
-                let paragraphs = chapter.chapterText
-                    .components(separatedBy: "\n\n")
-                    .map { $0.trimmingCharacters(in: .whitespacesAndNewlines) }
-                    .filter { !$0.isEmpty }
-                for paragraph in paragraphs {
-                    if paragraph.lowercased().contains(keyword) {
-                        results.append(TextSearchResult(
-                            chapter: chapter,
-                            chapterNumber: group.chapterNumber,
-                            matchText: paragraph,
-                            keyword: searchText
-                        ))
-                        seenChapterNumbers.insert(group.chapterNumber)
-                        break // one result per chapter is sufficient
-                    }
-                }
-            }
-        }
-
-        return results
-    }
-
     // MARK: - Reading Progress
 
     private func refreshProgress() {
@@ -623,7 +498,163 @@ struct ContentView: View {
     }
 }
 
-// MARK: - Search Result Model
+// MARK: - Search Sheet
+
+struct SearchSheetView: View {
+    let groupedChapters: [GroupedChapter]
+    let onSelect: (Chapter) -> Void
+
+    @ObservedObject private var theme = ThemeManager.shared
+    @State private var searchText = ""
+    @Environment(\.dismiss) private var dismiss
+
+    private var searchResults: [TextSearchResult] {
+        guard searchText.count >= 1 else { return [] }
+        let keyword = searchText.lowercased()
+        var results: [TextSearchResult] = []
+        var seen = Set<Int>()
+
+        for group in groupedChapters {
+            if group.displayTitle.lowercased().contains(keyword) {
+                for chapter in group.parts {
+                    results.append(TextSearchResult(
+                        chapter: chapter,
+                        chapterNumber: group.chapterNumber,
+                        matchText: chapter.summary,
+                        keyword: searchText
+                    ))
+                }
+                seen.insert(group.chapterNumber)
+            }
+        }
+
+        for group in groupedChapters {
+            if seen.contains(group.chapterNumber) { continue }
+            for chapter in group.parts {
+                guard !chapter.chapterText.isEmpty else { continue }
+                let paragraphs = chapter.chapterText
+                    .components(separatedBy: "\n\n")
+                    .map { $0.trimmingCharacters(in: .whitespacesAndNewlines) }
+                    .filter { !$0.isEmpty }
+                for paragraph in paragraphs {
+                    if paragraph.lowercased().contains(keyword) {
+                        results.append(TextSearchResult(
+                            chapter: chapter,
+                            chapterNumber: group.chapterNumber,
+                            matchText: paragraph,
+                            keyword: searchText
+                        ))
+                        seen.insert(group.chapterNumber)
+                        break
+                    }
+                }
+            }
+        }
+        return results
+    }
+
+    var body: some View {
+        NavigationStack {
+            Group {
+                if searchText.isEmpty {
+                    VStack(spacing: 12) {
+                        Image(systemName: "magnifyingglass")
+                            .font(.largeTitle)
+                            .foregroundColor(theme.secondaryText)
+                        Text("搜索回目、标题或正文")
+                            .font(.body)
+                            .foregroundColor(theme.secondaryText)
+                    }
+                    .frame(maxWidth: .infinity, maxHeight: .infinity)
+                    .background(theme.pageBackground)
+                } else if searchResults.isEmpty {
+                    VStack(spacing: 12) {
+                        Image(systemName: "magnifyingglass")
+                            .font(.largeTitle)
+                            .foregroundColor(theme.secondaryText)
+                        Text("未找到匹配内容")
+                            .font(.body)
+                            .foregroundColor(theme.secondaryText)
+                    }
+                    .frame(maxWidth: .infinity, maxHeight: .infinity)
+                    .background(theme.pageBackground)
+                } else {
+                    List {
+                        ForEach(searchResults) { result in
+                            Button {
+                                dismiss()
+                                onSelect(result.chapter)
+                            } label: {
+                                VStack(alignment: .leading, spacing: 6) {
+                                    HStack(spacing: 8) {
+                                        Text("第\(result.chapterNumber)回")
+                                            .font(.caption2)
+                                            .fontWeight(.bold)
+                                            .foregroundColor(.white)
+                                            .padding(.horizontal, 6)
+                                            .padding(.vertical, 2)
+                                            .background(theme.accentRed)
+                                            .cornerRadius(4)
+
+                                        Text(result.chapter.title)
+                                            .font(.caption)
+                                            .fontWeight(.medium)
+                                            .foregroundColor(theme.primaryText)
+                                            .lineLimit(1)
+                                    }
+                                    highlightedText(fullText: result.matchText, keyword: searchText)
+                                        .font(.subheadline)
+                                        .lineLimit(3)
+                                }
+                                .padding(.vertical, 6)
+                            }
+                            .listRowBackground(theme.cardBackground)
+                        }
+                    }
+                    .listStyle(.plain)
+                }
+            }
+            .searchable(text: $searchText, prompt: "搜索回目、标题或正文...")
+            .navigationTitle("搜索")
+            .navigationBarTitleDisplayMode(.inline)
+            .toolbar {
+                ToolbarItem(placement: .navigationBarTrailing) {
+                    Button("取消") { dismiss() }
+                        .foregroundColor(theme.accentRed)
+                }
+            }
+        }
+    }
+
+    private func highlightedText(fullText: String, keyword: String) -> Text {
+        let lowerFull = fullText.lowercased()
+        let lowerKey = keyword.lowercased()
+        guard let range = lowerFull.range(of: lowerKey) else {
+            return Text(fullText)
+        }
+        let start = lowerFull.distance(from: lowerFull.startIndex, to: range.lowerBound)
+        let end = lowerFull.distance(from: lowerFull.startIndex, to: range.upperBound)
+        let total = fullText.count
+        let before = max(0, start - 12)
+        let after = min(total, end + 40)
+
+        let sIdx = fullText.index(fullText.startIndex, offsetBy: before)
+        let mS = fullText.index(fullText.startIndex, offsetBy: start)
+        let mE = fullText.index(fullText.startIndex, offsetBy: end)
+        let eIdx = fullText.index(fullText.startIndex, offsetBy: after)
+
+        let prefix = before > 0 ? "…" : ""
+        let suffix = after < total ? "…" : ""
+        let combined = prefix + String(fullText[sIdx..<mS]) + String(fullText[mS..<mE]) + String(fullText[mE..<eIdx]) + suffix
+
+        var attr = AttributedString(combined)
+        if let r = attr.range(of: String(fullText[mS..<mE])) {
+            attr[r].foregroundColor = UIColor(theme.accentRed)
+            attr[r].font = .systemFont(ofSize: 15, weight: .bold)
+        }
+        return Text(attr)
+    }
+}
 
 struct TextSearchResult: Identifiable {
     let id = UUID()
