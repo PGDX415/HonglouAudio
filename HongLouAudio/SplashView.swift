@@ -19,49 +19,57 @@ struct SplashView: View {
             if isActive {
                 MainTabView()
             } else {
-                // 朱红底色 —— 仿古宣纸与宫墙之色
+                // Background: use splash_bg image if available, fallback to gradient
                 ZStack {
-                    LinearGradient(
-                        gradient: Gradient(colors: [
-                            Color(red: 0.48, green: 0.06, blue: 0.06),
-                            deepRed,
-                            Color(red: 0.28, green: 0.01, blue: 0.01)
-                        ]),
-                        startPoint: .top,
-                        endPoint: .bottom
-                    )
-                    .ignoresSafeArea()
+                    // Background layer
+                    if let bgImage = UIImage(named: "splash_bg") {
+                        Image(uiImage: bgImage)
+                            .resizable()
+                            .aspectRatio(contentMode: .fill)
+                            .ignoresSafeArea()
+                    } else {
+                        LinearGradient(
+                            gradient: Gradient(colors: [
+                                Color(red: 0.48, green: 0.06, blue: 0.06),
+                                deepRed,
+                                Color(red: 0.28, green: 0.01, blue: 0.01)
+                            ]),
+                            startPoint: .top,
+                            endPoint: .bottom
+                        )
+                        .ignoresSafeArea()
 
-                    // 暗纹 —— 隐约云纹营造古意
-                    GeometryReader { geo in
-                        Path { path in
-                            let w = geo.size.width
-                            let h = geo.size.height
-                            // Traditional cloud curves
-                            path.move(to: CGPoint(x: -w * 0.1, y: h * 0.25))
-                            path.addCurve(to: CGPoint(x: w * 0.3, y: h * 0.28),
-                                          control1: CGPoint(x: w * 0.05, y: h * 0.15),
-                                          control2: CGPoint(x: w * 0.2, y: h * 0.35))
-                            path.addCurve(to: CGPoint(x: w * 1.1, y: h * 0.22),
-                                          control1: CGPoint(x: w * 0.5, y: h * 0.18),
-                                          control2: CGPoint(x: w * 0.8, y: h * 0.30))
-                        }
-                        .stroke(creamWhite.opacity(0.04), lineWidth: 1.5)
+                        // Cloud pattern — only when no background image
+                        GeometryReader { geo in
+                            Path { path in
+                                let w = geo.size.width
+                                let h = geo.size.height
+                                path.move(to: CGPoint(x: -w * 0.1, y: h * 0.25))
+                                path.addCurve(to: CGPoint(x: w * 0.3, y: h * 0.28),
+                                              control1: CGPoint(x: w * 0.05, y: h * 0.15),
+                                              control2: CGPoint(x: w * 0.2, y: h * 0.35))
+                                path.addCurve(to: CGPoint(x: w * 1.1, y: h * 0.22),
+                                              control1: CGPoint(x: w * 0.5, y: h * 0.18),
+                                              control2: CGPoint(x: w * 0.8, y: h * 0.30))
+                            }
+                            .stroke(creamWhite.opacity(0.04), lineWidth: 1.5)
 
-                        Path { path in
-                            let w = geo.size.width
-                            let h = geo.size.height
-                            path.move(to: CGPoint(x: w * 0.2, y: h * 0.72))
-                            path.addCurve(to: CGPoint(x: w * 0.6, y: h * 0.74),
-                                          control1: CGPoint(x: w * 0.35, y: h * 0.68),
-                                          control2: CGPoint(x: w * 0.5, y: h * 0.78))
-                            path.addCurve(to: CGPoint(x: w * 1.2, y: h * 0.70),
-                                          control1: CGPoint(x: w * 0.8, y: h * 0.68),
-                                          control2: CGPoint(x: w * 1.0, y: h * 0.76))
+                            Path { path in
+                                let w = geo.size.width
+                                let h = geo.size.height
+                                path.move(to: CGPoint(x: w * 0.2, y: h * 0.72))
+                                path.addCurve(to: CGPoint(x: w * 0.6, y: h * 0.74),
+                                              control1: CGPoint(x: w * 0.35, y: h * 0.68),
+                                              control2: CGPoint(x: w * 0.5, y: h * 0.78))
+                                path.addCurve(to: CGPoint(x: w * 1.2, y: h * 0.70),
+                                              control1: CGPoint(x: w * 0.8, y: h * 0.68),
+                                              control2: CGPoint(x: w * 1.0, y: h * 0.76))
+                            }
+                            .stroke(creamWhite.opacity(0.03), lineWidth: 1.5)
                         }
-                        .stroke(creamWhite.opacity(0.03), lineWidth: 1.5)
                     }
 
+                    // Text and seal overlay
                     VStack(spacing: 0) {
                         Spacer()
 
