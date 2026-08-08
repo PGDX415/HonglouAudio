@@ -5,7 +5,7 @@
       "title": "第一回 甄士隐梦幻识通灵 贾雨村风尘怀闺秀 上",
       "audioFileName": "第01回_上.mp3",
       "summary": "开篇讲述女娲补天剩下的一块顽石，被一僧一道携入红尘。姑苏城中甄士隐梦见一僧一道谈论神瑛侍者和绛珠仙草的故事。",
-      "textFileName": "chapter_01_shang.txt",
+      "textFileName": "Text/chapter_01_shang.txt",
       "paragraphTimestamps": [
         0.0,
         5.9,
@@ -38,7 +38,7 @@
       "title": "第一回 甄士隐梦幻识通灵 贾雨村风尘怀闺秀 下",
       "audioFileName": "第01回_下.mp3",
       "summary": "甄家遭遇变故，女儿英莲失踪，家宅被烧，最终看破红尘随道士而去。",
-      "textFileName": "chapter_01_xia.txt",
+      "textFileName": "Text/chapter_01_xia.txt",
       "paragraphTimestamps": [
         0.0,
         58.2,
@@ -93,7 +93,7 @@
       "title": "第二回 贾夫人仙逝扬州城 冷子兴演说荣国府 上",
       "audioFileName": "第02回_上.mp3",
       "summary": "林黛玉母亲去世，父亲林如海决定送她到外祖母家。",
-      "textFileName": "chapter_02_shang.txt",
+      "textFileName": "Text/chapter_02_shang.txt",
       "paragraphTimestamps": [
         0.0,
         7.0,
@@ -122,7 +122,7 @@
       "title": "第二回 贾夫人仙逝扬州城 冷子兴演说荣国府 下",
       "audioFileName": "第02回_下.mp3",
       "summary": "贾雨村得到林如海推荐，复职前往京城。途中遇到冷子兴，听其详细讲述贾府的家族关系和现状。",
-      "textFileName": "chapter_02_xia.txt",
+      "textFileName": "Text/chapter_02_xia.txt",
       "paragraphTimestamps": [
         0.0,
         187.1,
@@ -140,7 +140,7 @@
       "title": "第三回 贾雨村夤缘复旧职 林黛玉抛父进京都 上",
       "audioFileName": "第03回_上.mp3",
       "summary": "林黛玉初入贾府，见到外祖母贾母及众亲戚。",
-      "textFileName": "chapter_03_shang.txt",
+      "textFileName": "Text/chapter_03_shang.txt",
       "paragraphTimestamps": [
         0.0,
         7.3,
@@ -163,7 +163,7 @@
       "title": "第三回 贾雨村夤缘复旧职 林黛玉抛父进京都 下",
       "audioFileName": "第03回_下.mp3",
       "summary": "宝玉初见黛玉，因她没有玉而摔玉，引起众人惊慌。黛玉开始在贾府的生活。",
-      "textFileName": "chapter_03_xia.txt",
+      "textFileName": "Text/chapter_03_xia.txt",
       "paragraphTimestamps": [
         0.0,
         14.4,
@@ -189,7 +189,7 @@
       "title": "第四回 薄命女偏逢薄命郎 葫芦僧乱判葫芦案 上",
       "audioFileName": "第04回_上.mp3",
       "summary": "贾雨村审理薛蟠打死冯渊一案，在门子的提醒下准备徇私枉法。",
-      "textFileName": "chapter_04_shang.txt",
+      "textFileName": "Text/chapter_04_shang.txt",
       "paragraphTimestamps": [
         0.0,
         6.8,
@@ -213,7 +213,7 @@
       "title": "第四回 薄命女偏逢薄命郎 葫芦僧乱判葫芦案 下",
       "audioFileName": "第04回_下.mp3",
       "summary": "贾雨村为讨好贾、王、薛三家而徇私枉法。薛蟠带母亲和妹妹宝钗进京，暂住贾府。",
-      "textFileName": "chapter_04_xia.txt",
+      "textFileName": "Text/chapter_04_xia.txt",
       "paragraphTimestamps": [
         0.0,
         180.6,
@@ -232,7 +232,7 @@
       "title": "第五回 游幻境指迷十二钗 饮仙醪曲演红楼梦 上",
       "audioFileName": "第05回_上.mp3",
       "summary": "宝玉在秦可卿房中准备梦游太虚幻境，预示主要人物的命运。",
-      "textFileName": "chapter_05_shang.txt",
+      "textFileName": "Text/chapter_05_shang.txt",
       "paragraphTimestamps": [
         0.0,
         7.0,
@@ -261,7 +261,7 @@
       "title": "第五回 游幻境指迷十二钗 饮仙醪曲演红楼梦 中",
       "audioFileName": "第05回_中.mp3",
       "summary": "宝玉梦游太虚幻境，警幻仙姑带他观看金陵十二钗正册、副册、又副册的判词。",
-      "textFileName": "chapter_05_zhong.txt",
+      "textFileName": "Text/chapter_05_zhong.txt",
       "paragraphTimestamps": [
         0.0,
         60.7,
@@ -310,7 +310,7 @@
       "title": "第五回 游幻境指迷十二钗 饮仙醪曲演红楼梦 下",
       "audioFileName": "第05回_下.mp3",
       "summary": "宝玉醒来后与袭人初试云雨情，红楼梦曲预示了悲剧结局。",
-      "textFileName": "chapter_05_xia.txt",
+      "textFileName": "Text/chapter_05_xia.txt",
       "paragraphTimestamps": [
         0.0,
         46.4,
@@ -337,7 +337,7 @@
       "title": "第六回 贾宝玉初试云雨情 刘姥姥一进荣国府 上",
       "audioFileName": "第06回_上.mp3",
       "summary": "刘姥姥因家境困难，带着外孙板儿到贾府求助。",
-      "textFileName": "chapter_06_shang.txt",
+      "textFileName": "Text/chapter_06_shang.txt",
       "paragraphTimestamps": [
         0.0,
         8.6,
@@ -361,7 +361,7 @@
       "title": "第六回 贾宝玉初试云雨情 刘姥姥一进荣国府 下",
       "audioFileName": "第06回_下.mp3",
       "summary": "刘姥姥见到凤姐，得到二十两银子的资助，满意而归。",
-      "textFileName": "chapter_06_xia.txt",
+      "textFileName": "Text/chapter_06_xia.txt",
       "paragraphTimestamps": [
         0.0,
         156.5,
@@ -384,7 +384,7 @@
       "title": "第七回 送宫花贾琏戏熙凤 宴宁府宝玉会秦钟 上",
       "audioFileName": "第07回_上.mp3",
       "summary": "周瑞家的送宫花给各位小姐，宝玉在宁府结识秦钟。",
-      "textFileName": "chapter_07_shang.txt",
+      "textFileName": "Text/chapter_07_shang.txt",
       "paragraphTimestamps": [
         0.0,
         62.7,
@@ -406,7 +406,7 @@
       "title": "第七回 送宫花贾琏戏熙凤 宴宁府宝玉会秦钟 下",
       "audioFileName": "第07回_下.mp3",
       "summary": "宝玉与秦钟相见恨晚，约定一同上学读书。",
-      "textFileName": "chapter_07_xia.txt",
+      "textFileName": "Text/chapter_07_xia.txt",
       "paragraphTimestamps": [
         0.0,
         42.4,
@@ -430,7 +430,7 @@
       "title": "第八回 比通灵金莺微露意 探宝钗黛玉半含酸 上",
       "audioFileName": "第08回_上.mp3",
       "summary": "宝玉探望生病的宝钗，看到金锁上的字与自己通灵宝玉相配。",
-      "textFileName": "chapter_08_shang.txt",
+      "textFileName": "Text/chapter_08_shang.txt",
       "paragraphTimestamps": [
         0.0,
         90.1,
@@ -453,7 +453,7 @@
       "title": "第八回 比通灵金莺微露意 探宝钗黛玉半含酸 下",
       "audioFileName": "第08回_下.mp3",
       "summary": "黛玉来访时看到宝玉和宝钗在一起，心生醋意，言语间流露出不满。",
-      "textFileName": "chapter_08_xia.txt",
+      "textFileName": "Text/chapter_08_xia.txt",
       "paragraphTimestamps": [
         0.0,
         51.5,
@@ -475,7 +475,7 @@
       "title": "第九回 恋风流情友入家塾 起嫌疑顽童闹学堂 上",
       "audioFileName": "第09回_上.mp3",
       "summary": "宝玉和秦钟入家塾读书，学堂里发生各种风流韵事。",
-      "textFileName": "chapter_09_shang.txt",
+      "textFileName": "Text/chapter_09_shang.txt",
       "paragraphTimestamps": [
         0.0,
         47.7,
@@ -494,7 +494,7 @@
       "title": "第九回 恋风流情友入家塾 起嫌疑顽童闹学堂 下",
       "audioFileName": "第09回_下.mp3",
       "summary": "学堂内顽童争风吃醋，大闹学堂，引发混乱。",
-      "textFileName": "chapter_09_xia.txt",
+      "textFileName": "Text/chapter_09_xia.txt",
       "paragraphTimestamps": [
         0.0,
         31.9,
@@ -512,7 +512,7 @@
       "title": "第十回 金寡妇贪利权受辱 张太医论病细穷源 上",
       "audioFileName": "第10回_上.mp3",
       "summary": "金寡妇因贪图利益而受辱，秦可卿病情加重。",
-      "textFileName": "chapter_10_shang.txt",
+      "textFileName": "Text/chapter_10_shang.txt",
       "paragraphTimestamps": [
         0.0,
         69.1,
@@ -529,7 +529,7 @@
       "title": "第十回 金寡妇贪利权受辱 张太医论病细穷源 下",
       "audioFileName": "第10回_下.mp3",
       "summary": "张太医为秦可卿诊病，详细分析病因，但病情仍不见好转。",
-      "textFileName": "chapter_10_xia.txt",
+      "textFileName": "Text/chapter_10_xia.txt",
       "paragraphTimestamps": [
         0.0,
         134.3,
@@ -548,7 +548,7 @@
       "title": "第十一回 庆寿辰宁府排家宴 见熙凤贾瑞起淫心 上",
       "audioFileName": "第11回_上.mp3",
       "summary": "宁府为贾敬庆寿辰，凤姐前往祝贺，贾瑞对其产生非分之想。",
-      "textFileName": "chapter_11_shang.txt",
+      "textFileName": "Text/chapter_11_shang.txt",
       "paragraphTimestamps": [
         0.0,
         59.7,
@@ -571,7 +571,7 @@
       "title": "第十一回 庆寿辰宁府排家宴 见熙凤贾瑞起淫心 下",
       "audioFileName": "第11回_下.mp3",
       "summary": "贾瑞对凤姐纠缠不休，凤姐设计整治贾瑞。",
-      "textFileName": "chapter_11_xia.txt",
+      "textFileName": "Text/chapter_11_xia.txt",
       "paragraphTimestamps": [
         0.0,
         28.3,
@@ -594,7 +594,7 @@
       "title": "第十二回 王熙凤毒设相思局 贾天祥正照风月鉴 上",
       "audioFileName": "第12回_上.mp3",
       "summary": "凤姐设下相思局整治贾瑞，贾瑞屡次上当受骗。",
-      "textFileName": "chapter_12_shang.txt",
+      "textFileName": "Text/chapter_12_shang.txt",
       "paragraphTimestamps": [
         0.0,
         45.9,
@@ -611,7 +611,7 @@
       "title": "第十二回 王熙凤毒设相思局 贾天祥正照风月鉴 下",
       "audioFileName": "第12回_下.mp3",
       "summary": "贾瑞病重，得到风月宝鉴，但不听劝告，最终命丧黄泉。",
-      "textFileName": "chapter_12_xia.txt",
+      "textFileName": "Text/chapter_12_xia.txt",
       "paragraphTimestamps": [
         0.0,
         84.3,
@@ -630,7 +630,7 @@
       "title": "第十三回 秦可卿死封龙禁尉 王熙凤协理宁国府 上",
       "audioFileName": "第13回_上.mp3",
       "summary": "秦可卿病逝，托梦给凤姐，预言贾府衰败。贾珍为葬礼大操大办。",
-      "textFileName": "chapter_13_shang.txt",
+      "textFileName": "Text/chapter_13_shang.txt",
       "paragraphTimestamps": [
         0.0,
         35.6,
@@ -651,7 +651,7 @@
       "title": "第十三回 秦可卿死封龙禁尉 王熙凤协理宁国府 下",
       "audioFileName": "第13回_下.mp3",
       "summary": "贾珍请凤姐协理宁国府事务，凤姐展现管理才能。",
-      "textFileName": "chapter_13_xia.txt",
+      "textFileName": "Text/chapter_13_xia.txt",
       "paragraphTimestamps": [
         0.0,
         149.6,
@@ -672,7 +672,7 @@
       "title": "第十四回 林如海捐馆扬州城 贾宝玉路谒北静王 上",
       "audioFileName": "第14回_上.mp3",
       "summary": "林如海去世，贾琏带黛玉回扬州奔丧。",
-      "textFileName": "chapter_14_shang.txt",
+      "textFileName": "Text/chapter_14_shang.txt",
       "paragraphTimestamps": [
         0.0,
         100.2,
@@ -694,7 +694,7 @@
       "title": "第十四回 林如海捐馆扬州城 贾宝玉路谒北静王 下",
       "audioFileName": "第14回_下.mp3",
       "summary": "贾宝玉路遇北静王，两人相见甚欢，北静王赠予宝玉念珠。",
-      "textFileName": "chapter_14_xia.txt",
+      "textFileName": "Text/chapter_14_xia.txt",
       "paragraphTimestamps": [
         0.0,
         78.7,
@@ -716,7 +716,7 @@
       "title": "第十五回 王凤姐弄权铁槛寺 秦鲸卿得趣馒头庵 上",
       "audioFileName": "第15回_上.mp3",
       "summary": "秦可卿出殡路上，凤姐在铁槛寺弄权，干预他人婚姻。",
-      "textFileName": "chapter_15_shang.txt",
+      "textFileName": "Text/chapter_15_shang.txt",
       "paragraphTimestamps": [
         0.0,
         112.5,
@@ -735,7 +735,7 @@
       "title": "第十五回 王凤姐弄权铁槛寺 秦鲸卿得趣馒头庵 下",
       "audioFileName": "第15回_下.mp3",
       "summary": "秦钟在馒头庵与小尼姑智能儿私会，被宝玉撞见。",
-      "textFileName": "chapter_15_xia.txt",
+      "textFileName": "Text/chapter_15_xia.txt",
       "paragraphTimestamps": [
         0.0,
         112.0,
@@ -754,7 +754,7 @@
       "title": "第十六回 贾元春才选凤藻宫 秦鲸卿夭逝黄泉路 上",
       "audioFileName": "第16回_上.mp3",
       "summary": "贾元春被选入宫，封为凤藻宫尚书。秦钟病重。",
-      "textFileName": "chapter_16_shang.txt",
+      "textFileName": "Text/chapter_16_shang.txt",
       "paragraphTimestamps": [
         0.0,
         57.1,
@@ -776,7 +776,7 @@
       "title": "第十六回 贾元春才选凤藻宫 秦鲸卿夭逝黄泉路 下",
       "audioFileName": "第16回_下.mp3",
       "summary": "秦钟病逝，宝玉悲痛不已。贾府开始修建大观园迎接元妃省亲。",
-      "textFileName": "chapter_16_xia.txt",
+      "textFileName": "Text/chapter_16_xia.txt",
       "paragraphTimestamps": [
         0.0,
         215.5,
@@ -799,7 +799,7 @@
       "title": "第十七回 大观园试才题对额 荣国府归省庆元宵 上",
       "audioFileName": "第17回_上.mp3",
       "summary": "大观园建成，贾政带宝玉等人游园，测试宝玉题对额的才能。",
-      "textFileName": "chapter_17_shang.txt",
+      "textFileName": "Text/chapter_17_shang.txt",
       "paragraphTimestamps": [
         0.0,
         55.1,
@@ -830,7 +830,7 @@
       "title": "第十七回 大观园试才题对额 荣国府归省庆元宵 下",
       "audioFileName": "第17回_下.mp3",
       "summary": "宝玉展现才华，为各处景点题写匾额对联，获得众人赞赏。",
-      "textFileName": "chapter_17_xia.txt",
+      "textFileName": "Text/chapter_17_xia.txt",
       "paragraphTimestamps": [
         0.0,
         97.4,
@@ -864,7 +864,7 @@
       "title": "第十八回 皇恩重元妃省父母 天伦乐宝玉呈才藻 上",
       "audioFileName": "第18回_上.mp3",
       "summary": "元妃省亲，贾府上下隆重迎接，极尽奢华。",
-      "textFileName": "chapter_18_shang.txt",
+      "textFileName": "Text/chapter_18_shang.txt",
       "paragraphTimestamps": [
         0.0,
         60.4,
@@ -890,7 +890,7 @@
       "title": "第十八回 皇恩重元妃省父母 天伦乐宝玉呈才藻 下",
       "audioFileName": "第18回_下.mp3",
       "summary": "元妃与家人团聚，观看戏曲，命宝玉和众姐妹作诗，宝玉得到称赞。",
-      "textFileName": "chapter_18_xia.txt",
+      "textFileName": "Text/chapter_18_xia.txt",
       "paragraphTimestamps": [
         0.0,
         75.4,
@@ -966,7 +966,7 @@
       "title": "第十九回 情切切良宵花解语 意绵绵静日玉生香 上",
       "audioFileName": "第19回_上.mp3",
       "summary": "宝玉到黛玉房中，两人情意绵绵，互诉衷肠。",
-      "textFileName": "chapter_19_shang.txt",
+      "textFileName": "Text/chapter_19_shang.txt",
       "paragraphTimestamps": [
         0.0,
         43.1,
@@ -989,7 +989,7 @@
       "title": "第十九回 情切切良宵花解语 意绵绵静日玉生香 下",
       "audioFileName": "第19回_下.mp3",
       "summary": "宝玉编造故事逗黛玉开心，两人感情更加深厚。",
-      "textFileName": "chapter_19_xia.txt",
+      "textFileName": "Text/chapter_19_xia.txt",
       "paragraphTimestamps": [
         0.0,
         200.6,
@@ -1017,7 +1017,7 @@
       "title": "第二十回 王熙凤正言弹妒意 林黛玉俏语谑娇音 上",
       "audioFileName": "第20回_上.mp3",
       "summary": "凤姐调解宝玉和湘云之间的误会，展现其机智。",
-      "textFileName": "chapter_20_shang.txt",
+      "textFileName": "Text/chapter_20_shang.txt",
       "paragraphTimestamps": [
         0.0,
         75.4,
@@ -1034,7 +1034,7 @@
       "title": "第二十回 王熙凤正言弹妒意 林黛玉俏语谑娇音 下",
       "audioFileName": "第20回_下.mp3",
       "summary": "黛玉用俏皮话调侃宝玉，展现其聪慧和对宝玉的深情。",
-      "textFileName": "chapter_20_xia.txt",
+      "textFileName": "Text/chapter_20_xia.txt",
       "paragraphTimestamps": [
         0.0,
         176.3,
@@ -1053,7 +1053,7 @@
       "title": "第二十一回 贤袭人娇嗔箴宝玉 俏平儿软语救贾琏 上",
       "audioFileName": "第21回_上.mp3",
       "summary": "袭人因宝玉不务正业而生气，用娇嗔的方式规劝宝玉。",
-      "textFileName": "chapter_21_shang.txt",
+      "textFileName": "Text/chapter_21_shang.txt",
       "paragraphTimestamps": [
         0.0,
         16.8,
@@ -1074,7 +1074,7 @@
       "title": "第二十一回 贤袭人娇嗔箴宝玉 俏平儿软语救贾琏 下",
       "audioFileName": "第21回_下.mp3",
       "summary": "平儿巧妙处理贾琏的风流事，保护凤姐不受伤害。",
-      "textFileName": "chapter_21_xia.txt",
+      "textFileName": "Text/chapter_21_xia.txt",
       "paragraphTimestamps": [
         0.0,
         15.8,
@@ -1098,7 +1098,7 @@
       "title": "第二十二回 听曲文宝玉悟禅机 制灯迷贾政悲谶语 上",
       "audioFileName": "第22回_上.mp3",
       "summary": "元宵节制灯谜，贾政从谜语中感受到不祥之兆。",
-      "textFileName": "chapter_22_shang.txt",
+      "textFileName": "Text/chapter_22_shang.txt",
       "paragraphTimestamps": [
         0.0,
         17.6,
@@ -1128,7 +1128,7 @@
       "title": "第二十二回 听曲文宝玉悟禅机 制灯迷贾政悲谶语 下",
       "audioFileName": "第22回_下.mp3",
       "summary": "宝玉听曲文有所感悟，写下禅偈，但被黛玉点破。",
-      "textFileName": "chapter_22_xia.txt",
+      "textFileName": "Text/chapter_22_xia.txt",
       "paragraphTimestamps": [
         0.0,
         17.6,
@@ -1178,7 +1178,7 @@
       "title": "第二十三回 西厢记妙词通戏语 牡丹亭艳曲警芳心 上",
       "audioFileName": "第23回_上.mp3",
       "summary": "宝玉和黛玉共读西厢记，两人情感更加亲密。",
-      "textFileName": "chapter_23_shang.txt",
+      "textFileName": "Text/chapter_23_shang.txt",
       "paragraphTimestamps": [
         0.0,
         15.1,
@@ -1199,7 +1199,7 @@
       "title": "第二十三回 西厢记妙词通戏语 牡丹亭艳曲警芳心 下",
       "audioFileName": "第23回_下.mp3",
       "summary": "黛玉听到牡丹亭曲文，触动心弦，感伤自己的身世和命运。",
-      "textFileName": "chapter_23_xia.txt",
+      "textFileName": "Text/chapter_23_xia.txt",
       "paragraphTimestamps": [
         0.0,
         15.2,
@@ -1241,7 +1241,7 @@
       "title": "第二十四回 醉金刚轻财尚义侠 痴女儿遗帕惹相思 上",
       "audioFileName": "第24回_上.mp3",
       "summary": "醉金刚倪二仗义疏财，帮助贾芸。小红对贾芸产生情愫。",
-      "textFileName": "chapter_24_shang.txt",
+      "textFileName": "Text/chapter_24_shang.txt",
       "paragraphTimestamps": [
         0.0,
         25.8,
@@ -1267,7 +1267,7 @@
       "title": "第二十四回 醉金刚轻财尚义侠 痴女儿遗帕惹相思 下",
       "audioFileName": "第24回_下.mp3",
       "summary": "小红遗失手帕，贾芸拾到，两人通过手帕传情。",
-      "textFileName": "chapter_24_xia.txt",
+      "textFileName": "Text/chapter_24_xia.txt",
       "paragraphTimestamps": [
         0.0,
         17.1,
@@ -1294,7 +1294,7 @@
       "title": "第二十五回 魇魔法姊弟逢五鬼 红楼梦通灵遇双真 上",
       "audioFileName": "第25回_上.mp3",
       "summary": "赵姨娘请马道婆施魇魔法，宝玉和凤姐中邪病危。",
-      "textFileName": "chapter_25_shang.txt",
+      "textFileName": "Text/chapter_25_shang.txt",
       "paragraphTimestamps": [
         0.0,
         18.0,
@@ -1318,7 +1318,7 @@
       "title": "第二十五回 魇魔法姊弟逢五鬼 红楼梦通灵遇双真 下",
       "audioFileName": "第25回_下.mp3",
       "summary": "一僧一道出现，用通灵宝玉救醒宝玉和凤姐，化解危机。",
-      "textFileName": "chapter_25_xia.txt",
+      "textFileName": "Text/chapter_25_xia.txt",
       "paragraphTimestamps": [
         0.0,
         16.5,
@@ -1353,7 +1353,7 @@
       "title": "第二十六回 蜂腰桥设言传心事 潇湘馆春困发幽情 上",
       "audioFileName": "第26回_上.mp3",
       "summary": "小红在蜂腰桥向贾芸传递消息，表达心意。",
-      "textFileName": "chapter_26_shang.txt",
+      "textFileName": "Text/chapter_26_shang.txt",
       "paragraphTimestamps": [
         0.0,
         19.1,
@@ -1379,7 +1379,7 @@
       "title": "第二十六回 蜂腰桥设言传心事 潇湘馆春困发幽情 下",
       "audioFileName": "第26回_下.mp3",
       "summary": "黛玉在潇湘馆春困，听到宝玉和别人说话，心生疑虑。",
-      "textFileName": "chapter_26_xia.txt",
+      "textFileName": "Text/chapter_26_xia.txt",
       "paragraphTimestamps": [
         0.0,
         18.7,
@@ -1410,7 +1410,7 @@
       "title": "第二十七回 滴翠亭杨妃戏彩蝶 埋香冢飞燕泣残红 上",
       "audioFileName": "第27回_上.mp3",
       "summary": "宝钗在滴翠亭扑蝶，无意中听到小红和坠儿的私密谈话。",
-      "textFileName": "chapter_27_shang.txt",
+      "textFileName": "Text/chapter_27_shang.txt",
       "paragraphTimestamps": [
         0.0,
         16.6,
@@ -1432,7 +1432,7 @@
       "title": "第二十七回 滴翠亭杨妃戏彩蝶 埋香冢飞燕泣残红 下",
       "audioFileName": "第27回_下.mp3",
       "summary": "黛玉在埋香冢葬花，吟诵葬花词，表达对命运的感伤。",
-      "textFileName": "chapter_27_xia.txt",
+      "textFileName": "Text/chapter_27_xia.txt",
       "paragraphTimestamps": [
         0.0,
         16.6,
@@ -1477,7 +1477,7 @@
       "title": "第二十八回 蒋玉菡情赠茜香罗 薛宝钗羞笼红麝串 上",
       "audioFileName": "第28回_上.mp3",
       "summary": "宝玉在冯紫英家结识蒋玉菡，两人互赠信物。",
-      "textFileName": "chapter_28_shang.txt",
+      "textFileName": "Text/chapter_28_shang.txt",
       "paragraphTimestamps": [
         0.0,
         20.9,
@@ -1500,7 +1500,7 @@
       "title": "第二十八回 蒋玉菡情赠茜香罗 薛宝钗羞笼红麝串 下",
       "audioFileName": "第28回_下.mp3",
       "summary": "元妃赐端午节礼，宝玉和宝钗的礼物相同，黛玉感到失落。",
-      "textFileName": "chapter_28_xia.txt",
+      "textFileName": "Text/chapter_28_xia.txt",
       "paragraphTimestamps": [
         0.0,
         0.5,
@@ -1542,7 +1542,7 @@
       "title": "第二十九回 享福人福深还祷福 痴情女情重愈斟情 上",
       "audioFileName": "第29回_上.mp3",
       "summary": "贾母带众人到清虚观打醮，张道士为宝玉提亲。",
-      "textFileName": "chapter_29_shang.txt",
+      "textFileName": "Text/chapter_29_shang.txt",
       "paragraphTimestamps": [
         0.0,
         115.3,
@@ -1563,7 +1563,7 @@
       "title": "第二十九回 享福人福深还祷福 痴情女情重愈斟情 下",
       "audioFileName": "第29回_下.mp3",
       "summary": "黛玉因提亲一事与宝玉争吵，两人情感经历考验。",
-      "textFileName": "chapter_29_xia.txt",
+      "textFileName": "Text/chapter_29_xia.txt",
       "paragraphTimestamps": [
         0.0,
         18.3,
@@ -1587,7 +1587,7 @@
       "title": "第三十回 宝钗借扇机带双敲 龄官划蔷痴及局外 上",
       "audioFileName": "第30回_上.mp3",
       "summary": "宝钗借扇子巧妙讽刺宝玉和黛玉。龄官在地上划蔷字，表达对贾蔷的痴情。",
-      "textFileName": "chapter_30_shang.txt",
+      "textFileName": "Text/chapter_30_shang.txt",
       "paragraphTimestamps": [
         0.0,
         13.0,
@@ -1607,7 +1607,7 @@
       "title": "第三十回 宝钗借扇机带双敲 龄官划蔷痴及局外 下",
       "audioFileName": "第30回_下.mp3",
       "summary": "宝玉淋雨回怡红院，被丫鬟拒之门外，踢伤袭人。",
-      "textFileName": "chapter_30_xia.txt",
+      "textFileName": "Text/chapter_30_xia.txt",
       "paragraphTimestamps": [
         0.0,
         15.2,
@@ -1627,7 +1627,7 @@
       "title": "第三十一回 撕扇子作千金一笑 因麒麟伏白首双星 上",
       "audioFileName": "第31回_上.mp3",
       "summary": "晴雯撕扇子博得宝玉一笑，展现其率真性格。",
-      "textFileName": "chapter_31_shang.txt",
+      "textFileName": "Text/chapter_31_shang.txt",
       "paragraphTimestamps": [
         0.0,
         16.8,
@@ -1644,7 +1644,7 @@
       "title": "第三十一回 撕扇子作千金一笑 因麒麟伏白首双星 下",
       "audioFileName": "第31回_下.mp3",
       "summary": "湘云捡到金麒麟，暗示她与卫若兰的姻缘。",
-      "textFileName": "chapter_31_xia.txt",
+      "textFileName": "Text/chapter_31_xia.txt",
       "paragraphTimestamps": [
         0.0,
         98.7,
@@ -1659,7 +1659,7 @@
       "title": "第三十二回 诉肺腑心迷活宝玉 含耻辱情烈死金钏 上",
       "audioFileName": "第32回_上.mp3",
       "summary": "宝玉向黛玉表白真心，说出'你放心'三字。",
-      "textFileName": "chapter_32_shang.txt",
+      "textFileName": "Text/chapter_32_shang.txt",
       "paragraphTimestamps": [
         0.0,
         15.3,
@@ -1675,7 +1675,7 @@
       "title": "第三十二回 诉肺腑心迷活宝玉 含耻辱情烈死金钏 下",
       "audioFileName": "第32回_下.mp3",
       "summary": "金钏因被王夫人责骂而投井自尽，宝玉深感愧疚。",
-      "textFileName": "chapter_32_xia.txt",
+      "textFileName": "Text/chapter_32_xia.txt",
       "paragraphTimestamps": [
         0.0,
         149.0,
@@ -1692,7 +1692,7 @@
       "title": "第三十三回 手足耽耽小动唇舌 不肖种种大承笞挞 上",
       "audioFileName": "第33回_上.mp3",
       "summary": "贾环诬告宝玉强奸金钏，导致宝玉被贾政痛打。",
-      "textFileName": "chapter_33_shang.txt",
+      "textFileName": "Text/chapter_33_shang.txt",
       "paragraphTimestamps": [
         0.0,
         16.4,
@@ -1709,7 +1709,7 @@
       "title": "第三十三回 手足耽耽小动唇舌 不肖种种大承笞挞 下",
       "audioFileName": "第33回_下.mp3",
       "summary": "贾政痛打宝玉，众人求情，最终贾母出面制止。",
-      "textFileName": "chapter_33_xia.txt",
+      "textFileName": "Text/chapter_33_xia.txt",
       "paragraphTimestamps": [
         0.0,
         38.2,
@@ -1726,7 +1726,7 @@
       "title": "第三十四回 情中情因情感妹妹 错里错以错劝哥哥 上",
       "audioFileName": "第34回_上.mp3",
       "summary": "宝玉挨打后，黛玉前来探望，两人互诉衷肠。",
-      "textFileName": "chapter_34_shang.txt",
+      "textFileName": "Text/chapter_34_shang.txt",
       "paragraphTimestamps": [
         0.0,
         14.7,
@@ -1744,7 +1744,7 @@
       "title": "第三十四回 情中情因情感妹妹 错里错以错劝哥哥 下",
       "audioFileName": "第34回_下.mp3",
       "summary": "袭人向王夫人建议让宝玉搬出大观园，王夫人深以为然。",
-      "textFileName": "chapter_34_xia.txt",
+      "textFileName": "Text/chapter_34_xia.txt",
       "paragraphTimestamps": [
         0.0,
         319.2,
@@ -1768,7 +1768,7 @@
       "title": "第三十五回 白玉钏亲尝莲叶羹 黄金莺巧结梅花络 上",
       "audioFileName": "第35回_上.mp3",
       "summary": "玉钏为宝玉送莲叶羹，宝玉体贴关心。",
-      "textFileName": "chapter_35_shang.txt",
+      "textFileName": "Text/chapter_35_shang.txt",
       "paragraphTimestamps": [
         0.0,
         14.9,
@@ -1787,7 +1787,7 @@
       "title": "第三十五回 白玉钏亲尝莲叶羹 黄金莺巧结梅花络 下",
       "audioFileName": "第35回_下.mp3",
       "summary": "莺儿为宝玉打络子，讨论颜色搭配，暗含金玉良缘之意。",
-      "textFileName": "chapter_35_xia.txt",
+      "textFileName": "Text/chapter_35_xia.txt",
       "paragraphTimestamps": [
         0.0,
         171.3,
@@ -1806,7 +1806,7 @@
       "title": "第三十六回 绣鸳鸯梦兆绛芸轩 识分定情悟梨香院 上",
       "audioFileName": "第36回_上.mp3",
       "summary": "宝玉在梦中喊出'和尚道士的话如何信得？什么是金玉姻缘，我偏说是木石前盟！'",
-      "textFileName": "chapter_36_shang.txt",
+      "textFileName": "Text/chapter_36_shang.txt",
       "paragraphTimestamps": [
         0.0,
         18.1,
@@ -1823,7 +1823,7 @@
       "title": "第三十六回 绣鸳鸯梦兆绛芸轩 识分定情悟梨香院 下",
       "audioFileName": "第36回_下.mp3",
       "summary": "宝玉到梨香院看龄官，发现龄官只爱贾蔷，领悟到人生情缘各有分定。",
-      "textFileName": "chapter_36_xia.txt",
+      "textFileName": "Text/chapter_36_xia.txt",
       "paragraphTimestamps": [
         0.0,
         82.7,
@@ -1840,7 +1840,7 @@
       "title": "第三十七回 秋爽斋偶结海棠社 蘅芜苑夜拟菊花题 上",
       "audioFileName": "第37回_上.mp3",
       "summary": "探春发起成立海棠诗社，众姐妹齐聚秋爽斋。",
-      "textFileName": "chapter_37_shang.txt",
+      "textFileName": "Text/chapter_37_shang.txt",
       "paragraphTimestamps": [
         0.0,
         18.3,
@@ -1886,7 +1886,7 @@
       "title": "第三十七回 秋爽斋偶结海棠社 蘅芜苑夜拟菊花题 下",
       "audioFileName": "第37回_下.mp3",
       "summary": "众人作海棠诗，李纨评判，宝钗夺魁。宝钗和湘云夜拟菊花题。",
-      "textFileName": "chapter_37_xia.txt",
+      "textFileName": "Text/chapter_37_xia.txt",
       "paragraphTimestamps": [
         0.0,
         110.7,
@@ -1911,7 +1911,7 @@
       "title": "第三十八回 林潇湘魁夺菊花诗 薛蘅芜讽和螃蟹咏 上",
       "audioFileName": "第38回_上.mp3",
       "summary": "众人作菊花诗，黛玉的三首诗被评为最佳。",
-      "textFileName": "chapter_38_shang.txt",
+      "textFileName": "Text/chapter_38_shang.txt",
       "paragraphTimestamps": [
         0.0,
         14.1,
@@ -1927,7 +1927,7 @@
       "title": "第三十八回 林潇湘魁夺菊花诗 薛蘅芜讽和螃蟹咏 下",
       "audioFileName": "第38回_下.mp3",
       "summary": "众人吃螃蟹，作螃蟹咏，宝钗的诗讽刺世人，获得好评。",
-      "textFileName": "chapter_38_xia.txt",
+      "textFileName": "Text/chapter_38_xia.txt",
       "paragraphTimestamps": [
         0.0,
         14.7,
@@ -2016,7 +2016,7 @@
       "title": "第三十九回 村姥姥是信口开合 情哥哥偏寻根究底 上",
       "audioFileName": "第39回_上.mp3",
       "summary": "刘姥姥二进荣国府，讲述乡村故事，逗得众人开心。",
-      "textFileName": "chapter_39_shang.txt",
+      "textFileName": "Text/chapter_39_shang.txt",
       "paragraphTimestamps": [
         0.0,
         16.4,
@@ -2033,7 +2033,7 @@
       "title": "第三十九回 村姥姥是信口开合 情哥哥偏寻根究底 下",
       "audioFileName": "第39回_下.mp3",
       "summary": "宝玉对刘姥姥讲的茗玉小姐故事信以为真，派人寻找。",
-      "textFileName": "chapter_39_xia.txt",
+      "textFileName": "Text/chapter_39_xia.txt",
       "paragraphTimestamps": [
         0.0,
         228.3,
@@ -2048,7 +2048,7 @@
       "title": "第四十回 史太君两宴大观园 金鸳鸯三宣牙牌令 上",
       "audioFileName": "第40回_上.mp3",
       "summary": "贾母设宴招待刘姥姥，游览大观园各处景点。",
-      "textFileName": "chapter_40_shang.txt",
+      "textFileName": "Text/chapter_40_shang.txt",
       "paragraphTimestamps": [
         0.0,
         15.7,
@@ -2067,7 +2067,7 @@
       "title": "第四十回 史太君两宴大观园 金鸳鸯三宣牙牌令 下",
       "audioFileName": "第40回_下.mp3",
       "summary": "行酒令游戏中，刘姥姥的朴实话语引得众人捧腹大笑。",
-      "textFileName": "chapter_40_xia.txt",
+      "textFileName": "Text/chapter_40_xia.txt",
       "paragraphTimestamps": [
         0.0,
         193.5,
@@ -2086,7 +2086,7 @@
       "title": "第四十一回 栊翠庵茶品梅花雪 怡红院劫遇母蝗虫 上",
       "audioFileName": "第41回_上.mp3",
       "summary": "刘姥姥在栊翠庵品茶，妙玉嫌弃她用过的杯子。",
-      "textFileName": "chapter_41_shang.txt",
+      "textFileName": "Text/chapter_41_shang.txt",
       "paragraphTimestamps": [
         0.0,
         17.3,
@@ -2103,7 +2103,7 @@
       "title": "第四十一回 栊翠庵茶品梅花雪 怡红院劫遇母蝗虫 下",
       "audioFileName": "第41回_下.mp3",
       "summary": "刘姥姥醉卧怡红院，误入宝玉卧室，闹出笑话。",
-      "textFileName": "chapter_41_xia.txt",
+      "textFileName": "Text/chapter_41_xia.txt",
       "paragraphTimestamps": [
         0.0,
         285.8,
@@ -2121,7 +2121,7 @@
       "title": "第四十二回 蘅芜君兰言解疑癖 潇湘子雅谑补余香 上",
       "audioFileName": "第42回_上.mp3",
       "summary": "宝钗劝黛玉不要看杂书，黛玉感激宝钗的关心。",
-      "textFileName": "chapter_42_shang.txt",
+      "textFileName": "Text/chapter_42_shang.txt",
       "paragraphTimestamps": [
         0.0,
         15.8,
@@ -2142,7 +2142,7 @@
       "title": "第四十二回 蘅芜君兰言解疑癖 潇湘子雅谑补余香 下",
       "audioFileName": "第42回_下.mp3",
       "summary": "众人商议为惜春画大观园图，讨论所需物品和方法。",
-      "textFileName": "chapter_42_xia.txt",
+      "textFileName": "Text/chapter_42_xia.txt",
       "paragraphTimestamps": [
         0.0,
         255.7,
@@ -2159,7 +2159,7 @@
       "title": "第四十三回 闲取乐偶攒金庆寿 不了情暂撮土为香 上",
       "audioFileName": "第43回_上.mp3",
       "summary": "众人凑份子为凤姐庆寿，宝玉却偷偷外出祭奠金钏。",
-      "textFileName": "chapter_43_shang.txt",
+      "textFileName": "Text/chapter_43_shang.txt",
       "paragraphTimestamps": [
         0.0,
         17.1,
@@ -2178,7 +2178,7 @@
       "title": "第四十三回 闲取乐偶攒金庆寿 不了情暂撮土为香 下",
       "audioFileName": "第43回_下.mp3",
       "summary": "宝玉在水仙庵祭奠金钏，表达内心的愧疚和哀思。",
-      "textFileName": "chapter_43_xia.txt",
+      "textFileName": "Text/chapter_43_xia.txt",
       "paragraphTimestamps": [
         0.0,
         17.2,
@@ -2198,7 +2198,7 @@
       "title": "第四十四回 变生不测凤姐泼醋 喜出望外平儿理妆 上",
       "audioFileName": "第44回_上.mp3",
       "summary": "凤姐生日当天发现贾琏偷情，大闹一场。",
-      "textFileName": "chapter_44_shang.txt",
+      "textFileName": "Text/chapter_44_shang.txt",
       "paragraphTimestamps": [
         0.0,
         21.2,
@@ -2214,7 +2214,7 @@
       "title": "第四十四回 变生不测凤姐泼醋 喜出望外平儿理妆 下",
       "audioFileName": "第44回_下.mp3",
       "summary": "平儿被打后，宝玉帮她理妆，安慰她。",
-      "textFileName": "chapter_44_xia.txt",
+      "textFileName": "Text/chapter_44_xia.txt",
       "paragraphTimestamps": [
         0.0,
         17.1,
@@ -2234,7 +2234,7 @@
       "title": "第四十五回 金兰契互剖金兰语 风雨夕闷制风雨词 上",
       "audioFileName": "第45回_上.mp3",
       "summary": "宝钗和黛玉互诉衷肠，成为知心朋友。",
-      "textFileName": "chapter_45_shang.txt",
+      "textFileName": "Text/chapter_45_shang.txt",
       "paragraphTimestamps": [
         0.0,
         16.2,
@@ -2252,7 +2252,7 @@
       "title": "第四十五回 金兰契互剖金兰语 风雨夕闷制风雨词 下",
       "audioFileName": "第45回_下.mp3",
       "summary": "风雨之夜，黛玉写下《秋窗风雨夕》，表达孤独和感伤。",
-      "textFileName": "chapter_45_xia.txt",
+      "textFileName": "Text/chapter_45_xia.txt",
       "paragraphTimestamps": [
         0.0,
         21.4,
@@ -2284,7 +2284,7 @@
       "title": "第四十六回 尴尬人难免尴尬事 鸳鸯女誓绝鸳鸯偶 上",
       "audioFileName": "第46回_上.mp3",
       "summary": "贾赦要纳鸳鸯为妾，鸳鸯坚决不从。",
-      "textFileName": "chapter_46_shang.txt",
+      "textFileName": "Text/chapter_46_shang.txt",
       "paragraphTimestamps": [
         0.0,
         18.3,
@@ -2302,7 +2302,7 @@
       "title": "第四十六回 尴尬人难免尴尬事 鸳鸯女誓绝鸳鸯偶 下",
       "audioFileName": "第46回_下.mp3",
       "summary": "鸳鸯在贾母面前剪发明志，誓死不嫁，贾母保护了她。",
-      "textFileName": "chapter_46_xia.txt",
+      "textFileName": "Text/chapter_46_xia.txt",
       "paragraphTimestamps": [
         0.0,
         18.3,
@@ -2321,7 +2321,7 @@
       "title": "第四十七回 呆霸王调情遭苦打 冷郎君惧祸走他乡 上",
       "audioFileName": "第47回_上.mp3",
       "summary": "薛蟠调戏柳湘莲，被柳湘莲痛打一顿。",
-      "textFileName": "chapter_47_shang.txt",
+      "textFileName": "Text/chapter_47_shang.txt",
       "paragraphTimestamps": [
         0.0,
         18.7,
@@ -2342,7 +2342,7 @@
       "title": "第四十七回 呆霸王调情遭苦打 冷郎君惧祸走他乡 下",
       "audioFileName": "第47回_下.mp3",
       "summary": "柳湘莲担心报复，远走他乡，尤三姐因此绝望。",
-      "textFileName": "chapter_47_xia.txt",
+      "textFileName": "Text/chapter_47_xia.txt",
       "paragraphTimestamps": [
         0.0,
         15.8,
@@ -2360,7 +2360,7 @@
       "title": "第四十八回 滥情人情误思游艺 慕雅女雅集苦吟诗 上",
       "audioFileName": "第48回_上.mp3",
       "summary": "薛蟠外出游艺，香菱搬到大观园向黛玉学诗。",
-      "textFileName": "chapter_48_shang.txt",
+      "textFileName": "Text/chapter_48_shang.txt",
       "paragraphTimestamps": [
         0.0,
         20.1,
@@ -2382,7 +2382,7 @@
       "title": "第四十八回 滥情人情误思游艺 慕雅女雅集苦吟诗 下",
       "audioFileName": "第48回_下.mp3",
       "summary": "香菱刻苦学诗，终于写出好诗，展现其才华。",
-      "textFileName": "chapter_48_xia.txt",
+      "textFileName": "Text/chapter_48_xia.txt",
       "paragraphTimestamps": [
         0.0,
         18.9,
@@ -2411,7 +2411,7 @@
       "title": "第四十九回 琉璃世界白雪红梅 脂粉香娃割腥啖膻 上",
       "audioFileName": "第49回_上.mp3",
       "summary": "大观园迎来多位新客人，包括薛宝琴、邢岫烟等。",
-      "textFileName": "chapter_49_shang.txt",
+      "textFileName": "Text/chapter_49_shang.txt",
       "paragraphTimestamps": [
         0.0,
         33.6,
@@ -2439,7 +2439,7 @@
       "title": "第四十九回 琉璃世界白雪红梅 脂粉香娃割腥啖膻 下",
       "audioFileName": "第49回_下.mp3",
       "summary": "雪天赏梅，众人烤鹿肉，展现青春活力。",
-      "textFileName": "chapter_49_xia.txt",
+      "textFileName": "Text/chapter_49_xia.txt",
       "paragraphTimestamps": [
         0.0,
         32.6,
@@ -2460,7 +2460,7 @@
       "title": "第五十回 芦雪庵争联即景诗 暖香坞雅制春灯谜 上",
       "audioFileName": "第50回_上.mp3",
       "summary": "芦雪庵即景联诗，众人争相展示才华。",
-      "textFileName": "chapter_50_shang.txt",
+      "textFileName": "Text/chapter_50_shang.txt",
       "paragraphTimestamps": [
         0.0,
         35.0,
@@ -2479,7 +2479,7 @@
       "title": "第五十回 芦雪庵争联即景诗 暖香坞雅制春灯谜 下",
       "audioFileName": "第50回_下.mp3",
       "summary": "暖香坞制作春灯谜，贾母参与其中，其乐融融。",
-      "textFileName": "chapter_50_xia.txt",
+      "textFileName": "Text/chapter_50_xia.txt",
       "paragraphTimestamps": [
         0.0,
         36.2,
@@ -2496,7 +2496,7 @@
       "title": "第五十一回 薛小妹新编怀古诗 胡庸医乱用虎狼药 上",
       "audioFileName": "第51回_上.mp3",
       "summary": "薛宝琴作十首怀古诗，暗含深意。晴雯生病，请来胡庸医诊治。",
-      "textFileName": "chapter_51_shang.txt",
+      "textFileName": "Text/chapter_51_shang.txt",
       "paragraphTimestamps": [
         0.0,
         30.6,
@@ -2526,7 +2526,7 @@
       "title": "第五十一回 薛小妹新编怀古诗 胡庸医乱用虎狼药 下",
       "audioFileName": "第51回_下.mp3",
       "summary": "宝玉担心胡庸医的虎狼药伤害晴雯，另请医生重新开方。",
-      "textFileName": "chapter_51_xia.txt",
+      "textFileName": "Text/chapter_51_xia.txt",
       "paragraphTimestamps": [
         0.0,
         30.6,
@@ -2547,7 +2547,7 @@
       "title": "第五十二回 俏平儿情掩虾须镯 勇晴雯病补雀金裘 上",
       "audioFileName": "第52回_上.mp3",
       "summary": "平儿发现坠儿偷窃虾须镯，但顾及宝玉颜面，私下处理。",
-      "textFileName": "chapter_52_shang.txt",
+      "textFileName": "Text/chapter_52_shang.txt",
       "paragraphTimestamps": [
         0.0,
         39.9,
@@ -2568,7 +2568,7 @@
       "title": "第五十二回 俏平儿情掩虾须镯 勇晴雯病补雀金裘 下",
       "audioFileName": "第52回_下.mp3",
       "summary": "晴雯病中为宝玉补缀雀金裘，展现其忠诚和勇敢。",
-      "textFileName": "chapter_52_xia.txt",
+      "textFileName": "Text/chapter_52_xia.txt",
       "paragraphTimestamps": [
         0.0,
         31.9,
@@ -2589,7 +2589,7 @@
       "title": "第五十三回 宁国府除夕祭宗祠 荣国府元宵开夜宴 上",
       "audioFileName": "第53回_上.mp3",
       "summary": "宁国府举行隆重的除夕祭祖仪式，展现家族传统。",
-      "textFileName": "chapter_53_shang.txt",
+      "textFileName": "Text/chapter_53_shang.txt",
       "paragraphTimestamps": [
         0.0,
         30.7,
@@ -2611,7 +2611,7 @@
       "title": "第五十三回 宁国府除夕祭宗祠 荣国府元宵开夜宴 下",
       "audioFileName": "第53回_下.mp3",
       "summary": "荣国府元宵节开夜宴，热闹非凡，但已显衰败之象。",
-      "textFileName": "chapter_53_xia.txt",
+      "textFileName": "Text/chapter_53_xia.txt",
       "paragraphTimestamps": [
         0.0,
         19.5,
@@ -2637,7 +2637,7 @@
       "title": "第五十四回 史太君破陈腐旧套 王熙凤效戏彩斑衣 上",
       "audioFileName": "第54回_上.mp3",
       "summary": "贾母批评才子佳人小说的陈腐套路，展现其见识。",
-      "textFileName": "chapter_54_shang.txt",
+      "textFileName": "Text/chapter_54_shang.txt",
       "paragraphTimestamps": [
         0.0,
         30.1,
@@ -2656,7 +2656,7 @@
       "title": "第五十四回 史太君破陈腐旧套 王熙凤效戏彩斑衣 下",
       "audioFileName": "第54回_下.mp3",
       "summary": "凤姐效仿古代孝子彩衣娱亲，逗贾母开心。",
-      "textFileName": "chapter_54_xia.txt",
+      "textFileName": "Text/chapter_54_xia.txt",
       "paragraphTimestamps": [
         0.0,
         30.2,
@@ -2678,7 +2678,7 @@
       "title": "第五十五回 辱亲女愚妾争闲气 欺幼主刁奴蓄险心 上",
       "audioFileName": "第55回_上.mp3",
       "summary": "凤姐小产，探春、李纨、宝钗协理家务。赵姨娘因兄弟丧事闹事。",
-      "textFileName": "chapter_55_shang.txt",
+      "textFileName": "Text/chapter_55_shang.txt",
       "paragraphTimestamps": [
         0.0,
         28.6,
@@ -2698,7 +2698,7 @@
       "title": "第五十五回 辱亲女愚妾争闲气 欺幼主刁奴蓄险心 下",
       "audioFileName": "第55回_下.mp3",
       "summary": "探春展现管理才能，改革弊端，树立威信。",
-      "textFileName": "chapter_55_xia.txt",
+      "textFileName": "Text/chapter_55_xia.txt",
       "paragraphTimestamps": [
         0.0,
         29.2,
@@ -2718,7 +2718,7 @@
       "title": "第五十六回 敏探春兴利除宿弊 时宝钗小惠全大体 上",
       "audioFileName": "第56回_上.mp3",
       "summary": "探春推行承包制，兴利除弊，提高大观园经济效益。",
-      "textFileName": "chapter_56_shang.txt",
+      "textFileName": "Text/chapter_56_shang.txt",
       "paragraphTimestamps": [
         0.0
       ],
@@ -2729,7 +2729,7 @@
       "title": "第五十六回 敏探春兴利除宿弊 时宝钗小惠全大体 下",
       "audioFileName": "第56回_下.mp3",
       "summary": "宝钗建议将收益分给众人，体现其周全考虑。",
-      "textFileName": "chapter_56_xia.txt",
+      "textFileName": "Text/chapter_56_xia.txt",
       "paragraphTimestamps": [
         0.0
       ],
@@ -2740,7 +2740,7 @@
       "title": "第五十七回 慧紫鹃情辞试忙玉 慈姨妈爱语慰痴颦 上",
       "audioFileName": "第57回_上.mp3",
       "summary": "紫鹃试探宝玉对黛玉的感情，谎称黛玉要回苏州。",
-      "textFileName": "chapter_57_shang.txt",
+      "textFileName": "Text/chapter_57_shang.txt",
       "paragraphTimestamps": [
         0.0,
         78.9,
@@ -2760,7 +2760,7 @@
       "title": "第五十七回 慧紫鹃情辞试忙玉 慈姨妈爱语慰痴颦 中",
       "audioFileName": "第57回_中.mp3",
       "summary": "紫鹃试探宝玉对黛玉的感情，谎称黛玉要回苏州。",
-      "textFileName": "chapter_57_zhong.txt",
+      "textFileName": "Text/chapter_57_zhong.txt",
       "paragraphTimestamps": [
         0.0,
         86.7,
@@ -2778,7 +2778,7 @@
       "title": "第五十七回 慧紫鹃情辞试忙玉 慈姨妈爱语慰痴颦 下",
       "audioFileName": "第57回_下.mp3",
       "summary": "真相大白后，薛姨妈安慰黛玉，提及金玉良缘，黛玉心中不安。",
-      "textFileName": "chapter_57_xia.txt",
+      "textFileName": "Text/chapter_57_xia.txt",
       "paragraphTimestamps": [
         0.0,
         62.2,
@@ -2798,7 +2798,7 @@
       "title": "第五十八回 杏子阴假凤泣虚凰 茜纱窗真情揆痴理 上",
       "audioFileName": "第58回_上.mp3",
       "summary": "藕官烧纸祭奠菂官，被夏婆子发现，引发冲突。",
-      "textFileName": "chapter_58_shang.txt",
+      "textFileName": "Text/chapter_58_shang.txt",
       "paragraphTimestamps": [
         0.0
       ],
@@ -2809,7 +2809,7 @@
       "title": "第五十八回 杏子阴假凤泣虚凰 茜纱窗真情揆痴理 下",
       "audioFileName": "第58回_下.mp3",
       "summary": "宝玉理解藕官的真情，保护她免受惩罚。",
-      "textFileName": "chapter_58_xia.txt",
+      "textFileName": "Text/chapter_58_xia.txt",
       "paragraphTimestamps": [
         0.0
       ],
@@ -2820,7 +2820,7 @@
       "title": "第五十九回 柳叶渚边嗔莺咤燕 绛云轩里召将飞符 上",
       "audioFileName": "第59回_上.mp3",
       "summary": "春燕的母亲和姑妈因花草问题争吵，春燕求助宝玉。",
-      "textFileName": "chapter_59_shang.txt",
+      "textFileName": "Text/chapter_59_shang.txt",
       "paragraphTimestamps": [
         0.0
       ],
@@ -2831,7 +2831,7 @@
       "title": "第五十九回 柳叶渚边嗔莺咤燕 绛云轩里召将飞符 下",
       "audioFileName": "第59回_下.mp3",
       "summary": "宝玉帮助春燕解决家庭纠纷，展现其善良本性。",
-      "textFileName": "chapter_59_xia.txt",
+      "textFileName": "Text/chapter_59_xia.txt",
       "paragraphTimestamps": [
         0.0
       ],
@@ -2842,7 +2842,7 @@
       "title": "第六十回 茉莉粉替去蔷薇硝 玫瑰露引来茯苓霜 上",
       "audioFileName": "第60回_上.mp3",
       "summary": "芳官用茉莉粉代替蔷薇硝给贾环，引发赵姨娘不满。",
-      "textFileName": "chapter_60_shang.txt",
+      "textFileName": "Text/chapter_60_shang.txt",
       "paragraphTimestamps": [
         0.0,
         65.7,
@@ -2865,7 +2865,7 @@
       "title": "第六十回 茉莉粉替去蔷薇硝 玫瑰露引来茯苓霜 下",
       "audioFileName": "第60回_下.mp3",
       "summary": "玫瑰露和茯苓霜失窃事件，牵连多人，最终查明真相。",
-      "textFileName": "chapter_60_xia.txt",
+      "textFileName": "Text/chapter_60_xia.txt",
       "paragraphTimestamps": [
         0.0,
         77.4,
@@ -2888,7 +2888,7 @@
       "title": "第六十一回 投鼠忌器宝玉瞒赃 判冤决狱平儿行权 上",
       "audioFileName": "第61回_上.mp3",
       "summary": "宝玉因蔷薇硝事件处理怡红院的纷争，平儿判冤决狱公正处置。",
-      "textFileName": "chapter_61_shang.txt",
+      "textFileName": "Text/chapter_61_shang.txt",
       "paragraphTimestamps": null,
       "season": 5
     },
@@ -2897,7 +2897,7 @@
       "title": "第六十一回 投鼠忌器宝玉瞒赃 判冤决狱平儿行权 下",
       "audioFileName": "第61回_下.mp3",
       "summary": "宝玉因蔷薇硝事件处理怡红院的纷争，平儿判冤决狱公正处置。",
-      "textFileName": "chapter_61_xia.txt",
+      "textFileName": "Text/chapter_61_xia.txt",
       "paragraphTimestamps": null,
       "season": 5
     },
@@ -2906,7 +2906,7 @@
       "title": "第六十二回 憨湘云醉眠芍药裀 呆香菱情解石榴裙 上",
       "audioFileName": "第62回_上.mp3",
       "summary": "湘云醉卧芍药裀，群芳设宴抽花签，各人命运暗藏玄机。",
-      "textFileName": "chapter_62_shang.txt",
+      "textFileName": "Text/chapter_62_shang.txt",
       "paragraphTimestamps": null,
       "season": 5
     },
@@ -2915,7 +2915,7 @@
       "title": "第六十二回 憨湘云醉眠芍药裀 呆香菱情解石榴裙 中",
       "audioFileName": "第62回_中.mp3",
       "summary": "湘云醉卧芍药裀，群芳设宴抽花签，各人命运暗藏玄机。",
-      "textFileName": "chapter_62_zhong.txt",
+      "textFileName": "Text/chapter_62_zhong.txt",
       "paragraphTimestamps": null,
       "season": 5
     },
@@ -2924,7 +2924,7 @@
       "title": "第六十二回 憨湘云醉眠芍药裀 呆香菱情解石榴裙 下",
       "audioFileName": "第62回_下.mp3",
       "summary": "湘云醉卧芍药裀，群芳设宴抽花签，各人命运暗藏玄机。",
-      "textFileName": "chapter_62_xia.txt",
+      "textFileName": "Text/chapter_62_xia.txt",
       "paragraphTimestamps": null,
       "season": 5
     },
@@ -2933,7 +2933,7 @@
       "title": "第六十三回 寿怡红群芳开夜宴 死金丹独艳理亲丧 上",
       "audioFileName": "第63回_上.mp3",
       "summary": "贾敬殡天，尤氏理丧。贾琏偷娶尤二姐，埋下祸根。",
-      "textFileName": "chapter_63_shang.txt",
+      "textFileName": "Text/chapter_63_shang.txt",
       "paragraphTimestamps": null,
       "season": 5
     },
@@ -2942,7 +2942,7 @@
       "title": "第六十三回 寿怡红群芳开夜宴 死金丹独艳理亲丧 中",
       "audioFileName": "第63回_中.mp3",
       "summary": "贾敬殡天，尤氏理丧。贾琏偷娶尤二姐，埋下祸根。",
-      "textFileName": "chapter_63_zhong.txt",
+      "textFileName": "Text/chapter_63_zhong.txt",
       "paragraphTimestamps": null,
       "season": 5
     },
@@ -2951,7 +2951,7 @@
       "title": "第六十三回 寿怡红群芳开夜宴 死金丹独艳理亲丧 下",
       "audioFileName": "第63回_下.mp3",
       "summary": "贾敬殡天，尤氏理丧。贾琏偷娶尤二姐，埋下祸根。",
-      "textFileName": "chapter_63_xia.txt",
+      "textFileName": "Text/chapter_63_xia.txt",
       "paragraphTimestamps": null,
       "season": 5
     },
@@ -2960,7 +2960,7 @@
       "title": "第六十四回 幽淑女悲题五美吟 浪荡子情遗九龙珮 上",
       "audioFileName": "第64回_上.mp3",
       "summary": "黛玉悲题五美吟，寄托身世之感。贾琏与尤二姐之事渐渐传开。",
-      "textFileName": "chapter_64_shang.txt",
+      "textFileName": "Text/chapter_64_shang.txt",
       "paragraphTimestamps": null,
       "season": 5
     },
@@ -2969,7 +2969,7 @@
       "title": "第六十四回 幽淑女悲题五美吟 浪荡子情遗九龙珮 中",
       "audioFileName": "第64回_中.mp3",
       "summary": "黛玉悲题五美吟，寄托身世之感。贾琏与尤二姐之事渐渐传开。",
-      "textFileName": "chapter_64_zhong.txt",
+      "textFileName": "Text/chapter_64_zhong.txt",
       "paragraphTimestamps": null,
       "season": 5
     },
@@ -2978,7 +2978,7 @@
       "title": "第六十四回 幽淑女悲题五美吟 浪荡子情遗九龙珮 下",
       "audioFileName": "第64回_下.mp3",
       "summary": "黛玉悲题五美吟，寄托身世之感。贾琏与尤二姐之事渐渐传开。",
-      "textFileName": "chapter_64_xia.txt",
+      "textFileName": "Text/chapter_64_xia.txt",
       "paragraphTimestamps": null,
       "season": 5
     },
@@ -2987,7 +2987,7 @@
       "title": "第六十五回 贾二舍偷娶尤二姨 尤三姐思嫁柳二郎 上",
       "audioFileName": "第65回_上.mp3",
       "summary": "尤三姐思嫁柳二郎，贾琏贾珍各怀心思，暗流涌动。",
-      "textFileName": "chapter_65_shang.txt",
+      "textFileName": "Text/chapter_65_shang.txt",
       "paragraphTimestamps": null,
       "season": 5
     },
@@ -2996,7 +2996,7 @@
       "title": "第六十五回 贾二舍偷娶尤二姨 尤三姐思嫁柳二郎 下",
       "audioFileName": "第65回_下.mp3",
       "summary": "尤三姐思嫁柳二郎，贾琏贾珍各怀心思，暗流涌动。",
-      "textFileName": "chapter_65_xia.txt",
+      "textFileName": "Text/chapter_65_xia.txt",
       "paragraphTimestamps": null,
       "season": 5
     },
@@ -3005,7 +3005,7 @@
       "title": "第六十六回 情小妹耻情归地府 冷二郎一冷入空门 上",
       "audioFileName": "第66回_上.mp3",
       "summary": "柳湘莲冷面拒婚，尤三姐以死明志，芳魂永逝。",
-      "textFileName": "chapter_66_shang.txt",
+      "textFileName": "Text/chapter_66_shang.txt",
       "paragraphTimestamps": null,
       "season": 5
     },
@@ -3014,7 +3014,7 @@
       "title": "第六十六回 情小妹耻情归地府 冷二郎一冷入空门 下",
       "audioFileName": "第66回_下.mp3",
       "summary": "柳湘莲冷面拒婚，尤三姐以死明志，芳魂永逝。",
-      "textFileName": "chapter_66_xia.txt",
+      "textFileName": "Text/chapter_66_xia.txt",
       "paragraphTimestamps": null,
       "season": 5
     },
@@ -3023,7 +3023,7 @@
       "title": "第六十七回 见土仪颦卿思故里 闻秘事凤姐讯家童 上",
       "audioFileName": "第67回_上.mp3",
       "summary": "薛蟠送黛玉土仪，黛玉睹物思乡暗自伤怀。凤姐听闻贾琏偷娶之事。",
-      "textFileName": "chapter_67_shang.txt",
+      "textFileName": "Text/chapter_67_shang.txt",
       "paragraphTimestamps": null,
       "season": 5
     },
@@ -3032,7 +3032,7 @@
       "title": "第六十七回 见土仪颦卿思故里 闻秘事凤姐讯家童 下",
       "audioFileName": "第67回_下.mp3",
       "summary": "薛蟠送黛玉土仪，黛玉睹物思乡暗自伤怀。凤姐听闻贾琏偷娶之事。",
-      "textFileName": "chapter_67_xia.txt",
+      "textFileName": "Text/chapter_67_xia.txt",
       "paragraphTimestamps": null,
       "season": 5
     },
@@ -3041,7 +3041,7 @@
       "title": "第六十八回 苦尤娘赚入大观园 酸凤姐大闹宁国府 上",
       "audioFileName": "第68回_上.mp3",
       "summary": "凤姐大闹宁国府，巧设陷阱逼迫尤二姐，暗藏杀机。",
-      "textFileName": "chapter_68_shang.txt",
+      "textFileName": "Text/chapter_68_shang.txt",
       "paragraphTimestamps": null,
       "season": 5
     },
@@ -3050,7 +3050,7 @@
       "title": "第六十八回 苦尤娘赚入大观园 酸凤姐大闹宁国府 下",
       "audioFileName": "第68回_下.mp3",
       "summary": "凤姐大闹宁国府，巧设陷阱逼迫尤二姐，暗藏杀机。",
-      "textFileName": "chapter_68_xia.txt",
+      "textFileName": "Text/chapter_68_xia.txt",
       "paragraphTimestamps": null,
       "season": 5
     },
@@ -3059,7 +3059,7 @@
       "title": "第六十九回 弄小巧用借剑杀人 觉大限吞生金自逝 上",
       "audioFileName": "第69回_上.mp3",
       "summary": "尤二姐在凤姐折磨下吞金自尽，一尸两命，令人扼腕。",
-      "textFileName": "chapter_69_shang.txt",
+      "textFileName": "Text/chapter_69_shang.txt",
       "paragraphTimestamps": null,
       "season": 5
     },
@@ -3068,7 +3068,7 @@
       "title": "第六十九回 弄小巧用借剑杀人 觉大限吞生金自逝 下",
       "audioFileName": "第69回_下.mp3",
       "summary": "尤二姐在凤姐折磨下吞金自尽，一尸两命，令人扼腕。",
-      "textFileName": "chapter_69_xia.txt",
+      "textFileName": "Text/chapter_69_xia.txt",
       "paragraphTimestamps": null,
       "season": 5
     },
@@ -3077,7 +3077,7 @@
       "title": "第七十回 林黛玉重建桃花社 史湘云偶填柳絮词 上",
       "audioFileName": "第70回_上.mp3",
       "summary": "桃花社重建，黛玉作桃花行。众人填柳絮词，暗喻各自命运。",
-      "textFileName": "chapter_70_shang.txt",
+      "textFileName": "Text/chapter_70_shang.txt",
       "paragraphTimestamps": null,
       "season": 5
     },
@@ -3086,7 +3086,7 @@
       "title": "第七十回 林黛玉重建桃花社 史湘云偶填柳絮词 下",
       "audioFileName": "第70回_下.mp3",
       "summary": "桃花社重建，黛玉作桃花行。众人填柳絮词，暗喻各自命运。",
-      "textFileName": "chapter_70_xia.txt",
+      "textFileName": "Text/chapter_70_xia.txt",
       "paragraphTimestamps": null,
       "season": 5
     },
@@ -3095,7 +3095,7 @@
       "title": "第七十一回 嫌隙人有心生嫌隙 鸳鸯女无意遇鸳鸯 上",
       "audioFileName": "第71回_上.mp3",
       "summary": "贾母八旬大庆，荣宁二府齐开宴，繁华背后的隐忧。",
-      "textFileName": "chapter_71_shang.txt",
+      "textFileName": "Text/chapter_71_shang.txt",
       "paragraphTimestamps": null,
       "season": 5
     },
@@ -3104,7 +3104,7 @@
       "title": "第七十一回 嫌隙人有心生嫌隙 鸳鸯女无意遇鸳鸯 下",
       "audioFileName": "第71回_下.mp3",
       "summary": "贾母八旬大庆，荣宁二府齐开宴，繁华背后的隐忧。",
-      "textFileName": "chapter_71_xia.txt",
+      "textFileName": "Text/chapter_71_xia.txt",
       "paragraphTimestamps": null,
       "season": 5
     },
@@ -3113,7 +3113,7 @@
       "title": "第七十二回 王熙凤恃强羞说病 来旺妇倚势霸成亲 上",
       "audioFileName": "第72回_上.mp3",
       "summary": "鸳鸯女无意遇鸳鸯，司棋与表兄私会被撞破，伏下后文之祸。",
-      "textFileName": "chapter_72_shang.txt",
+      "textFileName": "Text/chapter_72_shang.txt",
       "paragraphTimestamps": null,
       "season": 5
     },
@@ -3122,7 +3122,7 @@
       "title": "第七十二回 王熙凤恃强羞说病 来旺妇倚势霸成亲 下",
       "audioFileName": "第72回_下.mp3",
       "summary": "鸳鸯女无意遇鸳鸯，司棋与表兄私会被撞破，伏下后文之祸。",
-      "textFileName": "chapter_72_xia.txt",
+      "textFileName": "Text/chapter_72_xia.txt",
       "paragraphTimestamps": null,
       "season": 5
     },
@@ -3131,7 +3131,7 @@
       "title": "第七十三回 痴丫头误拾绣春囊 懦小姐不问累金凤 上",
       "audioFileName": "第73回_上.mp3",
       "summary": "傻大姐误拾绣春囊，引发轩然大波。迎春不问累金凤之事。",
-      "textFileName": "chapter_73_shang.txt",
+      "textFileName": "Text/chapter_73_shang.txt",
       "paragraphTimestamps": null,
       "season": 5
     },
@@ -3140,7 +3140,7 @@
       "title": "第七十三回 痴丫头误拾绣春囊 懦小姐不问累金凤 下",
       "audioFileName": "第73回_下.mp3",
       "summary": "傻大姐误拾绣春囊，引发轩然大波。迎春不问累金凤之事。",
-      "textFileName": "chapter_73_xia.txt",
+      "textFileName": "Text/chapter_73_xia.txt",
       "paragraphTimestamps": null,
       "season": 5
     },
@@ -3149,7 +3149,7 @@
       "title": "第七十四回 惑奸谗抄检大观园 避嫌隙杜绝宁国府 上",
       "audioFileName": "第74回_上.mp3",
       "summary": "凤姐借绣春囊之由抄检大观园，各房反应不一，探春怒斥此举。",
-      "textFileName": "chapter_74_shang.txt",
+      "textFileName": "Text/chapter_74_shang.txt",
       "paragraphTimestamps": null,
       "season": 5
     },
@@ -3158,7 +3158,7 @@
       "title": "第七十四回 惑奸谗抄检大观园 避嫌隙杜绝宁国府 中",
       "audioFileName": "第74回_中.mp3",
       "summary": "凤姐借绣春囊之由抄检大观园，各房反应不一，探春怒斥此举。",
-      "textFileName": "chapter_74_zhong.txt",
+      "textFileName": "Text/chapter_74_zhong.txt",
       "paragraphTimestamps": null,
       "season": 5
     },
@@ -3167,7 +3167,7 @@
       "title": "第七十四回 惑奸谗抄检大观园 避嫌隙杜绝宁国府 下",
       "audioFileName": "第74回_下.mp3",
       "summary": "凤姐借绣春囊之由抄检大观园，各房反应不一，探春怒斥此举。",
-      "textFileName": "chapter_74_xia.txt",
+      "textFileName": "Text/chapter_74_xia.txt",
       "paragraphTimestamps": null,
       "season": 5
     },
@@ -3176,7 +3176,7 @@
       "title": "第七十五回 开夜宴异兆发悲音 赏中秋新词得佳谶 上",
       "audioFileName": "第75回_上.mp3",
       "summary": "中秋夜宴，各房赏月。贾珍居丧期间聚赌行乐，家法渐弛。",
-      "textFileName": "chapter_75_shang.txt",
+      "textFileName": "Text/chapter_75_shang.txt",
       "paragraphTimestamps": null,
       "season": 5
     },
@@ -3185,7 +3185,7 @@
       "title": "第七十五回 开夜宴异兆发悲音 赏中秋新词得佳谶 中",
       "audioFileName": "第75回_中.mp3",
       "summary": "中秋夜宴，各房赏月。贾珍居丧期间聚赌行乐，家法渐弛。",
-      "textFileName": "chapter_75_zhong.txt",
+      "textFileName": "Text/chapter_75_zhong.txt",
       "paragraphTimestamps": null,
       "season": 5
     },
@@ -3194,7 +3194,7 @@
       "title": "第七十五回 开夜宴异兆发悲音 赏中秋新词得佳谶 下",
       "audioFileName": "第75回_下.mp3",
       "summary": "中秋夜宴，各房赏月。贾珍居丧期间聚赌行乐，家法渐弛。",
-      "textFileName": "chapter_75_xia.txt",
+      "textFileName": "Text/chapter_75_xia.txt",
       "paragraphTimestamps": null,
       "season": 5
     },
@@ -3203,7 +3203,7 @@
       "title": "第七十六回 凸碧堂品笛感凄清 凹晶馆联诗悲寂寞 上",
       "audioFileName": "第76回_上.mp3",
       "summary": "中秋夜黛玉湘云凹晶馆联诗，悲凉之雾遍被华林。",
-      "textFileName": "chapter_76_shang.txt",
+      "textFileName": "Text/chapter_76_shang.txt",
       "paragraphTimestamps": null,
       "season": 6
     },
@@ -3212,7 +3212,7 @@
       "title": "第七十六回 凸碧堂品笛感凄清 凹晶馆联诗悲寂寞 下",
       "audioFileName": "第76回_下.mp3",
       "summary": "中秋夜黛玉湘云凹晶馆联诗，悲凉之雾遍被华林。",
-      "textFileName": "chapter_76_xia.txt",
+      "textFileName": "Text/chapter_76_xia.txt",
       "paragraphTimestamps": null,
       "season": 6
     },
@@ -3221,7 +3221,7 @@
       "title": "第七十七回 俏丫鬟抱屈夭风流 美优伶斩情归水月 上",
       "audioFileName": "第77回_上.mp3",
       "summary": "司棋被逐出大观园，晴雯抱屈被撵，宝玉探望病中的晴雯。",
-      "textFileName": "chapter_77_shang.txt",
+      "textFileName": "Text/chapter_77_shang.txt",
       "paragraphTimestamps": null,
       "season": 6
     },
@@ -3230,7 +3230,7 @@
       "title": "第七十七回 俏丫鬟抱屈夭风流 美优伶斩情归水月 中",
       "audioFileName": "第77回_中.mp3",
       "summary": "司棋被逐出大观园，晴雯抱屈被撵，宝玉探望病中的晴雯。",
-      "textFileName": "chapter_77_zhong.txt",
+      "textFileName": "Text/chapter_77_zhong.txt",
       "paragraphTimestamps": null,
       "season": 6
     },
@@ -3239,7 +3239,7 @@
       "title": "第七十七回 俏丫鬟抱屈夭风流 美优伶斩情归水月 下",
       "audioFileName": "第77回_下.mp3",
       "summary": "司棋被逐出大观园，晴雯抱屈被撵，宝玉探望病中的晴雯。",
-      "textFileName": "chapter_77_xia.txt",
+      "textFileName": "Text/chapter_77_xia.txt",
       "paragraphTimestamps": null,
       "season": 6
     },
@@ -3248,7 +3248,7 @@
       "title": "第七十八回 老学士闲征姽媜词 痴公子杜撰芙蓉诔 上",
       "audioFileName": "第78回_上.mp3",
       "summary": "晴雯抱屈夭亡，宝玉悲痛之中作《芙蓉女儿诔》祭奠。",
-      "textFileName": "chapter_78_shang.txt",
+      "textFileName": "Text/chapter_78_shang.txt",
       "paragraphTimestamps": null,
       "season": 6
     },
@@ -3257,7 +3257,7 @@
       "title": "第七十八回 老学士闲征姽媜词 痴公子杜撰芙蓉诔 中",
       "audioFileName": "第78回_中.mp3",
       "summary": "晴雯抱屈夭亡，宝玉悲痛之中作《芙蓉女儿诔》祭奠。",
-      "textFileName": "chapter_78_zhong.txt",
+      "textFileName": "Text/chapter_78_zhong.txt",
       "paragraphTimestamps": null,
       "season": 6
     },
@@ -3266,7 +3266,7 @@
       "title": "第七十八回 老学士闲征姽媜词 痴公子杜撰芙蓉诔 下",
       "audioFileName": "第78回_下.mp3",
       "summary": "晴雯抱屈夭亡，宝玉悲痛之中作《芙蓉女儿诔》祭奠。",
-      "textFileName": "chapter_78_xia.txt",
+      "textFileName": "Text/chapter_78_xia.txt",
       "paragraphTimestamps": null,
       "season": 6
     },
@@ -3275,7 +3275,7 @@
       "title": "第七十九回 薛文起悔娶河东吼 贾迎春误嫁中山狼 上",
       "audioFileName": "第79回_上.mp3",
       "summary": "迎春误嫁中山狼孙绍祖，薛蟠娶夏金桂，两桩悲剧同时上演。",
-      "textFileName": "chapter_79_shang.txt",
+      "textFileName": "Text/chapter_79_shang.txt",
       "paragraphTimestamps": null,
       "season": 6
     },
@@ -3284,7 +3284,7 @@
       "title": "第七十九回 薛文起悔娶河东吼 贾迎春误嫁中山狼 下",
       "audioFileName": "第79回_下.mp3",
       "summary": "迎春误嫁中山狼孙绍祖，薛蟠娶夏金桂，两桩悲剧同时上演。",
-      "textFileName": "chapter_79_xia.txt",
+      "textFileName": "Text/chapter_79_xia.txt",
       "paragraphTimestamps": null,
       "season": 6
     },
@@ -3293,7 +3293,7 @@
       "title": "第八十回 美香菱屈受贪夫棒 王道士胡诌妒妇方 上",
       "audioFileName": "第80回_上.mp3",
       "summary": "夏金桂妒虐香菱，香菱屈受贪夫棒，可悲可叹。",
-      "textFileName": "chapter_80_shang.txt",
+      "textFileName": "Text/chapter_80_shang.txt",
       "paragraphTimestamps": null,
       "season": 6
     },
@@ -3302,7 +3302,7 @@
       "title": "第八十回 美香菱屈受贪夫棒 王道士胡诌妒妇方 下",
       "audioFileName": "第80回_下.mp3",
       "summary": "夏金桂妒虐香菱，香菱屈受贪夫棒，可悲可叹。",
-      "textFileName": "chapter_80_xia.txt",
+      "textFileName": "Text/chapter_80_xia.txt",
       "paragraphTimestamps": null,
       "season": 6
     },
@@ -3311,7 +3311,7 @@
       "title": "第八十一回 占旺相四美钓游鱼 奉严词两番入家塾 上",
       "audioFileName": "第81回_上.mp3",
       "summary": "奉严词两番入家塾，贾代儒训诫宝玉专心读书。",
-      "textFileName": "chapter_81_shang.txt",
+      "textFileName": "Text/chapter_81_shang.txt",
       "paragraphTimestamps": null,
       "season": 6
     },
@@ -3320,7 +3320,7 @@
       "title": "第八十一回 占旺相四美钓游鱼 奉严词两番入家塾 下",
       "audioFileName": "第81回_下.mp3",
       "summary": "奉严词两番入家塾，贾代儒训诫宝玉专心读书。",
-      "textFileName": "chapter_81_xia.txt",
+      "textFileName": "Text/chapter_81_xia.txt",
       "paragraphTimestamps": null,
       "season": 6
     },
@@ -3329,7 +3329,7 @@
       "title": "第八十二回 老学究讲义警顽心 病潇湘痴魂惊恶梦 上",
       "audioFileName": "第82回_上.mp3",
       "summary": "老学究讲义警顽心，黛玉病中惊噩梦，预感不祥。",
-      "textFileName": "chapter_82_shang.txt",
+      "textFileName": "Text/chapter_82_shang.txt",
       "paragraphTimestamps": null,
       "season": 6
     },
@@ -3338,7 +3338,7 @@
       "title": "第八十二回 老学究讲义警顽心 病潇湘痴魂惊恶梦 下",
       "audioFileName": "第82回_下.mp3",
       "summary": "老学究讲义警顽心，黛玉病中惊噩梦，预感不祥。",
-      "textFileName": "chapter_82_xia.txt",
+      "textFileName": "Text/chapter_82_xia.txt",
       "paragraphTimestamps": null,
       "season": 6
     },
@@ -3347,7 +3347,7 @@
       "title": "第八十三回 省宫闱贾元妃染恙 闹闺阃kǔn薛宝钗吞声 上",
       "audioFileName": "第83回_上.mp3",
       "summary": "省宫闱贾元妃染恙，贾母携宝玉探病。黛玉旧疾加重。",
-      "textFileName": "chapter_83_shang.txt",
+      "textFileName": "Text/chapter_83_shang.txt",
       "paragraphTimestamps": null,
       "season": 6
     },
@@ -3356,7 +3356,7 @@
       "title": "第八十三回 省宫闱贾元妃染恙 闹闺阃kǔn薛宝钗吞声 下",
       "audioFileName": "第83回_下.mp3",
       "summary": "省宫闱贾元妃染恙，贾母携宝玉探病。黛玉旧疾加重。",
-      "textFileName": "chapter_83_xia.txt",
+      "textFileName": "Text/chapter_83_xia.txt",
       "paragraphTimestamps": null,
       "season": 6
     },
@@ -3365,7 +3365,7 @@
       "title": "第八十四回 试文字宝玉始提亲 探惊风贾环重结怨 上",
       "audioFileName": "第84回_上.mp3",
       "summary": "试文字宝玉始提亲，贾母探问婚事，为后文铺垫。",
-      "textFileName": "chapter_84_shang.txt",
+      "textFileName": "Text/chapter_84_shang.txt",
       "paragraphTimestamps": null,
       "season": 6
     },
@@ -3374,7 +3374,7 @@
       "title": "第八十四回 试文字宝玉始提亲 探惊风贾环重结怨 下",
       "audioFileName": "第84回_下.mp3",
       "summary": "试文字宝玉始提亲，贾母探问婚事，为后文铺垫。",
-      "textFileName": "chapter_84_xia.txt",
+      "textFileName": "Text/chapter_84_xia.txt",
       "paragraphTimestamps": null,
       "season": 6
     },
@@ -3383,7 +3383,7 @@
       "title": "第八十五回 贾存周报升郎中任 薛文起复惹放流刑 上",
       "audioFileName": "第85回_上.mp3",
       "summary": "贾存周报升郎中任，薛文起复惹放流刑，贾薛二府喜悲交加。",
-      "textFileName": "chapter_85_shang.txt",
+      "textFileName": "Text/chapter_85_shang.txt",
       "paragraphTimestamps": null,
       "season": 6
     },
@@ -3392,7 +3392,7 @@
       "title": "第八十五回 贾存周报升郎中任 薛文起复惹放流刑 下",
       "audioFileName": "第85回_下.mp3",
       "summary": "贾存周报升郎中任，薛文起复惹放流刑，贾薛二府喜悲交加。",
-      "textFileName": "chapter_85_xia.txt",
+      "textFileName": "Text/chapter_85_xia.txt",
       "paragraphTimestamps": null,
       "season": 6
     },
@@ -3401,7 +3401,7 @@
       "title": "第八十六回 受私贿老官翻案牍 寄闲情淑女解琴书 上",
       "audioFileName": "第86回_上.mp3",
       "summary": "受私贿老官翻案牍，寄闲情淑女解琴书，官场黑暗可见一斑。",
-      "textFileName": "chapter_86_shang.txt",
+      "textFileName": "Text/chapter_86_shang.txt",
       "paragraphTimestamps": null,
       "season": 6
     },
@@ -3410,7 +3410,7 @@
       "title": "第八十六回 受私贿老官翻案牍 寄闲情淑女解琴书 下",
       "audioFileName": "第86回_下.mp3",
       "summary": "受私贿老官翻案牍，寄闲情淑女解琴书，官场黑暗可见一斑。",
-      "textFileName": "chapter_86_xia.txt",
+      "textFileName": "Text/chapter_86_xia.txt",
       "paragraphTimestamps": null,
       "season": 6
     },
@@ -3419,7 +3419,7 @@
       "title": "第八十七回 感深秋抚琴悲往事 坐禅寂走火入邪魔 上",
       "audioFileName": "第87回_上.mp3",
       "summary": "感秋声抚琴悲往事，坐禅寂走火入邪魔，妙玉心神不宁。",
-      "textFileName": "chapter_87_shang.txt",
+      "textFileName": "Text/chapter_87_shang.txt",
       "paragraphTimestamps": null,
       "season": 6
     },
@@ -3428,7 +3428,7 @@
       "title": "第八十七回 感深秋抚琴悲往事 坐禅寂走火入邪魔 下",
       "audioFileName": "第87回_下.mp3",
       "summary": "感秋声抚琴悲往事，坐禅寂走火入邪魔，妙玉心神不宁。",
-      "textFileName": "chapter_87_xia.txt",
+      "textFileName": "Text/chapter_87_xia.txt",
       "paragraphTimestamps": null,
       "season": 6
     },
@@ -3437,7 +3437,7 @@
       "title": "第八十八回 博庭欢宝玉赞孤儿 正家法贾珍鞭悍仆 上",
       "audioFileName": "第88回_上.mp3",
       "summary": "博庭欢宝玉赞孤儿，正家法贾珍鞭悍仆，园中秩序渐乱。",
-      "textFileName": "chapter_88_shang.txt",
+      "textFileName": "Text/chapter_88_shang.txt",
       "paragraphTimestamps": null,
       "season": 6
     },
@@ -3446,7 +3446,7 @@
       "title": "第八十八回 博庭欢宝玉赞孤儿 正家法贾珍鞭悍仆 下",
       "audioFileName": "第88回_下.mp3",
       "summary": "博庭欢宝玉赞孤儿，正家法贾珍鞭悍仆，园中秩序渐乱。",
-      "textFileName": "chapter_88_xia.txt",
+      "textFileName": "Text/chapter_88_xia.txt",
       "paragraphTimestamps": null,
       "season": 6
     },
@@ -3455,7 +3455,7 @@
       "title": "第八十九回 人亡物在公子填词 蛇影杯弓颦卿绝粒 上",
       "audioFileName": "第89回_上.mp3",
       "summary": "人亡物在公子填词，宝玉睹物思人，情意难平。",
-      "textFileName": "chapter_89_shang.txt",
+      "textFileName": "Text/chapter_89_shang.txt",
       "paragraphTimestamps": null,
       "season": 6
     },
@@ -3464,7 +3464,7 @@
       "title": "第八十九回 人亡物在公子填词 蛇影杯弓颦卿绝粒 下",
       "audioFileName": "第89回_下.mp3",
       "summary": "人亡物在公子填词，宝玉睹物思人，情意难平。",
-      "textFileName": "chapter_89_xia.txt",
+      "textFileName": "Text/chapter_89_xia.txt",
       "paragraphTimestamps": null,
       "season": 6
     },
@@ -3473,7 +3473,7 @@
       "title": "第九十回 失绵衣贫女耐嗷嘈 送果品小郎惊叵测 上",
       "audioFileName": "第90回_上.mp3",
       "summary": "失锦衣贫女耐嗷嘈，送果品小郎惊叵测，邢夫人之兄嫂一家的窘境。",
-      "textFileName": "chapter_90_shang.txt",
+      "textFileName": "Text/chapter_90_shang.txt",
       "paragraphTimestamps": null,
       "season": 6
     },
@@ -3482,7 +3482,7 @@
       "title": "第九十回 失绵衣贫女耐嗷嘈 送果品小郎惊叵测 下",
       "audioFileName": "第90回_下.mp3",
       "summary": "失锦衣贫女耐嗷嘈，送果品小郎惊叵测，邢夫人之兄嫂一家的窘境。",
-      "textFileName": "chapter_90_xia.txt",
+      "textFileName": "Text/chapter_90_xia.txt",
       "paragraphTimestamps": null,
       "season": 6
     },
@@ -3491,7 +3491,7 @@
       "title": "第九十一回 纵淫心宝蟾工设计 布疑阵宝玉妄谈禅 上",
       "audioFileName": "第91回_上.mp3",
       "summary": "布疑阵宝玉妄谈禅，设奇谋宝钗强欢笑，暗流涌动。",
-      "textFileName": "chapter_91_shang.txt",
+      "textFileName": "Text/chapter_91_shang.txt",
       "paragraphTimestamps": null,
       "season": 7
     },
@@ -3500,7 +3500,7 @@
       "title": "第九十一回 纵淫心宝蟾工设计 布疑阵宝玉妄谈禅 下",
       "audioFileName": "第91回_下.mp3",
       "summary": "布疑阵宝玉妄谈禅，设奇谋宝钗强欢笑，暗流涌动。",
-      "textFileName": "chapter_91_xia.txt",
+      "textFileName": "Text/chapter_91_xia.txt",
       "paragraphTimestamps": null,
       "season": 7
     },
@@ -3509,7 +3509,7 @@
       "title": "第九十二回 评女传巧姐慕贤良 玩母珠贾政参聚散 上",
       "audioFileName": "第92回_上.mp3",
       "summary": "评女传巧姐慕贤良，玩母珠贾政参聚散，家运渐衰。",
-      "textFileName": "chapter_92_shang.txt",
+      "textFileName": "Text/chapter_92_shang.txt",
       "paragraphTimestamps": null,
       "season": 7
     },
@@ -3518,7 +3518,7 @@
       "title": "第九十二回 评女传巧姐慕贤良 玩母珠贾政参聚散 下",
       "audioFileName": "第92回_下.mp3",
       "summary": "评女传巧姐慕贤良，玩母珠贾政参聚散，家运渐衰。",
-      "textFileName": "chapter_92_xia.txt",
+      "textFileName": "Text/chapter_92_xia.txt",
       "paragraphTimestamps": null,
       "season": 7
     },
@@ -3527,7 +3527,7 @@
       "title": "第九十三回 甄家仆投靠贾家门 水月庵掀翻风月案 上",
       "audioFileName": "第93回_上.mp3",
       "summary": "甄家仆投靠贾家门，水月庵掀翻风月案，各处风波不断。",
-      "textFileName": "chapter_93_shang.txt",
+      "textFileName": "Text/chapter_93_shang.txt",
       "paragraphTimestamps": null,
       "season": 7
     },
@@ -3536,7 +3536,7 @@
       "title": "第九十三回 甄家仆投靠贾家门 水月庵掀翻风月案 下",
       "audioFileName": "第93回_下.mp3",
       "summary": "甄家仆投靠贾家门，水月庵掀翻风月案，各处风波不断。",
-      "textFileName": "chapter_93_xia.txt",
+      "textFileName": "Text/chapter_93_xia.txt",
       "paragraphTimestamps": null,
       "season": 7
     },
@@ -3545,7 +3545,7 @@
       "title": "第九十四回 宴海棠贾母赏花妖 失宝玉通灵知奇祸 上",
       "audioFileName": "第94回_上.mp3",
       "summary": "宴海棠贾母赏花妖，失通灵宝玉知奇祸，宝玉失玉成为转折。",
-      "textFileName": "chapter_94_shang.txt",
+      "textFileName": "Text/chapter_94_shang.txt",
       "paragraphTimestamps": null,
       "season": 7
     },
@@ -3554,7 +3554,7 @@
       "title": "第九十四回 宴海棠贾母赏花妖 失宝玉通灵知奇祸 下",
       "audioFileName": "第94回_下.mp3",
       "summary": "宴海棠贾母赏花妖，失通灵宝玉知奇祸，宝玉失玉成为转折。",
-      "textFileName": "chapter_94_xia.txt",
+      "textFileName": "Text/chapter_94_xia.txt",
       "paragraphTimestamps": null,
       "season": 7
     },
@@ -3563,7 +3563,7 @@
       "title": "第九十五回 因讹成实元妃薨逝 以假混真宝玉疯颠 上",
       "audioFileName": "第95回_上.mp3",
       "summary": "因讹成实元妃薨逝，以假混真宝玉疯癫，大厦将倾之始。",
-      "textFileName": "chapter_95_shang.txt",
+      "textFileName": "Text/chapter_95_shang.txt",
       "paragraphTimestamps": null,
       "season": 7
     },
@@ -3572,7 +3572,7 @@
       "title": "第九十五回 因讹成实元妃薨逝 以假混真宝玉疯颠 下",
       "audioFileName": "第95回_下.mp3",
       "summary": "因讹成实元妃薨逝，以假混真宝玉疯癫，大厦将倾之始。",
-      "textFileName": "chapter_95_xia.txt",
+      "textFileName": "Text/chapter_95_xia.txt",
       "paragraphTimestamps": null,
       "season": 7
     },
@@ -3581,7 +3581,7 @@
       "title": "第九十六回 瞒消息凤姐设奇谋 泄机关颦儿迷本性 上",
       "audioFileName": "第96回_上.mp3",
       "summary": "王子腾中途病故，贾府失去重要靠山。宝玉婚事迫在眉睫。",
-      "textFileName": "chapter_96_shang.txt",
+      "textFileName": "Text/chapter_96_shang.txt",
       "paragraphTimestamps": null,
       "season": 7
     },
@@ -3590,7 +3590,7 @@
       "title": "第九十六回 瞒消息凤姐设奇谋 泄机关颦儿迷本性 下",
       "audioFileName": "第96回_下.mp3",
       "summary": "王子腾中途病故，贾府失去重要靠山。宝玉婚事迫在眉睫。",
-      "textFileName": "chapter_96_xia.txt",
+      "textFileName": "Text/chapter_96_xia.txt",
       "paragraphTimestamps": null,
       "season": 7
     },
@@ -3599,7 +3599,7 @@
       "title": "第九十七回 林黛玉焚稿断痴情 薛宝钗出闺成大礼 上",
       "audioFileName": "第97回_上.mp3",
       "summary": "林黛玉焚稿断痴情，薛宝钗出闺成大礼，二宝成婚的悲剧。",
-      "textFileName": "chapter_97_shang.txt",
+      "textFileName": "Text/chapter_97_shang.txt",
       "paragraphTimestamps": null,
       "season": 7
     },
@@ -3608,7 +3608,7 @@
       "title": "第九十七回 林黛玉焚稿断痴情 薛宝钗出闺成大礼 中",
       "audioFileName": "第97回_中.mp3",
       "summary": "林黛玉焚稿断痴情，薛宝钗出闺成大礼，二宝成婚的悲剧。",
-      "textFileName": "chapter_97_zhong.txt",
+      "textFileName": "Text/chapter_97_zhong.txt",
       "paragraphTimestamps": null,
       "season": 7
     },
@@ -3617,7 +3617,7 @@
       "title": "第九十七回 林黛玉焚稿断痴情 薛宝钗出闺成大礼 下",
       "audioFileName": "第97回_下.mp3",
       "summary": "林黛玉焚稿断痴情，薛宝钗出闺成大礼，二宝成婚的悲剧。",
-      "textFileName": "chapter_97_xia.txt",
+      "textFileName": "Text/chapter_97_xia.txt",
       "paragraphTimestamps": null,
       "season": 7
     },
@@ -3626,7 +3626,7 @@
       "title": "第九十八回 苦绛珠魂归离恨天 病神瑛泪洒相思地 上",
       "audioFileName": "第98回_上.mp3",
       "summary": "苦绛珠魂归离恨天，病神瑛泪洒相思地，黛玉香消玉殒。",
-      "textFileName": "chapter_98_shang.txt",
+      "textFileName": "Text/chapter_98_shang.txt",
       "paragraphTimestamps": null,
       "season": 7
     },
@@ -3635,7 +3635,7 @@
       "title": "第九十八回 苦绛珠魂归离恨天 病神瑛泪洒相思地 下",
       "audioFileName": "第98回_下.mp3",
       "summary": "苦绛珠魂归离恨天，病神瑛泪洒相思地，黛玉香消玉殒。",
-      "textFileName": "chapter_98_xia.txt",
+      "textFileName": "Text/chapter_98_xia.txt",
       "paragraphTimestamps": null,
       "season": 7
     },
@@ -3644,7 +3644,7 @@
       "title": "第九十九回 守官箴恶奴同破例 阅邸报老舅自担惊 上",
       "audioFileName": "第99回_上.mp3",
       "summary": "守官箴恶奴同破例，阅邸报老舅自担惊，贾府官场危机浮现。",
-      "textFileName": "chapter_99_shang.txt",
+      "textFileName": "Text/chapter_99_shang.txt",
       "paragraphTimestamps": null,
       "season": 7
     },
@@ -3653,7 +3653,7 @@
       "title": "第九十九回 守官箴恶奴同破例 阅邸报老舅自担惊 下",
       "audioFileName": "第99回_下.mp3",
       "summary": "守官箴恶奴同破例，阅邸报老舅自担惊，贾府官场危机浮现。",
-      "textFileName": "chapter_99_xia.txt",
+      "textFileName": "Text/chapter_99_xia.txt",
       "paragraphTimestamps": null,
       "season": 7
     },
@@ -3662,7 +3662,7 @@
       "title": "第一百回 破好事香菱结深恨 悲远嫁宝玉感离情 上",
       "audioFileName": "第100回_上.mp3",
       "summary": "破好事香菱结深恨，悲远嫁探春辞故园，三姑娘远嫁海疆。",
-      "textFileName": "chapter_100_shang.txt",
+      "textFileName": "Text/chapter_100_shang.txt",
       "paragraphTimestamps": null,
       "season": 7
     },
@@ -3671,7 +3671,7 @@
       "title": "第一百回 破好事香菱结深恨 悲远嫁宝玉感离情 下",
       "audioFileName": "第100回_下.mp3",
       "summary": "破好事香菱结深恨，悲远嫁探春辞故园，三姑娘远嫁海疆。",
-      "textFileName": "chapter_100_xia.txt",
+      "textFileName": "Text/chapter_100_xia.txt",
       "paragraphTimestamps": null,
       "season": 7
     },
@@ -3680,7 +3680,7 @@
       "title": "第一零一回 大观园月夜感幽魂 散花寺神签惊异兆 上",
       "audioFileName": "第101回_上.mp3",
       "summary": "大观园月夜警幽魂，散花寺神签惊异兆，凤姐遇见秦可卿幽魂。",
-      "textFileName": "chapter_101_shang.txt",
+      "textFileName": "Text/chapter_101_shang.txt",
       "paragraphTimestamps": null,
       "season": 7
     },
@@ -3689,7 +3689,7 @@
       "title": "第一零一回 大观园月夜感幽魂 散花寺神签惊异兆 下",
       "audioFileName": "第101回_下.mp3",
       "summary": "大观园月夜警幽魂，散花寺神签惊异兆，凤姐遇见秦可卿幽魂。",
-      "textFileName": "chapter_101_xia.txt",
+      "textFileName": "Text/chapter_101_xia.txt",
       "paragraphTimestamps": null,
       "season": 7
     },
@@ -3698,7 +3698,7 @@
       "title": "第一零二回 宁国府骨肉病灾祲jìn 大观园符水驱妖孽 上",
       "audioFileName": "第102回_上.mp3",
       "summary": "宁国府骨肉病灾侵，大观园符水驱妖孽，人心惶惶。",
-      "textFileName": "chapter_102_shang.txt",
+      "textFileName": "Text/chapter_102_shang.txt",
       "paragraphTimestamps": null,
       "season": 7
     },
@@ -3707,7 +3707,7 @@
       "title": "第一零二回 宁国府骨肉病灾祲jìn 大观园符水驱妖孽 下",
       "audioFileName": "第102回_下.mp3",
       "summary": "宁国府骨肉病灾侵，大观园符水驱妖孽，人心惶惶。",
-      "textFileName": "chapter_102_xia.txt",
+      "textFileName": "Text/chapter_102_xia.txt",
       "paragraphTimestamps": null,
       "season": 7
     },
@@ -3716,7 +3716,7 @@
       "title": "第一零三回 施毒计金桂自焚身 昧真禅雨村空遇旧 上",
       "audioFileName": "第103回_上.mp3",
       "summary": "施毒计金桂自焚身，昧真禅雨村空遇旧，夏金桂自食恶果。",
-      "textFileName": "chapter_103_shang.txt",
+      "textFileName": "Text/chapter_103_shang.txt",
       "paragraphTimestamps": null,
       "season": 7
     },
@@ -3725,7 +3725,7 @@
       "title": "第一零三回 施毒计金桂自焚身 昧真禅雨村空遇旧 下",
       "audioFileName": "第103回_下.mp3",
       "summary": "施毒计金桂自焚身，昧真禅雨村空遇旧，夏金桂自食恶果。",
-      "textFileName": "chapter_103_xia.txt",
+      "textFileName": "Text/chapter_103_xia.txt",
       "paragraphTimestamps": null,
       "season": 7
     },
@@ -3734,7 +3734,7 @@
       "title": "第一零四回 醉金刚小鳅生大浪 痴公子余痛触前情 上",
       "audioFileName": "第104回_上.mp3",
       "summary": "醉金刚小鳅生大浪，痴公子余痛触前情，倪二酒后闹事。",
-      "textFileName": "chapter_104_shang.txt",
+      "textFileName": "Text/chapter_104_shang.txt",
       "paragraphTimestamps": null,
       "season": 7
     },
@@ -3743,7 +3743,7 @@
       "title": "第一零四回 醉金刚小鳅生大浪 痴公子余痛触前情 下",
       "audioFileName": "第104回_下.mp3",
       "summary": "醉金刚小鳅生大浪，痴公子余痛触前情，倪二酒后闹事。",
-      "textFileName": "chapter_104_xia.txt",
+      "textFileName": "Text/chapter_104_xia.txt",
       "paragraphTimestamps": null,
       "season": 7
     },
@@ -3752,7 +3752,7 @@
       "title": "第一零五回 锦衣军查抄宁国府 骢马使弹劾平安州 上",
       "audioFileName": "第105回_上.mp3",
       "summary": "锦衣军查抄宁国府，百年望族一朝倾覆，大厦终于倒塌。",
-      "textFileName": "chapter_105_shang.txt",
+      "textFileName": "Text/chapter_105_shang.txt",
       "paragraphTimestamps": null,
       "season": 7
     },
@@ -3761,7 +3761,7 @@
       "title": "第一零五回 锦衣军查抄宁国府 骢马使弹劾平安州 下",
       "audioFileName": "第105回_下.mp3",
       "summary": "锦衣军查抄宁国府，百年望族一朝倾覆，大厦终于倒塌。",
-      "textFileName": "chapter_105_xia.txt",
+      "textFileName": "Text/chapter_105_xia.txt",
       "paragraphTimestamps": null,
       "season": 7
     },
@@ -3770,7 +3770,7 @@
       "title": "第一零六回 王熙凤致祸抱羞惭 贾太君祷天消祸患 上",
       "audioFileName": "第106回_上.mp3",
       "summary": "贾太君祷天消祸患，王熙凤致祸抱羞惭，贾母祈天保佑全家。",
-      "textFileName": "chapter_106_shang.txt",
+      "textFileName": "Text/chapter_106_shang.txt",
       "paragraphTimestamps": null,
       "season": 8
     },
@@ -3779,7 +3779,7 @@
       "title": "第一零六回 王熙凤致祸抱羞惭 贾太君祷天消祸患 下",
       "audioFileName": "第106回_下.mp3",
       "summary": "贾太君祷天消祸患，王熙凤致祸抱羞惭，贾母祈天保佑全家。",
-      "textFileName": "chapter_106_xia.txt",
+      "textFileName": "Text/chapter_106_xia.txt",
       "paragraphTimestamps": null,
       "season": 8
     },
@@ -3788,7 +3788,7 @@
       "title": "第一零七回 散余资贾母明大义 复世职政老沐天恩 上",
       "audioFileName": "第107回_上.mp3",
       "summary": "散余资贾母明大义，复世职政老沐天恩，家道中落后的善后。",
-      "textFileName": "chapter_107_shang.txt",
+      "textFileName": "Text/chapter_107_shang.txt",
       "paragraphTimestamps": null,
       "season": 8
     },
@@ -3797,7 +3797,7 @@
       "title": "第一零七回 散余资贾母明大义 复世职政老沐天恩 下",
       "audioFileName": "第107回_下.mp3",
       "summary": "散余资贾母明大义，复世职政老沐天恩，家道中落后的善后。",
-      "textFileName": "chapter_107_xia.txt",
+      "textFileName": "Text/chapter_107_xia.txt",
       "paragraphTimestamps": null,
       "season": 8
     },
@@ -3806,7 +3806,7 @@
       "title": "第一零八回 强欢笑蘅芜庆生辰 死缠绵潇湘闻鬼哭 上",
       "audioFileName": "第108回_上.mp3",
       "summary": "强欢笑蘅芜庆生辰，死缠绵潇湘闻鬼哭，宝钗生辰的凄凉冷清。",
-      "textFileName": "chapter_108_shang.txt",
+      "textFileName": "Text/chapter_108_shang.txt",
       "paragraphTimestamps": null,
       "season": 8
     },
@@ -3815,7 +3815,7 @@
       "title": "第一零八回 强欢笑蘅芜庆生辰 死缠绵潇湘闻鬼哭 下",
       "audioFileName": "第108回_下.mp3",
       "summary": "强欢笑蘅芜庆生辰，死缠绵潇湘闻鬼哭，宝钗生辰的凄凉冷清。",
-      "textFileName": "chapter_108_xia.txt",
+      "textFileName": "Text/chapter_108_xia.txt",
       "paragraphTimestamps": null,
       "season": 8
     },
@@ -3824,7 +3824,7 @@
       "title": "第一零九回 候芳魂五儿承错爱 还孽债迎女返真元 上",
       "audioFileName": "第109回_上.mp3",
       "summary": "候芳魂五儿承错爱，还孽债迎女返真元，迎春受虐而死的悲剧。",
-      "textFileName": "chapter_109_shang.txt",
+      "textFileName": "Text/chapter_109_shang.txt",
       "paragraphTimestamps": null,
       "season": 8
     },
@@ -3833,7 +3833,7 @@
       "title": "第一零九回 候芳魂五儿承错爱 还孽债迎女返真元 中",
       "audioFileName": "第109回_中.mp3",
       "summary": "候芳魂五儿承错爱，还孽债迎女返真元，迎春受虐而死的悲剧。",
-      "textFileName": "chapter_109_zhong.txt",
+      "textFileName": "Text/chapter_109_zhong.txt",
       "paragraphTimestamps": null,
       "season": 8
     },
@@ -3842,7 +3842,7 @@
       "title": "第一零九回 候芳魂五儿承错爱 还孽债迎女返真元 下",
       "audioFileName": "第109回_下.mp3",
       "summary": "候芳魂五儿承错爱，还孽债迎女返真元，迎春受虐而死的悲剧。",
-      "textFileName": "chapter_109_xia.txt",
+      "textFileName": "Text/chapter_109_xia.txt",
       "paragraphTimestamps": null,
       "season": 8
     },
@@ -3851,7 +3851,7 @@
       "title": "第一一零回 史太君寿终归地府 王凤姐力诎qū失人心 上",
       "audioFileName": "第110回_上.mp3",
       "summary": "史太君寿终归地府，王凤姐力诎失人心，贾母去世举家悲痛。",
-      "textFileName": "chapter_110_shang.txt",
+      "textFileName": "Text/chapter_110_shang.txt",
       "paragraphTimestamps": null,
       "season": 8
     },
@@ -3860,7 +3860,7 @@
       "title": "第一一零回 史太君寿终归地府 王凤姐力诎qū失人心 下",
       "audioFileName": "第110回_下.mp3",
       "summary": "史太君寿终归地府，王凤姐力诎失人心，贾母去世举家悲痛。",
-      "textFileName": "chapter_110_xia.txt",
+      "textFileName": "Text/chapter_110_xia.txt",
       "paragraphTimestamps": null,
       "season": 8
     },
@@ -3869,7 +3869,7 @@
       "title": "第一一一回 鸳鸯女殉主登太虚 狗彘zhì奴欺天招伙盗 上",
       "audioFileName": "第111回_上.mp3",
       "summary": "鸳鸯女殉主登太虚，狗彘奴欺天招伙盗，鸳鸯自缢随主而去。",
-      "textFileName": "chapter_111_shang.txt",
+      "textFileName": "Text/chapter_111_shang.txt",
       "paragraphTimestamps": null,
       "season": 8
     },
@@ -3878,7 +3878,7 @@
       "title": "第一一一回 鸳鸯女殉主登太虚 狗彘zhì奴欺天招伙盗 下",
       "audioFileName": "第111回_下.mp3",
       "summary": "鸳鸯女殉主登太虚，狗彘奴欺天招伙盗，鸳鸯自缢随主而去。",
-      "textFileName": "chapter_111_xia.txt",
+      "textFileName": "Text/chapter_111_xia.txt",
       "paragraphTimestamps": null,
       "season": 8
     },
@@ -3887,7 +3887,7 @@
       "title": "第一一二回 活冤孽妙尼遭大劫 死雠仇赵妾赴冥曹 上",
       "audioFileName": "第112回_上.mp3",
       "summary": "活冤孽妙姑遭大劫，死雠仇赵妾赴冥曹，妙玉被强盗劫走。",
-      "textFileName": "chapter_112_shang.txt",
+      "textFileName": "Text/chapter_112_shang.txt",
       "paragraphTimestamps": null,
       "season": 8
     },
@@ -3896,7 +3896,7 @@
       "title": "第一一二回 活冤孽妙尼遭大劫 死雠仇赵妾赴冥曹 下",
       "audioFileName": "第112回_下.mp3",
       "summary": "活冤孽妙姑遭大劫，死雠仇赵妾赴冥曹，妙玉被强盗劫走。",
-      "textFileName": "chapter_112_xia.txt",
+      "textFileName": "Text/chapter_112_xia.txt",
       "paragraphTimestamps": null,
       "season": 8
     },
@@ -3905,7 +3905,7 @@
       "title": "第113回 上",
       "audioFileName": "第113回_上.mp3",
       "summary": "忏宿冤凤姐托村妪，释旧憾情婢感痴郎，凤姐病危托付巧姐。",
-      "textFileName": "chapter_113_shang.txt",
+      "textFileName": "Text/chapter_113_shang.txt",
       "paragraphTimestamps": null,
       "season": 8
     },
@@ -3914,7 +3914,7 @@
       "title": "第一一三回 忏宿冤凤姐托村妪 释旧憾情婢感痴郎 下",
       "audioFileName": "第113回_下.mp3",
       "summary": "忏宿冤凤姐托村妪，释旧憾情婢感痴郎，凤姐病危托付巧姐。",
-      "textFileName": "chapter_113_xia.txt",
+      "textFileName": "Text/chapter_113_xia.txt",
       "paragraphTimestamps": null,
       "season": 8
     },
@@ -3923,7 +3923,7 @@
       "title": "第一一四回 王熙凤历幻返金陵 甄应嘉蒙恩还玉阙 上",
       "audioFileName": "第114回_上.mp3",
       "summary": "王熙凤历幻返金陵，甄应嘉蒙恩还玉阙，凤姐魂归金陵。",
-      "textFileName": "chapter_114_shang.txt",
+      "textFileName": "Text/chapter_114_shang.txt",
       "paragraphTimestamps": null,
       "season": 8
     },
@@ -3932,7 +3932,7 @@
       "title": "第一一四回 王熙凤历幻返金陵 甄应嘉蒙恩还玉阙 下",
       "audioFileName": "第114回_下.mp3",
       "summary": "王熙凤历幻返金陵，甄应嘉蒙恩还玉阙，凤姐魂归金陵。",
-      "textFileName": "chapter_114_xia.txt",
+      "textFileName": "Text/chapter_114_xia.txt",
       "paragraphTimestamps": null,
       "season": 8
     },
@@ -3941,7 +3941,7 @@
       "title": "第一一五回 惑偏私惜春矢素志 证同类宝玉失相知 上",
       "audioFileName": "第115回_上.mp3",
       "summary": "惑偏私惜春矢素志，证同类宝玉失相知，惜春决意出家。",
-      "textFileName": "chapter_115_shang.txt",
+      "textFileName": "Text/chapter_115_shang.txt",
       "paragraphTimestamps": null,
       "season": 8
     },
@@ -3950,7 +3950,7 @@
       "title": "第一一五回 惑偏私惜春矢素志 证同类宝玉失相知 下",
       "audioFileName": "第115回_下.mp3",
       "summary": "惑偏私惜春矢素志，证同类宝玉失相知，惜春决意出家。",
-      "textFileName": "chapter_115_xia.txt",
+      "textFileName": "Text/chapter_115_xia.txt",
       "paragraphTimestamps": null,
       "season": 8
     },
@@ -3959,7 +3959,7 @@
       "title": "第一一六回 得通灵幻境悟仙缘 送慈柩故乡全孝道 上",
       "audioFileName": "第116回_上.mp3",
       "summary": "得通灵幻境悟仙缘，送慈柩故乡全孝道，宝玉重游太虚幻境。",
-      "textFileName": "chapter_116_shang.txt",
+      "textFileName": "Text/chapter_116_shang.txt",
       "paragraphTimestamps": null,
       "season": 8
     },
@@ -3968,7 +3968,7 @@
       "title": "第一一六回 得通灵幻境悟仙缘 送慈柩故乡全孝道 下",
       "audioFileName": "第116回_下.mp3",
       "summary": "得通灵幻境悟仙缘，送慈柩故乡全孝道，宝玉重游太虚幻境。",
-      "textFileName": "chapter_116_xia.txt",
+      "textFileName": "Text/chapter_116_xia.txt",
       "paragraphTimestamps": null,
       "season": 8
     },
@@ -3977,7 +3977,7 @@
       "title": "第一一七回 阻超凡佳人双护玉 欣聚党恶子独承家 上",
       "audioFileName": "第117回_上.mp3",
       "summary": "阻超凡佳人双护玉，欣聚党恶子独承家，贾府分崩离析。",
-      "textFileName": "chapter_117_shang.txt",
+      "textFileName": "Text/chapter_117_shang.txt",
       "paragraphTimestamps": null,
       "season": 8
     },
@@ -3986,7 +3986,7 @@
       "title": "第一一七回 阻超凡佳人双护玉 欣聚党恶子独承家 下",
       "audioFileName": "第117回_下.mp3",
       "summary": "阻超凡佳人双护玉，欣聚党恶子独承家，贾府分崩离析。",
-      "textFileName": "chapter_117_xia.txt",
+      "textFileName": "Text/chapter_117_xia.txt",
       "paragraphTimestamps": null,
       "season": 8
     },
@@ -3995,7 +3995,7 @@
       "title": "第一一八回 记微嫌舅兄欺弱女 惊谜语妻妾谏痴人 上",
       "audioFileName": "第118回_上.mp3",
       "summary": "记微嫌舅兄欺弱女，警谜语妻妾谏痴人，巧姐险些被卖。",
-      "textFileName": "chapter_118_shang.txt",
+      "textFileName": "Text/chapter_118_shang.txt",
       "paragraphTimestamps": null,
       "season": 8
     },
@@ -4004,7 +4004,7 @@
       "title": "第一一八回 记微嫌舅兄欺弱女 惊谜语妻妾谏痴人 下",
       "audioFileName": "第118回_下.mp3",
       "summary": "记微嫌舅兄欺弱女，警谜语妻妾谏痴人，巧姐险些被卖。",
-      "textFileName": "chapter_118_xia.txt",
+      "textFileName": "Text/chapter_118_xia.txt",
       "paragraphTimestamps": null,
       "season": 8
     },
@@ -4013,7 +4013,7 @@
       "title": "第一一九回 中乡魁宝玉却尘缘 沐皇恩贾家延世泽 上",
       "audioFileName": "第119回_上.mp3",
       "summary": "中乡魁宝玉却尘缘，沐皇恩贾家延世泽，宝玉中举后出家。",
-      "textFileName": "chapter_119_shang.txt",
+      "textFileName": "Text/chapter_119_shang.txt",
       "paragraphTimestamps": null,
       "season": 8
     },
@@ -4022,7 +4022,7 @@
       "title": "第一一九回 中乡魁宝玉却尘缘 沐皇恩贾家延世泽 中",
       "audioFileName": "第119回_中.mp3",
       "summary": "中乡魁宝玉却尘缘，沐皇恩贾家延世泽，宝玉中举后出家。",
-      "textFileName": "chapter_119_zhong.txt",
+      "textFileName": "Text/chapter_119_zhong.txt",
       "paragraphTimestamps": null,
       "season": 8
     },
@@ -4031,7 +4031,7 @@
       "title": "第一一九回 中乡魁宝玉却尘缘 沐皇恩贾家延世泽 下",
       "audioFileName": "第119回_下.mp3",
       "summary": "中乡魁宝玉却尘缘，沐皇恩贾家延世泽，宝玉中举后出家。",
-      "textFileName": "chapter_119_xia.txt",
+      "textFileName": "Text/chapter_119_xia.txt",
       "paragraphTimestamps": null,
       "season": 8
     },
@@ -4040,7 +4040,7 @@
       "title": "第一二零回 甄士隐详说太虚情 贾雨村归结红楼梦 上",
       "audioFileName": "第120回_上.mp3",
       "summary": "甄士隐详说太虚情，贾雨村归结红楼梦，白茫茫大地真干净。",
-      "textFileName": "chapter_120_shang.txt",
+      "textFileName": "Text/chapter_120_shang.txt",
       "paragraphTimestamps": null,
       "season": 8
     },
@@ -4049,7 +4049,7 @@
       "title": "第一二零回 甄士隐详说太虚情 贾雨村归结红楼梦 中",
       "audioFileName": "第120回_中.mp3",
       "summary": "甄士隐详说太虚情，贾雨村归结红楼梦，白茫茫大地真干净。",
-      "textFileName": "chapter_120_zhong.txt",
+      "textFileName": "Text/chapter_120_zhong.txt",
       "paragraphTimestamps": null,
       "season": 8
     },
@@ -4058,7 +4058,7 @@
       "title": "第一二零回 甄士隐详说太虚情 贾雨村归结红楼梦 下",
       "audioFileName": "第120回_下.mp3",
       "summary": "甄士隐详说太虚情，贾雨村归结红楼梦，白茫茫大地真干净。",
-      "textFileName": "chapter_120_xia.txt",
+      "textFileName": "Text/chapter_120_xia.txt",
       "paragraphTimestamps": null,
       "season": 8
     }
