@@ -32,7 +32,13 @@ struct ChapterDetailView: View {
         "qin_keqing": "秦可卿",
         "ping_er": "平儿",
         "jia_lian": "贾琏",
-        "liu_laolao": "刘姥姥"
+        "liu_laolao": "刘姥姥",
+        "qiao_jie": "巧姐",
+        "li_wan": "李纨",
+        "xiang_ling": "香菱",
+        "zi_juan": "紫鹃",
+        "you_sanjie": "尤三姐",
+        "jia_she": "贾赦"
     ]
     
     @State private var randomCharacterImageName: String = ""
