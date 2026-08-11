@@ -15,6 +15,7 @@ struct AudioPlayerView: View {
     @StateObject private var ambientManager = AmbientSoundManager.shared
     @State private var chapter: Chapter
 
+
     init(chapter: Chapter, autoPlay: Bool = false) {
         self._chapter = State(initialValue: chapter)
     }
@@ -38,34 +39,27 @@ struct AudioPlayerView: View {
         return Array(titleParts[1..<3])  // [clause1, clause2]
     }
 
-    /// Split the chapter text into paragraphs for auto-scroll
+    /// Split the chapter text into paragraphs for display
     private var paragraphs: [String] {
         chapter.chapterText
-            .components(separatedBy: "\n")
-            .filter { !$0.trimmingCharacters(in: .whitespaces).isEmpty }
+            .components(separatedBy: "\n\n")
+            .map { $0.trimmingCharacters(in: .whitespacesAndNewlines) }
+            .filter { !$0.isEmpty }
     }
 
-    /// Current paragraph index based on timestamps (if available) or playback progress.
-    /// Returns -1 when audio is not playing (no highlight).
-    private var currentParagraphIndex: Int {
-        guard !paragraphs.isEmpty else { return -1 }
-        guard audioManager.isPlaying else { return -1 }
+    /// Find the paragraph index for the current playback time
+    private var currentParagraphIndex: Int? {
+        guard let timestamps = chapter.paragraphTimestamps,
+              !timestamps.isEmpty,
+              audioManager.duration > 0 else { return nil }
 
-        // Use exact timestamps if available
-        if let timestamps = chapter.paragraphTimestamps, !timestamps.isEmpty {
-            let currentTime = audioManager.currentTime
-            // Find the last timestamp that is <= current time
-            if let index = timestamps.lastIndex(where: { $0 <= currentTime }) {
-                return min(index, paragraphs.count - 1)
+        for i in (0..<timestamps.count).reversed() {
+            if audioManager.currentTime >= timestamps[i] {
+                // Make sure this paragraph actually exists
+                return i < paragraphs.count ? i : nil
             }
-            return -1
         }
-
-        // Fallback: proportional estimation
-        guard audioManager.duration > 0 else { return -1 }
-        let progress = audioManager.currentTime / audioManager.duration
-        let adjustedProgress = min(progress * 0.85, 1.0)
-        return min(Int(adjustedProgress * Double(paragraphs.count)), paragraphs.count - 1)
+        return nil
     }
 
     var body: some View {
@@ -189,7 +183,7 @@ struct AudioPlayerView: View {
                 // "边听边看" toggle + chapter text
                 if !chapter.chapterText.isEmpty {
                     if !showText {
-                        Button(action: { showText.toggle() }) {
+                        Button(action: { withAnimation { showText = true } }) {
                             HStack(spacing: 6) {
                                 Image(systemName: "book.fill")
                                 Text("边听边看")
@@ -207,36 +201,45 @@ struct AudioPlayerView: View {
                     }
 
                     if showText {
-                        ScrollView {
-                            VStack(alignment: .leading, spacing: 0) {
-                                ForEach(Array(paragraphs.enumerated()), id: \.offset) { index, paragraph in
-                                    Text(paragraph)
-                                        .font(.system(size: textFontSize, weight: index == currentParagraphIndex ? .semibold : .regular))
-                                        .foregroundColor(
-                                            index == currentParagraphIndex
-                                                ? theme.accentRed
-                                                : theme.primaryText
-                                        )
-                                        .lineSpacing(7)
-                                        .padding(.horizontal, 16)
-                                        .padding(.vertical, 6)
-                                        .frame(maxWidth: .infinity, alignment: .leading)
-                                        .background(
-                                            index == currentParagraphIndex
-                                                ? theme.accentRed.opacity(0.1)
-                                                : Color.clear
-                                        )
+                        ScrollViewReader { proxy in
+                            ScrollView {
+                                VStack(alignment: .leading, spacing: 0) {
+                                    ForEach(Array(paragraphs.enumerated()), id: \.offset) { index, paragraph in
+                                        Text(paragraph)
+                                            .font(.system(size: textFontSize))
+                                            .foregroundColor(
+                                                currentParagraphIndex == index
+                                                    ? theme.accentRed
+                                                    : theme.primaryText
+                                            )
+                                            .lineSpacing(7)
+                                            .padding(.horizontal, 16)
+                                            .padding(.vertical, 6)
+                                            .frame(maxWidth: .infinity, alignment: .leading)
+                                            .id(index)
+                                            .background(
+                                                currentParagraphIndex == index
+                                                    ? theme.accentRed.opacity(0.08)
+                                                    : Color.clear
+                                            )
+                                    }
+                                }
+                                .padding(.vertical, 20)
+                            }
+                            .background(
+                                RoundedRectangle(cornerRadius: 12)
+                                    .fill(theme.readingBackground)
+                                    .shadow(color: theme.shadowColor, radius: 3, x: 0, y: 1)
+                            )
+                            .padding(.horizontal, 10)
+                            .frame(maxHeight: .infinity)
+                            .onChange(of: currentParagraphIndex) { _, newIndex in
+                                guard let idx = newIndex else { return }
+                                withAnimation(.easeInOut(duration: 0.3)) {
+                                    proxy.scrollTo(idx, anchor: .center)
                                 }
                             }
-                            .padding(.vertical, 20)
                         }
-                        .background(
-                            RoundedRectangle(cornerRadius: 12)
-                                .fill(theme.readingBackground)
-                                .shadow(color: theme.shadowColor, radius: 3, x: 0, y: 1)
-                        )
-                        .padding(.horizontal, 10)
-                        .frame(maxHeight: .infinity)
                     }
                 }
 
