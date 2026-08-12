@@ -1295,15 +1295,18 @@ class AudioManager: NSObject, ObservableObject {
     }
 
     func pause() {
+        // Set isPlaying = false FIRST so the KVO observer and health-check
+        // timer won't auto-restart playback when they see timeControlStatus
+        // change to .paused.
         wasPlayingBeforeInterruption = false
-        player.pause()
         isPlaying = false
-        saveProgress(position: currentTime)
-        stopProgressSaving()
+        stopHealthCheck()
         stopBackgroundTaskRefresh()
         endBackgroundTask()
+        player.pause()
+        saveProgress(position: currentTime)
+        stopProgressSaving()
         updateNowPlayingInfo()
-        stopHealthCheck()
     }
 
     /// Background health‑check: runs every 2 s. Verifies the player is truly
