@@ -39,10 +39,13 @@ struct AudioPlayerView: View {
         return Array(titleParts[1..<3])  // [clause1, clause2]
     }
 
-    /// Split the chapter text into paragraphs for display
+    /// Split the chapter text into paragraphs for display.
+    /// One paragraph per non-empty line — matches how `paragraphTimestamps`
+    /// were generated, so highlight alignment stays correct for poetry and
+    /// files that separate paragraphs with single newlines instead of blanks.
     private var paragraphs: [String] {
         chapter.chapterText
-            .components(separatedBy: "\n\n")
+            .components(separatedBy: "\n")
             .map { $0.trimmingCharacters(in: .whitespacesAndNewlines) }
             .filter { !$0.isEmpty }
     }

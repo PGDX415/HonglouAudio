@@ -17,7 +17,7 @@ struct ChapterReaderView: View {
 
     private var paragraphs: [String] {
         chapter.chapterText
-            .components(separatedBy: "\n\n")
+            .components(separatedBy: "\n")
             .map { $0.trimmingCharacters(in: .whitespacesAndNewlines) }
             .filter { !$0.isEmpty }
     }

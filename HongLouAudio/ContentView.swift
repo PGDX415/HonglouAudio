@@ -533,7 +533,7 @@ struct SearchSheetView: View {
             for chapter in group.parts {
                 guard !chapter.chapterText.isEmpty else { continue }
                 let paragraphs = chapter.chapterText
-                    .components(separatedBy: "\n\n")
+                    .components(separatedBy: "\n")
                     .map { $0.trimmingCharacters(in: .whitespacesAndNewlines) }
                     .filter { !$0.isEmpty }
                 for paragraph in paragraphs {
