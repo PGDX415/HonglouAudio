@@ -677,14 +677,10 @@ class AudioManager: NSObject, ObservableObject {
     private var progressSaveTimer: Timer?
     private var wasPlayingBeforeInterruption = false
     private var healthCheckTimer: Timer?
-    private var backgroundTask: UIBackgroundTaskIdentifier = .invalid
-    private var backgroundTaskRefreshTimer: Timer?
     private var currentTitle: String = ""
     private var currentFileName: String = ""
     private var timeControlObservation: NSKeyValueObservation?
     private var playerItemStatusObservation: NSKeyValueObservation?
-    /// Timestamp of last successful background-task renewal (ticks every 2 s)
-    private var healthCheckTick: Int = 0
 
     @Published var isPlaying = false
     @Published var currentTime: TimeInterval = 0
@@ -775,7 +771,6 @@ class AudioManager: NSObject, ObservableObject {
 
     deinit {
         stopHealthCheck()
-        stopBackgroundTaskRefresh()
         saveProgress(position: currentTime)
         stopProgressSaving()
         removeTimeObserver()
@@ -789,7 +784,7 @@ class AudioManager: NSObject, ObservableObject {
         do {
             let session = AVAudioSession.sharedInstance()
             try session.setCategory(.playback, mode: .spokenAudio,
-                options: [.allowBluetoothA2DP, .mixWithOthers, .allowAirPlay])
+                options: [.allowBluetoothA2DP, .allowAirPlay])
             try session.setActive(true)
         } catch {
             print("Failed to configure audio session: \(error)")
@@ -803,7 +798,7 @@ class AudioManager: NSObject, ObservableObject {
         // Re‑apply category in case system changed it (e.g. phone call ended)
         do {
             try session.setCategory(.playback, mode: .spokenAudio,
-                options: [.allowBluetoothA2DP, .mixWithOthers, .allowAirPlay])
+                options: [.allowBluetoothA2DP, .allowAirPlay])
         } catch {
             print("AudioManager: setCategory failed: \(error)")
         }
@@ -822,7 +817,7 @@ class AudioManager: NSObject, ObservableObject {
             object: nil
         )
 
-        // Proactively begin background task before app resigns active (screen lock starts)
+        // Re-apply the playback session before the screen locks
         NotificationCenter.default.addObserver(
             self,
             selector: #selector(handleAppWillResignActive),
@@ -848,18 +843,9 @@ class AudioManager: NSObject, ObservableObject {
 
     @objc private func handleAppWillResignActive() {
         guard isPlaying, player.currentItem != nil else { return }
+        // Re-apply a clean, non-mixable `.playback` session right before the
+        // screen locks so iOS treats this app as the primary audio source.
         ensureAudioSessionActive()
-        // Prime the audio pipeline: a brief play/pause cycle ensures
-        // the system knows audio is active before the screen locks.
-        // Request background execution time to prevent iOS from suspending
-        // the app during screen lock transition.
-        if backgroundTask == .invalid {
-            backgroundTask = UIApplication.shared.beginBackgroundTask { [weak self] in
-                self?.endBackgroundTask()
-            }
-        }
-        // Kickstart background-task refresh loop
-        startBackgroundTaskRefresh()
     }
 
     @objc private func handleAudioSessionInterruption(_ notification: Notification) {
@@ -893,20 +879,13 @@ class AudioManager: NSObject, ObservableObject {
     @objc private func handleAppDidEnterBackground() {
         guard isPlaying, player.currentItem != nil else { return }
         ensureAudioSessionActive()
-        // Ensure background task is active to keep the audio pipeline alive
-        endBackgroundTask()
-        backgroundTask = UIApplication.shared.beginBackgroundTask { [weak self] in
-            self?.endBackgroundTask()
-        }
-        startBackgroundTaskRefresh()
 
-        // Force the player to keep running — with retry if it doesn't
-        // take effect immediately (can happen during screen-lock transition)
+        // With the `audio` background mode and a non-mixable `.playback`
+        // session, AVPlayer keeps playing on its own. This retry is just a
+        // safety net for the brief media-services pause during screen lock.
         if player.timeControlStatus != .playing {
             player.play()
         }
-        // Double-check after a short delay (screen-lock transition may
-        // briefly suspend the media services)
         DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) { [weak self] in
             guard let self = self, self.isPlaying else { return }
             if self.player.timeControlStatus != .playing {
@@ -919,38 +898,6 @@ class AudioManager: NSObject, ObservableObject {
 
     @objc private func handleAppWillEnterForeground() {
         ensureAudioSessionActive()
-        endBackgroundTask()
-        stopBackgroundTaskRefresh()
-    }
-
-    private func endBackgroundTask() {
-        guard backgroundTask != .invalid else { return }
-        UIApplication.shared.endBackgroundTask(backgroundTask)
-        backgroundTask = .invalid
-    }
-
-    /// Proactively refresh the background task before it expires (~25s limit on iOS).
-    /// Without this, iOS suspends the app ≈30s after screen lock, killing the health timer.
-    private func startBackgroundTaskRefresh() {
-        stopBackgroundTaskRefresh()
-        backgroundTaskRefreshTimer = Timer.scheduledTimer(withTimeInterval: 20, repeats: true) { [weak self] _ in
-            guard let self = self, self.isPlaying else { return }
-            let oldTask = self.backgroundTask
-            self.backgroundTask = UIApplication.shared.beginBackgroundTask { [weak self] in
-                self?.endBackgroundTask()
-            }
-            if oldTask != .invalid {
-                UIApplication.shared.endBackgroundTask(oldTask)
-            }
-        }
-        if let timer = backgroundTaskRefreshTimer {
-            RunLoop.main.add(timer, forMode: .common)
-        }
-    }
-
-    private func stopBackgroundTaskRefresh() {
-        backgroundTaskRefreshTimer?.invalidate()
-        backgroundTaskRefreshTimer = nil
     }
 
     // MARK: - KVO Observers
@@ -1301,34 +1248,18 @@ class AudioManager: NSObject, ObservableObject {
         wasPlayingBeforeInterruption = false
         isPlaying = false
         stopHealthCheck()
-        stopBackgroundTaskRefresh()
-        endBackgroundTask()
         player.pause()
         saveProgress(position: currentTime)
         stopProgressSaving()
         updateNowPlayingInfo()
     }
 
-    /// Background health‑check: runs every 2 s. Verifies the player is truly
-    /// producing audio, re‑activates the session if needed, and renews the
-    /// background task every 10 ticks (20 s) to prevent iOS suspension.
+    /// Background health‑check: runs every 2 s and verifies the player is truly
+    /// producing audio, re‑activating the session if iOS ever tears it down.
     private func startHealthCheck() {
         stopHealthCheck()
-        healthCheckTick = 0
         healthCheckTimer = Timer.scheduledTimer(withTimeInterval: 2.0, repeats: true) { [weak self] _ in
             guard let self = self, self.isPlaying, self.player.currentItem != nil else { return }
-            self.healthCheckTick += 1
-
-            // Renew background task every 10 ticks (20 s) to stay alive
-            if self.healthCheckTick % 10 == 0 {
-                let oldTask = self.backgroundTask
-                self.backgroundTask = UIApplication.shared.beginBackgroundTask { [weak self] in
-                    self?.endBackgroundTask()
-                }
-                if oldTask != .invalid {
-                    UIApplication.shared.endBackgroundTask(oldTask)
-                }
-            }
 
             // Check the player's actual status — AVPlayer can silently stop
             // in background when the audio pipeline is torn down by iOS
@@ -1362,7 +1293,6 @@ class AudioManager: NSObject, ObservableObject {
     private func stopHealthCheck() {
         healthCheckTimer?.invalidate()
         healthCheckTimer = nil
-        healthCheckTick = 0
     }
 
     func rewind(seconds: TimeInterval) {
