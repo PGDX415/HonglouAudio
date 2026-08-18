@@ -22,6 +22,16 @@ struct ChapterReaderView: View {
             .filter { !$0.isEmpty }
     }
 
+    /// Formats a note date following the user's system locale/region,
+    /// so it displays as Chinese (e.g. 2026年8月18日) or English as the device is set.
+    private func formattedNoteDate(_ date: Date) -> String {
+        let formatter = DateFormatter()
+        formatter.locale = Locale.autoupdatingCurrent
+        formatter.dateStyle = .medium
+        formatter.timeStyle = .short
+        return formatter.string(from: date)
+    }
+
     var body: some View {
         ScrollView {
             VStack(alignment: .leading, spacing: 16) {
@@ -72,7 +82,7 @@ struct ChapterReaderView: View {
                                             .lineSpacing(4)
                                             .lineLimit(5)
 
-                                        Text(note.createdAt, style: .date)
+                                        Text(formattedNoteDate(note.createdAt))
                                             .font(.caption2)
                                             .foregroundColor(theme.tertiaryText)
                                     }

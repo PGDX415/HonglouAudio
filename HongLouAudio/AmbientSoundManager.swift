@@ -202,8 +202,9 @@ final class AmbientSoundManager: ObservableObject {
     }
 
     /// Called when playback ends or view disappears.
+    /// Always stops all ambient sound — including sounds the user turned on
+    /// manually — so closing the audio player also silences the background music.
     func deactivateAutoPlay() {
-        guard didAutoStart else { return }
         stopAll()
         isAmbientEnabled = false
         didAutoStart = false
