@@ -50,6 +50,10 @@ struct AudioPlayerView: View {
             .filter { !$0.isEmpty }
     }
 
+    /// Number of leading paragraphs that form the chapter title
+    /// (第X回 + 回目 couplet). Rendered in bold to stand out from the body.
+    private var titleParagraphCount: Int { 2 }
+
     /// Find the paragraph index for the current playback time
     private var currentParagraphIndex: Int? {
         guard let timestamps = chapter.paragraphTimestamps,
@@ -209,7 +213,7 @@ struct AudioPlayerView: View {
                                 VStack(alignment: .leading, spacing: 0) {
                                     ForEach(Array(paragraphs.enumerated()), id: \.offset) { index, paragraph in
                                         Text(paragraph)
-                                            .font(.system(size: textFontSize))
+                                            .font(.system(size: textFontSize, weight: index < titleParagraphCount ? .bold : .regular))
                                             .foregroundColor(
                                                 currentParagraphIndex == index
                                                     ? theme.accentRed

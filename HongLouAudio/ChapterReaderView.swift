@@ -22,11 +22,14 @@ struct ChapterReaderView: View {
             .filter { !$0.isEmpty }
     }
 
-    /// Formats a note date following the user's system locale/region,
-    /// so it displays as Chinese (e.g. 2026年8月18日) or English as the device is set.
+    /// Number of leading paragraphs that form the chapter title (第X回 + 回目 couplet).
+    private var titleParagraphCount: Int { 2 }
+
+    /// Formats a note date in Chinese (e.g. 2026年8月18日 14:30),
+    /// independent of the device's system language.
     private func formattedNoteDate(_ date: Date) -> String {
         let formatter = DateFormatter()
-        formatter.locale = Locale.autoupdatingCurrent
+        formatter.locale = Locale(identifier: "zh_CN")
         formatter.dateStyle = .medium
         formatter.timeStyle = .short
         return formatter.string(from: date)
@@ -40,10 +43,10 @@ struct ChapterReaderView: View {
                         // Paragraph + note button
                         HStack(alignment: .top, spacing: 4) {
                             if showAnnotations {
-                                annotatedText(paragraph)
+                                annotatedText(paragraph, isTitle: index < titleParagraphCount)
                             } else {
                                 Text(paragraph)
-                                    .font(.system(size: 18))
+                                    .font(.system(size: 18, weight: index < titleParagraphCount ? .bold : .regular))
                                     .foregroundColor(theme.primaryText)
                                     .lineSpacing(8)
                                     .multilineTextAlignment(.leading)
@@ -126,17 +129,18 @@ struct ChapterReaderView: View {
     // MARK: - Annotated Text Rendering
 
     @ViewBuilder
-    private func annotatedText(_ text: String) -> some View {
+    private func annotatedText(_ text: String, isTitle: Bool = false) -> some View {
         let matches = findMatches(in: text)
+        let weight: Font.Weight = isTitle ? .bold : .regular
         if matches.isEmpty {
             Text(text)
-                .font(.system(size: 18))
+                .font(.system(size: 18, weight: weight))
                 .foregroundColor(theme.primaryText)
                 .lineSpacing(8)
         } else {
             VStack(alignment: .leading, spacing: 8) {
                 segmentedHighlightedText(text, matches: matches)
-                    .font(.system(size: 18))
+                    .font(.system(size: 18, weight: weight))
                     .lineSpacing(8)
 
                 // Tappable glossary terms found in this paragraph
