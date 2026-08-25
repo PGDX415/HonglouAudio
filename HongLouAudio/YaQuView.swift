@@ -102,6 +102,27 @@ struct YaQuView: View {
                     }
                 }
 
+                // 图鉴
+                Section {
+                    NavigationLink(destination: GardenMapView()) {
+                        yaQuRow(
+                            icon: "map.fill",
+                            color: Color(red: 0.3, green: 0.55, blue: 0.35),
+                            title: "大观园",
+                            subtitle: "园中胜景导览"
+                        )
+                    }
+
+                    NavigationLink(destination: TimelineView()) {
+                        yaQuRow(
+                            icon: "clock.arrow.2.circlepath",
+                            color: Color(red: 0.7, green: 0.4, blue: 0.25),
+                            title: "大事年表",
+                            subtitle: "红楼纪年"
+                        )
+                    }
+                }
+
                 // 成语典故
                 Section {
                     NavigationLink(destination: GlossaryBrowseView()) {

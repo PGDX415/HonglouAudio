@@ -364,12 +364,6 @@ struct AudioPlayerView: View {
         .onDisappear {
             ambientManager.deactivateAutoPlay()
         }
-        .onChange(of: audioManager.currentPlayingChapter) { oldChapter, newChapter in
-            if let newChapter = newChapter, (oldChapter == nil || oldChapter!.number != newChapter.number || oldChapter!.audioFileName != newChapter.audioFileName) {
-                chapter = newChapter
-                showText = false
-            }
-        }
         .sheet(isPresented: $showSleepTimer) {
             sleepTimerSheet
         }
@@ -649,13 +643,11 @@ struct Bookmark: Codable, Identifiable, Equatable {
 enum PlayMode: CaseIterable {
     case single
     case loop
-    case sequential
 
     var label: String {
         switch self {
         case .single: return "单回"
         case .loop: return "循环"
-        case .sequential: return "连播"
         }
     }
 
@@ -663,7 +655,6 @@ enum PlayMode: CaseIterable {
         switch self {
         case .single: return "arrow.right.to.line"
         case .loop: return "repeat.1"
-        case .sequential: return "forward.end.fill"
         }
     }
 
@@ -697,11 +688,6 @@ class AudioManager: NSObject, ObservableObject {
     @Published var sleepTimerRemaining: TimeInterval = 0
     @Published var sleepTimerActive: Bool = false
     var sleepTimerTotal: TimeInterval = 0
-
-    // Playlist & sequential playback
-    var playlist: [Chapter] = []
-    var currentPlaylistIndex: Int = -1
-    @Published var currentPlayingChapter: Chapter?
 
     // Bookmarks
     @Published var bookmarks: [Bookmark] = []
@@ -956,39 +942,6 @@ class AudioManager: NSObject, ObservableObject {
         }
     }
 
-    // MARK: - Playlist Management
-
-    func configurePlaylist(_ chapters: [Chapter], startIndex: Int = 0) {
-        playlist = chapters
-        currentPlaylistIndex = startIndex
-        if startIndex < chapters.count {
-            currentPlayingChapter = chapters[startIndex]
-        }
-    }
-
-    var hasNextChapter: Bool {
-        guard playMode == .sequential, !playlist.isEmpty else { return false }
-        return currentPlaylistIndex + 1 < playlist.count
-    }
-
-    func advanceToNextChapter() {
-        guard hasNextChapter else {
-            // End of playlist
-            player.seek(to: .zero)
-            isPlaying = false
-            currentTime = 0
-            progress = 0
-            updateNowPlayingInfo()
-            return
-        }
-        currentPlaylistIndex += 1
-        let next = playlist[currentPlaylistIndex]
-        currentPlayingChapter = next
-        saveProgress(position: 0)
-        loadAudio(for: next.audioFileName, title: next.title, chapterNumber: next.number)
-        play()
-    }
-
     // MARK: - Progress Persistence
 
     private func progressKey(for fileName: String) -> String {
@@ -1151,9 +1104,6 @@ class AudioManager: NSObject, ObservableObject {
                 self.isPlaying = true
                 self.startProgressSaving()
                 self.updateNowPlayingInfo()
-
-            case .sequential:
-                self.advanceToNextChapter()
 
             case .single:
                 self.player.seek(to: .zero)

@@ -12,28 +12,14 @@ struct ContentView: View {
     @State private var groupedChapters: [GroupedChapter] = []
     @ObservedObject private var theme = ThemeManager.shared
     @State private var showSearch = false
-    @State private var showPlayAll = false
-    @State private var playAllStartChapter: Chapter?
     @State private var progressData: [Int: Double] = [:] // chapterNumber -> progress proportion
     @State private var navPath = NavigationPath()
-    @State private var showGardenMap = false
-    @State private var showTimeline = false
     @State private var selectedSeasonID: Int? = nil // nil = 全部
     @State private var selectedPartID: Int = 1      // 1 = 上部, 2 = 下部
 
-    /// Flatten all parts into a single sequential list for "全部播放"
+    /// Flatten all parts into a single ordered list
     private var allChaptersFlat: [Chapter] {
         groupedChapters.flatMap { $0.parts.sorted { $0.number < $1.number } }
-    }
-
-    /// Build playlist respecting current part + season selection
-    private func buildPlaylist() -> [Chapter] {
-        let partSeasonIDs = Set(currentPartSeasons.map { $0.id })
-        let base = allChaptersFlat.filter { partSeasonIDs.contains($0.season) }
-        if let sid = selectedSeasonID {
-            return base.filter { $0.season == sid }
-        }
-        return base
     }
 
     /// Chapters filtered by selected part + season
@@ -78,13 +64,6 @@ struct ContentView: View {
                         .listRowBackground(Color.clear)
                 }
 
-                // Quick actions
-                Section {
-                    quickActionsRow
-                        .listRowInsets(EdgeInsets())
-                        .listRowBackground(Color.clear)
-                }
-
                 // Daily quote banner
                 Section {
                     dailyQuoteBanner
@@ -120,17 +99,6 @@ struct ContentView: View {
         }
         .navigationDestination(for: Chapter.self) { chapter in
             AudioPlayerView(chapter: chapter)
-        }
-        .navigationDestination(isPresented: $showPlayAll) {
-            if let chapter = playAllStartChapter {
-                AudioPlayerView(chapter: chapter)
-            }
-        }
-        .navigationDestination(isPresented: $showGardenMap) {
-            GardenMapView()
-        }
-        .navigationDestination(isPresented: $showTimeline) {
-            TimelineView()
         }
         .toolbar {
             ToolbarItem(placement: .navigationBarTrailing) {
@@ -219,72 +187,6 @@ struct ContentView: View {
                     .padding(.horizontal, 2)
             }
         }
-    }
-
-    // MARK: - Quick Actions
-
-    private var quickActionsRow: some View {
-        HStack(spacing: 10) {
-            // 连续播放 — prominent primary button
-            Button {
-                let playlist = buildPlaylist()
-                guard let first = playlist.first else { return }
-                AudioManager.shared.configurePlaylist(playlist, startIndex: 0)
-                AudioManager.shared.playMode = .sequential
-                playAllStartChapter = first
-                showPlayAll = true
-            } label: {
-                HStack(spacing: 4) {
-                    Image(systemName: "play.fill")
-                        .font(.system(size: 11, weight: .bold))
-                    Text("连续播放")
-                        .font(.system(size: 13, weight: .semibold))
-                }
-                .frame(maxWidth: .infinity)
-                .padding(.vertical, 11)
-                .background(theme.accentRed)
-                .foregroundColor(.white)
-                .cornerRadius(10)
-            }
-            .buttonStyle(.plain)
-
-            // 大事年表
-            Button {
-                showTimeline = true
-            } label: {
-                HStack(spacing: 4) {
-                    Image(systemName: "clock.arrow.2.circlepath")
-                        .font(.system(size: 11))
-                    Text("大事年表")
-                        .font(.system(size: 13, weight: .medium))
-                }
-                .frame(maxWidth: .infinity)
-                .padding(.vertical, 11)
-                .background(theme.cardBackground)
-                .foregroundColor(theme.primaryText)
-                .cornerRadius(10)
-            }
-            .buttonStyle(.plain)
-
-            // 大观园
-            Button {
-                showGardenMap = true
-            } label: {
-                HStack(spacing: 4) {
-                    Image(systemName: "map.fill")
-                        .font(.system(size: 11))
-                    Text("大观园")
-                        .font(.system(size: 13, weight: .medium))
-                }
-                .frame(maxWidth: .infinity)
-                .padding(.vertical, 11)
-                .background(theme.cardBackground)
-                .foregroundColor(theme.primaryText)
-                .cornerRadius(10)
-            }
-            .buttonStyle(.plain)
-        }
-        .padding(.horizontal, 16)
     }
 
     // MARK: - Daily Quote
